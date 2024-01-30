@@ -42,6 +42,11 @@ footer {
        border-bottom: #198754 4px solid ;
    }
 
+   .socials h2{
+    color: #198754;
+    border-bottom: #198754 4px solid ;
+   }
+
    .About p {
        font-size: 16px;
        text-align:justify;
@@ -58,3 +63,22 @@ background-color: white;
 border-color: white; 
 color: black; 
 }
+
+
+.socials {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .social-column {
+    border: 3px solid #198754;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .social-column iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }

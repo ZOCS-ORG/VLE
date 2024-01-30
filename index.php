@@ -53,8 +53,23 @@
     });
 </script>
 
+<div class="socials">
+  <h2 class="text-center" style ="color: #198754;
+    border-bottom: #198754 6px double ; width:40%; margin-left:auto; margin-right:auto;">Socials</h2>
+    <br>
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-5 social-column">
+      <a class="twitter-timeline" data-width="500" data-height="400" data-dnt="true" data-theme="light" href="https://twitter.com/open_zocs?ref_src=twsrc%5Etfw">Tweets by open_zocs</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    <div class="col-md-5 social-column">
+    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FZocsZambiaOpenCommunitySchool&tabs=timeline%2C%20events&width=500&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="400" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+    </div>
+  </div>
+</div>
 
-<div class="About mt-4 mb-2 text-center">
+
+<div class="About mt-4 mb-2 text-center"> 
   <h2>About VLE</h2>
   <p class="">Action on Early Childhood Development and Education in Eastern and Southern Africa has been driven by civil society and governments based on international treaties and declarations on Early Childhood Development and Education (ECDE) (UNESCO, 2007). The more recent Sustainable Development Goals (SDG) target 4.2, underlines the need for “all boys and girls to have access to early childhood development, care and pre-primary education so that they are ready for primary education.”
 <br>
