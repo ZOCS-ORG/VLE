@@ -17,7 +17,7 @@
                 <div class="card-header text-center">
                     <h3>My events</h3>
                     <div class="text-right text-light">
-                        <a class="btn btn-sm btn-success" href="create_event.php">Add new event <i class="fas fa-plus "></i> </a>
+                        <a class="btn btn-sm btn-success" href="create_event.php">Add new event </a>
                         </div>
                 </div>
                 <div class="card-body">

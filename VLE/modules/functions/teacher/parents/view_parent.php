@@ -1,4 +1,5 @@
 <?php 
+    // require_once('../scripts/parent_validation.php');
     require_once('../../../config/admin_server.php');   //contains db connection so we good 🤦🏾‍♂️
     $add_side_bar = true;
     include_once('../layouts/head_to_wrapper.php');
@@ -37,6 +38,8 @@
                                     <div class="card-body text-right">
                                         <hr>
                                         <p>Parents ID</p>
+                                        <p>Username</p>
+                                        <p>Email</p>
                                         <p>Mother's Name</p>
                                         <p>Father's Name</p>
                                         <p>Mother's Phone Number</p>
@@ -52,6 +55,8 @@
                                     <div class="card-body">
                                         <hr>
                                         <p> <?php echo $row['id']; ?> </p>
+                                        <p> <?php echo $row['username']; ?> </p>
+                                        <p> <?php echo $row['email']; ?> </p>
                                         <p> <?php echo $row['mothername']; ?> </p>
                                         <p> <?php echo $row['fathername']; ?> </p>
                                         <p> <?php echo $row['motherphone']; ?> </p>
@@ -59,6 +64,10 @@
                                         <p> <?php echo $row['address']; ?> </p>
                                     </div>
 
+                                </div>
+                                <div class="text-right text-white">
+                                    <a href="update_parent.php?id=<?php echo $parent_id ?>" class="btn btn-info btn-sm">Edit</a>
+                                    <a href="../../../config/admin_server.php?id=<?php echo $parent_id;?>&delete_parent=true" class="btn btn-danger btn-sm">Delete</a>
                                 </div>
                             </div>
 
