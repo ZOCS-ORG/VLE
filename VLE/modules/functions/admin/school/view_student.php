@@ -112,7 +112,7 @@
                                             while($r = mysqli_fetch_assoc($res)){ 
                                                 echo "<p>Fathers name: ".$r['fathername'].".</p>";
                                                 echo "<p>Mothers name: ".$r['mothername'].".</p>";
-                                                echo "<p><a class='btn btn-info btn-sm' href='../parents/view_parent.php?id=".$row['parentid']."'>View.</a></p>";
+                                                echo "<p><a class='btn btn-info btn-sm' href='../parent/view_parent.php?id=".$row['parentid']."'>View.</a></p>";
                                             }
                                         }
                                     ?>

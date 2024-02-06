@@ -52,7 +52,7 @@
           <!-- Nav Item - Dashboard -->
           <li class="nav-item">
             <a class="nav-link" href="../index.php">
-            
+            <i class="fa fas fa-fw fa-tachometer"></i>
               <span>Dashboard</span></a>
           </li>
           
@@ -72,8 +72,16 @@
             </li>
           -->
       
+                
+      <li class="nav-item text-color-dark">
+        <a class="nav-link" href="../complaints/index.php">
+        <i class="fa fas fa-fw fa-frown-o"></i>
+          <span>Complaints </span></a>
+      </li>
+
           <li class="nav-item text-color-dark">
-            <a class="nav-link" href="../../../../lms/moe">            
+            <a class="nav-link" href="../../../../lms/moe"> 
+            <i class="fa fas fa-fw fa-hospital"></i>           
               <span>E-Files & Forum </span></a>
           </li>
 

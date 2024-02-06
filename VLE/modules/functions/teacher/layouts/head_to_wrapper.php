@@ -6,17 +6,21 @@
   $id = $_SESSION['id'];
   $username = $_SESSION['username'];
  // Authenticate!!!
- $query =  "SELECT * FROM teachers WHERE username='$username' ";
- $results=mysqli_query($db,$query);
- $row=mysqli_fetch_array($results);
- $login_session = $row['name'];
- $_SESSION['img'] = $row['img'];
- $name = $_SESSION['name'] = $row['name'];
- $id = $_SESSION['id'] = $row['id'];
- $role = $_SESSION['role'] = "teacher";
+//  $query =  "SELECT * FROM teachers WHERE username='$username' ";
+//  $results=mysqli_query($db,$query);
+//  $row=mysqli_fetch_array($results);
+//  $login_session = $row['name'];
+//  $_SESSION['img'] = $row['img'];
+//  $name = $_SESSION['name'] = $row['name'];
+//  $id = $_SESSION['id'] = $row['id'];
+//  $role = $_SESSION['role'] = "teacher";
+
+$name = $_SESSION['name'];
+$id = $_SESSION['id'];
+$role = $_SESSION['role'];
 
  if(empty($login_session)){
-   header("Location: ../../../../");
+//    header("Location: ../../../../");
  }
   
 ?>
@@ -47,6 +51,11 @@
 	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
 
+        
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
     <!-- Date picker -->
     <script type="text/javascript" src="http://services.iperfect.net/js/IP_generalLib.js"></script>
     <!-- Calendar -->

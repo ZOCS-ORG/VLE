@@ -12,7 +12,7 @@ if (empty($t_id)) {
         <li><a href="../student/show_notices.php">Notifications</a></li>
         <li><a href="../student/forum.php">Forum</a></li>
         <li class="divider"></a></li>
-        <li><a href="../../modules/functions/student/">Back to Dashboard</a></li>
+        <li><a href="../../modules/functions/<?php echo $_SESSION['role'] ?>/">Back to Dashboard </a></li>
     </ul>
 
 <?php } else { ?>
@@ -25,7 +25,7 @@ if (empty($t_id)) {
         <li><a href="../moe/notice_ass.php">Assignment Notice</a></li>
         <li><a href="../moe/forum.php">Forum</a></li>
         <li class="divider"></a></li>
-        <li><a href="../../modules/functions/moe/">Back to Dashboard</a></li>
+        <li><a href="../../modules/functions/<?php echo $_SESSION['role'] ?>/">Back to Dashboard  </a></li>
     </ul>
 
 

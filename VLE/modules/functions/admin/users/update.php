@@ -8,7 +8,7 @@ $parent_id = $_GET['id'];
 ?>
 <hr/>     
 <?php
-$query = "SELECT  * from teachers where id = '$parent_id' ";
+$query = "SELECT  * from users where id = '$parent_id' ";
 
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 $count = 1;

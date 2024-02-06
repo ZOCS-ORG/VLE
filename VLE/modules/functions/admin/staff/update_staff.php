@@ -9,7 +9,7 @@
 ?>
         <hr/>      
         <?php 
-            $query = "SELECT  * FROM other_staff WHERE id = '$staff_id' ";
+            $query = "SELECT  * FROM users WHERE id = '$staff_id' ";
 
             $result = mysqli_query($db, $query) or die(mysqli_error($db));
             $count = 1;

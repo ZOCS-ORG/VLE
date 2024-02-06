@@ -58,7 +58,7 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="../index.php">
-
+        <i class="fa fas fa-fw fa-tachometer"></i>
           <span>Dashboard</span></a>
       </li>
 
@@ -79,54 +79,44 @@
           -->
       <li class="nav-item text-color-dark">
         <a class="nav-link" href="../classes/index.php">
-
+        <i class="fa fas fa-fw fa-address-book-o"></i>
           <span>My Classes</span></a>
       </li>
 
       <li class="nav-item text-color-dark">
-        <a class="nav-link" href="../parents/index.php">
+        <a class="nav-link" href="../parent/index.php">
+        <i class="fa fas fa-fw fa-user"></i>
           <span>Parents</span></a>
       </li>
 
       <li class="nav-item text-color-dark">
         <a class="nav-link" href="../students/index.php">
+        <i class="fa fas fa-fw fa-users"></i>
           <span>Students</span></a>
       </li>
 
 
       <li class="nav-item text-color-dark">
         <a class="nav-link" href="../subjects/index.php">
-
+        <i class="fa fas fa-fw fa-book"></i>
           <span>My Subjects</span></a>
       </li>
       
       <li class="nav-item text-color-dark">
         <a class="nav-link" href="../complaints/index.php">
-
+        <i class="fa fas fa-fw fa-frown-o"></i>
           <span>Complaints </span></a>
       </li>
 
-      <!-- <li class="nav-item text-color-dark">
-        <a class="nav-link" href="../events/index.php">
-
-          <span>My Events</span></a>
-      </li>
-
-
-      <li class="nav-item text-color-dark">
-        <a class="nav-link" href="../calendar/index.php">
-
-          <span>My Calendar </span></a>
-      </li> -->
-
       <li class="nav-item text-color-dark">
         <a class="nav-link" href="../chat">
+        <i class="fa fas fa-fw fa-comments-o"></i>
           <span>Chat </span></a>
       </li>
 
       <li class="nav-item text-color-dark">
         <a class="nav-link" href="../../../../lms/teacher">
-
+        <i class="fa fas fa-fw fa-etsy"></i>
           <span>E-Learning </span></a>
       </li>
 

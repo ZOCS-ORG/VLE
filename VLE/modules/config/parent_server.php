@@ -37,5 +37,5 @@ if(!empty($_POST['update_parent'])){
     $sql_user = substr($sql_user, 0, strlen($sql_user) ) . " userid = '$userid', user_role = 'parent' WHERE `userid` = '$userid' ";
     $success = mysqli_query($db, $sql_user)or die('Error: Could not Update data: '.mysqli_error($db));
 
-    header('Location: ../parents/view_parent.php?id='.$id."&".$updated=true);
+    header('Location: ../parent/view_parent.php?id='.$id."&".$updated=true);
 }

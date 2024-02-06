@@ -105,7 +105,7 @@
           <hr>
 
           <!-- Feeds Heading -->
-          <div class="card d-sm-flex align-items-center justify-content-between mb-4 py-2 h5 bg-dark">
+          <div class="card d-sm-flex align-items-center justify-content-between mb-4 py-2 h5 border-success">
             <h5 class="h5 mb-0 text-success ">Notice Board </h5>
           </div>
 

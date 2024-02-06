@@ -8,7 +8,7 @@ require_once('../config/config.php');
 $userid = $_SESSION['id'];
 
 // echo "UPDATE users SET status = 'Offline' WHERE userid = '$userid' ";
-mysqli_query($db, "UPDATE users SET status = 'Offline' WHERE userid = '$userid' ") or die(mysqli_error($db));
+mysqli_query($db, "UPDATE users SET status = 'Offline' WHERE id = '$userid' ") or die(mysqli_error($db));
 
 unset($_SESSION["id"]);
 unset($_SESSION["name"]);
