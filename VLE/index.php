@@ -1,6 +1,7 @@
 <?php
 session_start();
 $username = $_SESSION['username'];
+$sid = $_SESSION['id'];
 include 'modules/config/config.php';
 ?>
 <html>
@@ -50,6 +51,8 @@ include 'modules/config/config.php';
             $count = mysqli_num_rows($results);
             $row = mysqli_fetch_array($results);
             $role = $row['user_role'];
+
+            echo $username.$count;
 
             if ($count != 1 || empty($role)) {
                 echo "<h1 style='padding: 24%; '> Cannot find any registered users</h1>";

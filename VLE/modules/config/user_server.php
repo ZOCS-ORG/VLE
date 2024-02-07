@@ -21,9 +21,11 @@ $count = mysqli_num_rows($results);
 $row = mysqli_fetch_array($results);
 $id = $row['userid'];
 $username = $row['username'];
+// $pass_session = $row['password'];
 $role = $row['user_role'];
 $_SESSION['id'] = $id;
 $_SESSION['username'] = $username;
+$_SESSION['password'] = $password;
 // return var_dump($query);
 //return var_dump($username);
 if (empty($role)) {

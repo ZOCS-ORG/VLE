@@ -36,10 +36,13 @@ if ($login_code) {
             <h3>Welcome to ZOCS E-Learning Platform </h3>
 
 
-            <?php //var_dump($login_code);  ?>
+            <?php 
+           
+            
+            ?>
 
             <div id="formContent">
-
+   
                 <!-- Tabs Titles -->
                 <h2 class="active"> Log In </h2>
                 <div> <?php echo $login_message; ?> </div>

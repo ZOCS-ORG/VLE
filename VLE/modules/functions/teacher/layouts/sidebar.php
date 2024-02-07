@@ -1,4 +1,17 @@
-    <!-- @Overide some fa styling -->
+<?php session_start(); 
+
+$token = bin2hex(random_bytes(16)); // Generates a 32-character hexadecimal token
+
+// Set the token in the session for validation later
+$_SESSION['auth_token'] = $token;
+
+// Retrieve username and password from session
+$s_user = $_SESSION['username'];
+$s_pass = $_SESSION['password'];
+
+?>
+
+<!-- @Overide some fa styling -->
     <style>
     .navbar-nav i.fas{
         color: #f8f9fc !important;
@@ -72,7 +85,7 @@
             </li>
           -->
           
-          <li class="nav-item text-color-dark">
+          <!-- <li class="nav-item text-color-dark">
             <a class="nav-link" href="../classes/index.php">
             
               <span>My Classes</span></a>
@@ -95,13 +108,28 @@
             <a class="nav-link" href="../calendar/index.php">
              
               <span>My Calendar </span></a>
-          </li>
+          </li> -->
 
-          <li class="nav-item text-color-dark">
+          <!-- <li class="nav-item text-color-dark">
             <a class="nav-link" href="../../../../lms/teacher">
             
               <span>E-Learning </span></a>
-          </li>
+          </li> -->
+
+          <!-- <li class="nav-item text-color-dark">
+            <a class="nav-link" href="http://localhost/MOODLE/login/index.php?username=<?php echo $s_user; ?>&password=<?php echo $s_pass; ?>">
+            
+              <span>E-Learning </span></a>            
+          </li> -->
+
+
+          <form id="loginForm" class="" action="http://MOODLE.test/login/index.php" method="post">
+    <input type="hidden" name="username" value="<?php echo $s_user; ?>">
+    <input type="hidden" name="password" value="<?php echo $s_pass; ?>">
+    <input type="submit" class="btn btn-white nav-item ml-2" value="E-Learning" style="background: black; border: none; cursor: pointer;">
+</form>
+
+
 
           <!-- Divider -->
           <hr class="sidebar-divider d-none d-md-block">

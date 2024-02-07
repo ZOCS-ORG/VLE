@@ -37,8 +37,8 @@ if (isset($_POST['add_user'])) {
             . "<br> Kind Regards <br>" . ' <img src="../vle.png" height="100px" width="200px">';
 
     $userid = "tea_" . $teaId;
-    $sql_user = "INSERT INTO users (`userid`, `name`, `username`, `password`, `user_role`) 
-                VALUES('$userid', '$teaName','$username', '$teaPassword','$user_type')";
+    $sql_user = "INSERT INTO users (`userid`, `name`, `username`, `password`, `user_role`, `email`) 
+                VALUES('$userid', '$teaName','$username', '$teaPassword','$user_type', '$teaEmail')";
 
     $emails->send_mail($teaEmail, $message, "WELCOME TO THE VLE");
 

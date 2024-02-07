@@ -10,7 +10,7 @@
           <?php include('../layouts/topbar.php') ?>
         <!-- End of Topbar -->
 
-        <!-- Begin Page Content -->
+       
         <div class="container-fluid">
         
           <!-- Page Heading -->
@@ -21,7 +21,7 @@
           <!-- Content Row -->
           <div class="row">
 
-                <?php 
+                <?php             
   
                   $query = "SELECT  count(1) from classes where teacher_id = '$id' ";
 
@@ -109,6 +109,8 @@
             <h5 class="h5 mb-0 text-info ">Notice Board </h5>
           </div>
 
+
+         
           <!-- Content Row -->
           <div class="row">
 
