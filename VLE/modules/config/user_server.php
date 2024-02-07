@@ -28,6 +28,7 @@ $userid = $row['userid'];
 $username = $row['username'];
 $_SESSION['userid'] = $userid;
 $_SESSION['username'] = $username;
+$_SESSION['password'] = $password;
 
 
 ///?

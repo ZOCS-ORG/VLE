@@ -67,13 +67,22 @@ $s_pass = $_SESSION['password'];
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
+      <br>
 
+      <form id="loginForm" class="" action="http://MOODLE.test/login/index.php" method="post">
+    <input type="hidden" name="username" value="<?php echo $s_user; ?>">
+    <input type="hidden" name="password" value="<?php echo $s_pass; ?>">
+    <input type="submit" class="btn btn-success nav-item ml-4" value="VLE-Learning" style="background: black; border: none; cursor: pointer;">
+</form>
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="../index.php">
         <i class="fa fas fa-fw fa-tachometer"></i>
           <span>Dashboard</span></a>
       </li>
+
+      
+
 
       <!-- 
             <li class="nav-item">
@@ -142,3 +151,8 @@ $s_pass = $_SESSION['password'];
       </div>
 
     </ul>
+
+
+
+
+    
