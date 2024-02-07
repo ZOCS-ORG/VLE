@@ -95,7 +95,7 @@
                                                                 var NameValue = nameValidationInput.value;
                                                                 // use it
                                                                 // alert(NameValue); // just to show the new value
-                                                                <?php// $abc = "<script>document.write(NameValue)</script>"?>
+                                                                <?php // $abc = "<script>document.write(NameValue)</script>"?>
                                                             }
                                                             nameValidationInput.onchange = useValue;  
                                                             nameValidationInput.onblur = useValue;

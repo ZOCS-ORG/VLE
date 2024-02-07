@@ -5,17 +5,6 @@
   <i class="fa fa-bars"></i>
 </button>
 
-<!-- Topbar Search -->
-<!-- <form action="../search/search.php" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-  <div class="input-group">
-    <input type="text" name="query" class="form-control bg-light border-0 small" placeholder="<?php echo $search_placeholder ?>" aria-label="Search" aria-describedby="basic-addon2">
-    <div class="input-group-append">
-      <button class="btn btn-info" type="submit">
-        <i class="fas fa-search fa-sm"></i>
-      </button>
-    </div>
-  </div>
-</form> -->
 
 <!-- Topbar Navbar -->
 <ul class="navbar-nav ml-auto">
@@ -35,20 +24,21 @@
 
       <?php if(isset($id))  { // ADD EDIT PROFILE ON HOMEPAGE WHERE ID IS AVAILABLE ?>
         <a class="dropdown-item" href="../account/update_profile.php?id=<?php echo $id;?>">
-          <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
+        <i class="fa fas fa-fw fa-edit"></i>
           Edit profile
         </a>
       <?php } ?>
 
       <a class="dropdown-item" href="../account/myprofile.php">
-        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+      <i class="fa fas fa-fw fa-user-circle"></i>
         My profile
       </a>
 
 
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="../../../assets/logout.php">
-        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+        <!-- <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> -->
+        <i class="fa fas fa-fw fa-power-off"></i>
         Logout
       </a>
     </div>

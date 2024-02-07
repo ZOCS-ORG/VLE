@@ -25,26 +25,29 @@ if (isset($_POST['add_user'])) {
     //$filename = $_FILES['file']['name'];
     $filetmp = $_FILES['file']['tmp_name'];
     $img = $teaName . "_" . rand(100, 1000000) . ".jpg";
-    move_uploaded_file($filetmp, "../../../utils/images/lecturers/" . $img);
+    move_uploaded_file($filetmp, "../../../utils/images/users/" . $img);
 
-    $sql = "INSERT INTO teachers (`id`, `name`, `username`, `password`, `phone`, `email`, `address`, `sex`, `dob`, `hiredate`, `salary`, `img`,`user_type`)
-        VALUES('$teaId','$teaName','$username','$teaPassword','$teaPhone','$teaEmail','$teaAddress','$teaGender','$teaDOB','$teaHireDate','$teaSalary', '$img','$user_type' )";
+    // $sql = "INSERT INTO teachers (`id`, `name`, `username`, `password`, `phone`, `email`, `address`, `sex`, `dob`, `hiredate`, `salary`, `img`,`user_type`)
+    //     VALUES('$teaId','$teaName','$username','$teaPassword','$teaPhone','$teaEmail','$teaAddress','$teaGender','$teaDOB','$teaHireDate','$teaSalary', '$img','$user_type' )";
 
-    $success = mysqli_query($db, $sql) or die('Could not enter data: ' . mysqli_error($db));
-    $teaId = mysqli_insert_id($db);
+    // $success = mysqli_query($db, $sql) or die('Could not enter data: ' . mysqli_error($db));
+    // $teaId = mysqli_insert_id($db);
+
+    $userid = 00; //$teaId;
+
+    $sql_user = "INSERT INTO users (`userid`, `name`, `username`, `password`, `user_role`, `phone`, `email`, `sex`, `address`, `img`) 
+                VALUES('$userid', '$teaName','$username', '$teaPassword','$user_type','$teaPhone', '$teaEmail', '$teaGender', '$teaAddress','$img' )";
 
     $message = "Dear " . $teaName . ", Welcome to the Virtual Learning Platform, your username is  " . $username . " and your password is " . $_POST['password'] . ""
-            . "<br> Kind Regards <br>" . ' <img src="../vle.png" height="100px" width="200px">';
-
-    $userid = "tea_" . $teaId;
-    $sql_user = "INSERT INTO users (`userid`, `name`, `username`, `password`, `user_role`, `email`) 
-                VALUES('$userid', '$teaName','$username', '$teaPassword','$user_type', '$teaEmail')";
+        . "<br> Kind Regards <br>" . ' <img src="../vle.png" height="100px" width="200px">';
 
     $emails->send_mail($teaEmail, $message, "WELCOME TO THE VLE");
 
     $success = mysqli_query($db, $sql_user) or die('Could not enter data: ' . mysqli_error($db));
 
-    echo "<script>document.location='../users/view.php?id=$teaId&created=true'</script>";
+    $created_id = mysqli_insert_id($db);
+
+    echo "<script>document.location='../users/view.php?id=". $created_id . "&created=true'</script>";
     // header('Location: ../users/view.php?id=' . $teaId . "&created=true");
 }
 ?>
@@ -56,20 +59,35 @@ if (isset($_POST['add_user'])) {
         margin-right: auto;
         margin-left: auto;
     }
+
     @media (min-width: 768px) {
         .table-width {
             width: 750px;
         }
     }
+
     @media (min-width: 992px) {
         .table-width {
             width: 970px;
         }
     }
+
     @media (min-width: 1200px) {
         .table-width {
             width: 1170px;
         }
+    }
+
+    input {
+        width: 90%;
+    }
+
+    select {
+        width: 90%;
+    }
+
+    [type=radio] {
+        width: 30%;
     }
 </style>
 
@@ -77,14 +95,16 @@ if (isset($_POST['add_user'])) {
 
     <div class="row justify-content-center">
         <div class="col-lg-8" style="border: 2px solid #73AD21; ">
-            <div >
-                <div class="card-header" ><h5 class="text-center my-2">Add New User</h5></div>
-                <div class="card-body" >
-                    <form action="#" method="post"  enctype="multipart/form-data">
+            <div>
+                <div class="card-header">
+                    <h5 class="text-center my-2">Add New User</h5>
+                </div>
+                <div class="card-body">
+                    <form action="#" method="post" enctype="multipart/form-data">
 
                         <table class="table" id="dataTable" width="100%" cellspacing="9">
 
-                            <input id="id"type="hidden" name="id" placeholder="Enter Id">
+                            <input id="id" type="hidden" name="id" placeholder="Enter Id">
                             <tr>
 
                                 <td style=" color: black"><b>Name:</b></td>
@@ -95,7 +115,7 @@ if (isset($_POST['add_user'])) {
                                 <td style=" color: black"><b>Username:</b></td>
                                 <td class="text-right"><input id="name" type="text" name="username" placeholder="Username" required></td>
                             </tr>
-                            <tr  hidden="">
+                            <tr hidden="">
                                 <td>Password:</td>
                                 <td style=" color: black"><b>Name:</b></td>
                                 <td class="text-right"><input id="password" type="text" name="password" value="<?php echo date("His") . "@123"; ?>" placeholder="Enter Password"></td>
@@ -108,7 +128,7 @@ if (isset($_POST['add_user'])) {
                             <tr>
 
                                 <td style=" color: black"><b>Email:</b></td>
-                                <td class="text-right"><input id="email"type="email" name="email" placeholder="Email" required></td>
+                                <td class="text-right"><input id="email" type="email" name="email" placeholder="Email" required></td>
                             </tr>
                             <tr hidden="">
 
@@ -132,7 +152,7 @@ if (isset($_POST['add_user'])) {
                             <tr>
 
                                 <td style=" color: black"><b>Physical Address:</b></td>
-                                <td class="text-right"><input id="address" type="text" name="address" placeholder="Enter Address" ></td>
+                                <td class="text-right"><input id="address" type="text" name="address" placeholder="Enter Address"></td>
                             </tr>
                             <tr>
 
@@ -140,27 +160,28 @@ if (isset($_POST['add_user'])) {
                                 <td class="text-right">
                                     <div class="form-">
                                         <select name="user_role" class="form-" id="user_role" required>
-                                            <option value="ZOCS">ZOCS USER</option>
-                                            <option value="SUPER">SUPER ADMIN</option>
-                                            <option value="TEACHER">TEACHER</option>
-                                            <option value="MOE">MOE</option>
-                                            <option value="UNIVERSITY">UNIVERSITY</option>
-                                            <option value="DRC">DRC</option>
+                                            <option value="">-- SELECT --</option>
+                                            <option value="admin">SUPER ADMIN</option>
+                                            <option value="zocs">ZOCS USER</option>
+                                            <option value="moe">MOE</option>
+                                            <option value="drc">DRC</option>
+                                            <option value="university">UNIVERSITY</option>
+                                            <option value="teacher">TEACHER</option>
                                         </select>
                                     </div>
                                 </td>
                             </tr>
                             <tr hidden="">
                                 <td>Salary:</td>
-                                <td class="text-right"><input id="salary" type="text" name="salary" placeholder="eg. 21000" ></td>
+                                <td class="text-right"><input id="salary" type="text" name="salary" placeholder="eg. 21000"></td>
                             </tr>
                             <tr hidden="">
                                 <td>Picture:</td>
-                                <td class="text-right"><input id="file"type="file" name="file"></td>
+                                <td class="text-right"><input id="file" type="file" name="file"></td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td class="text-left"><input class="btn btn-sm btn-success " type="submit" name="add_user"value="Create User"></td>
+                                <td class="text-left"><input class="btn btn-sm btn-success " type="submit" name="add_user" value="Create User"></td>
                             </tr>
                         </table>
                     </form>
@@ -171,4 +192,3 @@ if (isset($_POST['add_user'])) {
 </div>
 
 <?php require_once('../layouts/footer_to_end.php'); ?>
-

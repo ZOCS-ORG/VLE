@@ -5,12 +5,12 @@
     include_once('../layouts/head_to_wrapper.php');
     include_once('../layouts/topbar.php');
 
-    $lecturer_id = $_GET['id'];
+    $user_id = $_GET['id'];
 
 ?>
         <hr/>        
         <?php 
-            $query = "SELECT * from teachers where id = '$lecturer_id' ";
+            $query = "SELECT * from users where id = '$user_id' ";
 
             $result = mysqli_query($db, $query) or die(mysqli_error($db));
             $count = 1;
@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div > <hr style="height:100%; width:1px; backgro~und-color:grey; "></div>
+                            <div > <hr style="height:100%; width:1px; background-color:grey; "></div>
                             
                             <div class="col-lg-5">
                                 <div class=" mb-4">
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="text-right text-white">
                                     <a href="update.php?id=<?php echo $row['id'] ?>" class="btn btn-info btn-sm">Edit</a>
-                                    <a href="../../../config/admin_server.php?id=<?php echo $lecturer_id;?>&delete_lecturer=true" class="btn btn-danger btn-sm">Delete</a>
+                                    <a href="../../../config/admin_server.php?id=<?php echo $user_id;?>&delete_lecturer=true" class="btn btn-danger btn-sm">Delete</a>
                                 </div>
                             </div>
 

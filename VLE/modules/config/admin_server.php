@@ -790,18 +790,17 @@ if (!empty($_POST['update_staff'])) {
     $email = $_POST['email'];
     $username = $_POST['username'];
     //$dob = $_POST['dob'];
-    $hiredate = $_POST['hiredate'];
     $address = $_POST['address'];
     $filetmp = $_FILES['file']['tmp_name'];
     if (isset($filetmp) && !empty($filetmp)) {
-        $dir = "../../../utils/images/school_manager/";
+        $dir = "../../../utils/images/users/";
         $img = $name . "_" . rand(100, 1000000) . ".jpg";
         // unlink($dir.$img.".jpg");
         move_uploaded_file($filetmp, $dir . $img);
     } else {
         $img = "";
     }
-    $sql = "UPDATE other_staff SET";
+    $sql = "UPDATE users SET";
     //Check to see that value is not empty so we don't replace already existing value with null😋..
     if (!empty($id)) {
         $sql .= " id = '$id',";
@@ -821,12 +820,6 @@ if (!empty($_POST['update_staff'])) {
     if (!empty($username)) {
         $sql .= " username = '$username',";
     }
-    if (!empty($dob)) {
-        $sql .= " dob = '$dob',";
-    }
-    if (!empty($hiredate)) {
-        $sql .= " hiredate = '$hiredate',";
-    }
     if (!empty($address)) {
         $sql .= " address = '$address',";
     }
@@ -837,19 +830,7 @@ if (!empty($_POST['update_staff'])) {
     $sql = substr($sql, 0, strlen($sql) - 1) . " WHERE `id` = '$id' ";
     $success = mysqli_query($db, $sql);
     // Update users table too
-    $userid = "man_" . $id;
-    $sql_user = "UPDATE users SET";
-    if (!empty($password)) {
-        $sql_user .= " password = '$password',";
-    }
-    if (!empty($name)) {
-        $sql_user .= " name = '$name',";
-    }
-    if (!empty($username)) {
-        $sql_user .= " username = '$username',";
-    }
-    $sql_user = substr($sql_user, 0, strlen($sql_user)) . "  user_role = 'other' WHERE `userid` = '$userid' ";
-    $success = mysqli_query($db, $sql_user) or die('Error: Could not Update data: ' . mysqli_error($db));
+
 
     header('Location: ../staff/view_staff.php?id=' . $id . "&updated=true");
 }
@@ -1058,9 +1039,11 @@ if (isset($_POST['submit_parent'])) {
     $fatherphone = $_POST['fatherphone'];
     $motherphone = $_POST['motherphone'];
     $address = $_POST['address'];
+
+    $user_id = $_SESSION['id'];
     $sql = "INSERT INTO
-            `parents`(`username`, `email`, `password`, `fathername`, `mothername`, `fatherphone`, `motherphone`, `address`) 
-            VALUES('$username','$email','$password','$fathername','$mothername','$fatherphone','$motherphone','$address')";
+            `parents`(`username`, `email`, `password`, `fathername`, `mothername`, `fatherphone`, `motherphone`, `address`, `created_by`) 
+            VALUES('$username','$email','$password','$fathername','$mothername','$fatherphone','$motherphone','$address', '$user_id')";
     $success = mysqli_query($db, $sql) or die('Could not enter data: ' . mysqli_error($db));
     $id = mysqli_insert_id($db);
     $userid = "pa_" . $id;
@@ -1069,7 +1052,7 @@ if (isset($_POST['submit_parent'])) {
     $success = mysqli_query($db, $sql_user) or die('Could not enter data: ' . mysqli_error($db));
     ;
     if ($success) {
-        header('Location: ../parents/view_parent.php?id=' . $id . "&created=true");
+        header('Location: ../parent/view_parent.php?id=' . $id . "&created=true");
     }
 }
 //Update Parent
@@ -1131,7 +1114,7 @@ if (!empty($_POST['update_parent'])) {
     $sql_user = substr($sql_user, 0, strlen($sql_user)) . " userid = '$userid', user_role = 'parent' WHERE `userid` = '$userid' ";
     $success = mysqli_query($db, $sql_user) or die('Error: Could not Update data: ' . mysqli_error($db));
 
-    header('Location: ../parents/view_parent.php?id=' . $id . "&" . $updated = true);
+    header('Location: ../parent/view_parent.php?id=' . $id . "&" . $updated = true);
 }
 // Delete Parent
 if (isset($_GET['id']) && isset($_GET['delete_parent'])) {
@@ -1146,7 +1129,7 @@ if (isset($_GET['id']) && isset($_GET['delete_parent'])) {
             die('Could not Delete data: ' . mysqli_error($db));
         }
         //unlink('../images/'.$id.'.jpg');  // @TODO: Figure out routing.. Check TD list
-        header("Location: ../functions/admin/parents/all_parents.php?deleted=true");
+        header("Location: ../functions/admin/parent/all_parents.php?deleted=true");
     }
 }
 
