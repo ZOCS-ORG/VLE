@@ -35,8 +35,8 @@ if ($login_code) {
           
 
             <div id="formContent">
-            <img src="vle-removebg-preview.png" height="150px" ></img>
-            <h3>Welcome to ZOCS E-Learning Platform </h3>
+                <img src="vle-removebg-preview.png" height="150px" ></img>
+                <h3>Welcome to ZOCS E-Learning Platform </h3>
                 <!-- Tabs Titles -->
                 <h2 class="active"> Log In </h2>
                 <div> <?php echo $login_message; ?> </div>
@@ -46,9 +46,10 @@ if ($login_code) {
                     <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
 
                     <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-
+                    
                     <input type="submit" class="fadeIn fourth" name="login_user" value="Log In">
                 </form>
+                <a href='../../../../index.php' class="btn btn-success"> Back</a>
               
                 <div id="formFooter">
                   <a class="underlineHover" href="#">Forgot Password?</a>

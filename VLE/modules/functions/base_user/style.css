@@ -24,6 +24,8 @@ html::before {
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
+  background-color: rgba(0, 0, 0, 2.5); /* Adjust the alpha value for desired opacity */
+  z-index: 1;
 }
 
 a {

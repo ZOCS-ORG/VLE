@@ -17,6 +17,9 @@
         </li>    
         <li class="nav-item">
           <a class="nav-link text-white" href="about_vle.php"> |  About VLE</a>
+        </li>   
+        <li class="nav-item">
+          <a class="nav-link text-white" href="http://moodle.test/login/index.php"> |  University Login</a>
         </li>    
         <li class="nav-item">
           <a class="nav-link text-white" href="downloads.php"> | Download Documents |</a>
