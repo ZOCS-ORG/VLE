@@ -61,7 +61,7 @@ include_once('../layouts/topbar.php');
                                 <td>Room No.:</td>
                                 <td class="text-right"><input id="room" type="text" name="room" placeholder="Room No."></td>
                             </tr> -->
-                            <tr>
+                            <!-- <tr>
                                 <td>Class Monitor:</td>
                                 <td class="text-right">
                                     <select name="monitor" id="student" class="select2" style="padding:4px; width:70%; border-radius:9px" >
@@ -73,7 +73,7 @@ include_once('../layouts/topbar.php');
                                         <?php   }     ?>
                                     </select>
                                 </td>
-                            </tr>
+                            </tr> -->
                             <!-- <tr>
                                 <td>Select Students:</td>
                                 <td class="text-right">
@@ -115,4 +115,4 @@ include_once('../layouts/topbar.php');
 <!-- End multi-select support  -->
 
 
-<?php require_once('layouts/footer_to_end.php'); ?>
+<?php //include_once('layouts/footer_to_end.php'); ?>

@@ -15,7 +15,7 @@
         $result = mysqli_query($db, $query) or die(mysqli_error($db));
         $count = 1;
         if (mysqli_num_rows($result) > 0){
-            $images_dir = "../../../utils/images/students/";
+            $images_dir = "../../../utils/images/users/";
                 
             while($row = mysqli_fetch_assoc($result)){ 
                 $picname = $row['img'];

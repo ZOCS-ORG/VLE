@@ -1039,9 +1039,11 @@ if (isset($_POST['submit_parent'])) {
     $fatherphone = $_POST['fatherphone'];
     $motherphone = $_POST['motherphone'];
     $address = $_POST['address'];
+
+    $user_id = $_SESSION['id'];
     $sql = "INSERT INTO
-            `parents`(`username`, `email`, `password`, `fathername`, `mothername`, `fatherphone`, `motherphone`, `address`) 
-            VALUES('$username','$email','$password','$fathername','$mothername','$fatherphone','$motherphone','$address')";
+            `parents`(`username`, `email`, `password`, `fathername`, `mothername`, `fatherphone`, `motherphone`, `address`, `created_by`) 
+            VALUES('$username','$email','$password','$fathername','$mothername','$fatherphone','$motherphone','$address', '$user_id')";
     $success = mysqli_query($db, $sql) or die('Could not enter data: ' . mysqli_error($db));
     $id = mysqli_insert_id($db);
     $userid = "pa_" . $id;

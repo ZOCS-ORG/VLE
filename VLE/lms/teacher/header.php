@@ -7,7 +7,7 @@
     require '../includes/connect.php';
 	  $t_username = $_SESSION['username'];
     $t_id = $_SESSION['id'];
-    $select_query= $db->query("SELECT * FROM teachers WHERE id='$t_id'");
+    $select_query= $db->query("SELECT * FROM users WHERE id='$t_id'");
     if($select_query->num_rows ==0){ header("location: ../../modules/functions/teacher/"); }
     while($row = $select_query->fetch_assoc()){
       $s_username = $row['username'];

@@ -24,13 +24,13 @@ include_once('../layouts/topbar.php');
                 <div class="card-body">
                     <div class="table-responsive">
                         <div class="text-right text-light">
-                            <a class="btn btn-sm btn-success" href="create_subject.php">Add Subject</a>
+                            <a class="btn btn-sm btn-success" href="create_subject.php">Asign Subject</a>
                         </div>
                         <br>
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="4">
                             <thead>
                                 <tr>
-                                    <th>Teacher</th>
+                                    <!-- <th>Teacher</th> -->
                                     <th>Subject</th>
                                     <th>Class</th>
                                     <th>Manage Results</th>

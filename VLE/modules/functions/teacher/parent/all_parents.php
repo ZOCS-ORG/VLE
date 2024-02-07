@@ -4,6 +4,7 @@ $add_side_bar = true;
 include_once('../layouts/head_to_wrapper.php');
 include_once('../layouts/topbar.php');
 
+$user_id = $_SESSION['id'];
 ?>
 
 <hr />
@@ -29,7 +30,7 @@ include_once('../layouts/topbar.php');
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT * FROM parents;";
+                            $sql = "SELECT * FROM parents WHERE created_by = '$user_id' ";
                             $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
                             while ($row = mysqli_fetch_array($res)) {
                             ?>

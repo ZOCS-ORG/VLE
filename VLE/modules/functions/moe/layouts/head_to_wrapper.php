@@ -3,6 +3,14 @@
   include('../../../utils/vars.php');
   require_once('../../../config/config.php');
 
+  ini_set('display_errors', 0);
+ini_set('log_errors', 0);
+ini_set('display_startup_errors', 0);
+// ini_set('error_reporting', E_ALL);  
+
+ini_set('display_errors', 0);
+
+
   $id = $_SESSION['id'];
   $username = $_SESSION['username'];
  // Authenticate!!!

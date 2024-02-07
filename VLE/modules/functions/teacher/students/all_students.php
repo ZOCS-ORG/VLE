@@ -6,6 +6,8 @@ include_once('../layouts/head_to_wrapper.php');
 
 include_once('../layouts/topbar.php');
 
+$user_id = $_SESSION['id'];
+
 ?>
 
 <hr />
@@ -31,10 +33,10 @@ include_once('../layouts/topbar.php');
 
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM students;";
+                    $sql = "SELECT * FROM students WHERE created_by = '$user_id'";
                     $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
                     $string = "";
-                    $images_dir = "../../../utils/images/students/";
+                    $images_dir = "../../../utils/images/users/";
 
                     while ($row = mysqli_fetch_array($res)) {
                         $picname = $row['img'];

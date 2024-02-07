@@ -19,13 +19,17 @@ $id = $_GET['id'];
 </style>
 
 <?php
-$query = "SELECT  t.name AS teacher, t.id AS teacher_id, s.name AS monitor, s.id AS monitor_id FROM classes c
-                INNER JOIN teachers t ON t.id = c.teacher_id
-                INNER JOIN students s ON s.id = c.monitor_id
-                where c.id = '$id' ";
+$query = "SELECT  t.name AS teacher, t.id AS teacher_id, c.name, c.id
+                , s.name AS monitor, s.id AS monitor_id
+                FROM classes c
+                INNER JOIN users t ON t.id = c.teacher_id
+                LEFT JOIN students s ON s.id = c.monitor_id
+                where c.id = '$id'";
 
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 $count = 1;
+
+
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
 ?>
