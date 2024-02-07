@@ -32,17 +32,11 @@ if ($login_code) {
     <body>
         <!-- partial:index.partial.html -->
         <div class="wrapper fadeInDown">
-            <img src="vle-removebg-preview.png" height="150px" ></img>
-            <h3>Welcome to ZOCS E-Learning Platform </h3>
-
-
-            <?php 
-           
-            
-            ?>
+          
 
             <div id="formContent">
-   
+            <img src="vle-removebg-preview.png" height="150px" ></img>
+            <h3>Welcome to ZOCS E-Learning Platform </h3>
                 <!-- Tabs Titles -->
                 <h2 class="active"> Log In </h2>
                 <div> <?php echo $login_message; ?> </div>

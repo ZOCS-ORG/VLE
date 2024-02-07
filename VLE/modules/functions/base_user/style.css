@@ -3,11 +3,23 @@
 /* BASIC */
 
 html {
-    background-image: url("zambia_open_community_schools_cover.jpg");
-     background-repeat: no-repeat;
-            /* background-size: 400px 600px; */
-            background-size: cover;
+  position: relative; /* Required for positioning the overlay */
+  background-image: url("zambia_open_community_schools_cover.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+html::before {
+    content: ""; /* Required for the pseudo-element to appear */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the alpha value for desired opacity */
+    z-index: 1; /* Ensure the overlay is above the background image */
+}
+
 
 body {
   font-family: "Poppins", sans-serif;
