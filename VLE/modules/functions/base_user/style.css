@@ -10,22 +10,20 @@ html {
 }
 
 html::before {
-    content: ""; /* Required for the pseudo-element to appear */
-    position: absolute;
+    content: ""; 
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Adjust the alpha value for desired opacity */
-    z-index: 1; /* Ensure the overlay is above the background image */
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: -3; 
 }
 
 
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 2.5); /* Adjust the alpha value for desired opacity */
-  z-index: 1;
 }
 
 a {
