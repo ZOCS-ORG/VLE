@@ -18,7 +18,7 @@ while($row1 = $sub_query1->fetch_assoc()){
       <div class="">
 
         <div class="col s12 m6 offset-m3">
-            <div class="card-panel blue">
+            <div class="card-panel green ">
               <span class="white-text"><?php echo $subJ; ?> Notofications</span>
               <span class="right"> <a class="waves-effect waves-light btn-small btn" href="my_notifications.php?subject_id=<?php echo $subject_id; ?>">View My Notifications<i class="material-icons right">add</i></a>
             </div>
@@ -52,7 +52,7 @@ while($row1 = $sub_query1->fetch_assoc()){
                     <td><?php echo $title ?></td>
                     <td><?php echo $notice ?></td>
                     <td><?php echo $date ?></td>
-                    <td><a class="btn blue waves-effect waves-light" 
+                    <td><a class="btn green waves-effect waves-light" 
                       href="view_notices.php?notice_id=<?php echo $notice_id; ?>">
                       View<i class="material-icons right">send</i></a>
                     </td>

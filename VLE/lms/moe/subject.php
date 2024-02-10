@@ -36,7 +36,7 @@
       <br> </br>
       <div id="ass" class="col s12 m8" >
 
-        <div class="card-panel blue">
+        <div class="card-panel green ">
           <span class="white-text">All My Assignments for <?php echo $class_name." ".$sub_name ?> </span>
         </div>
         <br>
@@ -73,7 +73,7 @@
                       <td> <?php echo $date_created ?> </td>
                       <td> <?php echo $date_due ?> </td>
 
-                      <td><a class="btn blue waves-effect waves-light" 
+                      <td><a class="btn green waves-effect waves-light" 
                           href="view_ass_notice.php?ass_id=<?php echo $ass_id."&class_id=".$class_id."&sub_id=".$subject_id; ?>">
                           View<i class="material-icons right">send</i></a>
                       </td>

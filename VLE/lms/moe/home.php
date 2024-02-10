@@ -31,7 +31,7 @@ require_once('header.php');
         </div>
 
         <div id="assignments" class="col s12 m8">
-            <div class="card-panel blue">
+            <div class="card-panel green ">
                 <span class="white-text">E-Documents</span>
                 <span class="right"> <a class="waves-effect waves-light btn-small btn" href="notice_ass.php">Add Document<i class="material-icons right">add</i></a>
                 </span>

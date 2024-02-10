@@ -52,7 +52,7 @@
 
       
       <div id="assignments" class="col s12 m8" >
-        <div class="card-panel blue">
+        <div class="card-panel green ">
           <span class="white-text">Assignments here</span>
         </div>
           <br>
@@ -107,7 +107,7 @@
                         
                         <td><?php echo $dueDate ?></td>
                         <td><?php echo $assDate ?></td>
-                        <td><a class="btn blue waves-effect waves-light" 
+                        <td><a class="btn green waves-effect waves-light" 
                           href="view_assignment.php?ass_id=<?php echo $ass_id; ?>">
                           View<i class="material-icons right">send</i></a>
                         </td>
@@ -121,7 +121,7 @@
       </div>
 
       <div id="summited" class="col s12 m8" >
-        <div class="card-panel blue">
+        <div class="card-panel green ">
           <span class="white-text"> Submitted Assignments </span>
         </div><br>
         <div class="row">

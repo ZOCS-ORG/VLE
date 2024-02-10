@@ -22,18 +22,18 @@
           <div class="row">
 
             <div class="col-xl-4 col-md-4 mb-3">
-              <div class="card border-left-info shadow py-2">
+              <div class="card border-left-success shadow py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-sm font-weight-bold text-dark text-uppercase mb-1"> My Class </div>
-                      <div class="text-right h5 mb-0 font-weight-bold text-gray-800"> </div>
+                      <div class="text-right h5 mb-0 font-weight-bold text-white">.</div>
                     </div>
                   </div>
                 </div>
                 <hr>
                 <div class="text-right col-auto">
-                    <a class="btn-block btn btn-sm btn-info" href="../classes/index.php">View</a>
+                    <a class="btn-block btn btn-sm btn-success" href="../classes/index.php">View</a>
                 </div>
               </div>
             </div>
@@ -62,44 +62,29 @@
 
 
             <div class="col-xl-4 col-md-6 mb-3">
-              <div class="card border-left-info  bg-dark shadow py-2">
+              <div class="card border-left-success shadow py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-sm font-weight-bold text-info text-uppercase mb-1">My Subjects</div>
-                      <div class="text-right h5 mb-0 font-weight-bold text-info"><?php echo $total; } ?></div>
+                      <div class="text-sm font-weight-bold text- text-uppercase mb-1">My Subjects</div>
+                      <div class="text-right h5 mb-0 font-weight-bold text-dark"><?php echo $total; } ?></div>
                     </div>
                   </div>
                 </div>
                 <hr>
                 <div class="text-right col-auto">
-                    <a class="btn-block btn btn-sm btn-info" href="../subjects/index.php">View</a>
+                    <a class="btn-block btn btn-sm btn-success" href="../subjects/index.php">View</a>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl-4 col-md-6 mb-3">
-              <div class="card border-left-info shadow py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-sm font-weight-bold text-dark text-uppercase mb-1">Fees</div>
-                      <div class="text-right h5 mb-0 font-weight-bold text-gray-800"> </div>
-                    </div>
-                  </div>
-                </div>
-                <hr>
-                <div class="text-right col-auto">
-                    <a class="btn-block btn btn-sm btn-info" href="../fees/index.php">View</a>
-                </div>
-              </div>
-            </div>
+            
           </div>
 
           <hr>
 
           <!-- Feeds Heading -->
-          <div class="card d-sm-flex align-items-center justify-content-between mb-4 py-2 h5 bg-dark">
+          <div class="card d-sm-flex align-items-center justify-content-between mb-4 py-2 h5 border-success">
             <h5 class="h5 mb-0 text-info ">Notice Board </h5>
           </div>
 
@@ -119,7 +104,7 @@
                               echo "";
                           }else{
 
-                              echo "Error: " . $query . "<br>" . mysqli_error($db);
+                              echo "Error: " . mysqli_error($db);
 
                           }
 

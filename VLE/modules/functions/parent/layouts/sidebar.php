@@ -72,27 +72,8 @@
     <li class="nav-item text-color-dark">
       <a class="nav-link" href="../chat">
         <i class="fa fas fa-fw fa-comments"></i>
-        <span>Chat </span></a>
+        <span>Message Teacher </span></a>
     </li>
-
-    <!-- 
-          <li class="nav-item text-color-dark">
-            <a class="nav-link" href="../fees/index.php">
-              <i class="fas fa-fw fa fa-wallet"></i>
-              <span>My Fees</span></a>
-          </li> 
-      
-          <li class="nav-item text-color-dark">
-            <a class="nav-link" href="../events/index.php">
-              <i class="fas fa-fw fa fa-book-reader"></i>
-              <span>My Events</span></a>
-          </li>
-        -->
-
-    <!-- <li class="nav-item text-color-dark">
-      <a class="nav-link" href="../calendar/index.php">
-        <span>My Calendar </span></a>
-    </li> -->
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

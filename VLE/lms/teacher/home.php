@@ -43,7 +43,7 @@ require_once('header.php');
 
     <div id="subjects" class="col s12 m8">
 
-      <div class="card-panel blue">
+      <div class="card-panel green ">
 
         <span class="white-text">My Subjects</span>
 
@@ -101,7 +101,7 @@ require_once('header.php');
                 }
                 ?>
 
-                <td><a class="btn blue waves-effect waves-light" href="subject.php?class_id=<?php echo $class_id . "&sub_id=" . $subject_id ?>">View<i class="material-icons right">send</i></a>
+                <td><a class="btn green waves-effect waves-light" href="subject.php?class_id=<?php echo $class_id . "&sub_id=" . $subject_id ?>">View<i class="material-icons right">send</i></a>
                 </td>
 
               </tr>
@@ -118,7 +118,7 @@ require_once('header.php');
 
 
     <div id="assignments" class="col s12 m8">
-      <div class="card-panel blue">
+      <div class="card-panel green ">
         <span class="white-text">My Assignments.</span>
         <span class="right"> <a class="waves-effect waves-light btn-small btn" href="notice_ass.php">Create<i class="material-icons right">add</i></a>
         </span>
@@ -172,7 +172,7 @@ require_once('header.php');
                 <td> <a href="<?php echo $file_path ?>"> File </a> </td>
                 <td><?php echo $dueDate ?></td>
                 <td><?php echo $assDate ?></td>
-                <td><a class="btn blue waves-effect waves-light" href="view_ass_notice.php?ass_id=<?php echo $ass_id . "&class_id=" . $class_id . "&sub_id=" . $subject_id; ?>">
+                <td><a class="btn green waves-effect waves-light" href="view_ass_notice.php?ass_id=<?php echo $ass_id . "&class_id=" . $class_id . "&sub_id=" . $subject_id; ?>">
                     View<i class="material-icons right">send</i></a>
                 </td>
               </tr>
@@ -185,7 +185,7 @@ require_once('header.php');
     </div>
 
     <div id="recieved" class="col s12 m8">
-      <div class="card-panel blue">
+      <div class="card-panel green ">
         <span class="white-text"> Recently Recieved Assignments </span>
       </div><br>
       <div class="row">

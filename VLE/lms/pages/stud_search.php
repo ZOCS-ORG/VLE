@@ -61,7 +61,7 @@
                   
                 </div>
                 <div class="card-action">
-                  <button class="btn blue waves-effect waves-light" type="submit" name="show">Show
+                  <button class="btn green waves-effect waves-light" type="submit" name="show">Show
                     <i class="material-icons right">send</i>
                   </button>
                 </div>
@@ -91,7 +91,7 @@
               }
           ?>
 
-          <div class="card-panel blue">
+          <div class="card-panel green ">
             <span class="white-text">Showing results for practicals of<br>          
             Subject= <?php echo $subName ?><br>
             </span>
@@ -135,7 +135,7 @@
             </tr>
 
             <?php } } else { ?>
-              <div class="card-panel blue">
+              <div class="card-panel green ">
                 <span class="white-text">
                 No results found..!!
                 </span>
@@ -144,7 +144,7 @@
           </tbody>
         </table>
          <?php //} } else{ ?>
-            <!-- <div class="card-panel blue">
+            <!-- <div class="card-panel green ">
                 <span class="white-text">
                 No results found..!!
                 </span>
@@ -152,7 +152,7 @@
          <?php //} ?>
       
         <?php } else{ ?>
-        <div class="card-panel blue">
+        <div class="card-panel green ">
           <span class="white-text">You need to select a subject.     
           </span>
         </div>
@@ -171,7 +171,7 @@
               }
           ?>
 
-          <div class="card-panel blue">
+          <div class="card-panel green ">
             <span class="white-text">Showing results for assignments of<br>          
             Subject= <?php echo $subName ?><br>
             </span>
@@ -210,7 +210,7 @@
           
 
             <?php  } } else { ?>
-              <div class="card-panel blue">
+              <div class="card-panel green ">
                 <span class="white-text">
                 No results found..!!
                 </span>
@@ -219,7 +219,7 @@
           </tbody>
         </table>
          <?php //} } else{ ?>
-            <!-- <div class="card-panel blue">
+            <!-- <div class="card-panel green ">
                 <span class="white-text">
                 No results found..!!
                 </span>
@@ -227,7 +227,7 @@
          <?php //} ?>
       
       <?php } else{ ?>
-        <div class="card-panel blue">
+        <div class="card-panel green ">
           <span class="white-text">You need to select a subject.     
           </span>
         </div>

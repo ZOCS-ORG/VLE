@@ -102,7 +102,7 @@
 							</div>
 
 							<div class="card-action">
-								<button class="btn blue waves-effect waves-light" type="submit" name="submit_ass_q">Send
+								<button class="btn green waves-effect waves-light" type="submit" name="submit_ass_q">Send
 									<i class="material-icons right">send</i>
 								</button>
 							</div>
@@ -167,7 +167,7 @@
 					            <td><?php echo $dueDate ?></td>
 					            <td><?php echo $assDate ?></td>
 								<td> 
-									<a class="btn btn-sm blue waves-effect waves-light" href="edit_ass.php?ass_id=<?php echo $ass_id ?>"> Edit </a>
+									<a class="btn btn-sm green waves-effect waves-light" href="edit_ass.php?ass_id=<?php echo $ass_id ?>"> Edit </a>
 									<a class="btn small red waves-effect waves-light" href="notice_ass.php?delete_ass=true&ass_id=<?php echo $ass_id ?>"> Delete </a>
 								</td>
 				          	</tr>

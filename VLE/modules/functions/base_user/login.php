@@ -47,7 +47,7 @@ if ($login_code) {
 
                     <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
                     
-                    <input type="submit" class="fadeIn fourth" name="login_user" value="Log In">
+                    <input type="submit" class="btn btn-success" name="login_user" value="Log In">
                 </form>
                 <a href='../../../../index.php' class="btn btn-success"> Back</a>
               

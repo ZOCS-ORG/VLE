@@ -47,7 +47,7 @@ require_once('header.php');
                         </div>
 
                         <div class="card-action">
-                            <button class="btn blue waves-effect waves-light" type="submit" name="upload_doc">Upload
+                            <button class="btn green waves-effect waves-light" type="submit" name="upload_doc">Upload
                                 <i class="material-icons right">send</i>
                             </button>
                         </div>

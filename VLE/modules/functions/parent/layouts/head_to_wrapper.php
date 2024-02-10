@@ -1,22 +1,25 @@
 <?php
+error_reporting(0);
+
   session_start();
   include('../../../utils/vars.php');
   require_once('../../../config/config.php');
 
   $id = $_SESSION['id'];
   $username = $_SESSION['username'];
- // Authenticate!!!
- $query =  "SELECT * FROM parents WHERE username='$username' ";
- $results=mysqli_query($db,$query);
- $row=mysqli_fetch_array($results);
- $login_session = $row['username'];
- $name = $_SESSION['name'] = $row['username'];
- $id = $_SESSION['id'] = $row['id'];
- $role = $_SESSION['role'] = "parent";
-
- if(empty($login_session)){
-   header("Location: ../../../../");
- }
+  // TODO Authenticate!!!
+  //  $query =  "SELECT * FROM teachers WHERE username='$username' ";
+  //  $results=mysqli_query($db,$query);
+  //  $row=mysqli_fetch_array($results);
+  //  $login_session = $row['name'];
+  
+  $name = $_SESSION['name'];
+  $id = $_SESSION['id'];
+  $role = $_SESSION['role'];
+  
+  if (empty($username)) {
+         header("Location: ../../../../");
+  }
   
 ?>
 

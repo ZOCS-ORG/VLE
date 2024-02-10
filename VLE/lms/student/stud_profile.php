@@ -25,14 +25,14 @@
         <div class=""> -->
 
             <div class="col s12 ">
-              <ul class="tabs blue-text">
+              <ul class="tabs green -text">
                 <li class="tab col s6"><a href="#pracs" class="active">Assignments</a></li>
                 <li class="tab col s6"><a href="#assgs">Announcements</a></li>
               </ul>
             </div>
             <div id="pracs" class="col s12">
               <div class="col s12">
-                <div class="card-panel blue">
+                <div class="card-panel green ">
                   <span class="white-text">
                       Assignments
                   </span>
@@ -68,7 +68,7 @@
                                 <td><?php echo $name ?></td>
                                 <td><?php echo $sub_name ?></td>
                                 <td><?php echo $dueDate ?></td>
-                                <td><a class="btn blue waves-effect waves-light" 
+                                <td><a class="btn green waves-effect waves-light" 
                                   href="view_assignment.php?ass_id=<?php echo $ass_id; ?>">
                                   View<i class="material-icons right">send</i></a>
                                 </td>
@@ -81,7 +81,7 @@
             </div>
             <div id="assgs" class="col s12">
               <div class="col s12 ">
-                <div class="card-panel blue">
+                <div class="card-panel green ">
                   <span class="white-text">
                     Announcements
                   </span>
@@ -111,7 +111,7 @@
                         <td><?php echo $title ?></td>
                         <td><?php echo $name ?></td>
                         <td><?php echo $date ?></td>
-                        <td><a class="btn blue waves-effect waves-light" 
+                        <td><a class="btn green waves-effect waves-light" 
                           href="view_notices.php?notice_id=<?php echo $notice_id; ?>">
                           View<i class="material-icons right">send</i></a>
                         </td>
@@ -143,12 +143,12 @@
                     $subject_name = $row_sub['name'];
           ?>
             <div class="col s6 m3">
-              <div class="card  blue">
+              <div class="card  green ">
                 <div class="card-content white-text">
                   <span class="card-title bold"><?php echo $subject_name; ?> </span>
                   <!-- <p>Subject description and some notes</p> -->
                 </div>
-                <div class="card-action blue-text">
+                <div class="card-action green -text">
                   <a href="assignments.php?subject_id=<?php echo $row_sub['id']; ?>">Assignment</a>
                   <a href="notifications.php?subject_id=<?php echo $row_sub['id']; ?>">Notification</a>
                 </div>

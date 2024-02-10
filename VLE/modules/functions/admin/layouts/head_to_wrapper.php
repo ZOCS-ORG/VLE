@@ -1,24 +1,26 @@
 <?php
-  session_start();
-  include('../../../utils/vars.php');
-  require_once('../../../config/config.php');
+error_reporting(0);
 
- 
-  $username = $_SESSION['username'];
- // Authenticate!!!
- $query =  "SELECT * FROM admin WHERE username='$username' ";
- $results=mysqli_query($db,$query);
- $row=mysqli_fetch_array($results);
- $login_session = $row['name'];
- $_SESSION['img'] = $row['img'];
- $name = $_SESSION['name'] = $row['name'];
- $id = $_SESSION['id'] = $row['id'];
- $role = $_SESSION['role'] = "admin";
+session_start();
+include('../../../utils/vars.php');
+require_once('../../../config/config.php');
 
- if(empty($login_session)){
-   header("Location: ../../../../");
- }
-  
+$id = $_SESSION['id'];
+$username = $_SESSION['username'];
+// TODO Authenticate!!!
+//  $query =  "SELECT * FROM teachers WHERE username='$username' ";
+//  $results=mysqli_query($db,$query);
+//  $row=mysqli_fetch_array($results);
+//  $login_session = $row['name'];
+
+$name = $_SESSION['name'];
+$id = $_SESSION['id'];
+$role = $_SESSION['role'];
+
+if (empty($username)) {
+       header("Location: ../../../../");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -53,76 +55,76 @@
     <script type="text/javascript" src="http://services.iperfect.net/js/IP_generalLib.js"></script>
     <!-- J-Query -->
     <link href="jquery-ui.css" rel="stylesheet">
-    
+
     <!-- Multislect plugin -->
-	<link href="styles/multiselect.css" rel="stylesheet"/>
-	<script src="multiselect.min.js"></script>
+    <link href="styles/multiselect.css" rel="stylesheet" />
+    <script src="multiselect.min.js"></script>
 
 
-   
+
 </head>
 
 <body id="page-top">
 
-  <div id="wrapper">
+    <div id="wrapper">
 
-    <!-- Sidebar Check if page wants to dispaly side bar -->
-    <?php
+        <!-- Sidebar Check if page wants to dispaly side bar -->
+        <?php
         if (isset($add_side_bar) && $add_side_bar == false) {
             # do nothing...
-        }else {
+        } else {
             include('sidebar.php');
         }
-    ?>
+        ?>
 
 
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-    <!-- 
+            <!-- 
         Main page - content starts from here...
         <div id="content">
     -->
 
-    <?php
-    /**
-     * @TODO: 
-     *  Make these alerts more dynamic.
-     */
-    ?>
-    <center>
-    <?php if(isset($_GET['created']) && isset($_GET['created']) == true){ ?>
-        <div class="alert alert-success col-lg-6 col-md-6">
-                <p><?php echo "Created Successfuly!" ?> </p> 
-        </div>
-        <script type="text/javascript">
-            setTimeout(function() {
-            $('.alert').alert('close');
-            }, 4800);
-        </script>
-    <?php } ?>
-    </center>
-    <center>
-    <?php if(isset($_GET['updated']) && isset($_GET['updated']) == true){ ?>
-        <div class="alert alert-success col-lg-6 col-md-6">
-                <p><?php echo "Updated Successfuly!" ?> </p> 
-        </div>
-        <script type="text/javascript">
-            setTimeout(function() {
-            $('.alert').alert('close');
-            }, 4800);
-        </script>
-    <?php } ?>
-    </center>
-    <center>
-    <?php if(isset($_GET['deleted']) && isset($_GET['deleted']) == true){ ?>
-        <div class="alert alert-danger col-lg-6 col-md-6">
-                <p><?php echo "Deleted Successfully!" ?> </p> 
-        </div>
-        <script type="text/javascript">
-            setTimeout(function() {
-            $('.alert').alert('close');
-            }, 4800);
-        </script>
-    <?php } ?>
-    </center>
+            <?php
+            /**
+             * @TODO: 
+             *  Make these alerts more dynamic.
+             */
+            ?>
+            <center>
+                <?php if (isset($_GET['created']) && isset($_GET['created']) == true) { ?>
+                    <div class="alert alert-success col-lg-6 col-md-6">
+                        <p><?php echo "Created Successfuly!" ?> </p>
+                    </div>
+                    <script type="text/javascript">
+                        setTimeout(function() {
+                            $('.alert').alert('close');
+                        }, 4800);
+                    </script>
+                <?php } ?>
+            </center>
+            <center>
+                <?php if (isset($_GET['updated']) && isset($_GET['updated']) == true) { ?>
+                    <div class="alert alert-success col-lg-6 col-md-6">
+                        <p><?php echo "Updated Successfuly!" ?> </p>
+                    </div>
+                    <script type="text/javascript">
+                        setTimeout(function() {
+                            $('.alert').alert('close');
+                        }, 4800);
+                    </script>
+                <?php } ?>
+            </center>
+            <center>
+                <?php if (isset($_GET['deleted']) && isset($_GET['deleted']) == true) { ?>
+                    <div class="alert alert-danger col-lg-6 col-md-6">
+                        <p><?php echo "Deleted Successfully!" ?> </p>
+                    </div>
+                    <script type="text/javascript">
+                        setTimeout(function() {
+                            $('.alert').alert('close');
+                        }, 4800);
+                    </script>
+                <?php } ?>
+            </center>

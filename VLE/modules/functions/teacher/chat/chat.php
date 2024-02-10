@@ -4,7 +4,7 @@ include_once "php/config.php";
 if (!isset($_SESSION['id'])) {
   // header("location: login.php");
 }
-$username = $_SESSION['username'];
+$id = $_SESSION['id'];
 ?>
 <?php include_once "header.php"; ?>
 
@@ -23,7 +23,7 @@ require_once('../layouts/head_to_wrapper.php');
 
   <?php
   $user_id = mysqli_real_escape_string($db, $_GET['user_id']);
-  $sql = mysqli_query($db, "SELECT * FROM users WHERE username = '$user_id' ");
+  $sql = mysqli_query($db, "SELECT * FROM users WHERE id = '$user_id' ");
   if (mysqli_num_rows($sql) > 0) {
     $row = mysqli_fetch_assoc($sql);
   } else {
@@ -37,7 +37,7 @@ require_once('../layouts/head_to_wrapper.php');
       <h5 class=" ">
         <!--  -->
         <div class="details">
-          <span>Messeging <strong class="b"><?php echo " " . $row['username'] ?></strong></span>
+          <span>Messeging <strong class="b"><?php echo " " . $row['name'] ?></strong></span>
         </div>
       </h5>
     </div>
@@ -55,7 +55,7 @@ require_once('../layouts/head_to_wrapper.php');
             <header>
               <?php
               $user_id = mysqli_real_escape_string($db, $_GET['user_id']);
-              $sql = mysqli_query($db, "SELECT * FROM users WHERE username = '$user_id' ");
+              $sql = mysqli_query($db, "SELECT * FROM users WHERE id = '$user_id' ");
               if (mysqli_num_rows($sql) > 0) {
                 $row = mysqli_fetch_assoc($sql);
               } else {

@@ -98,7 +98,7 @@ require_once('header.php');
 							</div>
 
 							<div class="card-action">
-								<input class="btn blue waves-effect waves-light" type="submit" value="Go!" name="submit_notice">
+								<input class="btn green waves-effect waves-light" type="submit" value="Go!" name="submit_notice">
 							</div>
 						</form>
 
@@ -138,7 +138,7 @@ require_once('header.php');
 								<div>
 
 									<?php if (!empty($video)) { ?>
-										<a class="btn blue waves-effect waves-light" href="../files/noticefiles/<?php echo $file ?>">`<?php echo substr($file, +4); ?> <i class="medium material-icons">file_download</i></a>
+										<a class="btn green waves-effect waves-light" href="../files/noticefiles/<?php echo $file ?>">`<?php echo substr($file, +4); ?> <i class="medium material-icons">file_download</i></a>
 
 									<?php } else {
 										echo "<div style='color:red;'>Document not found</div>";

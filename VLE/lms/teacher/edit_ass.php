@@ -132,7 +132,7 @@ require_once('header.php');
 							</div>
 
 							<div class="card-action">
-								<button class="btn blue waves-effect waves-light" type="submit" name="update_ass_q">Update
+								<button class="btn green waves-effect waves-light" type="submit" name="update_ass_q">Update
 									<i class="material-icons right">send</i>
 								</button>
 							</div>
@@ -200,7 +200,7 @@ require_once('header.php');
 							<td><?php echo $dueDate ?></td>
 							<td><?php echo $assDate ?></td>
 							<td>
-								<a class="btn btn-sm blue waves-effect waves-light" href="edit_ass.php?ass_id=<?php echo $ass_id ?>"> Edit </a>
+								<a class="btn btn-sm green waves-effect waves-light" href="edit_ass.php?ass_id=<?php echo $ass_id ?>"> Edit </a>
 								<a class="btn small red waves-effect waves-light" href="delete_ass.php?ass_id=<?php echo $ass_id ?>"> Delete </a>
 							</td>
 						</tr>

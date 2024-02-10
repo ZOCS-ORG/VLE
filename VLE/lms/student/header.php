@@ -13,7 +13,7 @@
       $id=$_SESSION['id'];
     }
     
-    $select_query= $db->query("SELECT * FROM students WHERE id='$id'");
+    $select_query= $db->query("SELECT * FROM users WHERE id='$id'");
     if($select_query->num_rows ==0){ header("location: ../../modules/functions/student/"); }
     while($row = $select_query->fetch_assoc()){
       $s_username = $row['username'];

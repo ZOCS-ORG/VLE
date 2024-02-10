@@ -57,7 +57,7 @@
 
               if($insert){ ?>
 
-              <div class="card-panel blue">
+              <div class="card-panel green ">
 
                 <span class="white-text"><?php echo "Thank you for getting in touch! This means a lot to us." ?>
 
@@ -69,7 +69,7 @@
 
             else{ ?>
 
-              <div class="card-panel blue">
+              <div class="card-panel green ">
 
                 <span class="black-text"><?php echo " Some error occured please try again"; ?>
 
@@ -79,7 +79,7 @@
 
             <?php }
             } else {?>
-              <div class="card-panel blue">
+              <div class="card-panel green ">
 
                 <span class="black-text"><?php echo $error; ?>
 
@@ -127,7 +127,7 @@
 
             </div>
 
-            <button class="btn blue waves-effect waves-light" type="submit" name="fsubmit">Submit
+            <button class="btn green waves-effect waves-light" type="submit" name="fsubmit">Submit
 
               <i class="material-icons right">send</i>
 

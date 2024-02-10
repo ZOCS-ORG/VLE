@@ -142,7 +142,7 @@ if(isset($_POST['ass_submit_direct'])){
 				</span>
 			</div>
 		<?php } else{ ?>
-			<div class="card-panel blue">
+			<div class="card-panel green ">
 				<span class="white-text"><?php echo $error=$error." Can't submit your assignment contact admin" ?>
 				</span>
 			</div>

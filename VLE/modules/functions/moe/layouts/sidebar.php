@@ -55,29 +55,7 @@
             <i class="fa fas fa-fw fa-tachometer"></i>
               <span>Dashboard</span></a>
           </li>
-          
-          <!-- 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#students"
-                    aria-expanded="true" aria-controls="students">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Students </span>
-                </a>
-                <div id="students" class="collapse" aria-labelledby="students" data-parent="#accordionSidebar">
-                    <div class="bg-dark py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="classes/index.php.php">Add student</a>
-                        <a class="collapse-item" href="students/all_students.php">View all students</a>
-                      </div>
-                </div>
-            </li>
-          -->
-      
-                
-      <li class="nav-item text-color-dark">
-        <a class="nav-link" href="../complaints/index.php">
-        <i class="fa fas fa-fw fa-frown-o"></i>
-          <span>Complaints </span></a>
-      </li>
+         
 
           <li class="nav-item text-color-dark">
             <a class="nav-link" href="../../../../lms/moe"> 

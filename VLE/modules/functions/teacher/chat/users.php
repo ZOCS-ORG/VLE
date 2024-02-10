@@ -4,7 +4,7 @@ include_once "php/config.php";
 if (!isset($_SESSION['id'])) {
   // header("location: login.php");
 }
-$username = $_SESSION['username'];
+$id = $_SESSION['id'];
  
  include_once "header.php"; 
 
@@ -15,7 +15,7 @@ $username = $_SESSION['username'];
 //set to false if you don't want the sidebar to show
 $add_side_bar = true;
 require_once('../layouts/head_to_wrapper.php');
-// return var_dump($username);
+// return var_dump($id);
 ?>
 <!-- Main Content -->
 <div id="content">
@@ -47,7 +47,7 @@ require_once('../layouts/head_to_wrapper.php');
               <header>
                 <div class="content">
                   <?php
-                  $sql = mysqli_query($db, "SELECT * FROM users WHERE username = '$username' ");
+                  $sql = mysqli_query($db, "SELECT * FROM users WHERE id = '$id' ");
                   if (mysqli_num_rows($sql) > 0) {
                     $row = mysqli_fetch_assoc($sql);
                   }
