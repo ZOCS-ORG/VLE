@@ -11,6 +11,49 @@ $complaint_id = $_GET['id'];
 
 <hr />
 <style>
+
+
+.chat-container {
+        max-width: 400px;
+        margin: 20px auto;
+    }
+
+    .chat-bubble {
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+        clear: both;
+    }
+
+    .chat-bubble.sent {
+        float: right;
+        background-color: #dcf8c6;
+    }
+
+    .chat-bubble.received {
+        float: left;
+    }
+
+    .chat-bubble p {
+        margin: 0;
+    }
+
+    .chat-bubble p span {
+        font-size: 12px;
+        color: #777;
+    }
+
+    .chat-bubble blockquote {
+        margin: 5px 0;
+    }
+
+    .chat-bubble a {
+        color: blue;
+    }
+
+
+
     table {
         width: 500px;
         margin-left: auto;
@@ -49,6 +92,32 @@ if (mysqli_num_rows($result) > 0) {
                 <div class="card-body">
 
                     <table>
+                        
+                    <div class="chat-container">
+    <?php                                    
+    $query = "SELECT u.name, response, c.date, c.file
+                FROM complaint_responses c
+                INNER JOIN users u ON c.user_id = u.id 
+                -- INNER JOIN complaints ON complaints.created_by = c.user_id
+                WHERE complaint_id = '$complaint_id' ";
+    $resultss = mysqli_query($db, $query) or die('Error getting students: ' . mysqli_error($db));
+    while ($res_ = mysqli_fetch_array($resultss)) {
+        echo '<div class="chat-bubble received">';
+        echo "<p>" . $res_['name'] . " <span>- " . date_format(date_create($res_['date']), "d M, Y H:i:s") . "</span></p>";
+        echo "<blockquote><q>" . $res_['response'] . "</q></blockquote>";
+        if (isset($res_['file']) && strlen($res_['file']) > 3) {
+            if (file_exists($dir . $res_['file'])) {
+                echo '<a href="' . $dir . $res_["file"] . '" target="_blank">Attachment</a>';
+            } else {
+                // Handle non-existing file case
+            }
+        } else {
+            // Handle empty file case
+        }
+        echo '</div>';
+    } ?>
+</div>
+<br>
                         <tbody>
                             <tr>
                                 <td>Description</td>
@@ -81,18 +150,18 @@ if (mysqli_num_rows($result) > 0) {
                                 <td colspan="2" style="text-align: center; font-weight:bold; font-size:130%; text-decoration: underline; padding-bottom: 20px">Responses</td>
                             </tr>
 
-                            <tr>
+                            <!-- <tr>
                                 <td colspan="2">
-                                    <?php
-                                    //?? use students' class 
-                                    $query = "SELECT u.name, response, date, file
+                                    <?php                                    
+                                    $query = "SELECT u.name, response, c.date, c.file
                                                 FROM complaint_responses c
                                                 INNER JOIN users u ON c.user_id = u.id 
+                                                -- INNER JOIN complaints ON complaints.created_by = c.user_id
                                                 WHERE complaint_id = '$complaint_id' ";
                                     $resultss = mysqli_query($db, $query) or die('Error getting students: ' . mysqli_error($db));
                                     while ($res_ = mysqli_fetch_array($resultss)) {
                                         echo " <hr>  ";
-                                        echo "<p>" . $res_['name'] . " <span> - " . date_format(date_create($res_['date']), "d M, Y H:i:s") . " </span></p>  <blockquote> <q>" . $res_['response'] . " </q> </blockquote>";
+                                        echo "<p style='border:2px solid black' >" . $res_['name'] . " <span> - " . date_format(date_create($res_['date']), "d M, Y H:i:s") . " </span></p>  <blockquote> <q>" . $res_['response'] . " </q> </blockquote>";
                                         if (isset($res_['file']) && strlen($res_['file']) > 3) {
                                             if (file_exists($dir . $res_['file'])) {
                                                 echo '<a href="' . $dir . $res_["file"] . '" target="_blank"> Attachment </a>';
@@ -104,7 +173,14 @@ if (mysqli_num_rows($result) > 0) {
                                     <hr>
                                     <br>
                                 </td>
-                            </tr>
+                            </tr> -->
+
+
+
+
+
+
+
 
                             <tr>
                                 <td colspan="2" style="border: 1px solid black; border-radius:20px">
