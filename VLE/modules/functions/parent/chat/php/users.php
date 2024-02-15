@@ -13,11 +13,17 @@ $outgoing_id = $_SESSION['id'];
 //     GROUP BY users.id
 //     -- ORDER BY messages.msg_id DESC
 //     ";
-$sql = "SELECT u.id, u.status, u.name FROM users u 
-        INNER JOIN parents p ON u.id = p.created_by
-        WHERE p.user_id = '$outgoing_id'
-        ";
+
+//?
+// $sql = "SELECT u.id, u.status, u.name FROM users u 
+//         INNER JOIN parents p ON u.id = p.created_by
+//         WHERE p.user_id = '$outgoing_id'
+//         ";
+// $query = mysqli_query($db, $sql);
+
+$sql = "SELECT * FROM users WHERE user_role = 'teacher' ";
 $query = mysqli_query($db, $sql);
+
 $output = "";
 if (mysqli_num_rows($query) == 0) {
     $output .= "No users are available to chat";

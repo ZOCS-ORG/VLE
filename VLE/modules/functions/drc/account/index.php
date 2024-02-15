@@ -12,8 +12,57 @@ require_once('../layouts/head_to_wrapper.php');
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
+
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+        </div>
+
+        <!-- Content Row -->
+        <div class="row">
+            <div class="col-xl-4 col-md-4 mb-3">
+                <div class="card border-left-success shadow py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-sm font-weight-bold text-dark text-uppercase mb-1"> Teachers </div>
+                                <div class="text-right h5 mb-0 font-weight-bold text-gray-800"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-right col-auto">
+                        <a class="btn-block btn btn-sm btn-success" href="../staff/">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-md-4 mb-3">
+                <div class="card border-left-success shadow py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-sm font-weight-bold text-dark text-uppercase mb-1">Announcements </div>
+                                <div class="text-right h5 mb-0 font-weight-bold text-gray-800"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-right col-auto">
+                        <a class="btn-block btn btn-sm btn-success" href="../announcements">View</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <hr>
+
+
         <!-- Feeds Heading -->
-          <div style="background-color: green" class="card d-sm-flex align-items-center justify-content-between mb-4 py-2 h5" >
+          <div class="card d-sm-flex align-items-center justify-content-between mb-4 py-2 h5 border-success" >
             <h5 class="h5 mb-0 text-info ">Notice Board </h5>
         </div>
 

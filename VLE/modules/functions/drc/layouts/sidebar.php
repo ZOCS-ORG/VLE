@@ -70,7 +70,7 @@
     <li class="nav-item text-color-dark">
         <a class="nav-link" href="../complaints/index.php">
             <i class="fa fas fa-fw fa-frown-o"></i>
-            <span>Complaints </span></a>
+            <span>Queries </span></a>
     </li>
 
     <li class="nav-item text-color-dark">

@@ -1048,13 +1048,13 @@ if (!empty($_POST['update_parent'])) {
     }
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $fathername = $_POST['fathername'];
-    $mothername = $_POST['mothername'];
-    $fatherphone = $_POST['fatherphone'];
-    $motherphone = $_POST['motherphone'];
+    $par_fathername = $_POST['par_fathername'];
+    $par_mothername = $_POST['par_mothername'];
+    $par_fatherphone = $_POST['par_fatherphone'];
+    $par_motherphone = $_POST['par_motherphone'];
     $address = $_POST['address'];
 
-    $sql = "UPDATE parents SET";
+    $sql = "UPDATE users SET";
     //Check to see that value is not empty so we don't replace already existing value with null😋..
     if (!empty($username)) {
         $sql .= " username = '$username',";
@@ -1066,16 +1066,16 @@ if (!empty($_POST['update_parent'])) {
         $sql .= " password = '$password',";
     }
     if (!empty($fathername)) {
-        $sql .= " fathername = '$fathername',";
+        $sql .= " par_fathername = '$par_fathername',";
     }
     if (!empty($mothername)) {
-        $sql .= " mothername = '$mothername',";
+        $sql .= " par_mothername = '$par_mothername',";
     }
     if (!empty($fatherphone)) {
-        $sql .= " fatherphone = '$fatherphone',";
+        $sql .= " par_fatherphone = '$par_fatherphone',";
     }
     if (!empty($motherphone)) {
-        $sql .= " motherphone = '$motherphone',";
+        $sql .= " par_motherphone = '$par_motherphone',";
     }
     if (!empty($address)) {
         $sql .= " address = '$address',";
@@ -1083,20 +1083,21 @@ if (!empty($_POST['update_parent'])) {
 
     $sql = substr($sql, 0, strlen($sql) - 1) . " WHERE `id` = '$id' ";
     $success = mysqli_query($db, $sql) or die('Error: Could not Update data: ' . mysqli_error($db));
-    // Update users table too
-    $userid = "pa_" . $id;
-    $sql_user = "UPDATE users SET";
-    if (!empty($password)) {
-        $sql_user .= " password = '$password',";
-    }
-    if (!empty($mothername)) {
-        $sql_user .= " name = '$mothername',";
-    }
-    if (!empty($username)) {
-        $sql_user .= " username = '$username',";
-    }
-    $sql_user = substr($sql_user, 0, strlen($sql_user)) . " userid = '$userid', user_role = 'parent' WHERE `userid` = '$userid' ";
-    $success = mysqli_query($db, $sql_user) or die('Error: Could not Update data: ' . mysqli_error($db));
+    
+    // // Update users table too
+    // $userid = "pa_" . $id;
+    // $sql_user = "UPDATE users SET";
+    // if (!empty($password)) {
+    //     $sql_user .= " password = '$password',";
+    // }
+    // if (!empty($mothername)) {
+    //     $sql_user .= " name = '$mothername',";
+    // }
+    // if (!empty($username)) {
+    //     $sql_user .= " username = '$username',";
+    // }
+    // $sql_user = substr($sql_user, 0, strlen($sql_user)) . " userid = '$userid', user_role = 'parent' WHERE `userid` = '$userid' ";
+    // $success = mysqli_query($db, $sql_user) or die('Error: Could not Update data: ' . mysqli_error($db));
 
     header('Location: ../parent/view_parent.php?id=' . $id . "&" . $updated = true);
 }

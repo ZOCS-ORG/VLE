@@ -54,11 +54,10 @@ include_once('../layouts/topbar.php');
                 <tbody>
                     <?php
                     // echo '$id' . $id;
-                    $sql = "SELECT students.img, u.name AS name, u.id AS id, classes.name AS class
-                            FROM students
-                            JOIN classes ON classes.id = students.class_id
-                            JOIN users u ON u.id = students.user_id
-                            WHERE parentid = '$id' ";
+                    $sql = "SELECT img, u.name AS name, u.id AS id, c.name AS class
+                            FROM users u
+                            JOIN classes c ON c.id = u.stu_class
+                            WHERE stu_parent = '$id' ";
                     $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
                     $string = "";
                     $images_dir = "../../../utils/images/students/";

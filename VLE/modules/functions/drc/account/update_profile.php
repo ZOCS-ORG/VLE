@@ -4,14 +4,14 @@
     include_once('../layouts/head_to_wrapper.php');
     include_once('../layouts/topbar.php');
 
-    //$id = $_GET['id'];
+    $id = $_GET['id'];
 
 ?>
 
         <hr/>     
         
         <?php 
-            $query = "SELECT  * from teachers where id = '$id' ";
+            $query = "SELECT  * from users where id = '$id' ";
 
             $result = mysqli_query($db, $query) or die(mysqli_error($db));
             $count = 1;

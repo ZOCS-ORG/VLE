@@ -43,7 +43,11 @@ include_once('../layouts/topbar.php');
     [type=radio] {
         width: 30%;
     }
+
+    #map { height: 280px;  }
 </style>
+
+
 
 <div class="container">
     <div class="row justify-content-center">
@@ -63,7 +67,7 @@ include_once('../layouts/topbar.php');
                     $type = $_POST['type'];
 
                     $sql = "INSERT INTO schools ( `name`, `province`, `district`, `address`, `gps_lat`, `gps_long`, `emis_number`, `sch_type`) 
-                    VALUES('$name','$province','$district' , '$location', '$emis_number','$gps_lat','$gps_long','$type')";
+                    VALUES('$name','$province','$district' , '$location','$gps_lat','$gps_long' ,'$emis_number','$type')";
 
                     $success = mysqli_query($db, $sql);
                     if (!$success) {
@@ -148,7 +152,13 @@ include_once('../layouts/topbar.php');
                                 <td class="text-right"><input type="text" name="gps_long" placeholder="Enter longitude  Location"></td>
                             </tr>
 
+                            <tr>
+                            <td id="map"></td>
+                            </tr>
+
+
                             <td></td>
+                            
                             <td class="text-right"><input class="btn btn-sm btn-success " type="submit" name="create_school_" value="Submit"></td>
 
                         </table>
@@ -174,6 +184,54 @@ include_once('../layouts/topbar.php');
     });
 </script>
 <!-- End multi-select support  -->
+
+<!-- <script>
+
+var map = L.map('map').setView([-15.4089, 28.2871], 13); 
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+
+map.on('click', function(e) {
+   
+    var clickedLat = e.latlng.lat;
+    var clickedLng = e.latlng.lng;
+
+ 
+    alert("You clicked the map at: Latitude " + clickedLat + ", Longitude " + clickedLng);
+});
+
+</script> -->
+
+<script>
+
+var map = L.map('map').setView([-15.4089, 28.2871], 13); 
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+var marker;
+
+map.on('click', function(e) {
+    var clickedLat = e.latlng.lat;
+    var clickedLng = e.latlng.lng;
+
+    if (marker) {
+        map.removeLayer(marker); // Remove existing marker
+    }
+
+    marker = L.marker([clickedLat, clickedLng]).addTo(map);
+
+    document.getElementsByName("gps_lat")[0].value = clickedLat;
+    document.getElementsByName("gps_long")[0].value = clickedLng;
+});
+
+</script>
 
 
 <?php require_once('../layouts/footer_to_end.php'); ?>

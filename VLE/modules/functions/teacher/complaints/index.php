@@ -7,11 +7,16 @@ include_once('../layouts/topbar.php');
 ?>
 
 <hr />
+<style> 
+table td,th{
+    color:black;
+    }
+    </style>
 <main>
-    <div class="container-fluid col-md-9">
+    <div class="container-fluid col-md-12">
         <div class="card mb-4">
             <div class="card-header text-center">
-                <h3>Complaints</h3>
+                <h3>Queries</h3>
                 <div class="text-right text-light">
                     <a class="btn btn-sm btn-success" href="create_complaint.php">Raise a Query</a>
                 </div>
@@ -22,8 +27,8 @@ include_once('../layouts/topbar.php');
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <td>Complaint #</td>
-                                <td>Complaint</td>
+                                <td>Query #</td>
+                                <td>Query</td>
                                 <td>Attachment</td>
                                 <td>Status</td>
                                 <td>Actions</td>
@@ -52,8 +57,9 @@ include_once('../layouts/topbar.php');
                                         }
                                         ?>
                                     </td>
-                                    <td><?php echo $row['status']; ?></td>
-                                    <td><a href="view_complaint.php?id=<?php echo $row["id"]; ?>" class="btn btn-md btn-light" style="width:"> View </td>
+                                    <td style="background-color: <?php echo ($row['status'] == 'Open') ? '#E3242B' : '#0A6522'; ?>; font-weight: bold; color:white;"><?php echo $row['status']; ?></td>
+
+                                    <td><a href="view_complaint.php?id=<?php echo $row["id"]; ?>" class="btn btn-md btn-primary" style="width:"> View </td>
                                 </tr>
                             <?php
 

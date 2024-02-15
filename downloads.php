@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
  <html lang="en">
 
  <head>
@@ -25,13 +25,14 @@
            <th scope="col">Document Name</th>
            <th scope="col">Discription</th>
            <th scope="col">Date</th>
+           <th scope="col">From</th>
            <th scope="col">Action</th>
          </tr>
        </thead>
        <tbody>
          <?php
           include_once('vle/modules/config/config.php');
-          $query = $db->query("SELECT * FROM moe_uploads WHERE visibility = 'Public' ");
+          $query = $db->query("SELECT users.user_role, moe_uploads.* FROM moe_uploads INNER JOIN users ON users.id = moe_uploads.uploaded_by  WHERE visibility = 'Public' ");
           $no = 0;
           while ($row = $query->fetch_assoc()) {
             $no = $no + 1;
@@ -43,6 +44,7 @@
             $dueDate = $row['date_added'];
             $assDate = $row['date'];
             $ass_id = $row['upload_id'];
+            $role = $row['user_role'];
 
             $file_path = "vle/lms/files/moe_uploads/" . $file;
           ?>
@@ -51,6 +53,7 @@
              <td><?php echo $name ?></td>
              <td><?php echo $description ?></td>
              <td><?php echo $dueDate ?></td>
+             <td><?php echo $role ?></td>
              <td> <a href="<?php echo $file_path ?>"> File </a> </td>
            </tr>
          <?php } ?>

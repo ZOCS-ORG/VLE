@@ -4,12 +4,12 @@
     include_once('../layouts/head_to_wrapper.php');
     include_once('../layouts/topbar.php');
 
-    $lecturer_id = $_GET['id'];
+    $lecturer_id = $_SESSION['id'];
 
 ?>
         <hr/>        
         <?php 
-            $query = "SELECT * from teachers where id = '$lecturer_id' ";
+            $query = "SELECT * from users where id = '$lecturer_id' ";
 
             $result = mysqli_query($db, $query) or die(mysqli_error($db));
             $count = 1;
@@ -26,9 +26,11 @@
 
                 <div class="card mb-4">
                     <div class=" card-header text-center">
-                        <h3 class="text-">Teacher's Info</h3>
+                        <!-- <h3 class="text-">My Info</h3> -->
                         <div class="text-">
-                            <?php echo "<img src='".$images_dir.$picname."' alt='".$picname."' width='140' height='140'> "?>
+                        <a href="update_profile.php?id=<?php echo $lecturer_id ?>" class="btn btn-info btn-sm">Edit</a>
+
+                            <?php // echo "<img src='".$images_dir.$picname."' alt='".$picname."' width='140' height='140'> "?>
                         </div>    
                     </div>
                     
@@ -57,7 +59,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div > <hr style="height:100%; width:1px; backgro~und-color:grey; "></div>
+                            <div > <hr style="height:100%; width:1px; background-color:grey; "></div>
                             
                             <div class="col-lg-5">
                                 <div class=" mb-4">
@@ -81,7 +83,6 @@
                                     </div>
                                 </div>
                                 <div class="text-right text-white">
-                                    <a href="update_profile.php?id=<?php echo $lecturer_id ?>" class="btn btn-info btn-sm">Edit</a>
                                 </div>
                             </div>
 

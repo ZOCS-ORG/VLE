@@ -9,7 +9,7 @@
         <hr/>     
         
         <?php 
-            $query = "SELECT  * from parents where user_id = '$id' ";
+            $query = "SELECT  * from users where id = '$id' ";
 
             $result = mysqli_query($db, $query) or die(mysqli_error($db));
             $count = 1;

@@ -64,6 +64,11 @@
             .appendTo( '#export_wrapper .col-md-6:eq(0)' );
     } );
 
+
+    $(document).ready(function() {
+      $('#dataTable').DataTable();
+    });
+
   </script>
 
 

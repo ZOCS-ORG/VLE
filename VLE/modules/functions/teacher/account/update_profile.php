@@ -11,7 +11,7 @@
         <hr/>     
         
         <?php 
-            $query = "SELECT  * from teachers where id = '$id' ";
+            $query = "SELECT  * from users where id = '$id' ";
 
             $result = mysqli_query($db, $query) or die(mysqli_error($db));
             $count = 1;

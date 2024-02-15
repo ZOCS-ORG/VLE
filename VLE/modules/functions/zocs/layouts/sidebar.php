@@ -93,7 +93,7 @@
     <li class="nav-item text-color-dark">
         <a class="nav-link" href="../complaints/index.php">
             <i class="fa fas fa-fw fa-commenting"></i>
-            <span>Complaints and concerns</span></a>
+            <span>Queries</span></a>
     </li>
 
     

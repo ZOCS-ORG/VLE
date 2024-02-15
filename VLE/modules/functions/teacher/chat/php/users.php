@@ -22,8 +22,7 @@
     //     WHERE p.created_by = '$outgoing_id'
     //     GROUP  BY u.id
     // ";
-    $sql = "SELECT u.id, u.status, u.name FROM users u WHERE created_by = '$outgoing_id' AND user_role = 'parent' GROUP  BY u.id
-    ";
+    $sql = "SELECT u.id, u.status, u.name FROM users u WHERE created_by = '$outgoing_id' AND user_role = 'parent' GROUP  BY u.id ";
 
     $query = mysqli_query($db, $sql);
     $output = "";

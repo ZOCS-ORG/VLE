@@ -47,14 +47,14 @@
             <div class="col-lg-7">
                 <div class="card shadow-s border-0 rounded-lg mt-1">
 
-                    <div class="card-header"><h5 class="text-center my-2">Create new Complaint</h5></div>
+                    <div class="card-header"><h5 class="text-center my-2">Create New Query</h5></div>
                     <div class="card-body">
                         <form action="#" method="post" onsubmit="return parent_validation();" enctype="multipart/form-data">
 
                             <table class="table" id="dataTable" width="100%" cellspacing="9">
                             <input id="id" type="hidden" name="id" value="<?php echo $teacher_id ?>">
                                 <tr>
-                                    <td>Complaint:</td>
+                                    <td>Query:</td>
                                     <td class="text-right"> <textarea name="complaint" id="" cols="30" rows="4" required></textarea> </td>
                                 </tr>
                                 <tr>

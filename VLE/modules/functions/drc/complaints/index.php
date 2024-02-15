@@ -7,13 +7,18 @@ include_once('../layouts/topbar.php');
 ?>
 
 <hr />
+<style> 
+table td,th{
+    color:black;
+    }
+    </style>
 <main>
-    <div class="container-fluid col-md-9">
+    <div class="container-fluid col-md-12">
         <div class="card mb-4">
             <div class="card-header text-center">
-                <h3>Complaints</h3>
+                <h3>Queries</h3>
                 <div class="text-right text-light">
-                </div>  
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -21,27 +26,22 @@ include_once('../layouts/topbar.php');
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <td>Complaint #</td>
-                                <td>Teacher</td>
-                                <td>Complaint</td>
+                                <td>Query #</td>
+                                <td>Query</td>
                                 <td>Attachment</td>
+                                <td>Status</td>
                                 <td>Actions</td>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $dir = "../../../utils/complaints/";
-                            $sql = "SELECT c.ref, c.complaint, c.file, c.id, u.name, u.id AS tid
-                                        FROM complaints c
-                                        JOIN users u ON u.id = c.created_by
-                                        ";
-
+                            $sql = "SELECT * FROM complaints";
                             $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
                             while ($row = mysqli_fetch_array($res)) {
                             ?>
                                 <tr>
                                     <td><?php echo $row['ref']; ?></td>
-                                    <td> <a href="../staff/view_staff.php?id=<?php echo $row['tid']; ?>"><?php echo $row['name']; ?></a> </td>
                                     <td><?php echo $row['complaint']; ?></td>
                                     <td>
                                         <?php
@@ -55,9 +55,10 @@ include_once('../layouts/topbar.php');
                                             echo "No attached files";
                                         }
                                         ?>
-
                                     </td>
-                                    <td><a href="view_complaint.php?id=<?php echo $row["id"]; ?>" class="btn btn-md btn-light" style="width:"> Open </td>
+                                    <td style="background-color: <?php echo ($row['status'] == 'Open') ? '#E3242B' : '#0A6522'; ?>; font-weight: bold; color:white;"><?php echo $row['status']; ?></td>
+
+                                    <td><a href="view_complaint.php?id=<?php echo $row["id"]; ?>" class="btn btn-md btn-primary" style="width:"> View </td>
                                 </tr>
                             <?php
 

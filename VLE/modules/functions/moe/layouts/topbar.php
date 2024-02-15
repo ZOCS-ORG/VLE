@@ -23,10 +23,7 @@
     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
       <?php if(isset($id))  { // ADD EDIT PROFILE ON HOMEPAGE WHERE ID IS AVAILABLE ?>
-        <a class="dropdown-item" href="../account/update_profile.php?id=<?php echo $id;?>">
-        <i class="fa fas fa-fw fa-edit"></i>
-          Edit profile
-        </a>
+        <!-- <a class="dropdown-item" href="../account/update_profile.php?id=<?php echo $id;?>">         <i class="fa fas fa-fw fa-edit"></i>           Edit profile         </a> -->
       <?php } ?>
 
       <a class="dropdown-item" href="../account/myprofile.php">

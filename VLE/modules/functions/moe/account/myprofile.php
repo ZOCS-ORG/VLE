@@ -22,13 +22,13 @@ if (mysqli_num_rows($result) > 0) {
         <main>
             <div class="card mb-4">
                 <div class=" card-header text-center">
-                    <h3 class="text-">My Info</h3>
+                    <!-- <h3 class="text-">My Info</h3> -->
                     <div class="text-">
                         <?php // echo "<img src='" . $images_dir . $picname . "' alt='" . $picname . "' width='140' height='140'> " ?>
 
                         <div class="text-center text-white">
-                            <a href="update_profile.php?id=<?php echo $id ?>" class="btn btn-info btn-sm">Edit</a>
-                            <a href="../../../config/admin_server.php?id=<?php echo $staff_id; ?>&delete_staff=true" class="btn btn-danger btn-sm">Delete</a>
+                            <!-- <a href="update_profile.php?id=<?php echo $id ?>" class="btn btn-info btn-sm">Edit</a> -->
+                            <!-- <a href="../../../config/admin_server.php?id=<?php echo $staff_id; ?>&delete_staff=true" class="btn btn-danger btn-sm">Delete</a> -->
                         </div>
 
                     </div>
