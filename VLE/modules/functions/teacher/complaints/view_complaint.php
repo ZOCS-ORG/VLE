@@ -14,8 +14,9 @@ $complaint_id = $_GET['id'];
 
 
 .chat-container {
-        max-width: 400px;
+        max-width: 600px;
         margin: 20px auto;
+        overflow: hidden;
     }
 
     .chat-bubble {
@@ -33,6 +34,12 @@ $complaint_id = $_GET['id'];
 
     .chat-bubble.received {
         float: left;
+        background-color: #f0f0f0;
+    }
+
+    .chat-bubble.right {
+        float: right;
+        background-color: #dcf8c6;
     }
 
     .chat-bubble p {
@@ -51,7 +58,6 @@ $complaint_id = $_GET['id'];
     .chat-bubble a {
         color: blue;
     }
-
 
 
     table {
@@ -84,42 +90,62 @@ if (mysqli_num_rows($result) > 0) {
 ?>
 
         <main>
-            <div class="card mb-4">
+        <div class="card mb-4">
                 <div class="card-header text-center">
-                    <h3> Complaint </h3>
+                    <h3> Query </h3>
                 </div>
 
                 <div class="card-body">
-
                     <table>
-                        
-                    <div class="chat-container">
-    <?php                                    
-    $query = "SELECT u.name, response, c.date, c.file
-                FROM complaint_responses c
-                INNER JOIN users u ON c.user_id = u.id 
-                -- INNER JOIN complaints ON complaints.created_by = c.user_id
-                WHERE complaint_id = '$complaint_id' ";
-    $resultss = mysqli_query($db, $query) or die('Error getting students: ' . mysqli_error($db));
-    while ($res_ = mysqli_fetch_array($resultss)) {
-        echo '<div class="chat-bubble received">';
-        echo "<p>" . $res_['name'] . " <span>- " . date_format(date_create($res_['date']), "d M, Y H:i:s") . "</span></p>";
-        echo "<blockquote><q>" . $res_['response'] . "</q></blockquote>";
-        if (isset($res_['file']) && strlen($res_['file']) > 3) {
-            if (file_exists($dir . $res_['file'])) {
-                echo '<a href="' . $dir . $res_["file"] . '" target="_blank">Attachment</a>';
-            } else {
-                // Handle non-existing file case
-            }
-        } else {
-            // Handle empty file case
-        }
-        echo '</div>';
-    } ?>
-</div>
-<br>
+                        <div class="chat-container">
+                            <!-- Description -->
+                            <div class="chat-bubble received">
+                                <p><?php echo $row['complaint'] ?></p>
+                            </div>
+
+                            <!-- Attachment -->
+                            <?php
+                            if (isset($row['file']) && strlen($row['file']) > 3) {
+                                if (file_exists($dir . $row['file'])) {
+                                    echo '<div class="chat-bubble received">';
+                                    echo '<a href="' . $dir . $row["file"] . '" target="_blank">Attachment</a>';
+                                    echo '</div>';
+                                } else {
+                                    // Handle non-existing file case
+                                }
+                            } else {
+                                // Handle empty file case
+                            }
+                            ?>
+
+                            <?php
+                            $query = "SELECT u.name, response, c.date, c.file
+                                FROM complaint_responses c
+                                INNER JOIN users u ON c.user_id = u.id 
+                                WHERE complaint_id = '$complaint_id' ";
+                            $resultss = mysqli_query($db, $query) or die('Error getting students: ' . mysqli_error($db));
+                            while ($res_ = mysqli_fetch_array($resultss)) {
+                                echo '<div class="chat-bubble right">';
+                                echo "<p>" . $res_['name'] . " <span>- " . date_format(date_create($res_['date']), "d M, Y H:i:s") . "</span></p>";
+                                echo "<blockquote><q>" . $res_['response'] . "</q></blockquote>";
+                                if (isset($res_['file']) && strlen($res_['file']) > 3) {
+                                    if (file_exists($dir . $res_['file'])) {
+                                        echo '<a href="' . $dir . $res_["file"] . '" target="_blank">Attachment</a>';
+                                    } else {
+                                        // Handle non-existing file case
+                                    }
+                                } else {
+                                    // Handle empty file case
+                                }
+                                echo '</div>';
+                            }
+                            ?>
+                        </div>
+                  
+
+
                         <tbody>
-                            <tr>
+                            <!-- <tr>
                                 <td>Description</td>
                                 <td><?php echo $row['complaint'] ?> </td>
                             </tr>
@@ -139,7 +165,7 @@ if (mysqli_num_rows($result) > 0) {
                                     }
                                     ?>
                                 </td>
-                            </tr>
+                            </tr> -->
 
                             <tr>
                                 <td colspan="2">
@@ -152,7 +178,7 @@ if (mysqli_num_rows($result) > 0) {
 
                             <!-- <tr>
                                 <td colspan="2">
-                                    <?php                                    
+                                    <?php
                                     $query = "SELECT u.name, response, c.date, c.file
                                                 FROM complaint_responses c
                                                 INNER JOIN users u ON c.user_id = u.id 
@@ -185,7 +211,7 @@ if (mysqli_num_rows($result) > 0) {
                             <tr>
                                 <td colspan="2" style="border: 1px solid black; border-radius:20px">
                                     <div class="card-header">
-                                        <h5 class="text-center my-2">Reply to Complaint</h5>
+                                        <h5 class="text-center my-2">Reply to Queries</h5>
                                     </div>
 
                                     <form action="#" method="post" enctype="multipart/form-data">
@@ -226,7 +252,7 @@ if (mysqli_num_rows($result) > 0) {
 
 if (!empty($_POST['submit_response'])) {
 
-    
+
     $id = $_POST['id'];
     $response = $_POST['response'];
 
@@ -238,7 +264,7 @@ if (!empty($_POST['submit_response'])) {
     } else {
         $file = "";
     }
-    
+
     // return var_dump($_POST);
     // die();
 
