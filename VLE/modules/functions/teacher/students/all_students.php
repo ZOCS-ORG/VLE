@@ -33,7 +33,7 @@ $user_id = $_SESSION['id'];
 
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM students WHERE created_by = '$user_id'";
+                    $sql = "SELECT * FROM users WHERE user_role = 'student' AND created_by = '$user_id'";
                     $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
                     $string = "";
                     $images_dir = "../../../utils/images/users/";
@@ -46,7 +46,7 @@ $user_id = $_SESSION['id'];
                             <td><?php echo $row['name']; ?></td>
                             <td>
                                 <?php
-                                $class_id = $row['class_id'];
+                                $class_id = $row['stu_class'];
                                 $q_class = "SELECT name, id FROM classes WHERE id = '$class_id' ";
                                 $res_class = mysqli_query($db, $q_class);
                                 $r_class = mysqli_fetch_assoc($res_class);

@@ -1,12 +1,12 @@
 <?php
 while ($row = mysqli_fetch_assoc($query)) {
-    $username = $row['username'];
+    $id = $row['id'];
     $sql2 = "SELECT * FROM messages
-            WHERE (incoming_msg_id = '$username' OR outgoing_msg_id = '$username' )
+            WHERE (incoming_msg_id = '$id' OR outgoing_msg_id = '$id' )
             AND (outgoing_msg_id = '$outgoing_id' OR incoming_msg_id = '$outgoing_id' )
             -- AND user_role = 'parent'
             ORDER BY msg_id DESC LIMIT 2";
-    $query2 = mysqli_query($conn, $sql2);
+    $query2 = mysqli_query($db, $sql2);
     $row2 = mysqli_fetch_assoc($query2);
     (mysqli_num_rows($query2) > 0) ? $result = $row2['msg'] : $result = "No message available";
     (strlen($result) > 28) ? $msg =  substr($result, 0, 28) . '...' : $msg = $result;
@@ -16,9 +16,9 @@ while ($row = mysqli_fetch_assoc($query)) {
         $you = "";
     }
     ($row['status'] == "Offline") ? $offline = "offline" : $offline = "";
-    ($outgoing_id == $row['username']) ? $hid_me = "hide" : $hid_me = "";
+    ($outgoing_id == $row['id']) ? $hid_me = "hide" : $hid_me = "";
 
-    $output .= '<a href="chat.php?user_id=' . $row['username'] . '">
+    $output .= '<a href="chat.php?user_id=' . $row['id'] . '">
                     <div class="content">
                     <img src="../../../utils/chats/images/user2.jpg" alt="">
                     <div class="details">

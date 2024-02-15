@@ -1,5 +1,6 @@
 <?php
-require_once('../../../config/teacher_server.php');
+// require_once('../../../config/teacher_server.php');
+require_once('../../../config/config.php');
 $add_side_bar = true;
 include_once('../layouts/head_to_wrapper.php');
 include_once('../layouts/topbar.php');
@@ -53,9 +54,10 @@ $teacher_id = $_SESSION['id'];
                                 <td class="text-right"><input type="text" name="name" placeholder="Subject Name" style="padding:4px; width:70%; border-radius:9px"></td>
                             </tr> -->
                             <tr>
-                                <td>Select Subject:</td>
+                                <td>Subject Name:</td>
                                 <td class="text-right">
-                                    <select name="subject" id="subj" style="padding:4px; width:70%; border-radius:9px">
+                                    <!-- <input type="text" name="subject" id="" style="padding:1px; width:90%; border-radius:9px"> -->
+                                    <select name="subject" id="subj" style="padding:4px; width:90%; border-radius:9px">
                                         <option value=""></option>
                                         <?php
                                         $res = mysqli_query($db, "SELECT * FROM subjects ");
@@ -68,7 +70,7 @@ $teacher_id = $_SESSION['id'];
                             <tr>
                                 <td>Select Classs:</td>
                                 <td class="text-right">
-                                    <select name="class" id="subj" style="padding:4px; width:70%; border-radius:9px">
+                                    <select name="class" id="subj" style="padding:4px; width:90%; border-radius:9px">
                                         <option value=""></option>
                                         <?php
                                         $res = mysqli_query($db, "SELECT * FROM classes WHERE teacher_id = '$teacher_id' ");
@@ -80,7 +82,7 @@ $teacher_id = $_SESSION['id'];
                             </tr>
                             <tr>
                                 <td></td>
-                                <td class="text-left"><input class="btn btn-sm btn-primary " type="submit" name="create_subject" value="Submit"></td>
+                                <td class="text-left"><input class="btn btn-sm btn-primary " type="submit" name="assign_subject" value="Submit"></td>
                             </tr>
                         </table>
                     </form>
@@ -90,4 +92,27 @@ $teacher_id = $_SESSION['id'];
     </div>
 </div>
 
-<?php require_once('../layouts/footer_to_end.php'); ?>
+<?php
+
+if (isset($_POST['assign_subject'])) {
+
+    $subject_id = $_POST['subject'];
+
+    $class_id = $_POST['class'];
+
+    $query = "INSERT INTO teacher_subject_class VALUES('', '$teacher_id', '$subject_id', '$class_id' )";
+    $result = mysqli_query($db, $query) or die('Error saving to mapping table: ' . mysqli_error($db));
+
+    echo "<script> window.location = 'index.php?created=true' </script>";
+
+    // foreach ($classes as $key => $value) {
+    //     $class_id = $classes[$key];
+    //     $query = "INSERT INTO teacher_subject_class VALUES(' ', '$teacher_id', '$subject_id', '$class_id' )";
+    //     $result = mysqli_query($db, $query) or die('Error saving to mapping table: ' . mysqli_error($db));
+    // }
+    $_SESSION['created'] = "Added successfully";
+    header('Location: ../subjects/view_assigned');
+}
+
+require_once('../layouts/footer_to_end.php');
+?>

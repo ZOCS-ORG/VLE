@@ -11,7 +11,7 @@
     <!-- search column starts here -->
       <div class="col s12 m2">
 
-        <div class="card-panel blue">
+        <div class="card-panel green ">
 
           <span class="white-text">Practical's here</span>
 
@@ -119,7 +119,7 @@
 
               <div class="card-action">
 
-                <button class="btn blue waves-effect waves-light" type="submit" name="search">Search
+                <button class="btn green waves-effect waves-light" type="submit" name="search">Search
 
                   <i class="material-icons right">send</i>
 
@@ -158,14 +158,14 @@
           if(isset($_GET['reg_search'])){
             // if(!empty($_GET['sreg_no']) && strlen($_GET['sreg_no'])==10){$sreg_no=$_GET['sreg_no'];}
             //else{?>
-              <!-- <div class="card-panel blue">
+              <!-- <div class="card-panel green ">
                 <span class="white-text"><?php //echo $error= 'Enter a valid registration number'; ?>
                 </span>
               </div> --> 
             <?php //die();}
             $sreg_no = $_GET['sreg_no'];
           ?>
-              <div class="card-panel blue">
+              <div class="card-panel green ">
                   <span class="white-text">Showing practicals of<br>
                   Reg No. = <?php echo $sreg_no ?>
                   </span>
@@ -223,7 +223,7 @@
                     <?php }
                     ?>
                     <td><?php echo $marks;?></td>
-                    <td><a class="btn blue waves-effect waves-light" type="submit" name="Search" href="show_more_prac.php?id=<?php echo $pracId ?>"><i class="material-icons right">send</i></a></td>
+                    <td><a class="btn green waves-effect waves-light" type="submit" name="Search" href="show_more_prac.php?id=<?php echo $pracId ?>"><i class="material-icons right">send</i></a></td>
                   </tr>
 
                   <?php } ?>
@@ -232,7 +232,7 @@
 
         <?php }else{ ?>
 
-        <div class="card-panel blue">
+        <div class="card-panel green ">
           <span class="white-text"><?php echo $error= 'No result found'; ?>
           </span>
         </div>
@@ -248,13 +248,13 @@
           if(isset($_GET['reg_search'])){
             if(!empty($_GET['sreg_no'])){$sreg_no=$_GET['sreg_no'];}
             else{?>
-              <div class="card-panel blue">
+              <div class="card-panel green ">
                 <span class="white-text"><?php echo $error= 'Enter a valid registration number'; ?>
                 </span>
               </div>
             <?php }
           ?>
-              <div class="card-panel blue">
+              <div class="card-panel green ">
                   <span class="white-text">Showing assignments of<br>
                   Reg No. = <?php echo $sreg_no ?>
                   </span>
@@ -298,7 +298,7 @@
                     <td><?php echo substr($assFile, 0, 5).".."; //echo $assFile;?></td>
                     <td><?php echo $assDate;?></td>
                     <td><?php echo $marks;?></td>
-                    <td><a class="btn blue waves-effect waves-light" href="<?php echo "../files/assignment/".$assFile; ?>"><i class="material-icons right">file_download</i></a></td>
+                    <td><a class="btn green waves-effect waves-light" href="<?php echo "../files/assignment/".$assFile; ?>"><i class="material-icons right">file_download</i></a></td>
                     </tr>
 
                   <?php } ?>
@@ -307,7 +307,7 @@
 
         <?php }else{ ?>
 
-        <div class="card-panel blue">
+        <div class="card-panel green ">
           <span class="white-text"><?php echo $error= 'No result found'; ?>
           </span>
         </div>
@@ -342,7 +342,7 @@
 
             <div class="card-action">
 
-              <button class="btn blue waves-effect waves-light" type="submit" name="reg_search">Search
+              <button class="btn green waves-effect waves-light" type="submit" name="reg_search">Search
 
                 <i class="material-icons right">send</i>
 

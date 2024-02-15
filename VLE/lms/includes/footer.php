@@ -1,9 +1,9 @@
 <!-- footer starts here -->
 
 <footer class="page-footer green" style="
-        position: relative !important;
-        margin-top: 350px;
-        bottom: 0 !important;">
+        position: auto !important;
+        margin-top: 80vh;
+        bottom: 0 px!important;">
 
     <div class="footer-copyright">
 

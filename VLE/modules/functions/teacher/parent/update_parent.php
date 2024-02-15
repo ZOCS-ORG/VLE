@@ -12,7 +12,7 @@
         <hr/>     
         
         <?php 
-            $query = "SELECT  * from parents where id = '$parent_id' ";
+            $query = "SELECT  * from users where id = '$parent_id' ";
 
             $result = mysqli_query($db, $query) or die(mysqli_error($db));
             $count = 1;
@@ -43,11 +43,11 @@
                                 </tr>
                                 <tr>
                                     <td>Mother's Name:</td>
-                                    <td class="text-right"><input type="text" name="mothername" placeholder="<?php echo $row['mothername']?>"></td>
+                                    <td class="text-right"><input type="text" name="mothername" placeholder="<?php echo $row['par_mothername']?>"></td>
                                 </tr>
                                 <tr>
                                     <td>Father's Name:</td>
-                                    <td class="text-right"><input type="text" name="fathername" placeholder="<?php echo $row['fathername']?>"></td>
+                                    <td class="text-right"><input type="text" name="fathername" placeholder="<?php echo $row['par_fathername']?>"></td>
                                 </tr>
                                 <tr>
                                     <td>Password:</td>
@@ -55,11 +55,11 @@
                                 </tr>
                                 <tr>
                                     <td>Mother's Number:</td>
-                                    <td class="text-right"><input type="text" name="motherphone" placeholder="<?php echo $row['motherphone']?>"></td>
+                                    <td class="text-right"><input type="text" name="motherphone" placeholder="<?php echo $row['par_motherphone']?>"></td>
                                 </tr>
                                 <tr>
                                     <td>Father's Number:</td>
-                                    <td class="text-right"><input type="text" name="fatherphone" placeholder="<?php echo $row['fatherphone']?>"></td>
+                                    <td class="text-right"><input type="text" name="fatherphone" placeholder="<?php echo $row['par_fatherphone']?>"></td>
                                 </tr>
                                 <tr>
                                     <td>Address:</td>

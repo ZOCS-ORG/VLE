@@ -30,13 +30,13 @@ $user_id = $_SESSION['id'];
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT * FROM parents WHERE created_by = '$user_id' ";
+                            $sql = "SELECT * FROM users WHERE user_role = 'parent' AND created_by = '$user_id' ";
                             $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
                             while ($row = mysqli_fetch_array($res)) {
                             ?>
                                 <tr>
-                                    <td><?php echo $row['mothername']; ?></td>
-                                    <td><?php echo $row['fathername']; ?></td>
+                                    <td><?php echo $row['par_mothername']; ?></td>
+                                    <td><?php echo $row['par_fathername']; ?></td>
                                     <td><a href="view_parent.php?id=<?php echo $row["id"]; ?>" class="badge badge-lg badge-light" style="width:40px"> View </td>
                                 </tr>
                             <?php

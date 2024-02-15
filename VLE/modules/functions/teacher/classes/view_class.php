@@ -20,10 +20,11 @@ $id = $_GET['id'];
 
 <?php
 $query = "SELECT  t.name AS teacher, t.id AS teacher_id, c.name, c.id
-                , s.name AS monitor, s.id AS monitor_id
+                , u.name AS monitor, s.id AS monitor_id
                 FROM classes c
                 INNER JOIN users t ON t.id = c.teacher_id
                 LEFT JOIN students s ON s.id = c.monitor_id
+                LEFT JOIN users u ON u.id = s.user_id
                 where c.id = '$id'";
 
 $result = mysqli_query($db, $query) or die(mysqli_error($db));

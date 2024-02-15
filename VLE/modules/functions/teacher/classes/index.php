@@ -52,7 +52,7 @@ include_once('../layouts/topbar.php');
                                         <?php
                                         $student_id = $row['monitor_id'];
                                         $q = "SELECT name, id
-                                        FROM students
+                                        FROM users
                                         WHERE id = $student_id";
 
                                         $res = mysqli_query($db, $q) or die(mysqli_error($db));

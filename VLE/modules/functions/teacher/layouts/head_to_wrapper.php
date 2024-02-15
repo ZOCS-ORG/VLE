@@ -1,28 +1,25 @@
 <?php
-  session_start();
-  include('../../../utils/vars.php');
-  require_once('../../../config/config.php');
+error_reporting(0);
+session_start();
+include('../../../utils/vars.php');
+require_once('../../../config/config.php');
 
-  $id = $_SESSION['id'];
-  $username = $_SESSION['username'];
- // Authenticate!!!
+$id = $_SESSION['id'];
+$username = $_SESSION['username'];
+// TODO Authenticate!!!
 //  $query =  "SELECT * FROM teachers WHERE username='$username' ";
 //  $results=mysqli_query($db,$query);
 //  $row=mysqli_fetch_array($results);
 //  $login_session = $row['name'];
-//  $_SESSION['img'] = $row['img'];
-//  $name = $_SESSION['name'] = $row['name'];
-//  $id = $_SESSION['id'] = $row['id'];
-//  $role = $_SESSION['role'] = "teacher";
 
 $name = $_SESSION['name'];
 $id = $_SESSION['id'];
 $role = $_SESSION['role'];
 
- if(empty($login_session)){
-//    header("Location: ../../../../");
- }
-  
+if (empty($username)) {
+    header("Location: ../../../../");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -42,20 +39,20 @@ $role = $_SESSION['role'];
     <link href="../../../assets/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- DataTables -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
 
-        
+
     <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    
+
     <!-- Date picker -->
     <script type="text/javascript" src="http://services.iperfect.net/js/IP_generalLib.js"></script>
     <!-- Calendar -->
@@ -72,76 +69,80 @@ $role = $_SESSION['role'];
     <script src="js/dataTables.bootstrap4.min.js"></script>
     <!-- ATTENTANCE ENDS HERE -->
 
+    <!-- MAPS
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script> -->
+
     <style>
-    body {
-        color: black !important;
-        font-family: helvetica;
-    }
+        body {
+            color: black !important;
+            font-family: helvetica;
+        }
     </style>
 
 </head>
 
 <body id="page-top">
 
-  <div id="wrapper">
+    <div id="wrapper">
 
-    <!-- Sidebar Check if page wants to dispaly side bar -->
-    <?php
+        <!-- Sidebar Check if page wants to dispaly side bar -->
+        <?php
         if (isset($add_side_bar) && $add_side_bar == false) {
             # do nothing...
-        }else {
+        } else {
             include('sidebar.php');
         }
-    ?>
+        ?>
 
 
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-    <!-- 
+            <!-- 
         Main page - content starts from here...
         <div id="content">
     -->
 
-    <?php
-    /**
-     * @TODO: 
-     *  Make these alerts more dynamic.
-     */
-    ?>
-    <center>
-    <?php if(isset($_GET['created']) && isset($_GET['created']) == true){ ?>
-        <div class="alert alert-success col-lg-6 col-md-6">
-                <p><?php echo "Created Successfuly!" ?> </p> 
-        </div>
-        <script type="text/javascript">
-            setTimeout(function() {
-            $('.alert').alert('close');
-            }, 4800);
-        </script>
-    <?php } ?>
-    </center>
-    <center>
-    <?php if(isset($_GET['updated']) && isset($_GET['updated']) == true){ ?>
-        <div class="alert alert-success col-lg-6 col-md-6">
-                <p><?php echo "Updated Successfuly!" ?> </p> 
-        </div>
-        <script type="text/javascript">
-            setTimeout(function() {
-            $('.alert').alert('close');
-            }, 4800);
-        </script>
-    <?php } ?>
-    </center>
-    <center>
-    <?php if(isset($_GET['deleted']) && isset($_GET['deleted']) == true){ ?>
-        <div class="alert alert-danger col-lg-6 col-md-6">
-                <p><?php echo "Deleted Successfully!" ?> </p> 
-        </div>
-        <script type="text/javascript">
-            setTimeout(function() {
-            $('.alert').alert('close');
-            }, 4800);
-        </script>
-    <?php } ?>
-    </center>
+            <?php
+            /**
+             * @TODO: 
+             *  Make these alerts more dynamic.
+             */
+            ?>
+            <center>
+                <?php if (isset($_GET['created']) && isset($_GET['created']) == true) { ?>
+                    <div class="alert alert-success col-lg-6 col-md-6">
+                        <p><?php echo "Created Successfuly!" ?> </p>
+                    </div>
+                    <script type="text/javascript">
+                        setTimeout(function() {
+                            $('.alert').alert('close');
+                        }, 4800);
+                    </script>
+                <?php } ?>
+            </center>
+            <center>
+                <?php if (isset($_GET['updated']) && isset($_GET['updated']) == true) { ?>
+                    <div class="alert alert-success col-lg-6 col-md-6">
+                        <p><?php echo "Updated Successfuly!" ?> </p>
+                    </div>
+                    <script type="text/javascript">
+                        setTimeout(function() {
+                            $('.alert').alert('close');
+                        }, 4800);
+                    </script>
+                <?php } ?>
+            </center>
+            <center>
+                <?php if (isset($_GET['deleted']) && isset($_GET['deleted']) == true) { ?>
+                    <div class="alert alert-danger col-lg-6 col-md-6">
+                        <p><?php echo "Deleted Successfully!" ?> </p>
+                    </div>
+                    <script type="text/javascript">
+                        setTimeout(function() {
+                            $('.alert').alert('close');
+                        }, 4800);
+                    </script>
+                <?php } ?>
+            </center>

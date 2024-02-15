@@ -119,7 +119,7 @@
 
            ?>
 
-        <div class="card-panel blue">
+        <div class="card-panel green ">
 
           <span class="white-text">
 

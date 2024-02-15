@@ -5,6 +5,10 @@ $add_side_bar = true;
 include_once('../layouts/head_to_wrapper.php');
 include_once('../layouts/topbar.php');
 
+require_once('../../../../PHPmailer/sendmail.php');
+$emails = new email();
+
+
 ?>
 
 <style>
@@ -32,7 +36,30 @@ include_once('../layouts/topbar.php');
             width: 1170px;
         }
     }
+
+
+    input {
+        width: 90%;
+    }
+
+    select {
+        width: 90%;
+    }
+
+    textarea {
+        width: 90%;
+    }
+
+    [type=radio] {
+        width: 30%;
+    }
 </style>
+
+<!-- MAPS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
 
 <div class="container">
     <div class="row justify-content-center">
@@ -43,7 +70,7 @@ include_once('../layouts/topbar.php');
                     <h5 class="text-center my-2">Add new Parent</h5>
                 </div>
                 <div class="card-body">
-                    <form action="#" method="post" onsubmit="return parent_validation();" enctype="multipart/form-data">
+                    <form action="#" method="post" enctype="multipart/form-data">
 
                         <table class="table" id="dataTable" width="100%" cellspacing="9">
                             <input id="id" type="hidden" name="id" placeholder="Enter Id">
@@ -64,10 +91,6 @@ include_once('../layouts/topbar.php');
                                 <td class="text-right"><input type="text" name="fathername" placeholder="Father's Name"></td>
                             </tr>
                             <tr>
-                                <td>Password:</td>
-                                <td class="text-right"><input type="password" name="password" placeholder="Enter Password" required></td>
-                            </tr>
-                            <tr>
                                 <td>Mother's Number:</td>
                                 <td class="text-right"><input type="number" name="motherphone" placeholder="Mother's Phone Number"></td>
                             </tr>
@@ -77,7 +100,9 @@ include_once('../layouts/topbar.php');
                             </tr>
                             <tr>
                                 <td>Address:</td>
-                                <td class="text-right"><input id="address" type="text" name="address" placeholder="Enter Address"></td>
+                                <td class="text-right">
+                                    <textarea name="address" id="" cols="30" rows="4"></textarea>
+                                </td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -91,8 +116,50 @@ include_once('../layouts/topbar.php');
     </div>
 </div>
 
+<script>
+    const map = L.map('map').setView([51.505, -0.09], 13);
+
+    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    // const marker = L.marker([51.5, -0.09]).addTo(map)
+    //     .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
+
+    // const circle = L.circle([51.508, -0.11], {
+    //     color: 'red',
+    //     fillColor: '#f03',
+    //     fillOpacity: 0.5,
+    //     radius: 500
+    // }).addTo(map).bindPopup('I am a circle.');
+
+    // const polygon = L.polygon([
+    //     [51.509, -0.08],
+    //     [51.503, -0.06],
+    //     [51.51, -0.047]
+    // ]).addTo(map).bindPopup('I am a polygon.');
+
+
+    // const popup = L.popup()
+    //     .setLatLng([51.513, -0.09])
+    //     .setContent('I am a standalone popup.')
+    //     .openOn(map);
+
+    function onMapClick(e) {
+        popup
+            .setLatLng(e.latlng)
+            .setContent(`You clicked the map at ${e.latlng.toString()}`)
+            .openOn(map);
+    }
+
+    map.on('click', onMapClick);
+</script>
+
+
 <?php
 require_once('../layouts/footer_to_end.php');
+
 
 if (isset($_POST['submit_parent'])) {
 
@@ -100,7 +167,6 @@ if (isset($_POST['submit_parent'])) {
 
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = md5($_POST['password']);
     $fathername = $_POST['fathername'];
     $mothername = $_POST['mothername'];
     $fatherphone = $_POST['fatherphone'];
@@ -109,19 +175,24 @@ if (isset($_POST['submit_parent'])) {
 
     $user_id = $_SESSION['id'];
 
-    $sql_user = "INSERT INTO users (`name`, `username`, `password`, `user_role`, `phone`, `email`, `address` ) 
-                VALUES('$username','$username', '$password','parent','$motherphone', '$email', '$address' )";
+    $password = $username . "@" . date('His');
+    $encPass = md5($password);
 
-    $success = mysqli_query($db, $sql_user) or die('Could not enter data: ' . mysqli_error($db));
+    $sql_user = "INSERT INTO users (`name`, `username`, `password`, `user_role`, `phone`, `email`, `address`, `par_fathername`, `par_mothername`, `par_fatherphone`, `par_motherphone`, `created_by` ) 
+                VALUES('$username','$username', '$encPass','parent','$motherphone', '$email', '$address', '$fathername','$mothername','$fatherphone','$motherphone', '$user_id')";
+
+    mysqli_query($db, $sql_user) or die('Could not enter data: ' . mysqli_error($db));
     $id = mysqli_insert_id($db);
 
-    $sql = "INSERT INTO
-            `parents`(`user_id`,`username`, `email`, `password`, `fathername`, `mothername`, `fatherphone`, `motherphone`, `address`, `created_by`) 
-            VALUES('$id', '$username','$email','$password','$fathername','$mothername','$fatherphone','$motherphone','$address', '$user_id')";
+    //? SEND EMAIL
+    $message = "Dear Mr " . $fathername . " And Mrs " . $mothername . ", Welcome to the Virtual Learning Platform, your username is  " . $username . " and your password is " . $password . ""
+        . "<br> Kind Regards <br>" . ' <img src="../../../assets/logo/vle.png" height="100px" width="200px">';
 
-    $success = mysqli_query($db, $sql) or die('Could not enter data: ' . mysqli_error($db));;
-    echo "<script> window.location = 'all_parents.php?id=" . $id . "&created=true' </script>";
-    if ($success) {
-    }
+    $emails->send_mail($email, $message, "WELCOME TO THE VLE");
+
+    // return var_dump($email);
+    echo "<script> window.location = 'all_parents.php?created=true' </script>";
+    // echo "<script> history.back() </script>";
+
 }
 ?>

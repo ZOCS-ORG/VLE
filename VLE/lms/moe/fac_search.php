@@ -61,7 +61,7 @@
             
               </div>
               <div class="card-action">
-                <button class="btn blue waves-effect waves-light" type="submit" name="search">Search
+                <button class="btn green waves-effect waves-light" type="submit" name="search">Search
                   <i class="material-icons right">send</i>
                 </button>
               </div>
@@ -80,7 +80,7 @@
 
         if(!empty($_GET['srchYear'])){$srchYear=$_GET['srchYear'];}
         else{?>
-          <div class="card-panel blue">
+          <div class="card-panel green ">
             <span class="white-text">
               Please select Year.
             </span>
@@ -88,7 +88,7 @@
         <?php die(); }
         if(!empty($_GET['srchSub'])){$srchSub=$_GET['srchSub'];}
         else{?>
-          <div class="card-panel blue">
+          <div class="card-panel green ">
             <span class="white-text">
               Please select Subject.
             </span>
@@ -96,7 +96,7 @@
         <?php die(); }
         if(!empty($_GET['srchBatch'])){$srchBatch=$_GET['srchBatch'];}
         else{?>
-          <div class="card-panel blue">
+          <div class="card-panel green ">
             <span class="white-text">
               Please select Batch
             </span>
@@ -105,7 +105,7 @@
 
         <?php $srchPNum=$_GET['srchPNum'];
       ?>
-          <div class="card-panel blue">
+          <div class="card-panel green ">
               <span class="white-text">Showing results for<br>
               year= <?php echo $_GET['srchYear']?><br>
               subject= <?php echo $_GET['srchSub']?><br>
@@ -157,7 +157,7 @@
                 <?php }
                 ?>
                 <td><?php echo $marks;?></td>
-                <td><a class="btn blue waves-effect waves-light" type="submit" name="Search" href="show_more_prac.php?id=<?php echo $pracId ?>">Show more<i class="material-icons right">send</i></a></td>
+                <td><a class="btn green waves-effect waves-light" type="submit" name="Search" href="show_more_prac.php?id=<?php echo $pracId ?>">Show more<i class="material-icons right">send</i></a></td>
               </tr>
 
               <?php }?>
@@ -184,7 +184,7 @@
               </div>
             </div>
             <div class="card-action">
-              <button class="btn blue waves-effect waves-light" type="submit" name="reg_search">Search
+              <button class="btn green waves-effect waves-light" type="submit" name="reg_search">Search
                 <i class="material-icons right">send</i>
               </button>
             </div>

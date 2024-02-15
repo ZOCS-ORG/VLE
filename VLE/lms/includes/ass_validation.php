@@ -57,6 +57,7 @@ if (isset($_POST['upload_doc'])) {
 
     $description = $_POST['description'];
     $url = $_POST['url'];
+    $visibility = $_POST['visibility'];
     //$title = $_POST['title'];
 
     $file = $_FILES['nFile']['name'];
@@ -69,8 +70,8 @@ if (isset($_POST['upload_doc'])) {
     // }
     move_uploaded_file($_FILES['nFile']['tmp_name'], "../files/moe_uploads/" . $file);
 
-    $query = $db->query("INSERT INTO `moe_uploads` (`title`, `description`, `file`, `url`,`date_added`, `uploaded_by`)
-                                                    VALUES ('$title', '$description', '$file', '$url','$date_sub','$teacher_id') ")
+    $query = $db->query("INSERT INTO `moe_uploads` (`title`, `description`, `file`, `url`,`date_added`, `uploaded_by`, `visibility`)
+                                                    VALUES ('$title', '$description', '$file', '$url','$date_sub','$teacher_id', '$visibility') ")
             or die("An error occured: " . mysqli_error($db));
 
     if ($query) {

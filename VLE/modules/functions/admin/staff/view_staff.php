@@ -24,9 +24,9 @@ if (mysqli_num_rows($result) > 0) {
                 <div class=" card-header text-center">
                     <h3 class="text-">Staff Info</h3>
                     <div class="text-">
-                        <?php echo "<img src='" . $images_dir . $picname . "' alt='" . $picname . "' width='140' height='140'> " ?>
+                        <?php // echo "<img src='" . $images_dir . $picname . "' alt='" . $picname . "' width='140' height='140'> " ?>
 
-                        <div class="text-right text-white">
+                        <div class="text-center text-white">
                             <a href="update_staff.php?id=<?php echo $staff_id ?>" class="btn btn-info btn-sm">Edit</a>
                             <a href="../../../config/admin_server.php?id=<?php echo $staff_id; ?>&delete_staff=true" class="btn btn-danger btn-sm">Delete</a>
                         </div>

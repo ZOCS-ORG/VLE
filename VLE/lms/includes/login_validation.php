@@ -35,14 +35,14 @@
           // $_SESSION['reg_no']=$reg_no;
           // echo "<script>window.open('../student/stud_profile.php', '_self')</script>";
         } else {?>
-          <div class="card-panel blue">
+          <div class="card-panel green ">
             <span class="white-text"><?php echo "The Reg Number or Password is incorrect, plese try again or signUp"; ?>
             </span>
           </div>
         <?php }
       }
       else{?>
-        <div class="card-panel blue">
+        <div class="card-panel green ">
           <span class="white-text"><?php echo $error.", please try again"; ?>
           </span>
         </div>

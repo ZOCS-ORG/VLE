@@ -32,7 +32,7 @@ if ($login_code) {
     <body>
         <!-- partial:index.partial.html -->
         <div class="wrapper fadeInDown">
-          
+
 
             <div id="formContent">
                 <img src="vle-removebg-preview.png" height="150px" ></img>
@@ -43,19 +43,17 @@ if ($login_code) {
 
                 <!-- Login Form -->
                 <form  method="post" action="../../config/user_server.php">      
-                    <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
+                    <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username" required>
 
-                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-                    
-                    <input type="submit" class="fadeIn fourth" name="login_user" value="Log In">
+                    <input class="btn btn-sm btn-success" type="password" id="password" class="fadeIn third" name="password" placeholder="password" required>
+
+                    <input type="submit" class="btn btn-sm btn-success" name="login_user" value="Log In">
                 </form>
-                <a href='../../../../index.php' class="btn btn-success"> Back</a>
-              
-                <div id="formFooter">
-                  <a class="underlineHover" href="#">Forgot Password?</a>
-                </div>
-                
+                <a href='../../../../index.php' style="color:#008000"> Back</a>
 
+                <div id="formFooter">
+                    <a class="underlineHover" href="reset-password.php">Forgot Password?</a>
+                </div>
             </div>
         </div>
         <!-- partial -->

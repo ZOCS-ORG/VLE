@@ -4,7 +4,6 @@ $add_side_bar = true;
 include_once('../layouts/head_to_wrapper.php');
 
 include_once('../layouts/topbar.php');
-
 ?>
 
 <hr />
@@ -19,7 +18,7 @@ include_once('../layouts/topbar.php');
                     <tr>
                         <th>Name</th>
                         <th>Class</th>
-                        <th>Picture</th>
+
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -39,9 +38,7 @@ include_once('../layouts/topbar.php');
                         // parents.mothername, parents.fathername, parents.id
                         // FROM parents
                         // WHERE id = $parent_id";
-
                         // $res = mysqli_query($db, $q) or die(mysqli_error($db));
-
                         // if (mysqli_num_rows($res) > 0){
                         //     while($r = mysqli_fetch_assoc($res)){ 
                         //         echo "<p>Fathers name: ".$r['fathername'].".</p>";
@@ -54,55 +51,53 @@ include_once('../layouts/topbar.php');
                     </div>
                 </div>
                 <!-- Results's Modal Ends -->
-
-
-
-
-
                 <tbody>
                     <?php
-                    $sql = "SELECT img, students.name AS name, students.id AS id, classes.name AS class FROM students INNER JOIN classes ON classes.id = students.class_id WHERE parentid = '$id' ";
+                    // echo '$id' . $id;
+                    $sql = "SELECT students.img, u.name AS name, u.id AS id, classes.name AS class
+                            FROM students
+                            JOIN classes ON classes.id = students.class_id
+                            JOIN users u ON u.id = students.user_id
+                            WHERE parentid = '$id' ";
                     $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
                     $string = "";
                     $images_dir = "../../../utils/images/students/";
 
                     while ($row = mysqli_fetch_array($res)) {
                         $picname = $row['img'];
-                    ?>
+                        ?>
                         <tr>
                             <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['class']; ?></td>
-                            <td><?php echo "<img src='" . $images_dir . $picname . "' alt='" . $picname . "' width='50' height='50'> " ?></td>
+
                             <td>
                                 <div class="btn-group"><a class="btn btn-success btn-sm text-white" href="view_student.php?id=<?php echo $row['id'] ?>">View Student</a>
                                     <a class="btn btn-warning btn-sm text-dark " href="../attendance/register.php?student=<?php echo $row['id'] ?>">View Attendance </a>
                                     <a class="btn btn-sm btn-primary" href="../../../../lms/student/stud_profile.php?student_id=<?php echo $row['id'] ?>">
                                         <span>E-Learning </span></a>
                             </td>
-        </div>
+                            </div>
 
-        </tr>
-    <?php
-
+                        </tr>
+                        <?php
                     }
-
-    ?>
-    </tbody>
-    </table>
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-    </div>
-    </div>
-
-
-    <script>
-        $(document).ready(function() {
-            $('#dataTable').DataTable();
-        });
-    </script>
+</div>
 
 
-    </div>
-    </div>
+<script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+    });
+</script>
+
+
+</div>
+</div>
 </main>
 
 
@@ -168,17 +163,17 @@ include_once('../layouts/topbar.php');
     var span = document.getElementsByClassName("close")[0];
 
     // When the user clicks the button, open the modal 
-    btn.onclick = function() {
+    btn.onclick = function () {
         modal.style.display = "block";
     }
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+    span.onclick = function () {
         modal.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }

@@ -90,7 +90,7 @@
                                                             <label class="btn btn-sm btn-outline-danger" for="<?php echo $username; ?>">Absent</label>
 
                                                             <!-- <script>
-                                                            var nameValidationInput = document.getElementById("<?php// echo $student_id ?>");
+                                                            var nameValidationInput = document.getElementById("<?php // echo $student_id ?>");
                                                             function useValue() {
                                                                 var NameValue = nameValidationInput.value;
                                                                 // use it
@@ -303,7 +303,6 @@
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks the button, open the modal 
     btn.onclick = function() {
     modal.style.display = "block";
     }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['id'])) {
     include_once "config.php";
 
     // Upload file attachment
@@ -17,9 +17,9 @@ if (isset($_SESSION['username'])) {
     }
 
 
-    $outgoing_id = $_SESSION['username'];
-    $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
-    $message = mysqli_real_escape_string($conn, $_POST['message']);
+    $outgoing_id = $_SESSION['id'];
+    $incoming_id = mysqli_real_escape_string($db, $_POST['incoming_id']);
+    $message = mysqli_real_escape_string($db, $_POST['message']);
 
 
 
@@ -27,7 +27,7 @@ if (isset($_SESSION['username'])) {
     echo $incoming_id;
     echo $message;
     if (!empty($message)) {
-        $sql = mysqli_query($conn, "INSERT INTO messages (incoming_msg_id, outgoing_msg_id, msg, attachment)
+        $sql = mysqli_query($db, "INSERT INTO messages (incoming_msg_id, outgoing_msg_id, msg, attachment)
                                         VALUES ('$incoming_id', '$outgoing_id', '$message', '$attachment')") or die();
     }
 } else {

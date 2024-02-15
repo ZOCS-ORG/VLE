@@ -81,7 +81,7 @@
 
                     <!-- First Tab - Submmissions -->
                     <div id="submissions" class="col s12 m8" >
-                        <div class="card-panel blue">
+                        <div class="card-panel green ">
                           <span class="white-text"> Recently Recieved Assignments </span>
                         </div><br>
                         <div class="row">
@@ -123,7 +123,7 @@
                                 <td><?php echo $date_submmited ?></td>
                                 <td><?php echo $late ?></td>
                                 <td> <a href="<?php echo $file_path ?>" download> File </a>  </td>
-                                <td><a class="btn blue waves-effect waves-light" 
+                                <td><a class="btn green waves-effect waves-light" 
                                   href="grade_ass.php?ass_id=<?php echo $ass_id."&class_id=".$class_id."&sub_id=".$subject_id."&stud_id=".$student_id; ?>">
                                   Grade<i class="material-icons right">grade</i></a>
                                 </td>
@@ -136,7 +136,7 @@
 
                     <!-- Second Tab - Graded -->
                     <div id="graded" class="col s12 m8" >
-                        <div class="card-panel blue">
+                        <div class="card-panel green ">
                           <span class="white-text"> Graded Assignments </span>
                         </div><br>
                         <div class="row">

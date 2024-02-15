@@ -1,7 +1,4 @@
 <?php
+error_reporting(0);
 
 include_once('../../../../config/config.php');
-$db = $db;
-if (!$db) {
-  // echo "Database connection error".mysqli_connect_error();
-}

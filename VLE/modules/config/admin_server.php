@@ -665,8 +665,7 @@ function create_admin() {
 
 //Update Admin
 if (!empty($_POST['update_admin'])) {
-    $addId = $_POST['id'];
-    //return var_dump($addId);
+    $id = $_POST['id'];
     $name = $_POST['name'];
     if (!empty($_POST['password'])) {
         $pw = $_POST['password'];
@@ -674,20 +673,22 @@ if (!empty($_POST['update_admin'])) {
     }
     $phone = $_POST['phone'];
     $email = $_POST['email'];
-    //$gender = $_POST['gender'];
+    $username = $_POST['username'];
     //$dob = $_POST['dob'];
-    //$hiredate = $_POST['hiredate'];
     $address = $_POST['address'];
-    $salary = $_POST['salary'];
-    $filetmp = $_POST['file'];
-    $dir = "../../utils/images/admin/";
-    $img = $name . "_" . rand(100, 1000000) . ".jpg";
-    // unlink($dir.$img);
-    move_uploaded_file($filetmp, $dir . $img);
-    $sql = "UPDATE admin SET";
+    $filetmp = $_FILES['file']['tmp_name'];
+    if (isset($filetmp) && !empty($filetmp)) {
+        $dir = "../../../utils/images/users/";
+        $img = $name . "_" . rand(100, 1000000) . ".jpg";
+        // unlink($dir.$img.".jpg");
+        move_uploaded_file($filetmp, $dir . $img);
+    } else {
+        $img = "";
+    }
+    $sql = "UPDATE users SET";
     //Check to see that value is not empty so we don't replace already existing value with null😋..
-    if (!empty($addId)) {
-        $sql .= " id = '$addId',";
+    if (!empty($id)) {
+        $sql .= " id = '$id',";
     }
     if (!empty($password)) {
         $sql .= " password = '$password',";
@@ -701,38 +702,21 @@ if (!empty($_POST['update_admin'])) {
     if (!empty($email)) {
         $sql .= " email = '$email',";
     }
-    // if(!empty($gender)) { $sql .= " sex = '$gender',"; }
-    // if(!empty($dob)) { $sql .= " dob = '$dob',"; }
-    if (!empty($img)) {
-        $sql .= " img = '$img',";
-    }
-    if (!empty($salary)) {
-        $sql .= " salary = '$salary',";
+    if (!empty($username)) {
+        $sql .= " username = '$username',";
     }
     if (!empty($address)) {
         $sql .= " address = '$address',";
     }
+    if (!empty($img)) {
+        $sql .= " img = '$img',";
+    }
 
-    $sql = substr($sql, 0, strlen($sql) - 1) . " WHERE `id` = '$addId' ";
+    $sql = substr($sql, 0, strlen($sql) - 1) . " WHERE `id` = '$id' ";
     $success = mysqli_query($db, $sql);
-
     // Update users table too
-    $userid = "ad_" . $addId;
-    $sql_user = "UPDATE users SET";
-    if (!empty($password)) {
-        $sql_user .= " password = '$password',";
-    }
-    if (!empty($name)) {
-        $sql_user .= " name = '$name',";
-    }
-    if (!empty($username)) {
-        $sql_user .= " username = '$username',";
-    }
 
-    $sql_user = substr($sql_user, 0, strlen($sql_user)) . "  user_role = 'admin' WHERE `userid` = '$userid' ";
-    $success = mysqli_query($db, $sql_user) or die('Error: Could not Update data: ' . mysqli_error($db));
-
-    header('Location: index.php?id=' . $addId . "&updated=true");
+    header('Location: index.php?id=' . $id . "&updated=true");
 }
 
 
@@ -966,7 +950,7 @@ if (!empty($_POST['update_student'])) {
     $sql = substr($sql, 0, strlen($sql) - 1) . " WHERE `id` = '$stuId' ";
     $success = mysqli_query($db, $sql);
     // Update users table too
-    $userid = "stu_" . $stuId;
+    $userid = $stuId;
     $sql_user = "UPDATE users SET";
     if (!empty($stuPassword)) {
         $sql_user .= " password = '$stuPassword',";
@@ -1256,10 +1240,9 @@ if (isset($_GET['id']) && isset($_GET['delete_faculty'])) {
  */
 // Create SUBJECT...
 if (isset($_POST['create_program'])) {
-    $id = $_POST['id'];
     $name = $_POST['name'];
 
-    $sql = "INSERT INTO subjects VALUES('$id','$name')";
+    $sql = "INSERT INTO subjects (`name`) VALUES('$name')";
     $success = mysqli_query($db, $sql) or die('Could not enter data: ' . mysqli_error($db));
     if ($success) {
         $_SESSION['created'] = "Added successfully";

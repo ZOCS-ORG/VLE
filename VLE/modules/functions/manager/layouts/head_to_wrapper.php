@@ -5,19 +5,19 @@
 
   $id = $_SESSION['id'];
   $username = $_SESSION['username'];
- // Authenticate!!!
- $query =  "SELECT * FROM managers WHERE username='$username' ";
- $results=mysqli_query($db,$query);
- $row=mysqli_fetch_array($results);
- $login_session = $row['name'];
- $_SESSION['img'] = $row['img'];
- $name = $_SESSION['name'] = $row['name'];
- $id = $_SESSION['id'] = $row['id'];
- $role = $_SESSION['role'] = "manager";
-
- if(empty($login_session)){
-   header("Location: ../../../../");
- }
+  // TODO Authenticate!!!
+  //  $query =  "SELECT * FROM teachers WHERE username='$username' ";
+  //  $results=mysqli_query($db,$query);
+  //  $row=mysqli_fetch_array($results);
+  //  $login_session = $row['name'];
+  
+  $name = $_SESSION['name'];
+  $id = $_SESSION['id'];
+  $role = $_SESSION['role'];
+  
+  if (empty($username)) {
+         header("Location: ../../../../");
+  }
   
 ?>
 

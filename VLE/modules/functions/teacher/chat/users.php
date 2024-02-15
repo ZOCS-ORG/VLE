@@ -4,7 +4,7 @@ include_once "php/config.php";
 if (!isset($_SESSION['id'])) {
   // header("location: login.php");
 }
-$username = $_SESSION['username'];
+$id = $_SESSION['id'];
  
  include_once "header.php"; 
 
@@ -15,7 +15,7 @@ $username = $_SESSION['username'];
 //set to false if you don't want the sidebar to show
 $add_side_bar = true;
 require_once('../layouts/head_to_wrapper.php');
-// return var_dump($username);
+// return var_dump($id);
 ?>
 <!-- Main Content -->
 <div id="content">
@@ -27,8 +27,8 @@ require_once('../layouts/head_to_wrapper.php');
   <!-- Begin Page Content -->
   <div class="container-fluid">
     <!-- Feeds Heading -->
-    <div style="background-color: green" class="card d-sm-flex align-items-center justify-content-between mb-4 py-2 h5">
-      <h5 class="h5 mb-0 text-info ">Chats </h5>
+    <div class="border-success card d-sm-flex align-items-center justify-content-between mb-4 py-2 h5">
+      <h5 class="h5 mb-0 ">Chats </h5>
     </div>
 
     <!-- Content Row -->
@@ -47,7 +47,7 @@ require_once('../layouts/head_to_wrapper.php');
               <header>
                 <div class="content">
                   <?php
-                  $sql = mysqli_query($db, "SELECT * FROM users WHERE username = '$username' ");
+                  $sql = mysqli_query($db, "SELECT * FROM users WHERE id = '$id' ");
                   if (mysqli_num_rows($sql) > 0) {
                     $row = mysqli_fetch_assoc($sql);
                   }

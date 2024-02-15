@@ -1,17 +1,22 @@
 <?php
 session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['id'])) {
     include_once "config.php";
-    $outgoing_id = $_SESSION['username'];
-    $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
+    $outgoing_id = $_SESSION['id'];
+    $incoming_id = mysqli_real_escape_string($db, $_POST['incoming_id']);
     $output = "";
-    $sql = "SELECT * FROM messages INNER JOIN users ON users.username = messages.outgoing_msg_id
+    $sql = "SELECT * FROM messages INNER JOIN users ON users.id = messages.outgoing_msg_id
                                                     -- OR users.username = messages.incoming_msg_id
                 WHERE (outgoing_msg_id = '$outgoing_id' AND incoming_msg_id = '$incoming_id' )
-                OR (outgoing_msg_id = '$incoming_id' AND incoming_msg_id = '$outgoing_id') ORDER BY msg_id";
-    $query = mysqli_query($conn, $sql);
+                OR (outgoing_msg_id = '$incoming_id' AND incoming_msg_id = '$outgoing_id')
+                GROUP BY msg 
+                ORDER BY msg_id";
+    $query = mysqli_query($db, $sql);
     if (mysqli_num_rows($query) > 0) {
         while ($row = mysqli_fetch_assoc($query)) {
+             //** update message status to Read
+             mysqli_query($db, "UPDATE messages SET status = 'Read' WHERE msg_id = '$row[msg_id]' AND incoming_msg_id = '$outgoing_id' "); 
+
             //** Check if file has attachment.
             $file_extention = pathinfo($row['attachment'], PATHINFO_EXTENSION);
             if ($row['outgoing_msg_id'] === $outgoing_id) {

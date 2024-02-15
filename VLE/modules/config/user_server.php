@@ -30,7 +30,6 @@ $_SESSION['userid'] = $userid;
 $_SESSION['username'] = $username;
 $_SESSION['password'] = $password;
 
-
 ///?
 $_SESSION['img'] = $row['img'];
 $name = $_SESSION['name'] = $row['name'];
@@ -38,16 +37,13 @@ $id = $_SESSION['id'] = $row['id'];
 $role = $_SESSION['role'] = $row['user_role'];
 
 mysqli_query($db, "UPDATE users SET status = 'Online' WHERE id = '$id' ") or die(mysqli_error($db));
-// return var_dump($role);
-
+//return print_r($_SESSION);
 //*** NEW USER REDIRECT FOR ZOCS... COMMENTED OUT GENERIC ONE BELLOW */
 if (empty($role)) {
     header("Location: ../functions/base_user/login.php?login=false");
 } else {
-    header("Location: ../functions/".$role);
+    header("Location: ../functions/" . $role);
 }
-
-
 
 //return var_dump($username);
 // if (empty($role)) {

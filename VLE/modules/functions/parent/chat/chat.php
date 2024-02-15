@@ -4,7 +4,7 @@ include_once "php/config.php";
 if (!isset($_SESSION['id'])) {
   // header("location: login.php");
 }
-$userid = $_SESSION['userid'];
+$id = $_SESSION['id'];
 ?>
 <?php include_once "header.php"; ?>
 
@@ -24,9 +24,9 @@ require_once('../layouts/head_to_wrapper.php');
   <?php
   $user_id = mysqli_real_escape_string($db, $_GET['user_id']);
 
-  echo $userid;
-  // die();
-  $sql = mysqli_query($db, "SELECT * FROM users WHERE userid = '$user_id' ");
+  // return var_dump($user_id);
+
+  $sql = mysqli_query($db, "SELECT * FROM users WHERE id = '$user_id' ");
   if (mysqli_num_rows($sql) > 0) {
     $row = mysqli_fetch_assoc($sql);
   } else {
@@ -35,30 +35,20 @@ require_once('../layouts/head_to_wrapper.php');
   ?>
   <!-- Begin Page Content -->
   <div class="container-fluid">
-    <!-- Feeds Heading -->
-    <div style="background-color: green" class="card d-sm-flex align-items-center justify-content-between mb-4 py-2 h5">
-      <h5 class=" ">
-        <!--  -->
-        <div class="details">
-          <span>Messeging <strong class="b"><?php echo " " . $row['username'] ?></strong></span>
-        </div>
-      </h5>
-    </div>
-
+    
     <!-- Content Row -->
     <div class="row">
 
       <!-- Content Column -->
 
-      <div class="col-lg-6 mb-4">
+      <div class="col-lg-9 mb-4">
         <!-- ========================== -->
 
-        <div class="wrapper">
-          <section class="chat-area">
+        <div class="wrapper" style=" height: 20px ">
+            <section class="chat-area" >
             <header>
               <?php
-              $user_id = mysqli_real_escape_string($db, $_GET['user_id']);
-              $sql = mysqli_query($db, "SELECT * FROM users WHERE username = '$user_id' ");
+              $sql = mysqli_query($db, "SELECT * FROM users WHERE id = '$user_id' ");
               if (mysqli_num_rows($sql) > 0) {
                 $row = mysqli_fetch_assoc($sql);
               } else {

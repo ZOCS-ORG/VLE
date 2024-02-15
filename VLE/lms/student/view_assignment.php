@@ -52,7 +52,7 @@
                         <input type="hidden" name="subject_id" value="<?php echo $subject_id ?>" />
 
                         <div class="file-field input-field">
-                        <div class="btn blue">
+                        <div class="btn green ">
                             <span>Browse</span>
                             <input type="file" name="ass_browse" required>
                         </div>
@@ -61,7 +61,7 @@
                         </div>
                         </div>
 
-                        <span class=" left-align"><button class="waves-effect blue waves-light btn" type="submit" name="ass_submit_direct" value="submit">
+                        <span class=" left-align"><button class="waves-effect green waves-light btn" type="submit" name="ass_submit_direct" value="submit">
                             Submit Assignment   <i class="material-icons right">send</i></button>
                         </span>
                     </form>

@@ -13,7 +13,7 @@ if (isset($_POST['add_user'])) {
     $teaId = $_POST['id'];
     $teaName = $_POST['name'];
     $username = $_POST['username'];
-    $teaPassword = md5($_POST['password']);
+    // $teaPassword = md5($_POST['password']);
     $teaPhone = $_POST['phone'];
     $teaEmail = $_POST['email'];
     $teaGender = $_POST['gender'];
@@ -35,19 +35,24 @@ if (isset($_POST['add_user'])) {
 
     $userid = 00; //$teaId;
 
-    $sql_user = "INSERT INTO users (`userid`, `name`, `username`, `password`, `user_role`, `phone`, `email`, `sex`, `address`, `img`) 
-                VALUES('$userid', '$teaName','$username', '$teaPassword','$user_type','$teaPhone', '$teaEmail', '$teaGender', '$teaAddress','$img' )";
+    $teaPassword = $username . "@" . date('His');
+    $encPass = md5($teaPassword);
 
-    $message = "Dear " . $teaName . ", Welcome to the Virtual Learning Platform, your username is  " . $username . " and your password is " . $_POST['password'] . ""
-        . "<br> Kind Regards <br>" . ' <img src="../vle.png" height="100px" width="200px">';
-
-    $emails->send_mail($teaEmail, $message, "WELCOME TO THE VLE");
+    $sql_user = "INSERT INTO users (`name`, `username`, `password`, `user_role`, `phone`, `email`, `sex`, `address`) 
+                VALUES('$teaName','$username', '$encPass','$user_type','$teaPhone', '$teaEmail', '$teaGender', '$teaAddress' )";
 
     $success = mysqli_query($db, $sql_user) or die('Could not enter data: ' . mysqli_error($db));
 
+
+    $message = "Dear " . $teaName . ", Welcome to the Virtual Learning Platform, your username is  " . $username . " and your password is " . $teaPassword . ""
+        . "<br> Kind Regards <br>" . ' <img src="../../../assets/logo/vle.png" height="100px" width="200px">';
+
+    $emails->send_mail($teaEmail, $message, "WELCOME TO THE VLE");
+
+
     $created_id = mysqli_insert_id($db);
 
-    echo "<script>document.location='../users/view.php?id=". $created_id . "&created=true'</script>";
+    echo "<script>document.location='../users/view.php?id=" . $created_id . "&created=true'</script>";
     // header('Location: ../users/view.php?id=' . $teaId . "&created=true");
 }
 ?>
@@ -83,6 +88,10 @@ if (isset($_POST['add_user'])) {
     }
 
     select {
+        width: 90%;
+    }
+    
+    textarea{
         width: 90%;
     }
 
@@ -152,10 +161,12 @@ if (isset($_POST['add_user'])) {
                             <tr>
 
                                 <td style=" color: black"><b>Physical Address:</b></td>
-                                <td class="text-right"><input id="address" type="text" name="address" placeholder="Enter Address"></td>
+                                <td class="text-right">
+                                    <textarea name="address" id="" cols="30" rows="4"></textarea>
+                                </td>
                             </tr>
-                            <tr>
 
+                            <tr>
                                 <td style=" color: black"><b>User type:</b></td>
                                 <td class="text-right">
                                     <div class="form-">

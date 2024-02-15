@@ -72,7 +72,7 @@ $notice_id = $_GET['notice_id'];
                         <br><br>
                     <?php } ?>
 
-                    <div class="card blue center">
+                    <div class="card green center">
                         <span class="card-title white-text"><b> Comments </b></span>
                     </div>
                     <br><br />

@@ -5,7 +5,9 @@
     include_once('../layouts/topbar.php');
 
         $id = $_GET['id'];
-        $query = "SELECT  * from students where id = '$id' ";
+        $query = "SELECT  * from users u
+                    JOIN students s ON s.user_id = u.id
+                    where u.id = '$id' ";
 
         $result = mysqli_query($db, $query) or die(mysqli_error($db));
         $count = 1;

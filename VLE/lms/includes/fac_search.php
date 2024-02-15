@@ -80,7 +80,7 @@
             
               </div>
               <div class="card-action">
-                <button class="btn blue waves-effect waves-light" type="submit" name="search">Search
+                <button class="btn green waves-effect waves-light" type="submit" name="search">Search
                   <i class="material-icons right">send</i>
                 </button>
               </div>
@@ -99,7 +99,7 @@
   $srchPNum=$_GET['srchPNum'];
 ?>
       <div class="col s12 m5">
-          <div class="card-panel blue">
+          <div class="card-panel green ">
               <span class="white-text">Showing results for<br>
               year= <?php echo $_GET['srchYear']?><br>
               subject= <?php echo $_GET['srchSub']?><br>
@@ -124,7 +124,7 @@
               $cktOp=$row['cktOp'];
 ?>
               <!-- display -->
-              <div class="card blue-grey darken-1 col s12 m6" styel="padding-right: 10px;">
+              <div class="card green -grey darken-1 col s12 m6" styel="padding-right: 10px;">
                 <div class="card-content white-text">
                   <span class="card-title"><?php echo $reg_no ?></span>
                   <p>
@@ -139,7 +139,7 @@
                   </p>
                 </div>
                 <div class="card-action">
-                <a class="btn blue waves-effect waves-light" type="submit" name="Search" href="show_more_prac.php?id=<?php echo $pracId ?>" >Show more<i class="material-icons right">send</i></a>                 
+                <a class="btn green waves-effect waves-light" type="submit" name="Search" href="show_more_prac.php?id=<?php echo $pracId ?>" >Show more<i class="material-icons right">send</i></a>                 
               
                 </div>
               </div>
@@ -147,7 +147,7 @@
               <?php } }
                 else{ ?>
 
-                <div class="card-panel blue">
+                <div class="card-panel green ">
                     <span class="white-text">
                     No results found..!!
                     </span>

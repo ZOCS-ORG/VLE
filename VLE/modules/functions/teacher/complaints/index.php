@@ -13,7 +13,7 @@ include_once('../layouts/topbar.php');
             <div class="card-header text-center">
                 <h3>Complaints</h3>
                 <div class="text-right text-light">
-                    <a class="btn btn-sm btn-success" href="create_complaint.php">Make a Complaints</a>
+                    <a class="btn btn-sm btn-success" href="create_complaint.php">Raise a Query</a>
                 </div>
             </div>
             <div class="card-body">
@@ -25,6 +25,7 @@ include_once('../layouts/topbar.php');
                                 <td>Complaint #</td>
                                 <td>Complaint</td>
                                 <td>Attachment</td>
+                                <td>Status</td>
                                 <td>Actions</td>
                             </tr>
                         </thead>
@@ -50,9 +51,9 @@ include_once('../layouts/topbar.php');
                                             echo "No attached files";
                                         }
                                         ?>
-
                                     </td>
-                                    <td><a href="view_complaint.php?id=<?php echo $row["id"]; ?>" class="btn btn-md btn-light" style="width:"> Open </td>
+                                    <td><?php echo $row['status']; ?></td>
+                                    <td><a href="view_complaint.php?id=<?php echo $row["id"]; ?>" class="btn btn-md btn-light" style="width:"> View </td>
                                 </tr>
                             <?php
 

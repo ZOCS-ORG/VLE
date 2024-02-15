@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['id'])) {
     include_once "config.php";
 
     // Upload file attachment
@@ -17,7 +17,7 @@ if (isset($_SESSION['username'])) {
     }
 
 
-    $outgoing_id = $_SESSION['username'];
+    $outgoing_id = $_SESSION['id'];
     $incoming_id = mysqli_real_escape_string($db, $_POST['incoming_id']);
     $message = mysqli_real_escape_string($db, $_POST['message']);
 

@@ -7,7 +7,7 @@
 	<?php require '../includes/profile_navbar.php'; ?>
   <div class="row">
     <div class="col s12 m6">
-        <div class="card-panel blue">
+        <div class="card-panel green ">
             <span class="white-text">My Notifications</span>
           </div>
       <?php
@@ -38,7 +38,7 @@
               <div class="card-content black-text">
                 <span class="card-title left-align"><?php echo $tName ?></span><p class="right-align"><?php echo $date ?><p><hr>
                 <p><?php echo $notice;?></p>
-                <a class="btn blue waves-effect waves-light" href="../files/noticefiles/<?php echo $file ?>" download><?php echo $file?>  <i class="medium material-icons">file_download</i></a>
+                <a class="btn green waves-effect waves-light" href="../files/noticefiles/<?php echo $file ?>" download><?php echo $file?>  <i class="medium material-icons">file_download</i></a>
               </div>
             </div>
            <?php } ?>
@@ -48,7 +48,7 @@
     </div>
 
     <div class="col s12 m6">
-        <div class="card-panel blue">
+        <div class="card-panel green ">
           <span class="white-text">Assignment notices</span>
         </div>
         <?php require '../includes/ass_submit_validation.php'; ?>
@@ -85,7 +85,7 @@
                   Question : <?php echo "<b>$ass_question</b>" ?><br>
                   <?php echo "Marks : <b>$marks</b>";?>
                 </p>
-                <a class="btn blue waves-effect waves-light" href="../files/ass_notice/<?php echo $assFile ?>" download><?php echo $assFile?>  <i class="medium material-icons">file_download</i></a><hr>
+                <a class="btn green waves-effect waves-light" href="../files/ass_notice/<?php echo $assFile ?>" download><?php echo $assFile?>  <i class="medium material-icons">file_download</i></a><hr>
                 <p>To be completed before <?php echo $date_due ?></p>
                 <form action="#" method="POST"  enctype="multipart/form-data">
                     <input type="hidden" name="student_id" value="<?php echo $id ?>" />
@@ -94,7 +94,7 @@
                     <input type="hidden" name="assFile" value="<?php echo $ass_question ?>" />
 
                     <div class="file-field input-field">
-                      <div class="btn blue">
+                      <div class="btn green ">
                         <span>Browse</span>
                         <input type="file" name="ass_browse" required>
                       </div>
@@ -103,7 +103,7 @@
                       </div>
                     </div>
 
-                    <span class=" left-align"><button class="waves-effect blue waves-light btn" type="submit" name="ass_submit_direct" value="submit">
+                    <span class=" left-align"><button class="waves-effect green waves-light btn" type="submit" name="ass_submit_direct" value="submit">
                         Submit Assignment   <i class="material-icons right">send</i></button>
                     </span>
                 </form>

@@ -37,7 +37,7 @@
   
   <div class="row">
     <div class="col s12 m6">
-      <div class="card blue darken-1">
+      <div class="card green darken-1">
         <div class="card-content white-text">
           <center> <span class="card-title">Grade Students Assignment</span> </center>
           <br>
