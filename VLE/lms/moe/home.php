@@ -18,6 +18,13 @@ require_once('header.php');
             </div><br>
             <div class="card horizontal">
                 <div class="card-stacked">
+                    <a class="card-conten btn small text -text" href="forum.php">
+                        <span class="cardtitle">Forum</span>
+                    </a>
+                    <br>
+                    <a class="card-conten btn small text -text" href="../../modules/functions/<?php echo $_SESSION['role'] ?>/">
+                        <span class="cardtitle">Back to Dashboard</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -25,7 +32,7 @@ require_once('header.php');
         <!-- search column ends here -->
 
         <div class="col s12 m8" style="margin-top: 1em;">
-            <ul class="tabs">               
+            <ul class="tabs">
                 <li class="tab col s3"><a href="#assignments">E-Documents</a></li>
             </ul>
         </div>
@@ -45,6 +52,7 @@ require_once('header.php');
                             <th class="txt_limit" data-field="q">Document Details / Info</th>
                             <th data-field="subject">URL</th>
                             <th data-field="file">File</th>
+                            <th>Visibility</th>
                             <th data-field="date">Date Created</th>
                             <th>Actions</th>
                         </tr>
@@ -68,11 +76,12 @@ require_once('header.php');
                             ?>
                             <tr>
                                 <td><?php echo $name ?></td>
-                                <td><?php echo $question ?></td> 
-                                <td> <a href="<?php echo $url ?>"> Go to URL </a>  </td>                        
-                                <td> <a href="<?php echo $file_path ?>"> File </a>  </td>
+                                <td><?php echo $question ?></td>
+                                <td> <a href="<?php echo $url ?>"> Go to URL </a> </td>
+                                <td> <a href="<?php echo $file_path ?>"> File </a> </td>
+                                <td><?php echo $row['visibility'] ?? 'Not set' ?></td>
                                 <td><?php echo $dueDate ?></td>
-                                <td>                                 
+                                <td>
                                     <a class="btn small red waves-effect waves-light" href="notice_ass.php?delete_upload=true&ass_id=<?php echo $ass_id ?>"> Delete </a>
                                 </td>
                             </tr>
@@ -122,7 +131,7 @@ require_once('header.php');
     <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
-  <!-- <script src="../js/materialize.js"></script> -->
+    <!-- <script src="../js/materialize.js"></script> -->
 
     <script src="../js/init.js"></script>
 

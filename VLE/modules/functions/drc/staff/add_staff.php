@@ -33,7 +33,7 @@ if (isset($_POST['add_user'])) {
                 VALUES('$userid', '$teaName','$username', '$teaPassword','$user_type','$teaPhone', '$teaEmail', '$teaGender', '$teaAddress','$img' )";
 
     $message = "Dear " . $teaName . ", Welcome to the Virtual Learning Platform, your username is  " . $username . " and your password is " . $_POST['password'] . ""
-        . "<br> Kind Regards <br>" . ' <img src="../vle.png" height="100px" width="200px">';
+        . "<br> Kind Regards <br>" . ' <img src="../../../assets/logo/vle.png" height="100px" width="200px">';
 
     $emails->send_mail($teaEmail, $message, "WELCOME TO THE VLE");
 

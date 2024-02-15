@@ -6,9 +6,11 @@
 
 <?php 
       require '../includes/profile_navbar.php';
-      $_query = $db->query("SELECT * FROM students WHERE id='$id' ");
+      $_query = $db->query("SELECT * FROM students s
+                    JOIN users u ON u.id =s.user_id WHERE u.id='$id' ");
       $row3 = $_query->fetch_assoc();
-      $class_id = $row3['class_id'];      
+      $class_id = $row3['class_id']; 
+      // die($class_id);     
 ?>
 
 <style>
@@ -49,7 +51,7 @@
 
                   <tbody>
                       <?php
-                          $query = $db->query("SELECT * FROM ass_notice WHERE class_id = '$class' ORDER BY date_due DESC ")
+                          $query = $db->query("SELECT * FROM ass_notice WHERE class_id = '$class_id' ORDER BY date_due DESC ")
                                     or die("Error: ".mysqli_error($db));
 
                           while($row=$query->fetch_assoc()){ 

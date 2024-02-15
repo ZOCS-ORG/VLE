@@ -48,7 +48,7 @@
       $row = mysqli_fetch_array($results);
       $admin_acc_title = $row['name'];
       ?>
-      <div class="sidebar-brand-text mx-3"> <img src="../../../assets/vle.png" height="80px" width="230px"></div>
+      <div class="sidebar-brand-text mx-3"> <img src="../../../assets/vle.png" height="70px" width="200px"></div>
     </a>
 
     <!-- Divider -->
@@ -72,6 +72,16 @@
     <li class="nav-item text-color-dark">
       <a class="nav-link" href="../chat">
         <i class="fa fas fa-fw fa-comments"></i>
+        <?php
+        //? count messeges
+        $myID = $_SESSION['id'];
+        $q = mysqli_query($db, "SELECT COUNT(msg) FROM messages WHERE incoming_msg_id = '$myID' AND status = 'Unread' ") or die('Fetch Failed: ' . mysqli_error($db));
+        $fetch = mysqli_fetch_array($q);
+
+        if ($fetch[0] > 0) {
+          echo '<span class="badge badge-danger badge-counter badge-pill">' . $fetch[0] . '</span>';
+        }
+        ?>
         <span>Message Teacher </span></a>
     </li>
 

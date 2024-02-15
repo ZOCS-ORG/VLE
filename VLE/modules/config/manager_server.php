@@ -181,7 +181,9 @@ if(isset($_GET['id']) && isset($_GET['delete_announcement']) ) {
         if(!$success) {
             die('Could not Delete data: '.mysqli_error($db));
         }
-        header("Location: ../functions/manager/announcements/index.php?deleted=true");
+        header("Location:".$_SERVER[HTTP_REFERER]."");
+        //++echo '<p><a href="javascript:history.go(-1)" title="Return to previous page">« Go back</a></p>';
+        //header("Location: ../functions/manager/announcements/index.php?deleted=true");
     }
 }
 

@@ -115,7 +115,7 @@ require_once('../layouts/head_to_wrapper.php');
               </div>
               <hr>
               <div class="text-right col-auto">
-                <form id="loginForm" class="" action="http://MOODLE.test/login/index.php" method="post">
+                <form id="loginForm" class="" action="../../../../lms/teacher" method="post">
                   <input type="hidden" name="username" value="<?php echo $s_user; ?>">
                   <input type="hidden" name="password" value="<?php echo $s_pass; ?>">
                   <input type="submit" class="btn-block btn btn-sm btn-success" value="View" style="">

@@ -9,7 +9,7 @@ require_once('license/validate.php');
 $db_server = "localhost";
 $db_user = "root";
 $db_pass = "";
-$db_name = "zocs";
+$db_name = "zocs2";
 $db = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
 
 $query =  "SELECT name,dn FROM school_info ";

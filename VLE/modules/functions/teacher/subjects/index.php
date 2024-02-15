@@ -30,7 +30,6 @@ include_once('../layouts/topbar.php');
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="4">
                             <thead>
                                 <tr>
-                                    <!-- <th>Teacher</th> -->
                                     <th>Subject</th>
                                     <th>Class</th>
                                     <th>Manage Results</th>

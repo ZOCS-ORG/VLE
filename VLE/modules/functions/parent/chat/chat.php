@@ -35,26 +35,17 @@ require_once('../layouts/head_to_wrapper.php');
   ?>
   <!-- Begin Page Content -->
   <div class="container-fluid">
-    <!-- Feeds Heading -->
-    <div style="background-color: green" class="card d-sm-flex align-items-center justify-content-between mb-4 py-2 h5">
-      <h5 class=" ">
-        <!--  -->
-        <div class="details">
-          <span>Messeging <strong class="b"><?php echo " " . $row['name'] ?></strong></span>
-        </div>
-      </h5>
-    </div>
-
+    
     <!-- Content Row -->
     <div class="row">
 
       <!-- Content Column -->
 
-      <div class="col-lg-6 mb-4">
+      <div class="col-lg-9 mb-4">
         <!-- ========================== -->
 
-        <div class="wrapper">
-          <section class="chat-area">
+        <div class="wrapper" style=" height: 20px ">
+            <section class="chat-area" >
             <header>
               <?php
               $sql = mysqli_query($db, "SELECT * FROM users WHERE id = '$user_id' ");

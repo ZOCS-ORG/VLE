@@ -12,7 +12,7 @@
         
         
         <?php 
-            $query = "SELECT  * from parents where id = '$parent_id' ";
+            $query = "SELECT  * from parents where user_id = '$parent_id' ";
 
             $result = mysqli_query($db, $query) or die(mysqli_error($db));
             $count = 1;

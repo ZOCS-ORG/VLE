@@ -4,14 +4,12 @@
     include_once('../layouts/head_to_wrapper.php');
     include_once('../layouts/topbar.php');
 
-    $id = $_GET['id'];
+    $staff_id = $_GET['id'];
 
 ?>
-
-        <hr/>     
-        
+        <hr/>      
         <?php 
-            $query = "SELECT  * from admin where id = '$id' ";
+            $query = "SELECT  * FROM users WHERE id = '$id' ";
 
             $result = mysqli_query($db, $query) or die(mysqli_error($db));
             $count = 1;
@@ -22,10 +20,10 @@
             <div class="container-fluid col-md-9">
                 <div class="card mb-4">
                     <div class="card-header text-center">
-                        <h3>Update Admin's Info</h3>
+                        <h3>Update My Info</h3>
                     </div>
                     <div class="card-body">
-                        <form action="update_profile.php" method="POST" enctype="multipart/form-data">
+                        <form action="#" method="POST" enctype="multipart/form-data">
 
                             <table class="table" id="dataTable" width="100%" cellspacing="9">
                                 <tr>
@@ -56,10 +54,10 @@
                                     <td>Address:</td>
                                     <td class="text-right"><input id="address" type="text" name="address" placeholder="<?php echo $row['address']?>"></td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td>Picture:</td>
                                     <td class="text-right"><input id="file" type='file' name='file' ></td>
-                                </tr>
+                                </tr> -->
 
                                 <tr>
                                     <td></td>

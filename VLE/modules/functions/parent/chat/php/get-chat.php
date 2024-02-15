@@ -14,6 +14,9 @@ if (isset($_SESSION['id'])) {
     $query = mysqli_query($db, $sql);
     if (mysqli_num_rows($query) > 0) {
         while ($row = mysqli_fetch_assoc($query)) {
+             //** update message status to Read
+             mysqli_query($db, "UPDATE messages SET status = 'Read' WHERE msg_id = '$row[msg_id]' AND incoming_msg_id = '$outgoing_id' "); 
+
             //** Check if file has attachment.
             $file_extention = pathinfo($row['attachment'], PATHINFO_EXTENSION);
             if ($row['outgoing_msg_id'] === $outgoing_id) {

@@ -14,6 +14,9 @@ if (isset($_SESSION['id'])) {
     $query = mysqli_query($db, $sql);
     if (mysqli_num_rows($query) > 0) {
         while ($row = mysqli_fetch_assoc($query)) {
+            //** update message status to Read
+            mysqli_query($db, "UPDATE messages SET status = 'Read' WHERE msg_id = '$row[msg_id]' AND incoming_msg_id = '$outgoing_id' ");
+
             //** Check if file has attachment.
             $file_extention = pathinfo($row['attachment'], PATHINFO_EXTENSION);
             if ($row['outgoing_msg_id'] === $outgoing_id) {
@@ -88,7 +91,7 @@ function sentAt($timestamp)
     $months = round($seconds / 2629440);
     $years = round($seconds / 31553280);
 
-    if ($seconds <= 60) {
+    if ($seconds < 60) {
         return "Just now";
     } elseif ($minutes <= 60) {
         if ($minutes == 1) {

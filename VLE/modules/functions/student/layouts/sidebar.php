@@ -44,7 +44,7 @@
       </div>
       <?php //Get Title..
       ?>
-      <div class="sidebar-brand-text mx-3"> <img src="../../../assets/vle.png" height="80px" width="230px"></div>
+      <div class="sidebar-brand-text mx-3"> <img src="../../../assets/vle.png" height="70px" width="200px"></div>
     </a>
 
     <!-- Divider -->

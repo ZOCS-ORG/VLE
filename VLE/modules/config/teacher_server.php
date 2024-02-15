@@ -431,8 +431,8 @@ if (!empty($_POST['submit_complaint'])) {
     }
 
 
-    $sql = mysqli_query($db, "INSERT INTO complaints(`complaint`, `file`, `created_by`, `ref`)
-                    VALUES('$complaint', '$file', '$id', '$ref' )") or die("Error saving complaint: " . mysqli_error($db));
+    $sql = mysqli_query($db, "INSERT INTO complaints(`complaint`, `file`, `created_by`, `ref`, `status`)
+                    VALUES('$complaint', '$file', '$id', '$ref', 'Open' )") or die("Error saving complaint: " . mysqli_error($db));
 
     $_SESSION['created'] = "Added successfully";
     header('Location: ../complaints/index.php?created=true');

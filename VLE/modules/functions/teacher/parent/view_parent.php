@@ -13,7 +13,7 @@ $parent_id = $_GET['id'];
 
 
 <?php
-$query = "SELECT  * from parents where id = '$parent_id' ";
+$query = "SELECT  * from users where id = '$parent_id' ";
 
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 $count = 1;
@@ -57,10 +57,10 @@ if (mysqli_num_rows($result) > 0) {
                                         <p> <?php echo $row['id']; ?> </p>
                                         <p> <?php echo $row['username']; ?> </p>
                                         <p> <?php echo $row['email']; ?> </p>
-                                        <p> <?php echo $row['mothername']; ?> </p>
-                                        <p> <?php echo $row['fathername']; ?> </p>
-                                        <p> <?php echo $row['motherphone']; ?> </p>
-                                        <p> <?php echo $row['fatherphone']; ?> </p>
+                                        <p> <?php echo $row['par_mothername']; ?> </p>
+                                        <p> <?php echo $row['par_fathername']; ?> </p>
+                                        <p> <?php echo $row['par_motherphone']; ?> </p>
+                                        <p> <?php echo $row['par_fatherphone']; ?> </p>
                                         <p> <?php echo $row['address']; ?> </p>
                                     </div>
 

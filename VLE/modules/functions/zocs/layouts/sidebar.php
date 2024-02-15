@@ -21,7 +21,9 @@
     }
 
     .sidebar-light .sidebar-brand {
-        color: green;
+        color: green; 
+  padding-bottom: 10px;
+
     }
 
     .sidebar_new_bg {
@@ -49,7 +51,7 @@
         $admin_acc_title = $row['name'];
         ?>
 
-        <div class="sidebar-brand-text mx-3"> <img src="../vle.png" height="100px" width="200px"></div>
+        <div class="sidebar-brand-text mx-3"> <img src="../../../assets/logo/vle.png" height="70px" width="200px"></div>
     </a>
 
     <!-- Divider -->
@@ -89,10 +91,17 @@
     </li>
 
     <li class="nav-item text-color-dark">
-        <a class="nav-link" href="../sms/index.php">
+        <a class="nav-link" href="../complaints/index.php">
             <i class="fa fas fa-fw fa-commenting"></i>
-            <span>SMS Manager</span></a>
+            <span>Complaints and concerns</span></a>
     </li>
+
+    
+    <li class="nav-item text-color-dark">
+            <a class="nav-link" href="../../../../lms/<?php echo $_SESSION['role'] ?>"> 
+            <i class="fa fas fa-fw fa-hospital"></i>           
+              <span>E-Files & Forum </span></a>
+          </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

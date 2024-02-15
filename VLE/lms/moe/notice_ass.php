@@ -32,6 +32,14 @@ require_once('header.php');
                                 <label for="question">URL to Material</label>
                             </div>
 
+                            <div class="input-field col s12">
+                                <select name="visibility" id="select">
+                                    <option value="Public">Public</option>
+                                    <option value="Private">Private</option>
+                                </select>
+                                <label for="question">Document Visibility</label>
+                            </div>
+
                             <!-- file input starts here -->
                             <div class="file-field input-field col s12">
                                 <div class="btn ">
@@ -71,6 +79,7 @@ require_once('header.php');
                         <th class="txt_limit" data-field="q">Document Details / Info</th>
                         <th data-field="subject">URL</th>
                         <th data-field="file">File</th>
+                        <th data-field="visibility">Visibility</th>
                         <th data-field="date">Date Created</th>
                         <th>Actions</th>
                     </tr>
@@ -98,6 +107,7 @@ require_once('header.php');
 
                             <td> <a href="<?php echo $url ?>"> Go to URL </a>  </td>
                             <td> <a href="<?php echo $file_path ?>"> File </a>  </td>
+                            <td><?php echo $row['visibility'] ?? 'Not set' ?></td>
                             <td><?php echo $dueDate ?></td>
 
                             <td>                                 
@@ -117,7 +127,6 @@ require_once('header.php');
 
     </div>
 
-    <?php; ?>
 
     <?php require '../includes/footer.php'; ?>
 

@@ -19,6 +19,21 @@
 <!-- facebook comments -->
 
 <div class="row">
+        <div class="col s12 m2">
+            <div class="card-panel ">
+            </div><br>
+            <div class="card horizontal">
+                <div class="card-stacked">
+                    <a class="card-conten btn small text -text" href="forum.php">
+                        <span class="cardtitle">Forum</span>
+                    </a>
+                    <br>
+                    <a class="card-conten btn small text -text" href="../../modules/functions/moe/">
+                        <span class="cardtitle">Back to Dashboard</span>
+                    </a>
+                </div>
+            </div>
+        </div>
   <div class="col s12 m2"></div>
   <div class="col s12 m8">
   <div class="card-panel">A forum for discussion</div>

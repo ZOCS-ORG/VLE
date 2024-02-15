@@ -22,6 +22,8 @@
 
     .sidebar-light .sidebar-brand {
         color: green;
+        padding-bottom: 10px;
+
     }
 
     .sidebar_new_bg {
@@ -49,7 +51,7 @@
         $admin_acc_title = $row['name'];
         ?>
 
-        <div class="sidebar-brand-text mx-3"> <img src="../vle.png" height="100px" width="200px"></div>
+        <div class="sidebar-brand-text mx-3"> <img src="../../../assets/logo/vle.png" height="70px" width="200px"></div>
     </a>
 
     <!-- Divider -->
@@ -89,9 +91,14 @@
     </li>
 
     <li class="nav-item text-color-dark">
-        <a class="nav-link" href="../sms/index.php">
+        <a class="nav-link" href="../subjects/index.php">
+            <i class="fa fas fa-fw fa-book"></i>
+            <span>Manage Subjects </span></a>
+    </li>
+    <li class="nav-item text-color-dark">
+        <a class="nav-link" href="../announcements/index.php">
             <i class="fa fas fa-fw fa-commenting"></i>
-            <span>SMS Manager</span></a>
+            <span>Announcements</span></a>
     </li>
 
     <!-- Divider -->

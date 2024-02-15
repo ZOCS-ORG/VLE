@@ -13,7 +13,7 @@
 <body>
 <?php include ('./nav.php') ?>
 
-<div class="About mt-4 mb-2 text-center">
+<div class="About mt-4 mb-2 text-center" style="height:70vh">
   <h2>About VLE (Virtual Learning Environment)</h2>
   <p class="">Action on Early Childhood Development and Education in Eastern and Southern Africa has been driven by civil society and governments based on international treaties and declarations on Early Childhood Development and Education (ECDE) (UNESCO, 2007). The more recent Sustainable Development Goals (SDG) target 4.2, underlines the need for “all boys and girls to have access to early childhood development, care and pre-primary education so that they are ready for primary education.”
 <br>
@@ -28,6 +28,7 @@
 </div>
 
 </div> 
+<br><br><br><br><br><br><br>
 <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 <footer>

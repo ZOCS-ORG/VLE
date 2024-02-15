@@ -27,8 +27,8 @@ require_once('../layouts/head_to_wrapper.php');
   <!-- Begin Page Content -->
   <div class="container-fluid">
     <!-- Feeds Heading -->
-    <div style="background-color: green" class="card d-sm-flex align-items-center justify-content-between mb-4 py-2 h5">
-      <h5 class="h5 mb-0 text-info ">Chats </h5>
+    <div class="border-success card d-sm-flex align-items-center justify-content-between mb-4 py-2 h5">
+      <h5 class="h5 mb-0 ">Chats </h5>
     </div>
 
     <!-- Content Row -->

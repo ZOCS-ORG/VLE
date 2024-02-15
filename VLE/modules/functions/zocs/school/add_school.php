@@ -28,6 +28,18 @@ include_once('../layouts/topbar.php');
             width: 1170px;
         }
     }
+    
+    input {
+        width: 90%;
+    }
+
+    select {
+        width: 90%;
+    }
+
+    [type=radio] {
+        width: 30%;
+    }
 </style>
 
 <div class="container">

@@ -16,10 +16,13 @@
     //         INNER JOIN users ON users.id = parents.user_id
     //         WHERE parents.created_by = '$outgoing_id'
     //         ";
-
-    $sql = "SELECT u.id, u.status, u.name FROM parents p 
-        INNER JOIN users u ON u.id = p.user_id
-        WHERE p.created_by = '$outgoing_id'
+    ////? Afetr user change below
+    // $sql = "SELECT u.id, u.status, u.name FROM parents p 
+    //     INNER JOIN users u ON u.id = p.user_id
+    //     WHERE p.created_by = '$outgoing_id'
+    //     GROUP  BY u.id
+    // ";
+    $sql = "SELECT u.id, u.status, u.name FROM users u WHERE created_by = '$outgoing_id' AND user_role = 'parent' GROUP  BY u.id
     ";
 
     $query = mysqli_query($db, $sql);
@@ -29,4 +32,6 @@
     } elseif (mysqli_num_rows($query) > 0) {
         include_once "data.php";
     }
+    
+    //  var_dump($query);
     echo $output;

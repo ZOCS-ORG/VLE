@@ -19,13 +19,13 @@
           <a class="nav-link text-white" href="about_vle.php"> |  About VLE</a>
         </li>   
         <li class="nav-item">
-          <a class="nav-link text-white" href="http://moodle.test/login/index.php"> |  University Login</a>
-        </li>    
-        <li class="nav-item">
           <a class="nav-link text-white" href="downloads.php"> | Download Documents |</a>
         </li>       
+        <li class="nav-item">
+          <a class="btn btn-outline-success btn-sm" href="http://moodle.test/login/index.php"> University Login</a>
+        </li>    
         <li class="nav-item ">
-          <a class="btn btn-outline-success" href="./VLE/index.php">  Login</a>
+          <a class="btn btn-outline-success btn-sm" href="./VLE/index.php">  Login</a>
         </li> 
       </ul>     
     </div>

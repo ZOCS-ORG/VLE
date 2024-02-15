@@ -2,19 +2,19 @@
   session_start();
 
   if(!isset($_SESSION['id'])){
-    header("location: ../../../../srms/modules/functions/student");
+    header("location: ../../../../vle/modules/functions/student");
   }else{
     require '../includes/connect.php';
     if (isset($_REQUEST['student_id'])) {
       // return var_dump($_REQUEST['student_id']);
         $id = $_REQUEST['student_id'];
-        $_SESSION['id'] = $id;
+        // $_SESSION['id'] = $id;
     }else {
       $id=$_SESSION['id'];
     }
     
     $select_query= $db->query("SELECT * FROM users WHERE id='$id'");
-    if($select_query->num_rows ==0){ header("location: ../../modules/functions/student/"); }
+    if($select_query->num_rows ==0){ header("location: ../../modules/functions/". $_SESSION['role'] ."/"); }
     while($row = $select_query->fetch_assoc()){
       $s_username = $row['username'];
       $class = $row['class_id'];

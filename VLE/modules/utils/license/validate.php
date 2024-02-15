@@ -5,7 +5,7 @@ require_once('_auth.php');
 $db_server = "localhost";
 $db_user = "root";
 $db_pass = "";
-$db_name = "zocs";
+$db_name = "zocs2";
 $db = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
 
     // return var_dump($_SESSION['id']);

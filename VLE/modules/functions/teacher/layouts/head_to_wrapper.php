@@ -17,7 +17,7 @@ $id = $_SESSION['id'];
 $role = $_SESSION['role'];
 
 if (empty($username)) {
-       header("Location: ../../../../");
+    header("Location: ../../../../");
 }
 
 ?>
@@ -68,6 +68,10 @@ if (empty($username)) {
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap4.min.js"></script>
     <!-- ATTENTANCE ENDS HERE -->
+
+    <!-- MAPS
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script> -->
 
     <style>
         body {

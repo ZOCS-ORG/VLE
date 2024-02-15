@@ -90,7 +90,7 @@
                                                             <label class="btn btn-sm btn-outline-danger" for="<?php echo $username; ?>">Absent</label>
 
                                                             <!-- <script>
-                                                            var nameValidationInput = document.getElementById("<?php// echo $student_id ?>");
+                                                            var nameValidationInput = document.getElementById("<?php // echo $student_id ?>");
                                                             function useValue() {
                                                                 var NameValue = nameValidationInput.value;
                                                                 // use it
