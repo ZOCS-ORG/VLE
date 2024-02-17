@@ -240,7 +240,7 @@ if (mysqli_num_rows($result) > 0) {
                             ?>
                                 <tr>
                                     <td colspan="2" style="border: 1px solid black; border-radius:20px">
-                                        <div class="card-header" style="background-color:#0A6522; color:white;">
+                                        <div class="card-header">
                                             <h5 class="text-center my-2">Query Closed </h5>
                                         </div>
                                     </td>
@@ -290,12 +290,12 @@ if (!empty($_POST['submit_response'])) {
     echo "<script> history.back() </script>";
 }
 //? close
-if (isset($_GET['close'])) {
+if(isset($_GET['close'])){
     $complaint_id = $_GET['close'];
-    $sql = mysqli_query($db, "UPDATE complaints SET status = 'Closed' WHERE id = '$complaint_id'") or die("Error closing complaint: " . mysqli_error($db));
+    $sql = mysqli_query($db, "UPDATE complaints SET status = 'Closed' WHERE id = '$complaint_id'") or die("Error closing complaint: ". mysqli_error($db));
     $_SESSION['closed'] = "Closed successfully";
-
-    echo "<script> window.location = '../complaints/view_complaint.php?id=" . $complaint_id . "&updated=true' </script>";
+    
+    echo "<script> window.location = '../complaints/view_complaint.php?id=". $complaint_id."&updated=true' </script>";
 }
 
 
