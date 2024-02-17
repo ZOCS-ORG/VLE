@@ -65,9 +65,10 @@ include_once('../layouts/topbar.php');
                     $gps_lat = $_POST['gps_lat'];
                     $gps_long = $_POST['gps_long'];
                     $type = $_POST['type'];
+                    $zone = $_POST['zone'];
 
-                    $sql = "INSERT INTO schools ( `name`, `province`, `district`, `address`, `gps_lat`, `gps_long`, `emis_number`, `sch_type`) 
-                    VALUES('$name','$province','$district' , '$location','$gps_lat','$gps_long' ,'$emis_number','$type')";
+                    $sql = "INSERT INTO schools ( `name`, `province`, `district`, `address`, `gps_lat`, `gps_long`, `emis_number`, `sch_type`, `zone`) 
+                    VALUES('$name','$province','$district' , '$location','$gps_lat','$gps_long' ,'$emis_number','$type','$zone')";
 
                     $success = mysqli_query($db, $sql);
                     if (!$success) {
@@ -140,6 +141,11 @@ include_once('../layouts/topbar.php');
                                         <option value="Primary School ">Primary School </option>
                                     </select>
                                 </td>
+                            </tr>
+
+                            <tr>
+                                <td style=" color: black"><b>School Zone</b></td>
+                                <td class="text-right"><input type="text" name="zone" placeholder="Enter School Zones" required=""></td>
                             </tr>
 
                             <tr>

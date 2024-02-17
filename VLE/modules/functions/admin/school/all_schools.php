@@ -29,6 +29,7 @@ include_once('../layouts/topbar.php');
                         <th>School Location</th>
                         <th>Province</th>
                         <th>District</th>
+                        <th>Zone</th>
                         <th>Type of School</th>
                         <th>Map</th>
                         <th>Actions</th>
@@ -51,6 +52,7 @@ include_once('../layouts/topbar.php');
                             <td><?php echo $row['address']; ?></td>
                             <td><?php echo $row['province']; ?></td>
                             <td><?php echo $row['district']; ?></td>
+                            <td><?php echo $row['zone']; ?></td>
                             <td><?php echo $row['sch_type']; ?></td>
                             <td>
                                 <a href="maps.php?sid=<?php echo $row['school_id']; ?>" class="map-link">
