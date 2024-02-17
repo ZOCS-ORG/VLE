@@ -100,6 +100,11 @@
             <i class="fa fas fa-fw fa-commenting"></i>
             <span>Announcements</span></a>
     </li>
+    <li class="nav-item text-color-dark">
+        <a class="nav-link" href="../blogs/index.php">
+            <i class="fa fas fa-fw fa-rss-square"></i>
+            <span>Blogs</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

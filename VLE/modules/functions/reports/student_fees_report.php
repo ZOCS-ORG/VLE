@@ -211,10 +211,10 @@
                 
                 ?>
             </div>
-            <!-- Get Students Personal info.... and parents later in the same row. -->
+            <!-- Get Learners Personal info.... and parents later in the same row. -->
             <div class="row">
                 <div class="col-md-5 text-right">
-                        <h3 style="color:lightblue"> Students Info</h3>
+                        <h3 style="color:lightblue"> Learners Info</h3>
                     <?php 
                         $q_stud ="SELECT name,class_id, address,email,phone,parentid FROM students WHERE id = '$student_id' ";
 
@@ -263,7 +263,7 @@
             </div>
             </br>
             <!-- Get Results -->
-            <div class="text-center text-info"><h2> Students Tuition Payments Report </h2></div>
+            <div class="text-center text-info"><h2> Learners Tuition Payments Report </h2></div>
             <br><br>
 
 

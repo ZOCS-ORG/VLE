@@ -19,39 +19,39 @@ function student_validation(){
    var stuParentId = document.getElementById('stuParentId').value;
    var stucourseid = document.getElementById('stucourseid').value;
    if(!stuId){
-       alert('Student Id Must be fild out.')
+       alert('Learner Id Must be fild out.')
        return false;
    }
    else if(!stuName){
-       alert('Student Name must be fild out.')
+       alert('Learner Name must be fild out.')
        return false;
    }
    else if(!stuPassword){
-       alert('Student Password must be fild out.')
+       alert('Learner Password must be fild out.')
        return false;
    }
    else if(!stuPhone){
-       alert('Student Phone must be fild out.')
+       alert('Learner Phone must be fild out.')
        return false;
    }
    else if(!stuEmail){
-       alert('Student Email must be fild out.')
+       alert('Learner Email must be fild out.')
        return false;
    }
    else if(!stuGender){
-       alert('Student Gender must be fild out.')
+       alert('Learner Gender must be fild out.')
        return false;
    }
    else if(!stuDOB){
-       alert('Student Date Of Birth must be fild out.')
+       alert('Learner Date Of Birth must be fild out.')
        return false;
    }
    else if(!stuParentId){
-       alert('Student Parent Id must be fild out.')
+       alert('Learner Parent Id must be fild out.')
        return false;
    }
    else if(!stucourseid){
-       alert('Student Class Id must be fild out.')
+       alert('Learner Class Id must be fild out.')
        return false;
    }
    else return true;

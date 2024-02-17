@@ -70,7 +70,7 @@ include_once('../layouts/topbar.php');
                             <td><?php echo $row['class']; ?></td>
 
                             <td>
-                                <div class="btn-group"><a class="btn btn-success btn-sm text-white" href="view_student.php?id=<?php echo $row['id'] ?>">View Student</a>
+                                <div class="btn-group"><a class="btn btn-success btn-sm text-white" href="view_student.php?id=<?php echo $row['id'] ?>">View Learner</a>
                                     <a class="btn btn-warning btn-sm text-dark " href="../attendance/register.php?student=<?php echo $row['id'] ?>">View Attendance </a>
                                     <a class="btn btn-sm btn-primary" href="../../../../lms/student/stud_profile.php?student_id=<?php echo $row['id'] ?>">
                                         <span>E-Learning </span></a>

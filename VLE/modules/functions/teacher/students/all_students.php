@@ -13,9 +13,9 @@ $user_id = $_SESSION['id'];
 <hr />
 <main>
     <div class="card-header text-center">
-        <h3>Students list</h3>
+        <h3>Learners list</h3>
         <div class="text-right text-light">
-                    <a class="btn btn-sm btn-success" href="add_student.php">Add Student</a>
+                    <a class="btn btn-sm btn-success" href="add_student.php">Add Learner</a>
                 </div>
     </div>
     <div class="card-body">

@@ -94,18 +94,18 @@
         </a>
         <div id="students" class="collapse" aria-labelledby="students" data-parent="#accordionSidebar">
           <div class="bg-dark py-4 collapse-inner rounded">
-            <a class="collapse-item" href="">Student Achievements<br>
+            <a class="collapse-item" href="">Learner Achievements<br>
                 By School</a>
-            <a class="collapse-item" href="">Student demographics<br>
+            <a class="collapse-item" href="">Learner demographics<br>
                 Report</a>
             
-            <a class="collapse-item" href="">Student growth<br>
+            <a class="collapse-item" href="">Learner growth<br>
                 and progress Report</a>
-            <a class="collapse-item" href="">Student Attendance<br>
+            <a class="collapse-item" href="">Learner Attendance<br>
                 Report</a>
           
                        
-            <!-- <a class="collapse-item" href="../reports/student_owing.php">Student Owing Report</a> -->
+            <!-- <a class="collapse-item" href="../reports/student_owing.php">Learner Owing Report</a> -->
           </div>
         </div>
       </li>

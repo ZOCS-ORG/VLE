@@ -31,7 +31,6 @@
        </thead>
        <tbody>
          <?php
-          include_once('vle/modules/config/config.php');
           $query = $db->query("SELECT users.user_role, moe_uploads.* FROM moe_uploads INNER JOIN users ON users.id = moe_uploads.uploaded_by  WHERE visibility = 'Public' ");
           $no = 0;
           while ($row = $query->fetch_assoc()) {

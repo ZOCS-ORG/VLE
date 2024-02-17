@@ -136,7 +136,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-sm font-weight-bold text-dark text-uppercase mb-1">Students</div>
+                      <div class="text-sm font-weight-bold text-dark text-uppercase mb-1">Learners</div>
                       <div class="text-right h5 mb-0 font-weight-bold text-gray-800"><?php echo $total; } ?></div>
                     </div>
                     <div class="col-auto">

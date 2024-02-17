@@ -39,7 +39,7 @@
     <div class="col s12 m6">
       <div class="card green darken-1">
         <div class="card-content white-text">
-          <center> <span class="card-title">Grade Students Assignment</span> </center>
+          <center> <span class="card-title">Grade Learners Assignment</span> </center>
           <br>
 
 
@@ -85,7 +85,7 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Student Name</th>
+                                        <th>Learner Name</th>
                                         <th>Percentage</th>
                                         <th>Comment</th>
                                     </tr>
@@ -116,7 +116,7 @@
                                         <?php
                                                 }
                                             } else {
-                                                echo 'Students Not found for this subject';
+                                                echo 'Learners Not found for this subject';
                                             }
                                         ?>
                                 </tbody>

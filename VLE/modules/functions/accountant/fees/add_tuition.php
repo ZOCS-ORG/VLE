@@ -41,7 +41,7 @@
 
                             <table class="table" id="dataTable" width="100%" cellspacing="9">
                                 <tr>
-                                    <td>Student Name:</td>
+                                    <td>Learner Name:</td>
                                     <td class="text-right">
                                         <select name="student_id" id="subj" required>
                                             <?php

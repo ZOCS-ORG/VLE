@@ -196,7 +196,7 @@ require_once('header.php');
                             <th>Name</th>
                             <th>Subject</th>
                             <th>Class</th>
-                            <th>Student</th>
+                            <th>Learner</th>
                             <th>Submmited On</th>
                             <th>Late</th>
                             <th>File</th>

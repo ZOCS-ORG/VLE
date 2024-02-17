@@ -88,7 +88,7 @@
                           <table id="table1" class="responsive-table striped">
                             <thead>
                               <tr>
-                                <th>Student Name</th>
+                                <th>Learner Name</th>
                                 <th>Date Submmited</th>
                                 <th>Late</th>
                                 <th>File</th>
@@ -143,7 +143,7 @@
                           <table id="table2" class="responsive-table striped">
                             <thead>
                               <tr>
-                                <th>Student Name</th>
+                                <th>Learner Name</th>
                                 <th>Marks</th>
                                 <th>Comment</th>
                                 <th>Date Graded</th>

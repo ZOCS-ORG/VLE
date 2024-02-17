@@ -837,7 +837,7 @@ if (isset($_GET['id']) && isset($_GET['delete_staff'])) {
 
 
 /**
- * Student server
+ * Learner server
  * Some vars used here.
  */
 $path = "../../../utils/images/students/";
@@ -979,7 +979,7 @@ if (!empty($_POST['update_student'])) {
     header('Location: view_student.php?id=' . $stuId . '&updated=true');
 }
 
-//DELETE Student...
+//DELETE Learner...
 if (isset($_GET['id']) && isset($_GET['delete_student'])) {
     if ($_GET['delete_student'] == true) {
         $id = $_GET['id'];

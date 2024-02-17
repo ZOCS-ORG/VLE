@@ -24,7 +24,7 @@
         <div class="container-fluid col-md-9">
             <div class="card mb-4">
                 <div class="card-header text-center">
-                    <h3>Students Info</h3>
+                    <h3>Learners Info</h3>
                     <?php echo "<img src='".$images_dir.$picname."' alt='".$picname."' width='140' height='140'> "?>
                 </div>
                 
@@ -103,12 +103,12 @@
                                         /**Get the difference */
                                         $balance_due = $total_term_fees - $total_amount_paid;
                                         if($balance_due == 0 ){
-                                            echo "<p>Student has no outstanding fees for this term <p>";
+                                            echo "<p>Learner has no outstanding fees for this term <p>";
                                         }elseif($balance_due > 0){
-                                            echo "<p class='text-danger'>Student's outstanding balance for the term is $currency ".number_format($balance_due,2)." <p>";
+                                            echo "<p class='text-danger'>Learner's outstanding balance for the term is $currency ".number_format($balance_due,2)." <p>";
                                             echo "<p>Due date for payments is $date_due";
                                         }elseif($balance_due < 0){
-                                            echo "<p class='text-success'>Student, therefore, has an allocated amount of $currency ".abs(number_format($balance_due));
+                                            echo "<p class='text-success'>Learner, therefore, has an allocated amount of $currency ".abs(number_format($balance_due));
                                         }
                                     }
                                 ?>

@@ -36,7 +36,7 @@
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Student</th>
+                        <th>Learner</th>
                         <th>Class</th>
                         <th>Amount</th>
                         <th>Term</th>

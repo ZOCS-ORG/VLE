@@ -26,7 +26,7 @@ include_once('../layouts/topbar.php');
     <div class="card mb-4">
 
         <div class="card-header text-center">
-            <h3>Students Tuition Report</h3>
+            <h3>Learners Tuition Report</h3>
         </div>
 
         <p id="date_filter">
@@ -38,7 +38,7 @@ include_once('../layouts/topbar.php');
                 <tr>
                     <th>Date Paid</th>
                     <th>Term</th>
-                    <th>Students Name</th>
+                    <th>Learners Name</th>
                     <th>Total Amount</th>
                     <th>Balance</th>
                     <!-- <th>Received From</th> -->
