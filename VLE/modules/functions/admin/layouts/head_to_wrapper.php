@@ -18,7 +18,7 @@ $id = $_SESSION['id'];
 $role = $_SESSION['role'];
 
 if (empty($username)) {
-       header("Location: ../../../../");
+    header("Location: ../../../../");
 }
 
 ?>
@@ -62,7 +62,13 @@ if (empty($username)) {
 
     <!-- MAPS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script> 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- ? tinymce for textarea  -->
+    <script src="../../../assets/tinymce/tinymce.min.js"></script>
+    <script src="../../../assets/tinymce/init.js"></script>
+    <link rel="stylesheet" href="../../../assets/tinymce/skins/default/default.min.css" />
+    <link rel="stylesheet" href="../../../assets/tinymce/skins/content/default/content.min.css" />
 
 
 </head>
