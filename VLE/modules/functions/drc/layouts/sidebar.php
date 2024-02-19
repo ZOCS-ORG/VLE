@@ -80,7 +80,7 @@
     </li>
 
     <li class="nav-item text-color-dark">
-        <a class="nav-link" href="../reports.php">
+        <a class="nav-link" href="../account/reports.php">
             <i class="fa fas fa-fw fa-tachometer"></i>
             <span>Reports</span></a>
     </li>
