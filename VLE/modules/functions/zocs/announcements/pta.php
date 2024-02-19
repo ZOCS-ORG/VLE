@@ -5,24 +5,7 @@
     include_once('../layouts/head_to_wrapper.php');
     
     include_once('../layouts/topbar.php');
-    $user_id = $_SESSION['id'];
-$users_sql = "SELECT created_by AS school FROM users WHERE id ='$user_id'";
-$users_result = mysqli_query($db, $users_sql) or die('An error occurred while fetching schools: ' . mysqli_error($db));
 
-// Check if the query returned any rows
-if(mysqli_num_rows($users_result) > 0) {
-    // Fetch the row as an associative array
-    $user_row = mysqli_fetch_assoc($users_result);
-    
-    // Access the 'school' column from the fetched row
-    $school_pta = $user_row['school'];
-    
-    // Output the school
-    // echo $school_pta;
-} else {
-    // Handle the case when no rows are returned
-    // echo "No school found for the user with ID: $user_id";
-}
 ?>
     						
 <hr/>
@@ -34,7 +17,7 @@ if(mysqli_num_rows($users_result) > 0) {
                 <div class="card-header text-center">
                     <h3>PTA</h3>
                     <div class="text-right text-light">
-                        <!-- <a class="btn btn-sm btn-success" href="create_pta.php">Add new PTA <i class="fas fa-plus "></i> </a> -->
+                        <a class="btn btn-sm btn-success" href="create_pta.php">Add new PTA <i class="fas fa-plus "></i> </a>
                         </div>
                 </div>
                 <div class="card-body">
@@ -43,19 +26,15 @@ if(mysqli_num_rows($users_result) > 0) {
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Notice</th>                             
+                                    <th>Notice</th>
+                                    <th>For</th>
                                     <th>Date</th>
-                               
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                    $sql = "SELECT p.*
-                                    FROM pta_notices p 
-                                    INNER JOIN school_teachers st ON st.teacher_id = p.created_by 
-                                    INNER JOIN schools s ON s.school_id = st.school_id 
-                                    WHERE st.teacher_id = $school_pta 
-                                    ORDER BY id DESC ";
+                                    $sql = "SELECT * FROM pta_notices  WHERE created_by = '$id' ORDER BY id DESC ";
                                     $res= mysqli_query($db,$sql)or die('An error occured: '.mysqli_error($db));
 
                                     while($row = mysqli_fetch_array($res)){
@@ -63,12 +42,12 @@ if(mysqli_num_rows($users_result) > 0) {
                                 <tr>
                                     <td> <?php echo $row['title']; ?> </td>
                                     <td> <?php echo $row['name']; ?></td>
-                                    <!-- <td> <?php echo $row['audience']; ?> </td> -->
+                                    <td> <?php echo $row['audience']; ?> </td>
                                     <td> <?php echo $row['date']; ?> </td>
-                                    <!-- <th class="btn-group">
+                                    <th class="btn-group">
                                         <a class="btn btn-primary btn-sm text-light" href="update_pta.php?id=<?php echo $row['id']?>">Edit</a> 
                                         <a class="btn btn-danger btn-sm text-light" href="../../../config/manager_server.php?id=<?php echo $row['id']?>&delete_Notice=true">Delete </a>
-                                    </th> -->
+                                    </th>
                                 </tr>
                                 <?php
 

@@ -96,6 +96,20 @@
             <span>Queries</span></a>
     </li>
 
+    <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ptaCollapse" aria-expanded="true" aria-controls="ptaCollapse">
+        <i class="fa fas fa-fw fa-users"></i>
+        <span>PTA</span>
+    </a>
+    <div id="ptaCollapse" class="collapse" aria-labelledby="ptaCollapse" data-parent="#accordionSidebar">
+        <div class="bg- py-2 collapse-inner rounded">
+            <a class="collapse-item" href="../announcements/pta.php">My Notices</a>
+            <a class="collapse-item" href="../announcements/view_pta.php">View Notices</a>
+        </div>
+    </div>
+</li>
+
+
 
     <li class="nav-item text-color-dark">
         <a class="nav-link" href="../../../../lms/<?php echo $_SESSION['role'] ?>">

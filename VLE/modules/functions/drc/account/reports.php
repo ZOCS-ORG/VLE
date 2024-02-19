@@ -5,6 +5,10 @@ include_once('../layouts/head_to_wrapper.php');
 include_once('../layouts/topbar.php');
 
 
+// Fetch all schools
+$schools_sql = "SELECT * FROM schools";
+$schools_result = mysqli_query($db, $schools_sql) or die('An error occurred while fetching schools: ' . mysqli_error($db));
+
 ?>
 
 <hr />
@@ -15,57 +19,64 @@ include_once('../layouts/topbar.php');
         <div id="tabs">
 
             <div id="lecturers">
-                <div class="justify text-right">
+                <div class="justify text-right">            
+                    <!-- Dropdown list to select schools -->
+                    <div class="form-group" style="width:30%;">
+                        <label for="schoolSelect">Select School:</label>
+                        <select class="form-control" id="schoolSelect">
+                            <?php while ($school_row = mysqli_fetch_assoc($schools_result)) { ?>
+                                <option value="<?php echo $school_row['school_id']; ?>"><?php echo $school_row['name']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
                     <!-- <span><a class="btn btn-success btn-sm" href="add_staff.php">Add Teacher</a></span> -->
                 </div>
 
+
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="staff_tea" width="100%" cellspacing="0">
+                    <div class="table-responsive" style="border:2px solid black; padding:1rem; ">
+                    <table class="table table-bordered" id="staff_tea" width="100%" cellspacing="0" >
                             <thead>
                                 <tr>
                                     <td>Name</td>
-                                    <td>Username</td>
-                                    <td>Phone number</td>
-                                    <td>Email</td>
-                                    <td>School</td>
-                                    <td>Actions</td>
+                                    <td>Age</td>
+                                    <td>Gender</td>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php
-                                $sql = "SELECT u.name, u.username, u.phone, u.email, s.name AS school, u.id
-                                            FROM users u
-                                            LEFT JOIN school_teachers st ON st.teacher_id = u.id
-                                            LEFT JOIN schools s ON st.school_id = s.school_id
-                                            WHERE user_role = 'teacher' ORDER BY u.id DESC ";
-                                $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
-                                $string = "";
-                                $images_dir = "../../../utils/images/users/";
-                                while ($row = mysqli_fetch_array($res)) {
-                                    $picname = $row['img'];
-                                ?>
-                                    <tr>
-                                        <td><?php echo $row['name']; ?></td>
-                                        <td><?php echo $row['username']; ?></td>
-                                        <td><?php echo $row['phone']; ?></td>
-                                        <td><?php echo $row['email']; ?></td>
-                                        <td><?php echo $row['school']; ?></td>
-
-                                        <th>
-                                            <div class="btn-group"><a class="btn btn-success btn-sm text-light" href="view_staff.php?id=<?php echo $row["id"]; ?>">View</a>
-                                                <a class="btn btn-primary btn-sm text-light " href="update_staff.php?id=<?php echo $row["id"]; ?>">Edit</a>
-
-                                            </div>
-                                        </th>
-                                    </tr>
-                                <?php
-                                }
-                                ?>
+                            <tbody id="reportBody">
+                                <!-- Report data will be loaded here -->
                             </tbody>
                         </table>
                     </div>
                 </div>
+                <script>
+    // Function to generate report based on selected school
+    function generateReport(schoolId) {
+        $.ajax({
+            url: 'generate_report.php', // Change this to the PHP file that generates the report
+            method: 'POST',
+            data: {
+                schoolId: schoolId
+            },
+            success: function(response) {
+                $('#reportBody').html(response);
+            }
+        });
+    }
+
+    // When the document is ready
+    $(document).ready(function() {
+        // Generate report for the initially selected school
+        var initialSchoolId = $('#schoolSelect').val();
+        generateReport(initialSchoolId);
+
+        // When the value of the dropdown changes
+        $('#schoolSelect').change(function() {
+            var selectedSchoolId = $(this).val();
+            generateReport(selectedSchoolId);
+        });
+    });
+</script>
 
             </div>
 

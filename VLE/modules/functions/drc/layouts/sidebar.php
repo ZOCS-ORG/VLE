@@ -85,7 +85,7 @@
             <span>PTA</span></a>
     </li> -->
 
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#staff" aria-expanded="true" aria-controls="staff">
             <i class="fa fas fa-fw fa-users"></i>
             <span>PTA</span>
@@ -96,7 +96,7 @@
                 <a class="collapse-item" href="../announcements/view_pta.php">View Notices</a>
             </div>
         </div>
-    </li>
+    </li> -->
 
     <li class="nav-item text-color-dark">
         <a class="nav-link" href="../account/reports.php">
