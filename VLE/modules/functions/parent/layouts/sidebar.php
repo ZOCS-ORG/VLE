@@ -47,6 +47,14 @@
       $results = mysqli_query($db, $query);
       $row = mysqli_fetch_array($results);
       $admin_acc_title = $row['name'];
+      $user_id = $_SESSION['id'];
+
+// Query to check if the user has par_pta set to true
+$query = "SELECT par_pta FROM users WHERE id = 138 AND par_pta LIKE '%true%'";
+$result = mysqli_query($db, $query);
+
+// Check if the query returned any rows
+$pta_visible = mysqli_num_rows($result) > 0;
       ?>
       <div class="sidebar-brand-text mx-3"> <img src="../../../assets/vle.png" height="70px" width="200px"></div>
     </a>
@@ -67,6 +75,23 @@
         <i class="fa fas fa-fw fa-child"></i>
         <span>Our Kids</span></a>
     </li>
+    <?php if ($pta_visible): ?>
+
+
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#staff" aria-expanded="true" aria-controls="staff">
+        <i class="fa fas fa-fw fa-users"></i>
+        <span>PTA</span>
+    </a>
+    <div id="staff" class="collapse" aria-labelledby="staff" data-parent="#accordionSidebar">
+        <div class="bg- py-2 collapse-inner rounded">
+            <a class="collapse-item" href="../announcements/pta.php">My Notices</a>
+            <a class="collapse-item" href="../announcements/view_pta.php">View Notices</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
+
     <li class="nav-item text-color-dark">
       <a class="nav-link" href="../account/materials.php">
         <i class="fa fas fa-fw fa-book"></i>

@@ -9,6 +9,15 @@ $_SESSION['auth_token'] = $token;
 $s_user = $_SESSION['username'];
 $s_pass = $_SESSION['password'];
 
+$user_id = $_SESSION['id'];
+
+// Query to check if the user has par_pta set to true
+$query = "SELECT par_pta FROM users WHERE id = 138 AND par_pta LIKE '%true%'";
+$result = mysqli_query($db, $query);
+
+// Check if the query returned any rows
+$pta_visible = mysqli_num_rows($result) > 0;
+
 ?>
 
 <!-- @Overide some fa styling -->
@@ -100,6 +109,22 @@ $s_pass = $_SESSION['password'];
       <span>Learners</span></a>
   </li>
 
+<?php if ($pta_visible): ?>
+
+
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#staff" aria-expanded="true" aria-controls="staff">
+        <i class="fa fas fa-fw fa-users"></i>
+        <span>PTA</span>
+    </a>
+    <div id="staff" class="collapse" aria-labelledby="staff" data-parent="#accordionSidebar">
+        <div class="bg- py-2 collapse-inner rounded">
+            <a class="collapse-item" href="../announcements/pta.php">My Notices</a>
+            <a class="collapse-item" href="../announcements/view_pta.php">View Notices</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
 
   <li class="nav-item text-color-dark">
     <a class="nav-link" href="../complaints/index.php">
