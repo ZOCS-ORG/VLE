@@ -122,7 +122,7 @@
                     <li><a href="#custom">Send Single SMS</a></li>
                     <li><a href="#staff">Send to Staff</a></li>
                     <li><a href="#parents">Send to Parent</a></li>
-                    <li><a href="#students">Send to Students</a></li>
+                    <li><a href="#students">Send to Learners</a></li>
                 </ul>
                 <div id="custom">
 

@@ -40,7 +40,7 @@
                 <table class="table table-bordered" id="export" width="100%" cellspacing="4">
                     <thead>
                         <tr>
-                            <th>Student</th>
+                            <th>Learner</th>
                             <th>Marks</th>
                             <th>Grade</th>
                             <th>Comment</th>

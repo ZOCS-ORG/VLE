@@ -74,7 +74,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Students:</td>
+                                    <td>Learners:</td>
                                     <td class="text-right">
                                         <select name="students[]" multiple="multiple" id="subj">
                                             <?php

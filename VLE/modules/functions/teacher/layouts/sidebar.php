@@ -97,7 +97,7 @@ $s_pass = $_SESSION['password'];
   <li class="nav-item text-color-dark">
     <a class="nav-link" href="../students/index.php">
       <i class="fa fas fa-fw fa-users"></i>
-      <span>Students</span></a>
+      <span>Learners</span></a>
   </li>
 
 

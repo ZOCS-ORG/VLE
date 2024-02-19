@@ -61,7 +61,7 @@ if (mysqli_num_rows($result) > 0) {
                                 </tr>
 
                                 <tr>
-                                    <td>Students</td>
+                                    <td>Learners</td>
                                     <td>
                                         <ol>
                                             <?php

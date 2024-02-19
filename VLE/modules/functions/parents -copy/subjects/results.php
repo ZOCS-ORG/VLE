@@ -74,7 +74,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Student Name</th>
+                                            <th>Learner Name</th>
                                             <th>Percentage</th>
                                             <th>Comment</th>
                                         </tr>
@@ -105,7 +105,7 @@
                                             <?php
                                                     }
                                                 } else {
-                                                    echo 'Students Not found for this subject';
+                                                    echo 'Learners Not found for this subject';
                                                 }
                                             ?>
                                     </tbody>

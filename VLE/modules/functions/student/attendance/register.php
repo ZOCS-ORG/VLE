@@ -63,7 +63,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Student Name</th>
+                                                    <th>Learner Name</th>
                                                     <th>Attendance</th>
                                                 </tr>
                                             </thead>
@@ -132,7 +132,7 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="4">
                             <thead>
                                 <tr>
-                                    <th>Student Name</th>
+                                    <th>Learner Name</th>
                                     <th>Attendance</th>
                                     <th>Date</th>
                                 </tr>

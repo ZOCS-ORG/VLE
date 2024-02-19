@@ -34,7 +34,7 @@
                 <table class="table table-bordered table-striped dt-responsive nowrap" id="export" width="100%" cellspacing="4">
                     <thead>
                         <tr>
-                            <th>Student</th>
+                            <th>Learner</th>
 
                             <?php 
                                 /** Create a loop to show all the subjects available for each student */

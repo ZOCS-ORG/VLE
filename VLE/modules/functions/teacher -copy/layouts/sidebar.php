@@ -61,7 +61,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#students"
                     aria-expanded="true" aria-controls="students">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Students </span>
+                    <span>Learners </span>
                 </a>
                 <div id="students" class="collapse" aria-labelledby="students" data-parent="#accordionSidebar">
                     <div class="bg-dark py-2 collapse-inner rounded">

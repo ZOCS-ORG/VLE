@@ -27,7 +27,7 @@ if (mysqli_num_rows($result) > 0) {
             <div class="container-fluid col-md-9 ">
                 <div class="card mb-4">
                     <div class="card-header text-center">
-                        <h3>Students Info</h3>
+                        <h3>Learners Info</h3>
                         <?php echo "<img src='" . $images_dir . $picname . "' alt='" . $picname . "' width='140' height='140'> " ?>
                     </div>
 

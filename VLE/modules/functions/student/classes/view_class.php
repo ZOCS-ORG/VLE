@@ -98,7 +98,7 @@
 
                             <div class="col-lg-6">
                                 <div class="card-body text-right">
-                                    <p>Students</p>
+                                    <p>Learners</p>
                                 </div>
                             </div>
                             <div > </div>

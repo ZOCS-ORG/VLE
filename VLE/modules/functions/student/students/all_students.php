@@ -10,7 +10,7 @@
 <hr/>
 <main>
     <div class="card-header text-center">
-                <h3>Students list</h3>
+                <h3>Learners list</h3>
             </div>
         <div class="card-body">
             <div class="table-responsive">

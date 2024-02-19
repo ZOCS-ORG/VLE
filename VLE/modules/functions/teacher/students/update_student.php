@@ -38,34 +38,34 @@
     <div class="container-fluid col-md-9">
         <div class="card mb-4">
             <div class="card-header text-center">
-                <h3>Update Student Info</h3>
+                <h3>Update Learner Info</h3>
             </div>
             <div class="card-body">
                 <form action="update_student.php" method="POST" enctype="multipart/form-data">
 
                     <table class="table" id="dataTable" width="100%" cellspacing="9">
                         <tr>
-                            <td class="text-left">Student Id:</td>
+                            <td class="text-left">Learner Id:</td>
                             <td class="text-right"><input id="stuId"type="text" name="studentId" value="<?php echo $row['id']?>" placeholder="<?php echo $row['id']?>" readonly></td>
                         </tr>
                         <tr>
-                            <td>Student Name:</td>
+                            <td>Learner Name:</td>
                             <td class="text-right"><input id="name" type="text" name="name" placeholder="<?php echo $row['name']?>"></td>
                         </tr>
                         <tr>
-                            <td>Student Username:</td>
+                            <td>Learner Username:</td>
                             <td class="text-right"><input type="text" name="username" placeholder="<?php echo $row['username']?>"></td>
                         </tr>
                         <tr>
-                            <td>Student Password:</td>
+                            <td>Learner Password:</td>
                             <td class="text-right"><input id="password"type="text" name="password" placeholder="New Password"></td>
                         </tr>
                         <tr>
-                            <td>Student Phone:</td>
+                            <td>Learner Phone:</td>
                             <td class="text-right"><input id="phone"type="text" name="phone" placeholder="<?php echo $row['phone']?>"></td>
                         </tr>
                         <tr>
-                            <td>Student Email:</td>
+                            <td>Learner Email:</td>
                             <td class="text-right"><input id="email"type="text" name="email" placeholder="<?php echo $row['email']?>"></td>
                         </tr>
                         <tr>
@@ -74,19 +74,19 @@
                             <input type="radio" id="f" name="gender" value="Female" onclick="this.value"><label for="f"> Female</label></td>
                         </tr>
                         <tr>
-                            <td>Student DOB:</td>
+                            <td>Learner DOB:</td>
                             <td class="text-right">
                                 <input type="" name="stuDOB" id="date1" alt="date" class="IP_calendar" title="Y-m-d">
                             </td>
                         </tr>
                         <tr>
-                            <td>Student Admission Date:</td>
+                            <td>Learner Admission Date:</td>
                             <td class="text-right">
                                 <input type="" name="startDate" id="date2" alt="date" class="IP_calendar" title="Y-m-d">
                             </td>
                         </tr>
                         <tr>
-                            <td>Student Address:</td>
+                            <td>Learner Address:</td>
                             <td class="text-right"><input id="stuAddress" type="text" name="address" placeholder="<?php echo $row['address']; ?>"></td>
                         </tr>
                         <tr>
@@ -149,7 +149,7 @@
                         </tr> 
 
                         <tr>
-                            <td>Student Picture:</td>
+                            <td>Learner Picture:</td>
                             <td class="text-right"><input id="file"type="file" name="file"></td>
                         </tr>
                         <tr>

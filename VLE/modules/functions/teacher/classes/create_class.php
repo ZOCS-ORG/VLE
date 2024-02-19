@@ -75,7 +75,7 @@ include_once('../layouts/topbar.php');
                                 </td>
                             </tr> -->
                             <!-- <tr>
-                                <td>Select Students:</td>
+                                <td>Select Learners:</td>
                                 <td class="text-right">
                                     <select name="students[]" multiple="multiple" id="subj" style="padding:4px; width:70%; border-radius:9px" >
                                         <?php
