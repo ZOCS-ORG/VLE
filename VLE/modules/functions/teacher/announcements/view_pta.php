@@ -27,7 +27,7 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>Notice</th>
-                                    <th>For</th>
+                                    <!-- <th>For</th> -->
                                     <th>Date</th>
                                     <!-- <th>Actions</th> -->
                                 </tr>
@@ -42,7 +42,7 @@
                                 <tr>
                                     <td> <?php echo $row['title']; ?> </td>
                                     <td> <?php echo $row['name']; ?></td>
-                                    <td> <?php echo $row['audience']; ?> </td>
+                                    <!-- <td> <?php echo $row['audience']; ?> </td> -->
                                     <td> <?php echo $row['date']; ?> </td>
                                     <!-- <th class="btn-group">
                                         <a class="btn btn-primary btn-sm text-light" href="update_pta.php?id=<?php echo $row['id']?>">Edit</a> 
