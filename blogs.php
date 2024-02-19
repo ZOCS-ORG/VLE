@@ -55,7 +55,8 @@
                         <div class="user">
                             <div class="user__info">
                                 <h5> By <?php echo $row['name']; ?> </h5>
-                                <small><?php echo date_format(date_create($row['timestamp']), "d M, Y"); ?> </small>
+                                <small><?php echo date_format(date_create($row['timestamp']), "d M, Y"); ?> </small><br>
+                                <span class="tag" style="margin:20px">News</span>
                             </div>
                         </div>
                     </div>

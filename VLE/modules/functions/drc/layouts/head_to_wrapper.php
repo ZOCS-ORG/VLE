@@ -1,5 +1,5 @@
 <?php
- error_reporting(0);
+error_reporting(0);
 session_start();
 include('../../../utils/vars.php');
 require_once('../../../config/config.php');
@@ -17,7 +17,7 @@ $id = $_SESSION['id'];
 $role = $_SESSION['role'];
 
 if (empty($username)) {
-       header("Location: ../../../../");
+    header("Location: ../../../../");
 }
 
 ?>
@@ -54,7 +54,7 @@ if (empty($username)) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    
+
     <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -68,6 +68,13 @@ if (empty($username)) {
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap4.min.js"></script>
     <!-- ATTENTANCE ENDS HERE -->
+
+    <!-- ? tinymce for textarea  -->
+    <script src="../../../assets/tinymce/tinymce.min.js"></script>
+    <script src="../../../assets/tinymce/init.js"></script>
+    <link rel="stylesheet" href="../../../assets/tinymce/skins/default/default.min.css" />
+    <link rel="stylesheet" href="../../../assets/tinymce/skins/content/default/content.min.css" />
+
 
     <style>
         body {

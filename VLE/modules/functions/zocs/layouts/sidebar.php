@@ -21,8 +21,8 @@
     }
 
     .sidebar-light .sidebar-brand {
-        color: green; 
-  padding-bottom: 10px;
+        color: green;
+        padding-bottom: 10px;
 
     }
 
@@ -96,12 +96,19 @@
             <span>Queries</span></a>
     </li>
 
-    
+
     <li class="nav-item text-color-dark">
-            <a class="nav-link" href="../../../../lms/<?php echo $_SESSION['role'] ?>"> 
-            <i class="fa fas fa-fw fa-hospital"></i>           
-              <span>E-Files & Forum </span></a>
-          </li>
+        <a class="nav-link" href="../../../../lms/<?php echo $_SESSION['role'] ?>">
+            <i class="fa fas fa-fw fa-hospital"></i>
+            <span>E-Files & Forum </span></a>
+    </li>
+
+    <li class="nav-item text-color-dark">
+        <a class="nav-link" href="../blogs/index.php">
+            <i class="fa fas fa-fw fa-rss-square"></i>
+            <span>Blogs</span></a>
+    </li>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

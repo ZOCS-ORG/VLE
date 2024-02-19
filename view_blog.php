@@ -46,7 +46,7 @@
 
             <div class="">
                 <div class="card__header">
-                    <img src="vle/modules/utils/blogs/<?php echo $row['file']; ?>" alt="card__image" class="card__image" width="90%" height="50%">
+                    <img src="vle/modules/utils/blogs/<?php echo $row['file']; ?>" alt="card__image" class="card__image" width="90%" height="500px">
                 </div>
                 <div class="card__body" style="padding: 6%; text-align:justify; text-justify:auto">
                     <!-- <span class="tag">News</span> -->

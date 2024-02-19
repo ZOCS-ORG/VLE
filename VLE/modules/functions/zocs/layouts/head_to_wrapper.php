@@ -18,7 +18,7 @@ $id = $_SESSION['id'];
 $role = $_SESSION['role'];
 
 if (empty($username)) {
-       header("Location: ../../../../");
+    header("Location: ../../../../");
 }
 
 ?>
@@ -60,6 +60,11 @@ if (empty($username)) {
     <link href="styles/multiselect.css" rel="stylesheet" />
     <script src="multiselect.min.js"></script>
 
+    <!-- ? tinymce for textarea  -->
+    <script src="../../../assets/tinymce/tinymce.min.js"></script>
+    <script src="../../../assets/tinymce/init.js"></script>
+    <link rel="stylesheet" href="../../../assets/tinymce/skins/default/default.min.css" />
+    <link rel="stylesheet" href="../../../assets/tinymce/skins/content/default/content.min.css" />
 
 
 </head>
