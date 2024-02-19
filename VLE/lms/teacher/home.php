@@ -2,6 +2,13 @@
 require_once('header.php');
 ?>
 
+<style>
+
+    .tabs li a{
+    color:black !important;
+    }
+</style>
+
 <body>
 
     <?php
@@ -37,6 +44,7 @@ require_once('header.php');
                 <li class="tab col s3"><a class="active" href="#subjects">My Subjects</a></li>
                 <li class="tab col s3"><a href="#assignments">My Assignments</a></li>
                 <li class="tab col s3"><a href="#recieved">Recieved Assignments</a></li>
+                <li class="tab col s3"><a href="#uploads">Upload Documents</a></li>
 
             </ul>
         </div>
@@ -244,13 +252,66 @@ require_once('header.php');
             </div>
         </div>
 
-        <!-- reg srch column starts here -->
+        <div id="uploads" class="col s12 m8">
+            <div class="card-panel green ">
+                <span class="white-text"> Uploads </span>
+                <span class="right"> <a class="waves-effect waves-light btn-small btn" href="upload.php">upload<i class="material-icons right">add</i></a>
+            </div><br>
+            <div class="row">
+                <table id="table4" class="responsive-table striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Date</th>                         
+                            <th>Download</th>                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $query = $db->query("SELECT * FROM upload_materials WHERE teacher_id='$t_id' ");
 
-        <div class="col s12 m2">
+                    while ($row = $query->fetch_assoc()) {
+                        $name = $row['name'];
+                        $description = $row['description'];
+                        $from = $row['from_age'];
+                        $to = $row['to_age'];
+                        $file = $row['file'];                       
+                        $date = $row['date'];                       
+                        $up_id = $row['id'];
 
+                        $file_path = "../files/ass_notice/" . $file;
+                        /**File location */
+
+                        $sub_query2 = $db->query("SELECT * FROM classes WHERE id='$class' ");
+                        while ($row = $sub_query2->fetch_assoc()) {
+                            $class_name = $row['name'];
+                        }
+                        $sub_query3 = $db->query("SELECT * FROM subjects WHERE id='$subject' ");
+                        while ($row = $sub_query3->fetch_assoc()) {
+                            $sub_name = $row['name'];
+                        }
+                    ?>
+                        <tr>
+                            <td><?php echo $name ?></td>
+                            <td><?php echo $from ?></td>
+                            <td><?php echo $to ?></td>
+                            <td><?php echo $description ?></td>
+                            <td><?php echo $date ?></td>
+                            <td> <a href="<?php echo $file_path; ?>"> File </a> </td>                          
+                            <td>
+                                <a class="btn btn-sm green waves-effect waves-light" href="edit_upload.php?ass_id=<?php echo $up_id ?>"> Edit </a>
+                                <a class="btn small red waves-effect waves-light" href="upload.php?delete_ass=true&ass_id=<?php echo $up_id ?>"> Delete </a>
+                            </td>
+                        </tr>
+
+                    <?php } ?>
+
+                </tbody>
+                </table>
+            </div>
         </div>
-
-        <!-- reg srch column starts here   -->
 
     </div>
 
@@ -270,6 +331,12 @@ require_once('header.php');
         });
         $(document).ready(function () {
             var table = $('#table3').DataTable({
+                "order": [],
+                "dom": 'Bfrtip',
+            });
+        });
+        $(document).ready(function () {
+            var table = $('#table4').DataTable({
                 "order": [],
                 "dom": 'Bfrtip',
             });

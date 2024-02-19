@@ -120,7 +120,7 @@ $s_pass = $_SESSION['password'];
         echo '<span class="badge badge-danger badge-counter badge-pill  ">' . $fetch[0] . '</span>';
       }
       ?>
-      <span>Messages</span>
+      <span>Message Parent </span>
 
     </a>
   </li>

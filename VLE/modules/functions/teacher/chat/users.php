@@ -28,7 +28,7 @@ require_once('../layouts/head_to_wrapper.php');
   <div class="container-fluid">
     <!-- Feeds Heading -->
     <div class="border-success card d-sm-flex align-items-center justify-content-between mb-4 py-2 h5">
-      <h5 class="h5 mb-0 ">Chats </h5>
+      <h5 class="h5 mb-0 ">Parent Teacher Interaction </h5>
     </div>
 
     <!-- Content Row -->

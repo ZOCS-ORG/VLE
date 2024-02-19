@@ -16,6 +16,7 @@ if (isset($_POST['add_user'])) {
     $teaPhone = $_POST['phone'];
     $teaEmail = $_POST['email'];
     $teaGender = $_POST['gender'];
+    $pta = $_POST['pta'];
     $teaDOB = $_POST['dob'];
     $teaHireDate = $_POST['hiredate'];
     $teaAddress = $_POST['address'];
@@ -25,12 +26,12 @@ if (isset($_POST['add_user'])) {
     $filetmp = $_FILES['file']['tmp_name'];
     $img = $teaName . "_" . rand(100, 1000000) . ".jpg";
     move_uploaded_file($filetmp, "../../../utils/images/users/" . $img);
-    
+
 
     $userid = 00; //$teaId;
 
-    $sql_user = "INSERT INTO users (`userid`, `name`, `username`, `password`, `user_role`, `phone`, `email`, `sex`, `address`, `img`) 
-                VALUES('$userid', '$teaName','$username', '$teaPassword','$user_type','$teaPhone', '$teaEmail', '$teaGender', '$teaAddress','$img' )";
+    $sql_user = "INSERT INTO users (`id`, `name`, `username`, `password`, `user_role`, `phone`, `email`, `sex`, `address`, `img`, `par_pta`) 
+                VALUES('$userid', '$teaName','$username', '$teaPassword','$user_type','$teaPhone', '$teaEmail', '$teaGender', '$teaAddress','$img','$pta')";
 
     $message = "Dear " . $teaName . ", Welcome to the Virtual Learning Platform, your username is  " . $username . " and your password is " . $_POST['password'] . ""
         . "<br> Kind Regards <br>" . ' <img src="../../../assets/logo/vle.png" height="100px" width="200px">';
@@ -140,6 +141,17 @@ if (isset($_POST['add_user'])) {
                                 <td style=" color: black"><b>Gender:</b></td>
                                 <td class="text-right"><input type="radio" name="gender" id="m" value="Male" onclick="teaGender = this.value;"> <label for="m">Male</label> <input type="radio" name="gender" id="f" value="Female" onclick="this.value"> <label for="f"> Female</label></td>
                             </tr>
+
+                            <tr>
+                                <td style="color: black"><b>PTA:</b></td>
+                                <td class="text-right">
+                                    <input type="radio" name="pta" id="ptaTrue" value="true" onclick="teapta = this.value;">
+                                    <label for="ptaTrue">True</label>
+                                    <input type="radio" name="pta" id="ptaFalse" value="false" onclick="teapta = this.value;">
+                                    <label for="ptaFalse">False</label>
+                                </td>
+                            </tr>
+
 
                             <tr>
 

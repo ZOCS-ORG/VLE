@@ -67,7 +67,11 @@
         <i class="fa fas fa-fw fa-child"></i>
         <span>Our Kids</span></a>
     </li>
-
+    <li class="nav-item text-color-dark">
+      <a class="nav-link" href="../account/materials.php">
+        <i class="fa fas fa-fw fa-book"></i>
+        <span>Materials</span></a>
+    </li>
 
     <li class="nav-item text-color-dark">
       <a class="nav-link" href="../chat">
