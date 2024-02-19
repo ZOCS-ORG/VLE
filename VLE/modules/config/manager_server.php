@@ -128,11 +128,7 @@ if(isset($_GET['id']) && isset($_GET['delete_event']) ) {
 
 
 
-/**
- *  Announcements SERVER - Manager... 
- */
 
-// Create Announcements...
 if(isset($_POST['create_announcement'])){
     $id = "";
     $title = $_POST['title'];
@@ -151,7 +147,7 @@ if(isset($_POST['create_announcement'])){
         header('Location: ../announcements/index.php?created=true');
     }
 }
-/// UPDATE Announcement
+
 if(!empty($_POST['update_announcement'])){
     $id = $_POST['id'];
 
@@ -172,7 +168,6 @@ if(!empty($_POST['update_announcement'])){
     header('Location: index.php?id='.$id.'&updated=true');
 }
 
-//DELETE Announcement...
 if(isset($_GET['id']) && isset($_GET['delete_announcement']) ) {
     if($_GET['delete_announcement'] == true){
         $id = $_GET['id'];
@@ -187,5 +182,58 @@ if(isset($_GET['id']) && isset($_GET['delete_announcement']) ) {
     }
 }
 
+
+if(isset($_POST['create_Notice'])){
+    $id = "";
+    $title = $_POST['title'];
+    $name = mysqli_real_escape_string($db,$_POST['name']);
+    $audience = $_POST['audience'];
+    $date = $_POST['date'];
+    $created_by = $_POST['created_by'];
+
+    $sql = " INSERT INTO `pta_notices`
+                    (`title`, `name`,`audience`, `date`, `created_by`) 
+            VALUES ('$title','$name', '$audience', '$date','$created_by' ) ";
+    
+    $success = mysqli_query($db, $sql)or die('Could not enter data: '.mysqli_error($db));
+    if($success) {
+        $id = mysqli_insert_id($db);
+        header('Location: ../announcements/pta.php?created=true');
+    }
+}
+
+if(!empty($_POST['update_Notice'])){
+    $id = $_POST['id'];
+
+    $title = $_POST['title'];
+    $name = mysqli_real_escape_string($db, $_POST['name']);
+    $audience = $_POST['audience'];
+    $date = $_POST['date'];
+
+    $sql = "UPDATE pta_notices SET";
+    if(!empty($title)) {$sql .= " title='$title',";}
+    if(!empty($name)) {$sql .= " name='$name',";}
+    if(!empty($audience)) {$sql .= " audience ='$audience',";}
+    if(!empty($date)) {$sql .= " date='$date',";}
+
+    $sql = substr($sql, 0, strlen($sql) -1) . " WHERE id = '$id' ";
+    $success = mysqli_query($db, $sql)or die('An error occured: '.mysqli_error($db));
+    
+    header('Location: pta.php?id='.$id.'&updated=true');
+}
+
+if(isset($_GET['id']) && isset($_GET['delete_Notice']) ) {
+    if($_GET['delete_Notice'] == true){
+        $id = $_GET['id'];
+        $sql = "DELETE FROM pta_notices WHERE id = '$id';";
+        $success = mysqli_query($db, $sql);
+        if(!$success) {
+            die('Could not Delete data: '.mysqli_error($db));
+        }
+        header("Location:".$_SERVER[HTTP_REFERER]."");
+        //++echo '<p><a href="javascript:history.go(-1)" title="Return to previous page">« Go back</a></p>';
+        //header("Location: ../functions/manager/announcements/index.php?deleted=true");
+    }
+}
 
 

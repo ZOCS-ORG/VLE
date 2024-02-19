@@ -79,6 +79,31 @@
             <span>Announcements</span></a>
     </li>
 
+    <!-- <li class="nav-item text-color-dark">
+        <a class="nav-link" href="../announcements/pta.php">
+            <i class="fa fas fa-fw fa-commenting"></i>
+            <span>PTA</span></a>
+    </li> -->
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#staff" aria-expanded="true" aria-controls="staff">
+            <i class="fa fas fa-fw fa-users"></i>
+            <span>PTA</span>
+        </a>
+        <div id="staff" class="collapse" aria-labelledby="staff" data-parent="#accordionSidebar">
+            <div class="bg- py-2 collapse-inner rounded">
+                <a class="collapse-item" href="../announcements/pta.php">My Notices</a>
+                <a class="collapse-item" href="../announcements/view_pta.php">View Notices</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item text-color-dark">
+        <a class="nav-link" href="../account/reports.php">
+            <i class="fa fas fa-fw fa-tachometer"></i>
+            <span>Reports</span></a>
+    </li>
+
     <li class="nav-item text-color-dark">
         <a class="nav-link" href="../blogs/index.php">
             <i class="fa fas fa-fw fa-rss-square"></i>

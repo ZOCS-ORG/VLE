@@ -99,6 +99,15 @@ $emails = new email();
                                 <td class="text-right"><input type="number" name="fatherphone" placeholder="Father's Phone Number"></td>
                             </tr>
                             <tr>
+                                <td style="color: black"><b>PTA:</b></td>
+                                <td class="text-right">
+                                    <input type="radio" name="pta" id="ptaTrue" value="true" onclick="teapta = this.value;">
+                                    <label for="ptaTrue">True</label>
+                                    <input type="radio" name="pta" id="ptaFalse" value="false" onclick="teapta = this.value;">
+                                    <label for="ptaFalse">False</label>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Address:</td>
                                 <td class="text-right">
                                     <textarea name="address" id="" cols="30" rows="4"></textarea>
@@ -134,12 +143,13 @@ if (isset($_POST['submit_parent'])) {
     $address = $_POST['address'];
 
     $user_id = $_SESSION['id'];
+    $pta = $_POST['pta'];
 
     $password = $username . "@" . date('His');
     $encPass = md5($password);
 
-    $sql_user = "INSERT INTO users (`name`, `username`, `password`, `user_role`, `phone`, `email`, `address`, `par_fathername`, `par_mothername`, `par_fatherphone`, `par_motherphone`, `created_by` ) 
-                VALUES('$username','$username', '$encPass','parent','$motherphone', '$email', '$address', '$fathername','$mothername','$fatherphone','$motherphone', '$user_id')";
+    $sql_user = "INSERT INTO users (`name`, `username`, `password`, `user_role`, `phone`, `email`, `address`, `par_fathername`, `par_mothername`, `par_fatherphone`, `par_motherphone`, `created_by`, `par_pta` ) 
+                VALUES('$username','$username', '$encPass','parent','$motherphone', '$email', '$address', '$fathername','$mothername','$fatherphone','$motherphone', '$user_id','$pta')";
 
     mysqli_query($db, $sql_user) or die('Could not enter data: ' . mysqli_error($db));
     $id = mysqli_insert_id($db);

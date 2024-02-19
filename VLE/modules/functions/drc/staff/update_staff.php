@@ -55,9 +55,20 @@
                                     <td class="text-right"><input id="address" type="text" name="address" placeholder="<?php echo $row['address']?>"></td>
                                 </tr>
                                 <tr>
+    <td style="color: black"><b>PTA:</b></td>
+    <td class="text-right">
+        <input type="radio" name="pta" id="ptaTrue" value="true" onclick="teapta = this.value;">
+        <label for="ptaTrue">True</label>
+        <input type="radio" name="pta" id="ptaFalse" value="false" onclick="teapta = this.value;">
+        <label for="ptaFalse">False</label>
+    </td>
+</tr>
+
+                                <tr>
                                     <td>Picture:</td>
                                     <td class="text-right"><input id="file" type='file' name='file' ></td>
                                 </tr>
+                                
 
                                 <tr>
                                     <td></td>
