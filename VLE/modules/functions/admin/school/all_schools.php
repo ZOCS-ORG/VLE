@@ -8,7 +8,7 @@ include_once('../layouts/topbar.php');
 ?>
 <style>
     #map {
-        height: 280px;        
+        height: 280px;
     }
 </style>
 <hr />
@@ -17,6 +17,11 @@ include_once('../layouts/topbar.php');
 <main>
     <div class="card-header text-center">
         <h3>School list</h3>
+        <div class="text-right text-light">
+            <a class="btn btn-sm btn-success" href="districts.php"> Distrricts <i class="fa fa-list "></i> </a>
+            <a class="btn btn-sm btn-success" href="zones.php"> Zones <i class="fa fa-list "></i> </a>
+            <a class="btn btn-sm btn-success" href="add_school.php"> Add School <i class="fa fa-plus "></i> </a>
+        </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">

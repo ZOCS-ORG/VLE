@@ -28,7 +28,7 @@ include '../teacher/header.php';
             <span class="cardtitle">Discussions</span>
           </a>
           <br>
-          <a class="card-conten btn small text -text" href="../../modules/functions/teacher/">
+          <a class="card-conten btn small text -text" href="../../modules/functions/<?php echo $_SESSION['role'] ?>/">
             <span class="cardtitle">Back to Dashboard</span>
           </a>
         </div>

@@ -103,19 +103,20 @@ include_once('../layouts/topbar.php');
                             </tr>
 
                             <tr>
-                                <td style=" color: black"><b>Province:</b></td>
+                                <td style=" color: black"><b>District:</b></td>
                                 <td class="text-right">
                                     <select name="province" id="class_id">
-                                        <option value="Central Province">Central Province </option>
-                                        <option value="Copperbelt Province">Copperbelt Province </option>
-                                        <option value="Eastern Province">Eastern Province </option>
-                                        <option value="Luapula Province">Luapula Province </option>
-                                        <option value="Lusaka Province">Lusaka Province </option>
-                                        <option value="Muchinga Province">Muchinga Province </option>
-                                        <option value="Northern Province">Northern Province </option>
-                                        <option value="North-Western Province">North-Western Province </option>
-                                        <option value="Southern Province">Southern Province </option>
-                                        <option value="Western Province ">Western Province </option>
+                                        <?php
+                                        $q = mysqli_query($db, "SELECT * FROM provinces");
+                                        if (!$q) {
+                                            die('Could not enter data: '. mysqli_error($db));
+                                        }
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                         ?>
+                                            <option value="<?php echo $row['province_id'];?>"><?php echo $row['province_name'];?></option>
+                                            <?php
+                                        }
+                                        ?>
                                     </select>
                                 </td>
                             </tr>
