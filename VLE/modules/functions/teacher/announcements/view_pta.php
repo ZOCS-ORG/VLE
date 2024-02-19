@@ -5,7 +5,24 @@
     include_once('../layouts/head_to_wrapper.php');
     
     include_once('../layouts/topbar.php');
+    $user_id = $_SESSION['id'];
+$users_sql = "SELECT created_by AS school FROM users WHERE id ='$user_id'";
+$users_result = mysqli_query($db, $users_sql) or die('An error occurred while fetching schools: ' . mysqli_error($db));
 
+// Check if the query returned any rows
+if(mysqli_num_rows($users_result) > 0) {
+    // Fetch the row as an associative array
+    $user_row = mysqli_fetch_assoc($users_result);
+    
+    // Access the 'school' column from the fetched row
+    $school_pta = $user_row['school'];
+    
+    // Output the school
+    // echo $school_pta;
+} else {
+    // Handle the case when no rows are returned
+    // echo "No school found for the user with ID: $user_id";
+}
 ?>
     						
 <hr/>
@@ -26,15 +43,19 @@
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Notice</th>
-                                    <!-- <th>For</th> -->
+                                    <th>Notice</th>                             
                                     <th>Date</th>
-                                    <!-- <th>Actions</th> -->
+                               
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                    $sql = "SELECT * FROM pta_notices ORDER BY id DESC ";
+                                    $sql = "SELECT p.*
+                                    FROM pta_notices p 
+                                    INNER JOIN school_teachers st ON st.teacher_id = p.created_by 
+                                    INNER JOIN schools s ON s.school_id = st.school_id 
+                                    WHERE st.teacher_id = $school_pta 
+                                    ORDER BY id DESC ";
                                     $res= mysqli_query($db,$sql)or die('An error occured: '.mysqli_error($db));
 
                                     while($row = mysqli_fetch_array($res)){
