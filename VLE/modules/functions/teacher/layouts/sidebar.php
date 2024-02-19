@@ -133,6 +133,12 @@ $pta_visible = mysqli_num_rows($result) > 0;
   </li>
 
   <li class="nav-item text-color-dark">
+    <a class="nav-link" href="../../../../lms/teacher/zone.php">
+      <i class="fa fas fa-fw fa-users"></i>
+      <span>Zone</span></a>
+  </li>
+
+  <li class="nav-item text-color-dark">
     <a class="nav-link" href="../chat">
       <i class="fa fas fa-fw fa-comments-o"></i>
       <?php

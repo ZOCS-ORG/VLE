@@ -20,7 +20,7 @@ $reportHTML = "";
 
 // Append count row to the report HTML
 $reportHTML .= "<tr>";
-$reportHTML .= "<td colspan='3' style='color:black; font-weight:bold;'>Total Students: $count</td>";
+$reportHTML .= "<td colspan='3' style='color:black; font-weight:bold;'>Total Learners: $count</td>";
 $reportHTML .= "</tr>";
 
 while ($row = mysqli_fetch_array($res)) {
