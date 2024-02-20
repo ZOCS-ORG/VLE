@@ -1053,6 +1053,7 @@ if (!empty($_POST['update_parent'])) {
     $par_fatherphone = $_POST['par_fatherphone'];
     $par_motherphone = $_POST['par_motherphone'];
     $address = $_POST['address'];
+    $pta = $_POST['pta'];
 
     $sql = "UPDATE users SET";
     //Check to see that value is not empty so we don't replace already existing value with null😋..
@@ -1076,6 +1077,9 @@ if (!empty($_POST['update_parent'])) {
     }
     if (!empty($motherphone)) {
         $sql .= " par_motherphone = '$par_motherphone',";
+    }
+    if (!empty($pta)) {
+        $sql .= " par_pta = '$pta',";
     }
     if (!empty($address)) {
         $sql .= " address = '$address',";

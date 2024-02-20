@@ -67,6 +67,16 @@
                                 </tr>
 
                                 <tr>
+                                <td style="color: black"><b>PTA:</b></td>
+                                <td class="text-right">
+                                    <input type="radio" name="pta" id="ptaTrue" value="true" onclick="teapta = this.value;">
+                                    <label for="ptaTrue">True</label>
+                                    <input type="radio" name="pta" id="ptaFalse" value="false" onclick="teapta = this.value;">
+                                    <label for="ptaFalse">False</label>
+                                </td>
+                            </tr>
+
+                                <tr>
                                     <td></td>
                                     <td class="text-left"><input class="btn btn-sm btn-secondary " type="submit" name="update_parent" value="Submit"></td>
                                 </tr>
