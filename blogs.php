@@ -15,6 +15,52 @@
     <script src="https://kit.fontawesome.com/ebbc1aa60f.js" crossorigin="anonymous"></script>
     <script src="blogs.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
+
+
+
+    <style>
+        .search {
+            width: 100%;
+            position: relative;
+            display: flex;
+        }
+
+        .searchTerm {
+            width: 100%;
+            border: 3px solid #009952;
+            border-right: none;
+            padding: 5px;
+            height: 36px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #9DBFAF;
+        }
+
+        .searchTerm:focus {
+            color: #009952;
+        }
+
+        .searchButton {
+            width: 40px;
+            height: 36px;
+            border: 1px solid #009952;
+            background: #009952;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /*Resize the wrap to see the search bar change!*/
+        .wrap {
+            width: 30%;
+            position: absolute;
+            /* top: 5%; */
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
 </head>
 
 <body>
@@ -24,9 +70,39 @@
         <div class="titletext">
             <h1>Blogs <span>Feed</span></h1>
         </div>
+
+
+        <div class="">
+            <form method="post" action="#">
+                <div class="wrap">
+                    <div class="search">
+                        <input type="text" name="query" class="searchTerm" placeholder="Search article">
+                        <button type="submit" class="searchButton">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
         <div class="container">
 
             <?php
+
+            // get blogs withe query results
+            if (isset($_POST['query'])) {
+                $query = mysqli_real_escape_string($db, $_POST['query']);
+                $sql = "SELECT b.*, u.name FROM blogs b 
+                    JOIN users u ON u.id = b.created_by
+                    WHERE b.title LIKE '%$query%' OR blog LIKE '%$query%'
+                    ORDER BY id DESC     
+                ";
+            } else {
+                $sql = "SELECT b.*, u.name FROM blogs b 
+                    JOIN users u ON u.id = b.created_by
+                    ORDER BY id DESC ";
+            }
 
             function limitTxt($str, $max, $print)
             {
@@ -36,9 +112,7 @@
                 return $str;
             }
 
-            $q = mysqli_query($db, "SELECT b.*, u.name FROM blogs b 
-                        JOIN users u ON u.id = b.created_by
-                        ORDER BY id DESC ") or die("Connection error: " . mysqli_error($db));
+            $q = mysqli_query($db, $sql) or die("Connection error: " . mysqli_error($db));
 
             while ($row = mysqli_fetch_array($q)) {
             ?>

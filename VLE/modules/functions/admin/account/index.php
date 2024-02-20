@@ -55,6 +55,38 @@ require_once('../layouts/head_to_wrapper.php');
                 </div>
             </div>
 
+            <div hidden class="col-xl-4 col-md-4 mb-3">
+                <div class="card border-left-success shadow py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <?php
+
+                                function limitTxt($str, $max, $print)
+                                {
+                                    if (strlen($str) > $max) {
+                                        $str = substr($str, 0, $print) . '...';
+                                    }
+                                    return $str;
+                                }
+
+                                $q = mysqli_query($db, "SELECT * FROM blogs ") or die("Connection error: " . mysqli_error($db));
+
+                                while ($r = mysqli_fetch_array($q)) {
+                                }
+                                ?>
+                                <div class="text-sm font-weight-bold text-dark text-uppercase mb-1">Blogs </div>
+                                <div class="text-right h5 mb-0 font-weight-bold text-gray-800"> <?php echo limitTxt($r['title'], 200, 150); ?></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-right col-auto">
+                        <a class="btn-block btn btn-sm btn-success" href="../staff">Teacher</a>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
 
