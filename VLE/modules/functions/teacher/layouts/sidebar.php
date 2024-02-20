@@ -12,7 +12,7 @@ $s_pass = $_SESSION['password'];
 $user_id = $_SESSION['id'];
 
 // Query to check if the user has par_pta set to true
-$query = "SELECT par_pta FROM users WHERE id = 138 AND par_pta LIKE '%true%'";
+$query = "SELECT par_pta FROM users WHERE id = $user_id AND par_pta LIKE '%true%'";
 $result = mysqli_query($db, $query);
 
 // Check if the query returned any rows
