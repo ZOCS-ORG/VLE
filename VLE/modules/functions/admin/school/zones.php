@@ -67,10 +67,21 @@ include_once('../layouts/topbar.php');
                                 <td class="text-right"><input type="text" name="name" required></td>
                             </tr>
                             <tr>
-                                <td>Name:</td>
+                                <td>District:</td>
                                 <td class="text-right">
-                                    // select from teachers table
-                                    
+                                    <select name="district" id="select">
+                                        <?php
+                                        $q = mysqli_query($db, "SELECT * FROM districts");
+                                        if (!$q) {
+                                            die('Could not enter data: ' . mysqli_error($db));
+                                        }
+                                        while ($row = mysqli_fetch_assoc($q)) {
+                                        ?>
+                                            <option value="<?php echo $row['district_id']; ?>"><?php echo $row['district_name']; ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
@@ -84,7 +95,7 @@ include_once('../layouts/topbar.php');
 
         <div class="col-lg-6">
             <div class="card-header">
-                <h5 class="text-center my-2">Categories</h5>
+                <h5 class="text-center my-2">Zones</h5>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -92,20 +103,24 @@ include_once('../layouts/topbar.php');
                         <thead>
                             <tr>
                                 <th>Name</th>
+                                <th>District</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT * FROM blog_categories";
+                            // typeof
+                            $sql = "SELECT z.*, d.district_name FROM zones z
+                                        LEFT JOIN districts d ON d.district_id = z.district_id";
                             $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
 
                             while ($row = mysqli_fetch_array($res)) {
                             ?>
                                 <tr>
-                                    <td> <?php echo $row['name']; ?> </td>
+                                    <td> <?php echo $row['zone']; ?> </td>
+                                    <td> <?php echo $row['district_name']; ?> </td>
                                     <th class="btn-group">
-                                        <a class="btn btn-danger btn-sm text-light" href="?id=<?php echo $row['id'] ?>&delete=true">Delete </a>
+                                        <a class="btn btn-danger btn-sm text-light" href="?id=<?php echo $row['zone_id'] ?>&delete=true">Delete </a>
                                     </th>
                                 </tr>
                             <?php
@@ -120,13 +135,27 @@ include_once('../layouts/topbar.php');
         </div>
     </div>
 </div>
-
+<!-- Multi-Select suport -->
+<link rel="stylesheet" href="../../../assets/select_box/vanillaSelectBox.css">
+<script src="../../../assets/select_box/vanillaSelectBox.js"></script>
+<script>
+    let mySelect = new vanillaSelectBox("#select", {
+        maxWidth: 500,
+        maxHeight: 400,
+        minWidth: -1,
+        search: true,
+        disableSelectAll: true,
+        placeHolder: "",
+    });
+</script>
+<!-- End multi-select support  -->
 <?php
 
 if (isset($_POST['create'])) {
     $name = mysqli_real_escape_string($db, $_POST['name']);
-    
-    $sql = " INSERT INTO `blog_categories` (`name`) VALUES ('$name')";
+    $district = mysqli_real_escape_string($db, $_POST['district']);
+
+    $sql = " INSERT INTO `zones` (`zone`, `district_id`) VALUES ('$name', '$district')";
 
     $success = mysqli_query($db, $sql) or die('Could not enter data: ' . mysqli_error($db));
     if ($success) {
@@ -136,10 +165,10 @@ if (isset($_POST['create'])) {
 
 if (isset($_GET['delete'])) {
     $del = mysqli_real_escape_string($db, $_GET['id']);
-    
-    $success = mysqli_query($db, "DELETE FROM `blog_categories` WHERE id = '$del' ") or die('Could not enter data: ' . mysqli_error($db));
+
+    $success = mysqli_query($db, "DELETE FROM `zones` WHERE zone_id = '$del' ") or die('Could not enter data: ' . mysqli_error($db));
     if ($success) {
-        echo "<script> window.location = '?created=true' </script>";
+        echo "<script> window.location = '?deleted=true' </script>";
     }
 }
 require_once('../layouts/footer_to_end.php');

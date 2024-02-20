@@ -103,17 +103,17 @@ include_once('../layouts/topbar.php');
                             </tr>
 
                             <tr>
-                                <td style=" color: black"><b>District:</b></td>
+                                <td style=" color: black"><b>Select Zone:</b></td>
                                 <td class="text-right">
-                                    <select name="province" id="class_id">
+                                    <select name="zone" id="zone">
                                         <?php
-                                        $q = mysqli_query($db, "SELECT * FROM provinces");
+                                        $q = mysqli_query($db, "SELECT * FROM zones");
                                         if (!$q) {
                                             die('Could not enter data: '. mysqli_error($db));
                                         }
-                                        while ($row = mysqli_fetch_assoc($result)) {
+                                        while ($row = mysqli_fetch_assoc($q)) {
                                          ?>
-                                            <option value="<?php echo $row['province_id'];?>"><?php echo $row['province_name'];?></option>
+                                            <option value="<?php echo $row['zone_id'];?>"><?php echo $row['zone'];?></option>
                                             <?php
                                         }
                                         ?>
@@ -122,31 +122,15 @@ include_once('../layouts/topbar.php');
                             </tr>
 
                             <tr>
-
-                                <td style=" color: black"><b>District:</b></td>
-                                <td class="text-right">
-                                    <select name="district" id="class_id">
-                                        <option value="Kabwe">Kabwe </option>
-                                        <option value="Choma">Choma </option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <tr>
                                 <td style=" color: black"><b>Type of School:</b></td>
                                 <td class="text-right">
-                                    <select name="type" id="class_id">
+                                    <select name="type" id="">
                                         <option value="University">University </option>
                                         <option value="College">College </option>
                                         <option value="Community School">Community School </option>
                                         <option value="Primary School ">Primary School </option>
                                     </select>
                                 </td>
-                            </tr>
-
-                            <tr>
-                                <td style=" color: black"><b>School Zone</b></td>
-                                <td class="text-right"><input type="text" name="zone" placeholder="Enter School Zones" required=""></td>
                             </tr>
 
                             <tr>
@@ -181,13 +165,13 @@ include_once('../layouts/topbar.php');
 <link rel="stylesheet" href="../../../assets/select_box/vanillaSelectBox.css">
 <script src="../../../assets/select_box/vanillaSelectBox.js"></script>
 <script>
-    let mySelect = new vanillaSelectBox("#subj", {
+    let mySelect = new vanillaSelectBox("#zone", {
         maxWidth: 500,
         maxHeight: 400,
         minWidth: -1,
         search: true,
         disableSelectAll: true,
-        placeHolder: "Assign subjects",
+        placeHolder: "Select",
     });
 </script>
 <!-- End multi-select support  -->
