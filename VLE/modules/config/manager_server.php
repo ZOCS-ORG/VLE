@@ -186,21 +186,28 @@ if(isset($_GET['id']) && isset($_GET['delete_announcement']) ) {
 if(isset($_POST['create_Notice'])){
     $id = "";
     $title = $_POST['title'];
-    $name = mysqli_real_escape_string($db,$_POST['name']);
-    $audience = $_POST['audience'];
-    $date = $_POST['date'];
+    $name = mysqli_real_escape_string($db, $_POST['name']);
+    $date = date('Y-m-d');
+    $audience = 'teacher';
     $created_by = $_POST['created_by'];
 
-    $sql = " INSERT INTO `pta_notices`
-                    (`title`, `name`,`audience`, `date`, `created_by`) 
-            VALUES ('$title','$name', '$audience', '$date','$created_by' ) ";
-    
-    $success = mysqli_query($db, $sql)or die('Could not enter data: '.mysqli_error($db));
+
+    $sql = "INSERT INTO `pta_notices`
+                    (`title`, `name`, `audience`, `date`, `created_by`) 
+            VALUES ('$title', '$name', '$audience', '$date', '$created_by') ";
+
+    $success = mysqli_query($db, $sql);
+
     if($success) {
         $id = mysqli_insert_id($db);
+        // Redirect with success flag
         header('Location: ../announcements/pta.php?created=true');
+        exit();
+    } else {
+        die('Could not enter data: ' . mysqli_error($db));
     }
 }
+
 
 if(!empty($_POST['update_Notice'])){
     $id = $_POST['id'];
