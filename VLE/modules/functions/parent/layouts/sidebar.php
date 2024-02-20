@@ -75,9 +75,8 @@ $pta_visible = mysqli_num_rows($result) > 0;
         <i class="fa fas fa-fw fa-child"></i>
         <span>Our Kids</span></a>
     </li>
-    <?php if ($pta_visible): ?>
 
-
+<?php if ($pta_visible): ?>
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#staff" aria-expanded="true" aria-controls="staff">
         <i class="fa fas fa-fw fa-users"></i>
@@ -95,7 +94,7 @@ $pta_visible = mysqli_num_rows($result) > 0;
     <li class="nav-item text-color-dark">
       <a class="nav-link" href="../account/materials.php">
         <i class="fa fas fa-fw fa-book"></i>
-        <span>Materials</span></a>
+        <span>learning Materials</span></a>
     </li>
 
     <li class="nav-item text-color-dark">

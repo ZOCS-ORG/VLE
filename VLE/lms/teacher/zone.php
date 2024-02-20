@@ -21,11 +21,11 @@ require_once('header.php');
 	$teacher_id = $_SESSION['id'];
 
 // SQL query to fetch the zone_id based on the teacher_id
-$sql = "SELECT z.zone_id, s.zone FROM zones 
-		INNER JOIN school_teachers st ON st.teacher_id = '130'
-		INNER JOIN schools s ON s.school_id = st.school_id
-		INNER JOIN zones z ON z.zone = s.zone
-		Group BY z.zone_id;";
+$sql = "SELECT z.zone_id, z.zone FROM zones 
+INNER JOIN school_teachers st ON st.teacher_id = '130'
+INNER JOIN schools s ON s.school_id = st.school_id
+INNER JOIN zones z ON z.zone_id = s.zone
+Group BY z.zone_id;";
 
 $result = mysqli_query($db, $sql);
 
