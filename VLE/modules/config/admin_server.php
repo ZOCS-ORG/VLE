@@ -774,6 +774,7 @@ if (!empty($_POST['update_staff'])) {
     $email = $_POST['email'];
     $username = $_POST['username'];
     //$dob = $_POST['dob'];
+    $pta = $_POST['pta'];
     $address = $_POST['address'];
     $filetmp = $_FILES['file']['tmp_name'];
     if (isset($filetmp) && !empty($filetmp)) {
@@ -800,6 +801,9 @@ if (!empty($_POST['update_staff'])) {
     }
     if (!empty($email)) {
         $sql .= " email = '$email',";
+    }
+    if (!empty($pta)) {
+        $sql .= " par_pta = '$pta',";
     }
     if (!empty($username)) {
         $sql .= " username = '$username',";
