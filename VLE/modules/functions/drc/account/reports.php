@@ -14,7 +14,7 @@ $schools_result = mysqli_query($db, $schools_sql) or die('An error occurred whil
 <hr />
 
 <main>
-
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> -->
 
     <div class="container-fluid col-md-12">
         <div class="form-group" style="width:25%;">
@@ -34,6 +34,7 @@ $schools_result = mysqli_query($db, $schools_sql) or die('An error occurred whil
                     <div class="table-responsive" style="border:2px solid black; padding:1.5rem; ">
                         <table class="table table-bordered" id="staff_tea" width="100%" cellspacing="0">
                             <button onclick="exportToExcel()" class='btn btn-success' style="margin-right: 10px;">Export to Excel</button>
+                            <button onclick="exportToPdf()" class='btn btn-danger'style="margin-right: 10px;">Export to PDF</button>
                             <span id="totalCount" style="margin-bottom: 10px;"></span>
                             <!-- <button onclick="exportToPdf()" class='btn btn-danger'>Export to PDF</button> -->
                             <thead>
@@ -108,6 +109,33 @@ $schools_result = mysqli_query($db, $schools_sql) or die('An error occurred whil
                         link.click();
                     }                    
                 </script>
+
+<script>
+    function exportToPdf() {
+        const doc = new jsPDF();
+        const table = document.getElementById('staff_tea');
+        
+        // Get table content
+        const { width, height } = doc.internal.pageSize;
+        const margins = {
+            top: 20,
+            bottom: 20,
+            left: 20,
+            width: width - 40
+        };
+        
+        doc.autoTable({
+            html: table,
+            startY: margins.top + 10,
+            margin: margins,
+            styles: { overflow: 'linebreak' },
+            columnStyles: { 0: { cellWidth: 50 } } // Example column width adjustment
+        });
+        
+        doc.save('table.pdf');
+    }
+</script>
+
 
             </div>
 

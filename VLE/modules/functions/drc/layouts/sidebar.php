@@ -101,7 +101,7 @@
     <li class="nav-item text-color-dark">
         <a class="nav-link" href="../account/reports.php">
             <i class="fa fas fa-fw fa-tachometer"></i>
-            <span>Enrolment Report</span></a>
+            <span>Enrollment </span></a>
     </li>
 
     <li class="nav-item text-color-dark">
