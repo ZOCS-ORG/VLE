@@ -23,6 +23,7 @@ function limitTxt($str, $max, $print)
             <div class="card-header text-center">
                 <h3> Blog Posts </h3>
                 <div class="text-right text-light">
+                    <a class="btn btn-sm btn-success" href="categories.php"> Blog Categories <i class="fa fa-list "></i> </a>
                     <a class="btn btn-sm btn-success" href="create.php"> Create blog post <i class="fa fa-plus "></i> </a>
                 </div>
             </div>
@@ -34,6 +35,7 @@ function limitTxt($str, $max, $print)
                                 <th>Title</th>
                                 <th>Blog Post</th>
                                 <th>File</th>
+                                <th>Category</th>
                                 <th>Created By</th>
                                 <th>Date</th>
                                 <th>Actions</th>
@@ -41,8 +43,9 @@ function limitTxt($str, $max, $print)
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT b.*, u.name FROM blogs b 
+                            $sql = "SELECT b.*, cat.name AS category, u.name FROM blogs b 
                                                 JOIN users u ON u.id = b.created_by
+                                                LEFT JOIN blog_categories cat ON cat.id = b.cat_id
                                                 WHERE b.created_by = '$id'
                                                 ORDER BY id DESC ";
                             $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
@@ -53,6 +56,7 @@ function limitTxt($str, $max, $print)
                                     <td> <?php echo $row['title']; ?> </td>
                                     <td> <?php echo limitTxt($row['blog'], 200,150); ?></td>
                                     <td> <a href="../../../utils/blogs/<?php echo $row['file']; ?>" target="_blank">File</a> </td>
+                                    <td> <?php echo $row['category']; ?> </td>
                                     <td> <?php echo $row['name']; ?> </td>
                                     <td> <?php echo date_format(date_create($row['timestamp']), "d M, Y"); ?> </td>
                                     <th class="btn-group"><a class="btn btn-primary btn-sm text-light" href="update.php?id=<?php echo $row['id'] ?>">Edit</a>

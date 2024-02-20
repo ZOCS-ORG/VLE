@@ -25,8 +25,7 @@
 <!-- End duplicate remover  -->
 
 <?php 
-    // $query = "SELECT  * from students where id = '$student_id' ";
-    $query = "SELECT  * from users where id = '$student_id' ";
+    $query = "SELECT  * from students where id = '$student_id' ";
 
     $result = mysqli_query($db, $query) or die(mysqli_error($db));
     $count = 1;
@@ -94,13 +93,10 @@
                             <td class="text-right">
                                 <select name="parentid" id="parentid">
                                     <?php
-                                    $res = mysqli_query($db, "SELECT users.id, p.fathername, p.mothername 
-                                            FROM users 
-                                            JOIN parents p ON p.user_id = users.id
-                                            WHERE users.user_role = 'parent' ");
+                                    $res = mysqli_query($db, "SELECT * FROM parents");
                                     while($row = mysqli_fetch_array($res)) { ?>
                                     <option value="<?php echo $row['id'];?>"> <?php 
-                                            echo "Mr. ".$row['fathername']." & Mrs. ".$row['mothername']; ?> </option>
+                                            echo "Mr. ".$row['fathername']." Mrs. ".$row['mothername']; ?> </option>
                                 <?php   }     ?>
                                 </select>
                             </td>
