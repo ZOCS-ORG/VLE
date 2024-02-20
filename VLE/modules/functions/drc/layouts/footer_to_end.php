@@ -40,7 +40,8 @@
   <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
   
-  <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<!--
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> -->
   <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
@@ -73,9 +74,14 @@
     $(document).ready(function() {
       $('#dataTable').DataTable();
     });
+    
     $(document).ready(function() {
-      $('#staff_tea').DataTable();
+        $('#staff_tea').DataTable({
+            lengthChange: false,
+            buttons: ['excel', 'pdf']
+        });
     });
+
     $(document).ready(function() {
       $('#staff_acc').DataTable();
     });
@@ -90,6 +96,8 @@
 
   </script>
 
+
 </body>
+
 
 </html>

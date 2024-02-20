@@ -5,7 +5,7 @@ require_once('../../../config/admin_server.php'); //contains db connection so we
 $schoolId = $_POST['schoolId'];
 
 // Prepare SQL query to fetch data for the selected school
-$sql = "SELECT u.name, u.dob, u.sex, s.name AS school 
+$sql = "SELECT u.name, u.dob, u.sex,u.address, s.name AS school 
         FROM users u 
         INNER JOIN school_teachers st ON st.teacher_id = u.created_by 
         INNER JOIN schools s ON s.school_id = st.school_id 
@@ -18,10 +18,6 @@ $images_dir = "../../../utils/images/users/";
 $count = mysqli_num_rows($res);
 $reportHTML = "";
 
-// Append count row to the report HTML
-$reportHTML .= "<tr>";
-$reportHTML .= "<td colspan='3' style='color:black; font-weight:bold;'>Total Learners: $count</td>";
-$reportHTML .= "</tr>";
 
 while ($row = mysqli_fetch_array($res)) {
     $picname = $row['img'];
@@ -36,6 +32,7 @@ while ($row = mysqli_fetch_array($res)) {
     $reportHTML .= "<td>{$row['name']}</td>";
     $reportHTML .= "<td>{$ageDisplay}</td>";
     $reportHTML .= "<td>{$row['sex']}</td>";
+    $reportHTML .= "<td>{$row['address']}</td>";
     $reportHTML .= "</tr>";
 }
 

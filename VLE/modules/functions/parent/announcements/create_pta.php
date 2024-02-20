@@ -48,9 +48,9 @@
                                 </tr>
                                 <tr>
                                     <td>Notice:</td>
-                                    <td class="text-right"><textarea name="name" ></textarea></td>
+                                    <td class="text-right"><textarea name="name" cols="50" rows="6"></textarea></td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td>Audience</td>
                                     <td  class="text-right">
                                         <select name="audience" id="testSelect1" class="select_style">                                            
@@ -61,17 +61,17 @@
                                             <?php   }     ?>
                                         </select>
                                     </td>
-                                </tr>
-                                <tr>
+                                </tr> -->
+                                <!-- <tr>
                                     <td>Date:</td>
                                     <td class="text-right">
                                     <input type="text" name="date" id="date1" alt="date" class="IP_calendar" title="Y-m-d" 
-                                                readonly placeholder="<?php echo date('Y-m-d') ?>">
+                                                readonly placeholder="<?php echo date('Y-m-d') ?>" required>
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td> <input type="hidden" name="created_by" value="<?php echo $id ?>" >  </td>
-                                    <td class="text-left"><input class="btn btn-sm btn-primary " type="submit" name="create_Notice" value="Submit"></td>
+                                    <td class="text-center"><input class="btn btn-sm btn-primary " type="submit" name="create_Notice" value="Submit"></td>
                                 </tr>
                             </table>
                         </form>

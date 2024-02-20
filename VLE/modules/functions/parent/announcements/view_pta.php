@@ -24,7 +24,31 @@ if(mysqli_num_rows($users_result) > 0) {
     // echo "No school found for the user with ID: $user_id";
 }
 ?>
-    						
+    			
+                <style>
+    .message-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .message {
+        width: calc(50% - 20px);
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: #f0f8ea;
+    }
+
+    @media (max-width: 768px) {
+        .message {
+            width: 100%;
+        }
+    }
+</style>
+
 <hr/>
 <main>
     <div class="container-fluid col-md-12">
@@ -38,46 +62,40 @@ if(mysqli_num_rows($users_result) > 0) {
                         </div>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="4">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Notice</th>                             
-                                    <th>Date</th>
-                               
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    $sql = "SELECT p.*
-                                    FROM pta_notices p 
-                                    INNER JOIN school_teachers st ON st.teacher_id = p.created_by 
-                                    INNER JOIN schools s ON s.school_id = st.school_id 
-                                    WHERE st.teacher_id = $school_pta 
-                                    ORDER BY id DESC ";
-                                    $res= mysqli_query($db,$sql)or die('An error occured: '.mysqli_error($db));
+                <div class="message-container">
+    <?php
+        $sql = "SELECT p.*, u.name AS creater_name 
+        FROM pta_notices p 
+        INNER JOIN users u ON u.id = p.created_by 
+        INNER JOIN school_teachers st ON st.teacher_id = p.created_by 
+        INNER JOIN schools s ON s.school_id = st.school_id 
+        WHERE st.teacher_id = $school_pta 
+        ORDER BY p.id DESC;
+        ";
+        $res= mysqli_query($db,$sql)or die('An error occured: '.mysqli_error($db));
 
-                                    while($row = mysqli_fetch_array($res)){
-                                ?>
-                                <tr>
-                                    <td> <?php echo $row['title']; ?> </td>
-                                    <td> <?php echo $row['name']; ?></td>
-                                    <!-- <td> <?php echo $row['audience']; ?> </td> -->
-                                    <td> <?php echo $row['date']; ?> </td>
-                                    <!-- <th class="btn-group">
-                                        <a class="btn btn-primary btn-sm text-light" href="update_pta.php?id=<?php echo $row['id']?>">Edit</a> 
-                                        <a class="btn btn-danger btn-sm text-light" href="../../../config/manager_server.php?id=<?php echo $row['id']?>&delete_Notice=true">Delete </a>
-                                    </th> -->
-                                </tr>
-                                <?php
+        while($row = mysqli_fetch_array($res)){
+    ?>
+    <div class="message">
+        <div class="message-header">
+            <h5 class="message-title"><b><?php echo $row['title']; ?></b></h5>
+            <span class="message-date">Date:<?php echo $row['date']; ?></span>
+        </div>
+        <div class="message-body">
+            <p><?php echo $row['name']; ?></p>
+            <p>From: <?php echo $row['creater_name']; ?></p>
+        </div>
+        <!-- <div class="message-actions">
+            <a class="btn btn-primary btn-sm text-light" href="update_pta.php?id=<?php echo $row['id']?>">Edit</a> 
+            <a class="btn btn-danger btn-sm text-light" href="../../../config/manager_server.php?id=<?php echo $row['id']?>&delete_Notice=true">Delete</a>
+        </div> -->
+    </div>
+    <?php
+        }
+    ?>
+</div>
 
-                                    }
-
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
+                   
                 </div>
             </div>  
 

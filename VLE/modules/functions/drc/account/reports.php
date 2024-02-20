@@ -14,33 +14,34 @@ $schools_result = mysqli_query($db, $schools_sql) or die('An error occurred whil
 <hr />
 
 <main>
-    <div class="container-fluid col-md-10">
 
+
+    <div class="container-fluid col-md-12">
+        <div class="form-group" style="width:25%;">
+            <label for="schoolSelect">Select School:</label>
+            <select class="form-control" id="schoolSelect">
+                <?php while ($school_row = mysqli_fetch_assoc($schools_result)) { ?>
+                    <option value="<?php echo $school_row['school_id']; ?>"><?php echo $school_row['name']; ?></option>
+                <?php } ?>
+            </select>
+        </div>
+        
         <div id="tabs">
 
             <div id="lecturers">
-                <div class="justify text-right">            
-                    <!-- Dropdown list to select schools -->
-                    <div class="form-group" style="width:30%;">
-                        <label for="schoolSelect">Select School:</label>
-                        <select class="form-control" id="schoolSelect">
-                            <?php while ($school_row = mysqli_fetch_assoc($schools_result)) { ?>
-                                <option value="<?php echo $school_row['school_id']; ?>"><?php echo $school_row['name']; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <!-- <span><a class="btn btn-success btn-sm" href="add_staff.php">Add Teacher</a></span> -->
-                </div>
 
-
-                <div class="card-body">
-                    <div class="table-responsive" style="border:2px solid black; padding:1rem; ">
-                    <table class="table table-bordered" id="staff_tea" width="100%" cellspacing="0" >
+                <div class="" style="background: white;">
+                    <div class="table-responsive" style="border:2px solid black; padding:1.5rem; ">
+                        <table class="table table-bordered" id="staff_tea" width="100%" cellspacing="0">
+                            <button onclick="exportToExcel()" class='btn btn-success' style="margin-right: 10px;">Export to Excel</button>
+                            <span id="totalCount" style="margin-bottom: 10px;"></span>
+                            <!-- <button onclick="exportToPdf()" class='btn btn-danger'>Export to PDF</button> -->
                             <thead>
                                 <tr>
                                     <td>Name</td>
                                     <td>Age</td>
                                     <td>Gender</td>
+                                    <td>Address</td>
                                 </tr>
                             </thead>
                             <tbody id="reportBody">
@@ -50,33 +51,63 @@ $schools_result = mysqli_query($db, $schools_sql) or die('An error occurred whil
                     </div>
                 </div>
                 <script>
-    // Function to generate report based on selected school
-    function generateReport(schoolId) {
-        $.ajax({
-            url: 'generate_report.php', // Change this to the PHP file that generates the report
-            method: 'POST',
-            data: {
-                schoolId: schoolId
-            },
-            success: function(response) {
-                $('#reportBody').html(response);
-            }
-        });
-    }
+                    // Function to generate report based on selected school
+                    function generateReport(schoolId) {
+                        $.ajax({
+                            url: 'generate_report.php', // Change this to the PHP file that generates the report
+                            method: 'POST',
+                            data: {
+                                schoolId: schoolId
+                            },
+                            success: function(response) {
+                                $('#reportBody').html(response);
 
-    // When the document is ready
-    $(document).ready(function() {
-        // Generate report for the initially selected school
-        var initialSchoolId = $('#schoolSelect').val();
-        generateReport(initialSchoolId);
+                                // Update total count
+                                var count = $('#reportBody tr').length;
+                                $('#totalCount').html("<strong>Total Learners: </strong>" + count);
+                            }
+                        });
+                    }
 
-        // When the value of the dropdown changes
-        $('#schoolSelect').change(function() {
-            var selectedSchoolId = $(this).val();
-            generateReport(selectedSchoolId);
-        });
-    });
-</script>
+                    // When the document is ready
+                    $(document).ready(function() {
+                        // Generate report for the initially selected school
+                        var initialSchoolId = $('#schoolSelect').val();
+                        generateReport(initialSchoolId);
+
+                        // When the value of the dropdown changes
+                        $('#schoolSelect').change(function() {
+                            var selectedSchoolId = $(this).val();
+                            generateReport(selectedSchoolId);
+                        });
+                    });
+                </script>
+                <script>
+                    function exportToExcel() {
+                        const table = document.getElementById("staff_tea");
+                        const rows = table.querySelectorAll("tr");
+                        let csv = [];
+
+                        for (let i = 0; i < rows.length; i++) {
+                            const row = [],
+                                cols = rows[i].querySelectorAll("td, th");
+
+                            for (let j = 0; j < cols.length; j++) {
+                                row.push(cols[j].innerText);
+                            }
+
+                            csv.push(row.join(","));
+                        }
+
+                        const csvContent = "data:text/csv;charset=utf-8," + csv.join("\n");
+                        const encodedUri = encodeURI(csvContent);
+                        const link = document.createElement("a");
+                        link.setAttribute("href", encodedUri);
+                        link.setAttribute("download", "export.csv");
+                        document.body.appendChild(link);
+                        link.click();
+                    }                    
+                </script>
 
             </div>
 
