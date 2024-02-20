@@ -29,7 +29,7 @@ require_once('../layouts/head_to_wrapper.php');
         FROM users
         WHERE user_role = 'student'
         AND stu_parent = $id
-        AND TIMESTAMPDIFF(YEAR, dob, CURDATE()) BETWEEN from_age AND to_age
+        -- AND TIMESTAMPDIFF(YEAR, dob, CURDATE()) BETWEEN from_age AND to_age
     )");
 
     while ($row = $query->fetch_assoc()) {
@@ -40,6 +40,7 @@ require_once('../layouts/head_to_wrapper.php');
         $file = $row['file'];
         $date = $row['date'];
         $from_name = $row['teacher_name'];
+       
 
         $file_path = "../../../../lms/files/ass_notice/" . $file;
     ?>
@@ -50,6 +51,7 @@ require_once('../layouts/head_to_wrapper.php');
                     <p class="card-text">Description:<?php echo $description ?></p>
                     <p class="card-text">Date: <?php echo $date ?></p>
                     <p class="card-text">From: <?php echo $from_name ?></p>
+                    <p class="card-text">Age Group: <?php echo $from ?> To <?php echo $to ?></p>
                     <a href="<?php echo $file_path; ?>" class="btn btn-primary">Download</a>
                 </div>
             </div>
