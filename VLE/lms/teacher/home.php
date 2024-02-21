@@ -3,9 +3,13 @@ require_once('header.php');
 ?>
 
 <style>
+    .tabs li a {
+        color: black !important;
+    }
 
-    .tabs li a{
-    color:black !important;
+    .container p {
+        /* line-height: -15px; */
+
     }
 </style>
 
@@ -75,7 +79,7 @@ require_once('header.php');
                         $select2_query = $db->query("SELECT * FROM teacher_subject_class WHERE teacher_id = '$t_id' ");
 
                         while ($row = $select2_query->fetch_assoc()) {
-                            ?>
+                        ?>
                             <tr>
 
                                 <?php
@@ -172,7 +176,7 @@ require_once('header.php');
                             while ($row = $sub_query3->fetch_assoc()) {
                                 $sub_name = $row['name'];
                             }
-                            ?>
+                        ?>
                             <tr>
                                 <td><?php echo $name ?></td>
                                 <td><?php echo $question ?></td>
@@ -231,7 +235,7 @@ require_once('header.php');
                                 $assFile = $row2['assFile'];
                                 $marks = $row2['marks'];
                                 $assDate = $row2['date'];
-                                ?>
+                        ?>
                                 <tr>
                                     <td><?php echo $ass_name; ?></td>
                                     <td><?php echo $sub_name; ?></td>
@@ -243,7 +247,7 @@ require_once('header.php');
                                     <td><a class="btn-floating btn-large waves-effect waves-light" href="<?php echo "../files/assignment/" . $assFile; ?>"><i class="material-icons right">file_download</i></a></td>
                                 </tr>
 
-                            <?php }
+                        <?php }
                         }
                         ?>
 
@@ -253,89 +257,100 @@ require_once('header.php');
         </div>
 
         <div id="uploads" class="col s12 m8">
-            <div class="card-panel green ">
-                <span class="white-text"> Uploads </span>
-                <span class="right"> <a class="waves-effect waves-light btn-small btn" href="upload.php">upload<i class="material-icons right">add</i></a>
-            </div><br>
-            <div class="row">
-                <table id="table4" class="responsive-table striped">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Date</th>                         
-                            <th>Download</th>                           
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    $query = $db->query("SELECT * FROM upload_materials WHERE teacher_id='$t_id' ");
+    <div class="card-panel green">
+        <span class="white-text"> Uploads </span>
+        <span class="right"> 
+            <a class="waves-effect waves-light btn-small btn" href="upload.php">Upload<i class="material-icons right">add</i></a>
+        </span>
+    </div>
+    <br>
+    <div class="row">
+        <?php
+        $query = $db->query("SELECT * FROM upload_materials");
 
-                    while ($row = $query->fetch_assoc()) {
-                        $name = $row['name'];
-                        $description = $row['description'];
-                        $from = $row['from_age'];
-                        $to = $row['to_age'];
-                        $file = $row['file'];                       
-                        $date = $row['date'];                       
-                        $up_id = $row['id'];
+        while ($row = $query->fetch_assoc()) {
+            $name = $row['name'];
+            $description = $row['description'];
+            $from = $row['from_age'];
+            $to = $row['to_age'];
+            $file = $row['file'];
+            $date = $row['date'];
+            $up_id = $row['id'];
+            $uploaded_by = $row['teacher_id']; // Retrieve the teacher ID who uploaded the material
 
-                        $file_path = "../files/ass_notice/" . $file;
-                        /**File location */
+            $file_path = "../files/ass_notice/" . $file;
 
-                        $sub_query2 = $db->query("SELECT * FROM classes WHERE id='$class' ");
-                        while ($row = $sub_query2->fetch_assoc()) {
-                            $class_name = $row['name'];
-                        }
-                        $sub_query3 = $db->query("SELECT * FROM subjects WHERE id='$subject' ");
-                        while ($row = $sub_query3->fetch_assoc()) {
-                            $sub_name = $row['name'];
-                        }
-                    ?>
-                        <tr>
-                            <td><?php echo $name ?></td>
-                            <td><?php echo $from ?></td>
-                            <td><?php echo $to ?></td>
-                            <td><?php echo $description ?></td>
-                            <td><?php echo $date ?></td>
-                            <td> <a href="<?php echo $file_path; ?>"> File </a> </td>                          
-                            <td>
-                                <a class="btn btn-sm green waves-effect waves-light" href="edit_upload.php?ass_id=<?php echo $up_id ?>"> Edit </a>
-                                <a class="btn small red waves-effect waves-light" href="upload.php?delete_ass=true&ass_id=<?php echo $up_id ?>"> Delete </a>
-                            </td>
-                        </tr>
+            // Check if the material is uploaded by the current teacher
+            if ($uploaded_by == $t_id) {
+        ?>
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="cover_photo.jpg">
+                            <span class="card-title"><?php echo $name ?></span>
+                        </div>
+                        <div class="card-content">
+                            <p><?php echo $description ?></p>
+                            <p>From: <?php echo $from ?> - To: <?php echo $to ?></p>
+                            <p>Date: <?php echo $date ?></p>
+                        </div>
+                        <div class="card-action">
+                            <a href="<?php echo $file_path; ?>">Download File</a>
+                            <a class="btn btn-sm green waves-effect waves-light" href="edit_upload.php?ass_id=<?php echo $up_id ?>">Edit</a>
+                            <a class="btn small red waves-effect waves-light" href="upload.php?delete_ass=true&ass_id=<?php echo $up_id ?>">Delete</a>
+                        </div>
+                    </div>
+                </div>
+        <?php
+            } else {
+        ?>
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="cover_photo.jpg">
+                            <span class="card-title"><?php echo $name ?></span>
+                        </div>
+                        <div class="card-content">
+                            <p><?php echo $description ?></p>
+                            <p>From: <?php echo $from ?> - To: <?php echo $to ?></p>
+                            <p>Date: <?php echo $date ?></p>
+                        </div>
+                        <div class="card-action">
+                            <a href="<?php echo $file_path; ?>">Download File</a>
+                        </div>
+                    </div>
+                </div>
+        <?php
+            }
+        }
+        ?>
+    </div>
+</div>
 
-                    <?php } ?>
-
-                </tbody>
-                </table>
-            </div>
-        </div>
 
     </div>
 
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             var table = $('#table1').DataTable({
                 "order": [],
                 "dom": 'Bfrtip',
             });
         });
-        $(document).ready(function () {
+        $(document).ready(function() {
             var table = $('#table2').DataTable({
                 "order": [],
                 "dom": 'Bfrtip',
             });
         });
-        $(document).ready(function () {
+        $(document).ready(function() {
             var table = $('#table3').DataTable({
                 "order": [],
                 "dom": 'Bfrtip',
             });
         });
-        $(document).ready(function () {
+        $(document).ready(function() {
             var table = $('#table4').DataTable({
                 "order": [],
                 "dom": 'Bfrtip',
@@ -344,13 +359,13 @@ require_once('header.php');
     </script>
 
 
-<?php require '../includes/footer.php'; ?>
+    <?php require '../includes/footer.php'; ?>
 
     <!--  Scripts-->
     <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
-  <!-- <script src="../js/materialize.js"></script> -->
+    <!-- <script src="../js/materialize.js"></script> -->
 
     <script src="../js/init.js"></script>
 

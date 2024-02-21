@@ -21,16 +21,12 @@ require_once('../layouts/head_to_wrapper.php');
 
         <div class="row" >
     <?php
-    $query = $db->query("SELECT um.*, u.name AS teacher_name
+    $query = $db->query("SELECT um.*, u.name AS teacher_name, s.name AS school_name
     FROM upload_materials um
     JOIN users u ON um.teacher_id = u.id
-    WHERE EXISTS (
-        SELECT 1
-        FROM users
-        WHERE user_role = 'student'
-        AND stu_parent = $id
-        -- AND TIMESTAMPDIFF(YEAR, dob, CURDATE()) BETWEEN from_age AND to_age
-    )");
+    JOIN school_teachers st ON st.teacher_id = um.teacher_id
+    JOIN schools s ON s.school_id = st.school_id
+    ");
 
     while ($row = $query->fetch_assoc()) {
         $name = $row['name'];
@@ -40,6 +36,7 @@ require_once('../layouts/head_to_wrapper.php');
         $file = $row['file'];
         $date = $row['date'];
         $from_name = $row['teacher_name'];
+        $school_name = $row['school_name'];
        
 
         $file_path = "../../../../lms/files/ass_notice/" . $file;
@@ -51,6 +48,7 @@ require_once('../layouts/head_to_wrapper.php');
                     <p class="card-text">Description:<?php echo $description ?></p>
                     <p class="card-text">Date: <?php echo $date ?></p>
                     <p class="card-text">From: <?php echo $from_name ?></p>
+                    <p class="card-text">School: <?php echo $school_name ?></p>
                     <p class="card-text">Age Group: <?php echo $from ?> To <?php echo $to ?></p>
                     <a href="<?php echo $file_path; ?>" class="btn btn-primary">Download</a>
                 </div>
