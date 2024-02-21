@@ -116,5 +116,11 @@
             <span>Blogs</span></a>
     </li>
 
+    <li class="nav-item text-color-dark">
+        <a class="nav-link" href="../zones/index.php">
+            <i class="fa fas fa-fw fa-list"></i>
+            <span>Zones</span></a>
+    </li>
+
 
 </ul>

@@ -926,7 +926,7 @@ if (!empty($_POST['update_student'])) {
     } else {
         $img = "";
     }
-    $sql = "UPDATE students SET";
+    $sql = "UPDATE users SET";
     //Check for data imputed before proceeding to proccessing it.
     if (!empty($stuName)) {
         $sql .= " name='$stuName',";
@@ -953,43 +953,18 @@ if (!empty($_POST['update_student'])) {
         $sql .= " address = '$stuAddress',";
     }
     if (!empty($stuParentId)) {
-        $sql .= " parentid = '$stuParentId',";
+        $sql .= " stu_parent = '$stuParentId',";
     }
     if (!empty($class_id)) {
-        $sql .= " class_id = '$class_id',";
+        $sql .= " stu_class = '$class_id',";
     }
     $sql = substr($sql, 0, strlen($sql) - 1) . " WHERE id = '$stuId' ";
     $success = mysqli_query($db, $sql);
 
     $sql = substr($sql, 0, strlen($sql) - 1) . " WHERE `id` = '$stuId' ";
     $success = mysqli_query($db, $sql);
-    // Update users table too
-    $userid = $stuId;
-    $sql_user = "UPDATE users SET";
-    if (!empty($stuPassword)) {
-        $sql_user .= " password = '$stuPassword',";
-    }
-    if (!empty($stuName)) {
-        $sql_user .= " name = '$stuName',";
-    }
-    if (!empty($username)) {
-        $sql_user .= " username = '$username',";
-    }
-    $sql_user = substr($sql_user, 0, strlen($sql_user)) . "  user_role = 'student' WHERE `userid` = '$userid' ";
-    $success = mysqli_query($db, $sql_user) or die('Error: Could not Update data: ' . mysqli_error($db));
-
-    if (isset($_POST['subjects'])) {
-        $subjects = $_POST['subjects'];
-        // EMPTY RECORDS FROM 'student_subjects' FOR CLASS...
-        $delete = mysqli_query($db, "DELETE FROM student_subjects WHERE student_id ='$stuId' ") or die('An error occured : ' . mysqli_error($db));
-        // NOW ADD NEW RECORDEDS WITH UPDATED DATA...
-        $stuId = $_POST['studentId'];
-        foreach ($subjects as $key => $value) {
-            $subject = $subjects[$key];
-            $query = "INSERT INTO student_subjects VALUES(' ', '$stuId', '$subject' )";
-            $result = mysqli_query($db, $query) or die('Error saving to mapping table: ' . mysqli_error($db));
-        }
-    }
+    
+    
     header('Location: view_student.php?id=' . $stuId . '&updated=true');
 }
 
@@ -997,11 +972,9 @@ if (!empty($_POST['update_student'])) {
 if (isset($_GET['id']) && isset($_GET['delete_student'])) {
     if ($_GET['delete_student'] == true) {
         $id = $_GET['id'];
-        $sql = "DELETE FROM students WHERE id = '$id';";
+        $sql = "DELETE FROM users WHERE id = '$id';";
         $success = mysqli_query($db, $sql);
-        $userid = "stu_" . $id;
-        $sql = "DELETE FROM users WHERE userid = '$userid';";
-        $success = mysqli_query($db, $sql);
+        
         if (!$success) {
             die('Could not Delete data: ' . mysqli_error($db));
         }

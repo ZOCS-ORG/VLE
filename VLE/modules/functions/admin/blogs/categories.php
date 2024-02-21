@@ -52,13 +52,6 @@ include_once('../layouts/topbar.php');
 
 <div class="container">
     <div class="row justify-content-">
-        <div class="col-lg-1">
-            <div class="text-left text-light">
-                <br>
-                <div class="btn btn-sm btn-success" href="" onclick="history.back()"><i class="fa fa-arrow-left "></i> Back  </div>
-            </div>
-        </div>
-
         <div class="col-lg-4">
             <div class="card shadow-s border-0 rounded-lg mt-1">
 
@@ -82,9 +75,9 @@ include_once('../layouts/topbar.php');
             </div>
         </div>
 
-        <div class="col-lg-5">
+        <div class="col-lg-6">
             <div class="card-header">
-                <h5 class="text-center my-2">Provinces</h5>
+                <h5 class="text-center my-2">Categories</h5>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -92,20 +85,20 @@ include_once('../layouts/topbar.php');
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Province</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT * FROM provinces";
+                            $sql = "SELECT * FROM blog_categories";
                             $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
 
                             while ($row = mysqli_fetch_array($res)) {
                             ?>
                                 <tr>
-                                    <td> <?php echo $row['province_name']; ?> </td>
+                                    <td> <?php echo $row['name']; ?> </td>
                                     <th class="btn-group">
-                                        <a class="btn btn-danger btn-sm text-light" href="?id=<?php echo $row['province_id'] ?>&delete=true">Delete </a>
+                                        <a class="btn btn-danger btn-sm text-light" href="?id=<?php echo $row['id'] ?>&delete=true">Delete </a>
                                     </th>
                                 </tr>
                             <?php
@@ -125,8 +118,8 @@ include_once('../layouts/topbar.php');
 
 if (isset($_POST['create'])) {
     $name = mysqli_real_escape_string($db, $_POST['name']);
-
-    $sql = " INSERT INTO `provinces` (`province_name`) VALUES ('$name')";
+    
+    $sql = " INSERT INTO `blog_categories` (`name`) VALUES ('$name')";
 
     $success = mysqli_query($db, $sql) or die('Could not enter data: ' . mysqli_error($db));
     if ($success) {
@@ -136,8 +129,8 @@ if (isset($_POST['create'])) {
 
 if (isset($_GET['delete'])) {
     $del = mysqli_real_escape_string($db, $_GET['id']);
-
-    $success = mysqli_query($db, "DELETE FROM `provinces` WHERE province_id = '$del' ") or die('Could not enter data: ' . mysqli_error($db));
+    
+    $success = mysqli_query($db, "DELETE FROM `blog_categories` WHERE id = '$del' ") or die('Could not enter data: ' . mysqli_error($db));
     if ($success) {
         echo "<script> window.location = '?created=true' </script>";
     }

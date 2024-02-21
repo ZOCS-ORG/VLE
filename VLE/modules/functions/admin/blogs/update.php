@@ -123,7 +123,5 @@ if (isset($_POST['update'])) {
         echo "<script> window.location = './index.php?updated=true' </script>";
     }
 }
-?>
-
 require_once('../layouts/footer_to_end.php');
 ?>
