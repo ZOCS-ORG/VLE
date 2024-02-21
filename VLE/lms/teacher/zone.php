@@ -135,8 +135,8 @@ Group BY z.zone_id;";
 						$audience = $row['audience'];
 						$timestamp = $row['timestamp'];
 
-						$file_path = "../files/forums/" . $file;
-						$video_path = "../files/forums/" . $video;
+						$file_path = !empty($file) ? "../files/forums/$file" : null;
+						$video_path = !empty($video) ? "../files/forums/$video" : null;
 						/**File location */
 						$is_creator = ($created_by == $logged_in_user_id);
 						$sub_query2 = $db->query("SELECT * FROM users WHERE id='$created_by' ");
@@ -149,19 +149,19 @@ Group BY z.zone_id;";
 							<td><?php echo $user ?></td>
 							<!-- <td><?php echo $audience ?></td> -->
 							<td>
-								<?php if (!empty($file_path)) : ?>
-									<a href="<?php echo $file_path ?>">File</a>
-								<?php else : ?>
-									N/A
-								<?php endif; ?>
-							</td>
-							<td>
-								<?php if (!empty($video_path)) : ?>
-									<a href="<?php echo $video_path ?>">Video</a>
-								<?php else : ?>
-									N/A
-								<?php endif; ?>
-							</td>
+            <?php if (!empty($file_path)) : ?>
+                <a href="<?php echo $file_path ?>">File</a>
+            <?php else : ?>
+                N/A
+            <?php endif; ?>
+        </td>
+        <td>
+            <?php if (!empty($video_path)) : ?>
+                <a href="<?php echo $video_path ?>">Video</a>
+            <?php else : ?>
+                N/A
+            <?php endif; ?>
+        </td>
 
 							<td><?php echo $timestamp ?></td>
 							<td>
