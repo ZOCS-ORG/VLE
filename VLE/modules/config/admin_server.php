@@ -773,6 +773,11 @@ if (!empty($_POST['update_staff'])) {
     $phone = $_POST['phone'];
     $email = $_POST['email'];
     $username = $_POST['username'];
+    $school = $_POST['school'];
+    $raw_province = $_POST['province'];
+    $raw_district = $_POST['district'];
+    $province = intval($raw_province);
+    $district = intval($raw_district);
     //$dob = $_POST['dob'];
     $pta = $_POST['pta'];
     $address = $_POST['address'];
@@ -802,6 +807,12 @@ if (!empty($_POST['update_staff'])) {
     if (!empty($email)) {
         $sql .= " email = '$email',";
     }
+    if (!empty($province)) {
+        $sql .= " province_id = '$province',";
+    }
+    if (!empty($district)) {
+        $sql .= " district_id = '$district',";
+    }
     if (!empty($pta)) {
         $sql .= " par_pta = '$pta',";
     }
@@ -817,12 +828,17 @@ if (!empty($_POST['update_staff'])) {
 
     $sql = substr($sql, 0, strlen($sql) - 1) . " WHERE `id` = '$id' ";
     $success = mysqli_query($db, $sql);
-    // Update users table too
 
+
+    $created_id = mysqli_insert_id($db);
+    $cb  = $_POST['cb'];
+    $school = $_POST['school'];
+    
+    $success = mysqli_query($db, "UPDATE school_teachers SET `school_id` = '$school' WHERE `teacher_id` = '$cb'") or die('Could not update data: ' . mysqli_error($db));
+    
 
     header('Location: ../staff/view_staff.php?id=' . $id . "&updated=true");
 }
-// Delete OTHER STAFF
 if (isset($_GET['id']) && isset($_GET['delete_staff'])) {
     if ($_GET['delete_staff'] == true) {
         $id = $_GET['id'];

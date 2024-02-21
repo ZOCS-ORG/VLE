@@ -15,6 +15,10 @@ if (isset($_POST['add_user'])) {
     $username = $_POST['username'];
     // $teaPassword = md5($_POST['password']);
     $teaPhone = $_POST['phone'];
+    $raw_province = $_POST['province'];
+    $raw_district = $_POST['district'];
+    $province = intval($raw_province);
+    $district = intval($raw_district);
     $teaEmail = $_POST['email'];
     $teaGender = $_POST['gender'];
     $teaDOB = $_POST['dob'];
@@ -38,8 +42,8 @@ if (isset($_POST['add_user'])) {
     $teaPassword = $username . "@" . date('His');
     $encPass = md5($teaPassword);
 
-    $sql_user = "INSERT INTO users (`name`, `username`, `password`, `user_role`, `phone`, `email`, `sex`, `address`) 
-                VALUES('$teaName','$username', '$encPass','$user_type','$teaPhone', '$teaEmail', '$teaGender', '$teaAddress' )";
+    $sql_user = "INSERT INTO users (`name`, `username`, `password`, `user_role`, `phone`, `email`, `sex`, `address`,`province_id`,`district_id`) 
+                VALUES('$teaName','$username', '$encPass','$user_type','$teaPhone', '$teaEmail', '$teaGender', '$teaAddress', '$province', '$district' )";
 
     $success = mysqli_query($db, $sql_user) or die('Could not enter data: ' . mysqli_error($db));
 
@@ -90,8 +94,8 @@ if (isset($_POST['add_user'])) {
     select {
         width: 90%;
     }
-    
-    textarea{
+
+    textarea {
         width: 90%;
     }
 
@@ -117,27 +121,27 @@ if (isset($_POST['add_user'])) {
                             <tr>
 
                                 <td style=" color: black"><b>Name:</b></td>
-                                <td class="text-right"><input id="name" type="text" name="name" placeholder="Name" required></td>
+                                <td class="text-right"><input class="form-control" id="name" type="text" name="name" placeholder="Name" required></td>
                             </tr>
                             <tr>
 
                                 <td style=" color: black"><b>Username:</b></td>
-                                <td class="text-right"><input id="name" type="text" name="username" placeholder="Username" required></td>
+                                <td class="text-right"><input class="form-control" id="name" type="text" name="username" placeholder="Username" required></td>
                             </tr>
                             <tr hidden="">
                                 <td>Password:</td>
                                 <td style=" color: black"><b>Name:</b></td>
-                                <td class="text-right"><input id="password" type="text" name="password" value="<?php echo date("His") . "@123"; ?>" placeholder="Enter Password"></td>
+                                <td class="text-right"><input class="form-control" id="password" type="text" name="password" value="<?php echo date("His") . "@123"; ?>" placeholder="Enter Password"></td>
                             </tr>
                             <tr>
 
                                 <td style=" color: black"><b>Phone Number:</b></td>
-                                <td class="text-right"><input type="number" name="phone" placeholder="Phone Number" required></td>
+                                <td class="text-right"><input class="form-control" type="number" name="phone" placeholder="Phone Number" required></td>
                             </tr>
                             <tr>
 
                                 <td style=" color: black"><b>Email:</b></td>
-                                <td class="text-right"><input id="email" type="email" name="email" placeholder="Email" required></td>
+                                <td class="text-right"><input class="form-control" id="email" type="email" name="email" placeholder="Email" required></td>
                             </tr>
                             <tr hidden="">
 
@@ -162,15 +166,15 @@ if (isset($_POST['add_user'])) {
 
                                 <td style=" color: black"><b>Physical Address:</b></td>
                                 <td class="text-right">
-                                    <textarea name="address" id="" cols="30" rows="4"></textarea>
+                                    <textarea class="form-control" name="address" id="" cols="30" rows="4"></textarea>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td style=" color: black"><b>User type:</b></td>
+                                <td style="color: black"><b>User type:</b></td>
                                 <td class="text-right">
-                                    <div class="form-">
-                                        <select name="user_role" class="form-" id="user_role" required>
+                                    <div class="form-group">
+                                        <select name="user_role" class="form-control" id="user_role" required onchange="showFields()">
                                             <option value="">-- SELECT --</option>
                                             <option value="admin">SUPER ADMIN</option>
                                             <option value="zocs">ZOCS USER</option>
@@ -182,6 +186,38 @@ if (isset($_POST['add_user'])) {
                                     </div>
                                 </td>
                             </tr>
+                            <tr id="provinceRow" style="display: none;">
+                                <td style="color: black"><b>Province:</b></td>
+                                <td class="text-right">
+                                    <div class="form-group">
+                                        <select id="provinceSelect" class="form-control select2" name="province" tabindex="1">
+                                            <option value="none">-- Select Province --</option>
+                                            <?php
+                                            $query2 = mysqli_query($db, "SELECT * FROM provinces") or die(mysqli_error($db));
+                                            while ($row = mysqli_fetch_array($query2)) {
+                                            ?>
+                                                <option value="<?php echo $row['province_id']; ?>">
+                                                    <?php echo $row['province_name']; ?>
+                                                </option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="districtRow" style="display: none;">
+                                <td style="color: black"><b>District:</b></td>
+                                <td class="text-right">
+                                    <div class="form-group">
+                                        <select id="districtSelect" name="district" class="form-control">
+
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+
+
                             <tr hidden="">
                                 <td>Salary:</td>
                                 <td class="text-right"><input id="salary" type="text" name="salary" placeholder="eg. 21000"></td>
@@ -201,5 +237,63 @@ if (isset($_POST['add_user'])) {
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#provinceSelect').change(function() {
+            var provinceId = $(this).val();
+            // console.log(provinceId);
+            if (provinceId !== 'none') {
+                $.ajax({
+                    url: 'get_district.php',
+                    type: 'POST',
+                    data: {
+                        province_id: provinceId
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log(response);
+                        $('#districtSelect').empty();
+                        $('#districtRow').show();
+                        $('#districtSelect').append($('<option>', {
+                            value: 'none',
+                            text: '-- Select District --'
+                        }));
+                        $.each(response, function(key, value) {
+                            $('#districtSelect').append($('<option>', {
+                                value: value.district_id,
+                                text: value.district_name
+                            }));
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            } else {
+                $('#districtRow').hide();
+                $('#districtSelect').empty();
+            }
+        });
+    });
+</script>
+
+<script>
+    function showFields() {
+        var userType = document.getElementById("user_role").value;
+        var provinceRow = document.getElementById("provinceRow");
+        var districtRow = document.getElementById("districtRow");
+
+        provinceRow.style.display = "none";
+        districtRow.style.display = "none";
+
+        if (userType === "drc") {
+            provinceRow.style.display = "table-row";
+            districtRow.style.display = "table-row";
+        }
+    }
+</script>
 
 <?php require_once('../layouts/footer_to_end.php'); ?>

@@ -4,6 +4,8 @@ $add_side_bar = true;
 include_once('../layouts/head_to_wrapper.php');
 include_once('../layouts/topbar.php');
 
+$user_id = $_SESSION['id'];
+// echo $user_id;
 ?>
 
 <hr />
@@ -37,7 +39,7 @@ table td,th{
                         <tbody>
                             <?php
                             $dir = "../../../utils/complaints/";
-                            $sql = "SELECT * FROM complaints";
+                            $sql = "SELECT * FROM complaints WHERE created_by = $user_id";
                             $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
                             while ($row = mysqli_fetch_array($res)) {
                             ?>
