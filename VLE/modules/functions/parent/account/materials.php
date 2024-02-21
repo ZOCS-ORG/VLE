@@ -19,54 +19,58 @@ require_once('../layouts/head_to_wrapper.php');
         </div>
 
 
-        <div class="row" >
-    <?php
-    $query = $db->query("SELECT um.*, u.name AS teacher_name
+        <div class="row">
+            <?php
+            $query = $db->query("SELECT um.*, u.name AS teacher_name, s.name AS school_name
     FROM upload_materials um
     JOIN users u ON um.teacher_id = u.id
-    WHERE EXISTS (
-        SELECT 1
-        FROM users
-        WHERE user_role = 'student'
-        AND stu_parent = $id
-        -- AND TIMESTAMPDIFF(YEAR, dob, CURDATE()) BETWEEN from_age AND to_age
-    )");
+    JOIN school_teachers st ON st.teacher_id = um.teacher_id
+    JOIN schools s ON s.school_id = st.school_id
+    ");
 
-    while ($row = $query->fetch_assoc()) {
-        $name = $row['name'];
-        $description = $row['description'];
-        $from = $row['from_age'];
-        $to = $row['to_age'];
-        $file = $row['file'];
-        $date = $row['date'];
-        $from_name = $row['teacher_name'];
-       
+            while ($row = $query->fetch_assoc()) {
+                $name = $row['name'];
+                $description = $row['description'];
+                $from = $row['from_age'];
+                $to = $row['to_age'];
+                $file = $row['file'];
+                $date = $row['date'];
+                $from_name = $row['teacher_name'];
+                $school_name = $row['school_name'];
 
-        $file_path = "../../../../lms/files/ass_notice/" . $file;
-    ?>
-        <div class="col-md-4 mb-4" >
-            <div class="card" style="background: #BFE5FF;">
-                <div class="card-body">
-                    <h5 class="card-title">Title: <?php echo $name ?></h5>
-                    <p class="card-text">Description:<?php echo $description ?></p>
-                    <p class="card-text">Date: <?php echo $date ?></p>
-                    <p class="card-text">From: <?php echo $from_name ?></p>
-                    <p class="card-text">Age Group: <?php echo $from ?> To <?php echo $to ?></p>
-                    <a href="<?php echo $file_path; ?>" class="btn btn-primary">Download</a>
+
+                $file_path = "../../../../lms/files/ass_notice/" . $file;
+            ?>
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="background: #BFE5FF; padding:1rem;">
+                        <div class="card-image">
+                            <img src="cover_photo.jpg" alt="Cover Photo">
+                        </div>
+                        <div class="card-content">
+                            <h5 class="card-title"><?php echo $name ?></h5>
+                            <p>Description: <?php echo $description ?></p>
+                            <p>Date: <?php echo $date ?></p>
+                            <p>From: <?php echo $from_name ?></p>
+                            <p>School: <?php echo $school_name ?></p>
+                            <p>Age Group: <?php echo $from ?> To <?php echo $to ?></p>
+                        </div>
+                        <div class="card-action">
+                            <a href="<?php echo $file_path; ?>" class="btn btn-primary">Download</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+            <?php } ?>
         </div>
-    <?php } ?>
-</div>
 
 
     </div>
     <!-- /.container-fluid -->
     <script>
-    $(document).ready(function () {
-        $('#dataTable').DataTable();
-    });
-</script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
 </div>
 <!-- End of Main Content -->
 <?php
