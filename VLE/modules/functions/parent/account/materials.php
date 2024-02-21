@@ -45,9 +45,9 @@ require_once('../layouts/head_to_wrapper.php');
                     <div class="card" style="background: #BFE5FF; padding:1rem;">
                         <div class="card-image">
                             <img src="cover_photo.jpg" alt="Cover Photo">
-                            <span class="card-title"><?php echo $name ?></span>
                         </div>
                         <div class="card-content">
+                            <h5 class="card-title"><?php echo $name ?></h5>
                             <p>Description: <?php echo $description ?></p>
                             <p>Date: <?php echo $date ?></p>
                             <p>From: <?php echo $from_name ?></p>
