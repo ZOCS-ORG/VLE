@@ -773,6 +773,10 @@ if (!empty($_POST['update_staff'])) {
     $phone = $_POST['phone'];
     $email = $_POST['email'];
     $username = $_POST['username'];
+    $raw_province = $_POST['province'];
+    $raw_district = $_POST['district'];
+    $province = intval($raw_province);
+    $district = intval($raw_district);
     //$dob = $_POST['dob'];
     $pta = $_POST['pta'];
     $address = $_POST['address'];
@@ -801,6 +805,12 @@ if (!empty($_POST['update_staff'])) {
     }
     if (!empty($email)) {
         $sql .= " email = '$email',";
+    }
+    if (!empty($province)) {
+        $sql .= " province_id = '$province',";
+    }
+    if (!empty($district)) {
+        $sql .= " district_id = '$district',";
     }
     if (!empty($pta)) {
         $sql .= " par_pta = '$pta',";

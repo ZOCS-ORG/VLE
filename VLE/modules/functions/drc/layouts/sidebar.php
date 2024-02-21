@@ -79,6 +79,12 @@
             <span>Announcements</span></a>
     </li>
 
+    <li class="nav-item text-color-dark">
+        <a class="nav-link" href="../../../../lms/drc/zone.php">
+            <i class="fa fas fa-fw fa-users"></i>
+            <span>Zone</span></a>
+    </li>
+
     <!-- <li class="nav-item text-color-dark">
         <a class="nav-link" href="../announcements/pta.php">
             <i class="fa fas fa-fw fa-commenting"></i>
