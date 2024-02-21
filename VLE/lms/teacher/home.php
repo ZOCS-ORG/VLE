@@ -284,18 +284,18 @@ require_once('header.php');
             if ($uploaded_by == $t_id) {
         ?>
                 <div class="col s12 m6">
-                    <div class="card">
+                    <div class="card" style="background: #BFE5FF;">
                         <div class="card-image">
                             <img src="cover_photo.jpg">
-                            <span class="card-title"><?php echo $name ?></span>
                         </div>
                         <div class="card-content">
+                            <p class="card-title"><?php echo $name ?></p>
                             <p><?php echo $description ?></p>
                             <p>From: <?php echo $from ?> - To: <?php echo $to ?></p>
                             <p>Date: <?php echo $date ?></p>
                         </div>
                         <div class="card-action">
-                            <a href="<?php echo $file_path; ?>">Download File</a>
+                            <a class="btn btn-primary" href="<?php echo $file_path; ?>">Download File</a><br><br>
                             <a class="btn btn-sm green waves-effect waves-light" href="edit_upload.php?ass_id=<?php echo $up_id ?>">Edit</a>
                             <a class="btn small red waves-effect waves-light" href="upload.php?delete_ass=true&ass_id=<?php echo $up_id ?>">Delete</a>
                         </div>
@@ -305,18 +305,18 @@ require_once('header.php');
             } else {
         ?>
                 <div class="col s12 m6">
-                    <div class="card">
+                    <div class="card" style="background: #BFE5FF;">
                         <div class="card-image">
                             <img src="cover_photo.jpg">
-                            <span class="card-title"><?php echo $name ?></span>
                         </div>
                         <div class="card-content">
+                            <p class="card-title"><?php echo $name ?></p>
                             <p><?php echo $description ?></p>
                             <p>From: <?php echo $from ?> - To: <?php echo $to ?></p>
                             <p>Date: <?php echo $date ?></p>
                         </div>
                         <div class="card-action">
-                            <a href="<?php echo $file_path; ?>">Download File</a>
+                        <a class="btn btn-primary" href="<?php echo $file_path; ?>">Download File</a>
                         </div>
                     </div>
                 </div>
