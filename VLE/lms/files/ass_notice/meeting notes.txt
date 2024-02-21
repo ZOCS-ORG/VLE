@@ -1,0 +1,41 @@
+The documents shall be shared that includes the projects design 
+
+MINISTRY OF EDUCATION
+ministry of education will oversee the quality of education that is been shared and be able to upload some files for teachers and instructors to review matters in relation to providing early child education.
+they should also post important updates for all the learners and teachers eg when schools are opening, curriculum and syllubus  
+
+ZOCS------MOE HQ -------->review and comment
+           -
+           -
+         PEO-->KABWE(schools available)
+           \
+           CHOMA(schools available)
+
+TEACHERS should be able to ask the HQ privately some questions for review about some things
+The VLE needs to be Mobile responsive.
+The VLE will be a Webbased application 
+The platform will be working in two countries like UGANDA
+The Links from other Universities should be placed in the platrom
+The should display News Tags(Important Notification to Students
+
+LEARNERS should be able to learn even from home from the platform eg using story books or any other relevant materials available on the platform.
+OTHER Partners should also be able to have access to the platform and be able to make some comments and reviews.
+learners are not supposed to interract with instructors
+
+MOE HQ / ECE DIRECTORIES
+<---->
+ PEO / PRC
+<---->
+DISTRICT RESOURCE CENTER
+<---->
+SCHOOLS( HEADEACHER ) ---> Uploading Pictures, Documents etc.
+<---->
+PARENTS
+<---->
+LEARNERS
+
+     ADMINS
+Upload information
+Confirm Documentation
+Overrall performance
+ 
