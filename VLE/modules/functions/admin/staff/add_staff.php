@@ -179,9 +179,9 @@ if (isset($_POST['add_user'])) {
                                             <option value="admin">SUPER ADMIN</option>
                                             <option value="zocs">ZOCS USER</option>
                                             <option value="moe">MOE</option>
-                                            <option value="drc">DRC</option>
+                                            <option value="drc">DEBS</option>
                                             <option value="university">UNIVERSITY</option>
-                                            <option value="teacher">TEACHER</option>
+                                            <!-- <option value="teacher">TEACHER</option> -->
                                         </select>
                                     </div>
                                 </td>

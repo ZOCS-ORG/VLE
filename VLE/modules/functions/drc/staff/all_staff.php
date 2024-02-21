@@ -4,6 +4,7 @@ $add_side_bar = true;
 include_once('../layouts/head_to_wrapper.php');
 include_once('../layouts/topbar.php');
 
+$logged_id = $_SESSION['id'];
 
 ?>
 
@@ -34,11 +35,14 @@ include_once('../layouts/topbar.php');
                             </thead>
                             <tbody>
                                 <?php
-                                $sql = "SELECT u.name, u.username, u.phone, u.email, s.name AS school, u.id
+                                $sql = "SELECT u.name, u.username, u.phone, u.email, s.name AS school, u.id,
+                                                    (SELECT `name` FROM `users` AS u2 WHERE u2.id = u.created_by) AS created_by
                                             FROM users u
                                             LEFT JOIN school_teachers st ON st.teacher_id = u.id
                                             LEFT JOIN schools s ON st.school_id = s.school_id
-                                            WHERE user_role = 'teacher' ORDER BY u.id DESC ";
+                                            WHERE user_role = 'teacher'
+                                            AND created_by = '$logged_id'
+                                            ORDER BY u.id DESC ";
                                 $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
                                 $string = "";
                                 $images_dir = "../../../utils/images/users/";

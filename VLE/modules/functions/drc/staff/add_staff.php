@@ -9,7 +9,6 @@ $emails = new email();
 if (isset($_POST['add_user'])) {
     //
 
-    $teaId = $_POST['id'];
     $teaName = $_POST['name'];
     $username = $_POST['username'];
     $teaPassword = md5($_POST['password']);
@@ -27,11 +26,11 @@ if (isset($_POST['add_user'])) {
     $img = $teaName . "_" . rand(100, 1000000) . ".jpg";
     move_uploaded_file($filetmp, "../../../utils/images/users/" . $img);
 
+    $created_by = $_SESSION['id'];
 
-    $userid = 00; //$teaId;
 
-    $sql_user = "INSERT INTO users (`id`, `name`, `username`, `password`, `user_role`, `phone`, `email`, `sex`, `address`, `img`, `par_pta`) 
-                VALUES('$userid', '$teaName','$username', '$teaPassword','$user_type','$teaPhone', '$teaEmail', '$teaGender', '$teaAddress','$img','$pta')";
+    $sql_user = "INSERT INTO users (`name`, `username`, `password`, `user_role`, `phone`, `email`, `sex`, `address`, `img`, `par_pta`, `created_by`) 
+                VALUES('$teaName','$username', '$teaPassword','$user_type','$teaPhone', '$teaEmail', '$teaGender', '$teaAddress','$img','$pta', '$created_by')";
 
     $message = "Dear " . $teaName . ", Welcome to the Virtual Learning Platform, your username is  " . $username . " and your password is " . $_POST['password'] . ""
         . "<br> Kind Regards <br>" . ' <img src="../../../assets/logo/vle.png" height="100px" width="200px">';
@@ -48,7 +47,6 @@ if (isset($_POST['add_user'])) {
             VALUES ('$school', '$created_id') ") or die('Could not enter data: ' . mysqli_error($db));
 
     echo "<script>document.location='view_staff.php?id=" . $created_id . "&created=true'</script>";
-    // header('Location: ../users/view.php?id=' . $teaId . "&created=true");
 }
 ?>
 

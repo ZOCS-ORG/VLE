@@ -1,4 +1,6 @@
 <?php 
+    header("location: ./update_profile.php");
+
     require_once('../../../config/admin_server.php');   //contains db connection so we good 🤦🏾‍♂️
     $add_side_bar = true;
     include_once('../layouts/head_to_wrapper.php');
