@@ -43,7 +43,10 @@ include_once('../layouts/topbar.php');
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM schools;";
+                    $sql = "SELECT s.*, z.zone, d.district_name, p.province_name FROM schools s
+                                LEFT JOIN zones z ON z.zone_id = s.zone
+                                LEFT JOIN districts d ON z.district_id = d.district_id
+                                LEFT JOIN provinces p ON p.province_id = d.province_id";
                     $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
                     $string = "";
                     $images_dir = "../../../utils/images/students/";
@@ -56,8 +59,8 @@ include_once('../layouts/topbar.php');
                             <td><?php echo $row['emis_number']; ?> </td>
                             <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['address']; ?></td>
-                            <td><?php echo $row['province']; ?></td>
-                            <td><?php echo $row['district']; ?></td>
+                            <td><?php echo $row['province_name']; ?></td>
+                            <td><?php echo $row['district_name']; ?></td>
                             <td><?php echo $row['zone']; ?></td>
                             <td><?php echo $row['sch_type']; ?></td>
                             <td>
@@ -67,6 +70,7 @@ include_once('../layouts/topbar.php');
                             </td>
                             <th>
                                 <div class="btn-group">
+                                    <a class="btn btn-primary btn-sm text-light" href="./update_school.php?school_id=<?php echo $row["school_id"] ?>" >Edit </a>
                                     <a class="btn btn-danger btn-sm text-light" href="../../../config/admin_server.php?id=<?php echo $row["school_id"] ?>&delete_school=true" onclick="clicked(event)">Delete </a>
                                 </div>
                             </th>
