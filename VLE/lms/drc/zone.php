@@ -34,6 +34,7 @@ if (mysqli_num_rows($result) > 0) {
     $zone_id = $row['zone_id'];
     // Get the zone name if needed
     $zone_name = $row['zone'];
+	echo $zone_name;
 }
 
 	?>
@@ -52,6 +53,11 @@ if (mysqli_num_rows($result) > 0) {
 							<div class="input-field col s12">
 								<textarea id="textarea" class="materialize-textarea" name="topic"></textarea>
 								<label for="textarea">Enter discussion here</label>
+							</div>
+
+							<div class="input-field col s12">
+								<textarea id="textarea" class="materialize-textarea" name="topic"></textarea>
+								<label for="textarea">Zones</label>
 							</div>
 
 							<div class="file-field input-field col s12">
@@ -107,6 +113,7 @@ if (mysqli_num_rows($result) > 0) {
 				<thead>
 					<tr>
 						<th class="txt_limit">Discussion</th>
+						<th class="txt_limit">Zone Name</th>
 						<th>Created By</th>
 						<!-- <th>For</th> -->
 						<th>File</th>
@@ -121,10 +128,13 @@ if (mysqli_num_rows($result) > 0) {
 					$role = $_SESSION['role'];
 					// $logged_in_user_id = $_SESSION['id'];
 					// $query = $db->query("SELECT * FROM discussions WHERE audience = '$role' OR  audience = 'All' OR created_by = '$logged_id' ORDER BY id DESC  ");
-					$query = $db->query("SELECT * FROM zone_discussions WHERE zone_id = '$zone_id' ORDER BY id DESC  ");
+					$query = $db->query("SELECT z.zone AS zone_name, zd.* FROM zone_discussions zd
+					 JOIN zones z ON z.zone_id = zd.zone_id 
+					 WHERE zd.zone_id = '$zone_id' ORDER BY id DESC  ");
 
 					while ($row = $query->fetch_assoc()) {
 						$topic = $row['topic'];
+						$Zone_names = $row['zone_name'];
 						$forum_id = $row['id'];
 						$created_by = $row['user_id'];
 						$file = $row['file'];
@@ -143,6 +153,7 @@ if (mysqli_num_rows($result) > 0) {
 					?>
 						<tr>
 							<td><?php echo $topic ?></td>
+							<td><?php echo $Zone_names ?></td>
 							<td><?php echo $user ?></td>
 							<!-- <td><?php echo $audience ?></td> -->
 							<td>
