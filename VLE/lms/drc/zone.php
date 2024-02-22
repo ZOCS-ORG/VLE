@@ -20,6 +20,18 @@ require_once('header.php');
 	
 	$drc_id = $_SESSION['id'];
 
+$sql_zone = "SELECT district_id FROM users WHERE id = $drc_id";
+
+$result_zone = mysqli_query($db, $sql_zone);
+
+if (mysqli_num_rows($result_zone) > 0) {
+  
+    $row_zone = mysqli_fetch_assoc($result_zone);
+
+    $district_zone = $row_zone['district_id'];
+	echo $district_zone;
+}
+
 
 $sql = "SELECT * FROM zones 
 INNER JOIN users ON users.district_id = zones.district_id";
@@ -56,7 +68,21 @@ if (mysqli_num_rows($result) > 0) {
 							</div>
 
 							<div class="input-field col s12">
-								<textarea id="textarea" class="materialize-textarea" name="topic"></textarea>
+							
+                       
+                                
+                                        <select id="provinceSelect" class="form-control select2" name="zone_id" tabindex="1">
+                                            <option value="none">All zones</option> <br>
+                                            <?php
+                                            $query2 = mysqli_query($db, "SELECT * FROM zones WHERE district_id = $district_zone") or die(mysqli_error($db));
+                                            while ($row = mysqli_fetch_array($query2)) {
+                                            ?>
+                                                <option value="<?php echo $row['zone_id']; ?>">
+                                                    <?php echo $row['zone']; ?>
+                                                </option>
+                                            <?php } ?>
+                                        </select>  
+                          
 								<label for="textarea">Zones</label>
 							</div>
 
@@ -65,7 +91,7 @@ if (mysqli_num_rows($result) > 0) {
 									<span>Attach Document</span>
 									<input type="file" name="file">
 								</div>
-								<input type="hidden" value="<?php echo $zone_id; ?>" name="zone_id">
+								<!-- <input type="hidden" value="<?php echo $zone_id; ?>" name="zone_id"> -->
 								<div class="file-path-wrapper">
 									<input class="file-path validate" type="text">
 								</div>
