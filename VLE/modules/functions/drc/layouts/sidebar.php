@@ -84,6 +84,11 @@
             <i class="fa fas fa-fw fa-users"></i>
             <span>Zone</span></a>
     </li>
+    <li class="nav-item text-color-dark">
+        <a class="nav-link" href="../zones/zones.php">
+            <i class="fa fas fa-fw fa-list"></i>
+            <span> Add Zones</span></a>
+    </li>
 
     <!-- <li class="nav-item text-color-dark">
         <a class="nav-link" href="../announcements/pta.php">
@@ -116,10 +121,19 @@
             <span>Blogs</span></a>
     </li>
 
-    <!-- <li class="nav-item text-color-dark">
-        <a class="nav-link" href="../zones/index.php">
-            <i class="fa fas fa-fw fa-list"></i>
-            <span>Zones</span></a>
+   
+
+    <!-- <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#staff" aria-expanded="true" aria-controls="staff">
+            <i class="fa fas fa-fw fa-users"></i>
+            <span>Zones</span>
+        </a>
+        <div id="staff" class="collapse" aria-labelledby="staff" data-parent="#accordionSidebar">
+            <div class="bg- py-2 collapse-inner rounded">
+                <a class="collapse-item" href="../staff/add_staff.php">Manage Zones</a>
+                <a class="collapse-item" href="../staff/all_staff.php">Add Zone</a>
+            </div>
+        </div>
     </li> -->
 
 

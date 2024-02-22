@@ -20,6 +20,18 @@ require_once('header.php');
 	
 	$drc_id = $_SESSION['id'];
 
+$sql_zone = "SELECT district_id FROM users WHERE id = $drc_id";
+
+$result_zone = mysqli_query($db, $sql_zone);
+
+if (mysqli_num_rows($result_zone) > 0) {
+  
+    $row_zone = mysqli_fetch_assoc($result_zone);
+
+    $district_zone = $row_zone['district_id'];
+	
+}
+
 
 $sql = "SELECT * FROM zones 
 INNER JOIN users ON users.district_id = zones.district_id";
@@ -34,6 +46,7 @@ if (mysqli_num_rows($result) > 0) {
     $zone_id = $row['zone_id'];
     // Get the zone name if needed
     $zone_name = $row['zone'];
+	
 }
 
 	?>
@@ -50,8 +63,27 @@ if (mysqli_num_rows($result) > 0) {
 						<div class="row">
 
 							<div class="input-field col s12">
-								<textarea id="textarea" class="materialize-textarea" name="topic"></textarea>
+								<textarea id="textarea" class="materialize-textarea" name="topic" required></textarea>
 								<label for="textarea">Enter discussion here</label>
+							</div>
+
+							<div class="input-field col s12">
+							
+                       
+                                
+                                        <select id="provinceSelect" class="form-control select2" name="zone_id" tabindex="1">
+                                            <option value="none">All zones</option> <br>
+                                            <?php
+                                            $query2 = mysqli_query($db, "SELECT * FROM zones WHERE district_id = $district_zone") or die(mysqli_error($db));
+                                            while ($row = mysqli_fetch_array($query2)) {
+                                            ?>
+                                                <option value="<?php echo $row['zone_id']; ?>">
+                                                    <?php echo $row['zone']; ?>
+                                                </option>
+                                            <?php } ?>
+                                        </select>  
+                          
+								<label for="textarea">Zones</label>
 							</div>
 
 							<div class="file-field input-field col s12">
@@ -59,7 +91,7 @@ if (mysqli_num_rows($result) > 0) {
 									<span>Attach Document</span>
 									<input type="file" name="file">
 								</div>
-								<input type="hidden" value="<?php echo $zone_id; ?>" name="zone_id">
+								<!-- <input type="hidden" value="<?php echo $zone_id; ?>" name="zone_id"> -->
 								<div class="file-path-wrapper">
 									<input class="file-path validate" type="text">
 								</div>
@@ -87,9 +119,9 @@ if (mysqli_num_rows($result) > 0) {
 
 						</div>
 
-						<div class="card-action">
-							<input class="btn green waves-effect waves-light" type="submit" value="Go!" name="submit_forum">
-						</div>
+						<input class="btn btn-success" type="submit" value="Go!" name="submit_forum">
+						<!-- <div class="card-action">
+						</div> -->
 					</form>
 
 				</div>
@@ -107,6 +139,7 @@ if (mysqli_num_rows($result) > 0) {
 				<thead>
 					<tr>
 						<th class="txt_limit">Discussion</th>
+						<th class="txt_limit">Zone Name</th>
 						<th>Created By</th>
 						<!-- <th>For</th> -->
 						<th>File</th>
@@ -121,10 +154,15 @@ if (mysqli_num_rows($result) > 0) {
 					$role = $_SESSION['role'];
 					// $logged_in_user_id = $_SESSION['id'];
 					// $query = $db->query("SELECT * FROM discussions WHERE audience = '$role' OR  audience = 'All' OR created_by = '$logged_id' ORDER BY id DESC  ");
-					$query = $db->query("SELECT * FROM zone_discussions WHERE zone_id = '$zone_id' ORDER BY id DESC  ");
+					$query = $db->query("SELECT z.zone AS zone_name, zd.* 
+					FROM zone_discussions zd
+					LEFT JOIN zones z ON z.zone_id = zd.zone_id 
+					WHERE zd.zone_id = 2 OR zd.zone_id = 0 OR zd.zone_id IS NULL
+					ORDER BY zd.id DESC");
 
 					while ($row = $query->fetch_assoc()) {
 						$topic = $row['topic'];
+						$Zone_names = $row['zone_name'];
 						$forum_id = $row['id'];
 						$created_by = $row['user_id'];
 						$file = $row['file'];
@@ -143,6 +181,7 @@ if (mysqli_num_rows($result) > 0) {
 					?>
 						<tr>
 							<td><?php echo $topic ?></td>
+							<td><?php echo $Zone_names ?></td>
 							<td><?php echo $user ?></td>
 							<!-- <td><?php echo $audience ?></td> -->
 							<td>
@@ -164,7 +203,7 @@ if (mysqli_num_rows($result) > 0) {
 							<td>
 								<a class="btn btn-sm green waves-effect waves-light" href="forum.php?forum_id=<?php echo $forum_id ?>">View</a>
 								
-									<a class="btn btn-sm warning waves-effect waves-light" href="edit_zone_discussions.php?forum_id=<?php echo $forum_id ?>">Edit</a>
+									<a class="btn btn-sm warning waves-effect waves-light" href="edit_zone_discussions.php?forum_id=<?php echo $forum_id ?>&district=<?php echo $district_zone ?>">Edit</a>
 									<button class="btn small red waves-effect waves-light" onclick="deleteDiscussion(<?php echo $forum_id; ?>)">Delete</button>
 								
 							</td>
