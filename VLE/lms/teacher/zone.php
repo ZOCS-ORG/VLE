@@ -124,7 +124,7 @@ Group BY z.zone_id;";
 					$role = $_SESSION['role'];
 					$logged_in_user_id = $_SESSION['id'];
 					// $query = $db->query("SELECT * FROM discussions WHERE audience = '$role' OR  audience = 'All' OR created_by = '$logged_id' ORDER BY id DESC  ");
-					$query = $db->query("SELECT * FROM zone_discussions WHERE zone_id = '$zone_id' ORDER BY id DESC  ");
+					$query = $db->query("SELECT * FROM zone_discussions WHERE zone_id = '$zone_id' OR zone_id =0  ORDER BY id DESC  ");
 
 					while ($row = $query->fetch_assoc()) {
 						$topic = $row['topic'];

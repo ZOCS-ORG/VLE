@@ -14,6 +14,7 @@ require_once('header.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['ass_id']) && isset($_POST['name'])) {
         $ass_id = $_POST['ass_id'];
+        $zone_id = $_POST['zone_id'];
         $name = mysqli_real_escape_string($db, $_POST['name']);
      
         if (isset($_POST['existing_file']) && !empty($_POST['existing_file'])) {
@@ -43,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $video_name = $existing_video_name;
         }
        
-        $update_query = "UPDATE zone_discussions SET topic = '$name', file = '$file_name', video = '$video_name' WHERE id = '$ass_id'";
+        $update_query = "UPDATE zone_discussions SET file = '$file_name', zone_id = '$zone_id', video = '$video_name' WHERE id = '$ass_id'";
         if (mysqli_query($db, $update_query)) {
             echo "<script>alert('Record updated successfully')</script>";
         } else {
@@ -92,6 +93,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input id="name" type="text" name="name" value="<?php echo $name ?>" required>
                                 <label for="name">Name</label>
                             </div>
+
+                            <div class="input-field ">
+                                        <select id="provinceSelect" class="form-control select2" name="zone_id" tabindex="1">
+                                            <option value="none">All zones</option> <br>                                          
+                                            <?php
+                                            $district_zone = $_GET['district'];
+                                            $query2 = mysqli_query($db, "SELECT * FROM zones WHERE district_id = $district_zone") or die(mysqli_error($db));
+                                            while ($row2 = mysqli_fetch_array($query2)) {
+                                            ?>
+                                                <option value="<?php echo $row['zone_id']; ?>">
+                                                    <?php echo $row2['zone']; ?>
+                                                </option>
+                                            <?php } ?>
+                                        </select>  
+                          
+								<label for="zone_id">Zones</label>
+							</div>
 
                             <!-- Existing file field for file -->
                             <div class="input-field">

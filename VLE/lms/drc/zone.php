@@ -63,7 +63,7 @@ if (mysqli_num_rows($result) > 0) {
 						<div class="row">
 
 							<div class="input-field col s12">
-								<textarea id="textarea" class="materialize-textarea" name="topic"></textarea>
+								<textarea id="textarea" class="materialize-textarea" name="topic" required></textarea>
 								<label for="textarea">Enter discussion here</label>
 							</div>
 
@@ -119,7 +119,7 @@ if (mysqli_num_rows($result) > 0) {
 
 						</div>
 
-						<input class="btn green waves-effect waves-light" type="submit" value="Go!" name="submit_forum">
+						<input class="btn btn-success" type="submit" value="Go!" name="submit_forum">
 						<!-- <div class="card-action">
 						</div> -->
 					</form>
@@ -203,7 +203,7 @@ if (mysqli_num_rows($result) > 0) {
 							<td>
 								<a class="btn btn-sm green waves-effect waves-light" href="forum.php?forum_id=<?php echo $forum_id ?>">View</a>
 								
-									<a class="btn btn-sm warning waves-effect waves-light" href="edit_zone_discussions.php?forum_id=<?php echo $forum_id ?>">Edit</a>
+									<a class="btn btn-sm warning waves-effect waves-light" href="edit_zone_discussions.php?forum_id=<?php echo $forum_id ?>&district=<?php echo $district_zone ?>">Edit</a>
 									<button class="btn small red waves-effect waves-light" onclick="deleteDiscussion(<?php echo $forum_id; ?>)">Delete</button>
 								
 							</td>
