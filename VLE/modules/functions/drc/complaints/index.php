@@ -28,6 +28,8 @@ table td,th{
                             <tr>
                                 <td>Query #</td>
                                 <td>Query</td>
+                                <td>Teacher</td>
+                                <td>School</td>
                                 <td>Attachment</td>
                                 <td>Status</td>
                                 <td>Actions</td>
@@ -36,13 +38,20 @@ table td,th{
                         <tbody>
                             <?php
                             $dir = "../../../utils/complaints/";
-                            $sql = "SELECT * FROM complaints";
+                            $sql = "SELECT c.*, u.name, s.name AS school
+                                        FROM complaints c
+                                        LEFT JOIN users u ON c.created_by = u.id
+                                        LEFT JOIN school_teachers st ON st.teacher_id = u.id
+                                        LEFT JOIN schools s ON st.school_id = s.school_id
+                                        ";
                             $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
                             while ($row = mysqli_fetch_array($res)) {
                             ?>
                                 <tr>
                                     <td><?php echo $row['ref']; ?></td>
                                     <td><?php echo $row['complaint']; ?></td>
+                                    <td><?php echo $row['name']; ?></td>
+                                    <td><?php echo $row['school']; ?></td>
                                     <td>
                                         <?php
                                         if (isset($row['file']) && strlen($row['file']) > 3) {

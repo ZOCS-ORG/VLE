@@ -1,4 +1,6 @@
 <?php 
+    header("location: ./update_profile.php");
+
     require_once('../../../config/admin_server.php');   //contains db connection so we good 🤦🏾‍♂️
     $add_side_bar = true;
     include_once('../layouts/head_to_wrapper.php');
@@ -26,11 +28,9 @@
 
                 <div class="card mb-4">
                     <div class=" card-header text-center">
-                        <!-- <h3 class="text-">My Info</h3> -->
+                        <!-- <h3 class="text-">Teacher's Info</h3> -->
                         <div class="text-">
                         <a href="update_profile.php?id=<?php echo $lecturer_id ?>" class="btn btn-info btn-sm">Edit</a>
-
-                            <?php // echo "<img src='".$images_dir.$picname."' alt='".$picname."' width='140' height='140'> "?>
                         </div>    
                     </div>
                     
