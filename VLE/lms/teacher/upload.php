@@ -36,11 +36,19 @@ require_once('header.php');
                             <div class="input-field col s12">
                                 <label for="question">TO AGE</label><br>
                                 <input id="number" type="number" name="to" required min="5">
-
                             </div>
 
-
                             <!-- file input starts here -->
+                            <div class="file-field input-field col s12">
+                                <div class="btn ">
+                                    <span>Book Cover</span>
+                                    <input type="file" name="cover">
+                                </div>
+                                <div class="file-path-wrapper ">
+                                    <input class="file-path validate " type="text">
+                                </div>
+                            </div>
+
                             <div class="file-field input-field col s12">
                                 <div class="btn ">
                                     <span>File</span>
@@ -74,6 +82,7 @@ require_once('header.php');
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Cover</th>
                         <th>Age (From)</th>
                         <th>Age (To)</th>
                         <th>Description</th>
@@ -89,15 +98,19 @@ require_once('header.php');
 
                     while ($row = $query->fetch_assoc()) {
                         $name = $row['name'];
+                        $cover = $row['cover'];
                         $description = $row['description'];
                         $from = $row['from_age'];
                         $to = $row['to_age'];
-                        $file = $row['file'];                       
-                        $date = $row['date'];                       
+                        $file = $row['file'];
+                        $date = $row['date'];
                         $up_id = $row['id'];
 
                         $file_path = "../files/ass_notice/" . $file;
+                        $cover_path = "../files/ass_notice/" . $cover;
                         /**File location */
+
+                        // return var_dump($cover_path);
 
                         $sub_query2 = $db->query("SELECT * FROM classes WHERE id='$class' ");
                         while ($row = $sub_query2->fetch_assoc()) {
@@ -110,11 +123,14 @@ require_once('header.php');
                     ?>
                         <tr>
                             <td><?php echo $name ?></td>
+                            <td>
+                                <img src="<?php echo $cover_path ?>" alt="img" height="50" width="30" />
+                            </td>
                             <td><?php echo $from ?></td>
                             <td><?php echo $to ?></td>
                             <td><?php echo $description ?></td>
                             <td><?php echo $date ?></td>
-                            <td> <a href="<?php echo $file_path; ?>"> File </a> </td>                          
+                            <td> <a href="<?php echo $file_path; ?>"> File </a> </td>
                             <td>
                                 <a class="btn btn-sm green waves-effect waves-light" href="edit_upload.php?ass_id=<?php echo $up_id ?>"> Edit </a>
                                 <a class="btn small red waves-effect waves-light" href="upload.php?delete_ass=true&ass_id=<?php echo $up_id ?>"> Delete </a>

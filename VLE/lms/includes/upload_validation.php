@@ -18,12 +18,15 @@ if (isset($_POST['submit_ass_q'])) {
         $to = $_POST['to'];
     }
 
-    $file = $_FILES['nFile']['name'];
     $date_sub = date("d-m-Y");
+    $file = $_FILES['nFile']['name'];
     move_uploaded_file($_FILES['nFile']['tmp_name'], "../files/ass_notice/" . $file);
 
-    $query = $db->query("INSERT INTO `upload_materials` (`name`, `from_age`, `to_age`, `teacher_id`, `file`, `description`)
-							VALUES ('$name', '$from', '$to', '$teacher_id', '$file','$description') ")
+    $cover = $_FILES['cover']['name'];
+    move_uploaded_file($_FILES['cover']['tmp_name'], "../files/ass_notice/" . $cover);
+    
+    $query = $db->query("INSERT INTO `upload_materials` (`name`, `from_age`, `to_age`, `teacher_id`, `file`, `description`, `cover`)
+							VALUES ('$name', '$from', '$to', '$teacher_id', '$file','$description', '$cover') ")
             or die("An error occured: " . mysqli_error($db));
 
     if ($query) {

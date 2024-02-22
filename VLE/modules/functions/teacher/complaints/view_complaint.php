@@ -90,9 +90,8 @@ if (mysqli_num_rows($result) > 0) {
         <main>
             <div class="card mb-4">
                 <div class="card-header text-center">
-                    <h3> Query <?php echo ($row['status'] == 'Open') ? " - <a class='btn btn-sm btn-success' href='?close=" . $row['id'] . "' >Mark as Closed</a> " : ''; ?> </h3>
+                    <h3> Query <?php //echo ($row['status'] == 'Open') ? " - <a class='btn btn-sm btn-success' href='?close=" . $row['id'] . "' >Mark as Closed</a> " : ''; ?> </h3>
 
-                    <!-- <h3> Query <?php echo ($row['created_by'] == $_SESSION['id'] && $row['status'] == 'Open') ? " - <a class='btn btn-sm btn-success' href='?close=" . $row['id'] . "' >Mark as Closed</a> " : ''; ?> </h3> -->
                 </div>
 
                 <div class="card-body">

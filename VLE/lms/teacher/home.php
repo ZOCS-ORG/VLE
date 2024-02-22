@@ -185,6 +185,9 @@ require_once('header.php');
                                 <td> <a href="<?php echo $file_path ?>"> File </a> </td>
                                 <td><?php echo $dueDate ?></td>
                                 <td><?php echo $assDate ?></td>
+                                <td><a class="btn orange waves-effect waves-light" href="edit_ass.php?ass_id=<?php echo $ass_id . "&class_id=" . $class_id . "&sub_id=" . $subject_id; ?>">
+                                        Edit<i class="material-icons right">edit</i></a>
+                                </td>
                                 <td><a class="btn green waves-effect waves-light" href="view_ass_notice.php?ass_id=<?php echo $ass_id . "&class_id=" . $class_id . "&sub_id=" . $subject_id; ?>">
                                         View<i class="material-icons right">send</i></a>
                                 </td>
@@ -257,75 +260,77 @@ require_once('header.php');
         </div>
 
         <div id="uploads" class="col s12 m8">
-    <div class="card-panel green">
-        <span class="white-text"> Uploads </span>
-        <span class="right"> 
-            <a class="waves-effect waves-light btn-small btn" href="upload.php">Upload<i class="material-icons right">add</i></a>
-        </span>
-    </div>
-    <br>
-    <div class="row">
-        <?php
-        $query = $db->query("SELECT * FROM upload_materials");
+            <div class="card-panel green">
+                <span class="white-text"> Uploads </span>
+                <span class="right">
+                    <a class="waves-effect waves-light btn-small btn" href="upload.php">Upload<i class="material-icons right">add</i></a>
+                </span>
+            </div>
+            <br>
+            <div class="row">
+                <?php
+                $query = $db->query("SELECT * FROM upload_materials");
 
-        while ($row = $query->fetch_assoc()) {
-            $name = $row['name'];
-            $description = $row['description'];
-            $from = $row['from_age'];
-            $to = $row['to_age'];
-            $file = $row['file'];
-            $date = $row['date'];
-            $up_id = $row['id'];
-            $uploaded_by = $row['teacher_id']; // Retrieve the teacher ID who uploaded the material
+                while ($row = $query->fetch_assoc()) {
+                    $name = $row['name'];
+                    $cover = $row['cover'];
+                    $description = $row['description'];
+                    $from = $row['from_age'];
+                    $to = $row['to_age'];
+                    $file = $row['file'];
+                    $date = $row['date'];
+                    $up_id = $row['id'];
+                    $uploaded_by = $row['teacher_id']; // Retrieve the teacher ID who uploaded the material
 
-            $file_path = "../files/ass_notice/" . $file;
+                    $file_path = "../files/ass_notice/" . $file;
+                    $cover_path = "../files/ass_notice/" . $cover;
 
-            // Check if the material is uploaded by the current teacher
-            if ($uploaded_by == $t_id) {
-        ?>
-                <div class="col s12 m6">
-                    <div class="card" style="background: #BFE5FF;">
-                        <div class="card-image">
-                            <img src="cover_photo.jpg">
+                    // Check if the material is uploaded by the current teacher
+                    if ($uploaded_by == $t_id) {
+                ?>
+                        <div class="col s12 m6">
+                            <div class="card" style="background: #BFE5FF;">
+                                <div class="card-image">
+                                    <img src="<?php echo $cover_path ?>" alt="img" height="200" width="90" />
+                                </div>
+                                <div class="card-content">
+                                    <p class="card-title"><?php echo $name ?></p>
+                                    <p><?php echo $description ?></p>
+                                    <p>From: <?php echo $from ?> - To: <?php echo $to ?></p>
+                                    <p>Date: <?php echo $date ?></p>
+                                </div>
+                                <div class="card-action">
+                                    <a class="btn btn-primary" href="<?php echo $file_path; ?>">Download File</a><br><br>
+                                    <a class="btn btn-sm green waves-effect waves-light" href="edit_upload.php?ass_id=<?php echo $up_id ?>">Edit</a>
+                                    <a class="btn small red waves-effect waves-light" href="upload.php?delete_ass=true&ass_id=<?php echo $up_id ?>">Delete</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-content">
-                            <p class="card-title"><?php echo $name ?></p>
-                            <p><?php echo $description ?></p>
-                            <p>From: <?php echo $from ?> - To: <?php echo $to ?></p>
-                            <p>Date: <?php echo $date ?></p>
+                    <?php
+                    } else {
+                    ?>
+                        <div class="col s12 m6">
+                            <div class="card" style="background: #BFE5FF;">
+                                <div class="card-image">
+                                    <img src="<?php echo $cover_path ?>" alt="img" height="200" width="90" />
+                                </div>
+                                <div class="card-content">
+                                    <p class="card-title"><?php echo $name ?></p>
+                                    <p><?php echo $description ?></p>
+                                    <p>From: <?php echo $from ?> - To: <?php echo $to ?></p>
+                                    <p>Date: <?php echo $date ?></p>
+                                </div>
+                                <div class="card-action">
+                                    <a class="btn btn-primary" href="<?php echo $file_path; ?>">Download File</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-action">
-                            <a class="btn btn-primary" href="<?php echo $file_path; ?>">Download File</a><br><br>
-                            <a class="btn btn-sm green waves-effect waves-light" href="edit_upload.php?ass_id=<?php echo $up_id ?>">Edit</a>
-                            <a class="btn small red waves-effect waves-light" href="upload.php?delete_ass=true&ass_id=<?php echo $up_id ?>">Delete</a>
-                        </div>
-                    </div>
-                </div>
-        <?php
-            } else {
-        ?>
-                <div class="col s12 m6">
-                    <div class="card" style="background: #BFE5FF;">
-                        <div class="card-image">
-                            <img src="cover_photo.jpg">
-                        </div>
-                        <div class="card-content">
-                            <p class="card-title"><?php echo $name ?></p>
-                            <p><?php echo $description ?></p>
-                            <p>From: <?php echo $from ?> - To: <?php echo $to ?></p>
-                            <p>Date: <?php echo $date ?></p>
-                        </div>
-                        <div class="card-action">
-                        <a class="btn btn-primary" href="<?php echo $file_path; ?>">Download File</a>
-                        </div>
-                    </div>
-                </div>
-        <?php
-            }
-        }
-        ?>
-    </div>
-</div>
+                <?php
+                    }
+                }
+                ?>
+            </div>
+        </div>
 
 
     </div>
