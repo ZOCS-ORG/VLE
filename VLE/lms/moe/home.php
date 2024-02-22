@@ -45,7 +45,7 @@ require_once('header.php');
             </div>
             <br>
             <div class="row">
-                <table id="table2" class="responsive-table striped">
+            <table id="table2" class="responsive-table striped">
                     <thead>
                         <tr>
                             <th data-field="ass_no">Name of Upload</th>
@@ -73,7 +73,7 @@ require_once('header.php');
                             $ass_id = $row['upload_id'];
 
                             $file_path = "../files/moe_uploads/" . $file;
-                            ?>
+                        ?>
                             <tr>
                                 <td><?php echo $name ?></td>
                                 <td><?php echo $question ?></td>
@@ -82,6 +82,7 @@ require_once('header.php');
                                 <td><?php echo $row['visibility'] ?? 'Not set' ?></td>
                                 <td><?php echo $dueDate ?></td>
                                 <td>
+                                    <a class="btn small orange waves-effect waves-light" href="edit_upload.php?forum_id=<?php echo $ass_id ?>"> Edit </a>
                                     <a class="btn small red waves-effect waves-light" href="notice_ass.php?delete_upload=true&ass_id=<?php echo $ass_id ?>"> Delete </a>
                                 </td>
                             </tr>

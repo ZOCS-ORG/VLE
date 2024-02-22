@@ -82,6 +82,7 @@ require_once('header.php');
                                 <td><?php echo $row['visibility'] ?? 'Not set' ?></td>
                                 <td><?php echo $dueDate ?></td>
                                 <td>
+                                    <a class="btn small orange waves-effect waves-light" href="edit_upload.php?forum_id=<?php echo $ass_id ?>"> Edit </a>
                                     <a class="btn small red waves-effect waves-light" href="notice_ass.php?delete_upload=true&ass_id=<?php echo $ass_id ?>"> Delete </a>
                                 </td>
                             </tr>
