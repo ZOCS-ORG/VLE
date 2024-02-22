@@ -35,9 +35,10 @@
                         <h5><?php echo $row['title']; ?></h5>
                     </div>
                     <div class="card-body">
-                        <p class="card-text"><?php echo $row['name']; ?></p>
-                        <p class="card-text">For: <?php echo $row['audience']; ?></p>
-                        <p class="card-text">Date: <?php echo $row['date']; ?></p>
+                    <p class="card-text"><?php echo $row['name']; ?></p>
+                    <p class="card-text">From: <?php echo $row['User']; ?></p>
+                    <p class="card-text">Date: <?php echo $row['date']; ?></p>
+                    <p class="card-text">School: <?php echo $row['school_name']; ?></p>
                         <!-- You can add additional content here if needed -->
                     </div>
                     <div class="card-footer text-muted">
