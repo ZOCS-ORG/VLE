@@ -119,9 +119,9 @@ if (mysqli_num_rows($result) > 0) {
 
 						</div>
 
-						<div class="card-action">
-							<input class="btn green waves-effect waves-light" type="submit" value="Go!" name="submit_forum">
-						</div>
+						<input class="btn green waves-effect waves-light" type="submit" value="Go!" name="submit_forum">
+						<!-- <div class="card-action">
+						</div> -->
 					</form>
 
 				</div>
@@ -154,9 +154,11 @@ if (mysqli_num_rows($result) > 0) {
 					$role = $_SESSION['role'];
 					// $logged_in_user_id = $_SESSION['id'];
 					// $query = $db->query("SELECT * FROM discussions WHERE audience = '$role' OR  audience = 'All' OR created_by = '$logged_id' ORDER BY id DESC  ");
-					$query = $db->query("SELECT z.zone AS zone_name, zd.* FROM zone_discussions zd
-					 JOIN zones z ON z.zone_id = zd.zone_id 
-					 WHERE zd.zone_id = '$zone_id' ORDER BY id DESC  ");
+					$query = $db->query("SELECT z.zone AS zone_name, zd.* 
+					FROM zone_discussions zd
+					LEFT JOIN zones z ON z.zone_id = zd.zone_id 
+					WHERE zd.zone_id = 2 OR zd.zone_id = 0 OR zd.zone_id IS NULL
+					ORDER BY zd.id DESC");
 
 					while ($row = $query->fetch_assoc()) {
 						$topic = $row['topic'];
