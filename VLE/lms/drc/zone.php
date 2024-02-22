@@ -29,7 +29,7 @@ if (mysqli_num_rows($result_zone) > 0) {
     $row_zone = mysqli_fetch_assoc($result_zone);
 
     $district_zone = $row_zone['district_id'];
-	echo $district_zone;
+	
 }
 
 
@@ -46,7 +46,7 @@ if (mysqli_num_rows($result) > 0) {
     $zone_id = $row['zone_id'];
     // Get the zone name if needed
     $zone_name = $row['zone'];
-	echo $zone_name;
+	
 }
 
 	?>
