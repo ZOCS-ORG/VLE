@@ -41,8 +41,7 @@ require_once('../layouts/head_to_wrapper.php');
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-sm font-weight-bold text-dark text-uppercase mb-1"> My Classes </div>
-                  <div class="text-right h5 mb-0 font-weight-bold text-gray-800"><?php echo $total;
-                                                                                } ?> </div>
+                  <div class="text-right h5 mb-0 font-weight-bold text-gray-800"><?php echo $total; ?> </div>
                 </div>
                 <div class="col-auto">
 
@@ -56,73 +55,111 @@ require_once('../layouts/head_to_wrapper.php');
           </div>
         </div>
 
-        <?php
+      <?php  } ?>
 
-        $query = "SELECT  count(1) FROM subjects 
+      <?php
+
+      $query = "SELECT  count(1) FROM subjects 
                           INNER JOIN teacher_subject_class
                           ON subjects.id = teacher_subject_class.subject_id
                           WHERE teacher_id = '$id' ";
 
-        if (mysqli_query($db, $query)) {
+      if (mysqli_query($db, $query)) {
 
-          echo "";
-        } else {
+        echo "";
+      } else {
 
-          echo "Error: " . $query . "<br>" . mysqli_error($db);
-        }
+        echo "Error: " . $query . "<br>" . mysqli_error($db);
+      }
 
-        $result = mysqli_query($db, $query);
+      $result = mysqli_query($db, $query);
 
-        if (mysqli_num_rows($result) > 0) {
+      if (mysqli_num_rows($result) > 0) {
 
-          $row = mysqli_fetch_array($result);
-          $total = $row[0];
-        ?>
+        $row = mysqli_fetch_array($result);
+        $total = $row[0];
+      ?>
+        <div class="col-xl-4 col-md-6 mb-3">
+          <div class="card border-left-success shadow py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-sm font-weight-bold text-success text-uppercase mb-1">My Subjects</div>
+                  <div class="text-right h5 mb-0 font-weight-bold text-success"><?php echo $total; ?></div>
+                </div>
+                <div class="col-auto">
 
-
-          <div class="col-xl-4 col-md-6 mb-3">
-            <div class="card border-left-success shadow py-2">
-              <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                  <div class="col mr-2">
-                    <div class="text-sm font-weight-bold text-success text-uppercase mb-1">My Subjects</div>
-                    <div class="text-right h5 mb-0 font-weight-bold text-success"><?php echo $total; } ?></div>
-                  </div>
-                  <div class="col-auto">
-
-                  </div>
                 </div>
               </div>
-              <hr>
-              <div class="text-right col-auto">
-                <a class="btn-block btn btn-sm btn-success" href="../subjects/index.php">View</a>
+            </div>
+            <hr>
+            <div class="text-right col-auto">
+              <a class="btn-block btn btn-sm btn-success" href="../subjects/index.php">View</a>
+            </div>
+          </div>
+        </div>
+      <?php } ?>
+
+
+      <div class="col-xl-4 col-md-4 mb-3">
+        <div class="card border-left-success shadow py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-sm font-weight-bold text-dark text-uppercase mb-1"> VLE-Learning </div>
+                <div class="text-right h5 mb-0 font-weight-bold text-white"> . </div>
+              </div>
+              <div class="col-auto">
+
               </div>
             </div>
           </div>
-
-          <div class="col-xl-4 col-md-4 mb-3">
-            <div class="card border-left-success shadow py-2">
-              <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                  <div class="col mr-2">
-                    <div class="text-sm font-weight-bold text-dark text-uppercase mb-1"> VLE-Learning </div>
-                    <div class="text-right h5 mb-0 font-weight-bold text-white"> . </div>
-                  </div>
-                  <div class="col-auto">
-
-                  </div>
-                </div>
-              </div>
-              <hr>
-              <div class="text-right col-auto">
-                <form id="loginForm" class="" action="../../../../lms/teacher" method="post">
-                  <input type="hidden" name="username" value="<?php echo $s_user; ?>">
-                  <input type="hidden" name="password" value="<?php echo $s_pass; ?>">
-                  <input type="submit" class="btn-block btn btn-sm btn-success" value="View" style="">
-                </form>
-              </div>
-            </div>
+          <hr>
+          <div class="text-right col-auto">
+            <form id="loginForm" class="" action="../../../../lms/teacher" method="post">
+              <input type="hidden" name="username" value="<?php echo $s_user; ?>">
+              <input type="hidden" name="password" value="<?php echo $s_pass; ?>">
+              <input type="submit" class="btn-block btn btn-sm btn-success" value="View" style="">
+            </form>
           </div>
+        </div>
+      </div>
+
+                
+      <div class="col-xl-4 col-md-4 mb-3">
+                <div class="card border-left-success shadow py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <?php
+
+                                function limitTxt($str, $max, $print)
+                                {
+                                    if (strlen($str) > $max) {
+                                        $str = substr($str, 0, $print) . '...';
+                                    }
+                                    return $str;
+                                }
+
+                                $q = mysqli_query($db, "SELECT * FROM blogs ORDER BY id DESC LIMIT 1") or die("Connection error: " . mysqli_error($db));
+
+                                $r = mysqli_fetch_array($q);
+                                ?>
+                                <div class="text-sm font-weight-bold text-dark text-uppercase mb-1">Latest Blog:
+                                    <span style="font-size:20px">"</span><small><?php echo limitTxt($r['title'], 40, 40); ?></small><span style="font-size:20px">"</span>
+                                </div>
+                                <small class="text-right  mb-0 font-weight-bold text-gray-800"> </small>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-right col-auto">
+                        <a class="btn-block btn btn-sm btn-success" href="../../../../../blogs.php" target="_blank">View All Blogs</a>
+                    </div>
+                </div>
+            </div>
+
+
 
     </div>
 
