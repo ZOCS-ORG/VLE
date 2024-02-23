@@ -204,59 +204,6 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6">
-                            <div class=" text-right">
-                                <p>Fees.</p>
-                            </div>
-                        </div>
-                        <div > </div>
-                        <div class="col-lg-5">
-                            <div class="">
-                                <?php
-                                    // First get latest payment to determine the current term.
-                                    $latest_fees_query = mysqli_query($db, "SELECT * FROM fees WHERE student_id = '$student_id'
-                                                ORDER BY fees.date_paid DESC LIMIT 1 " )or die("An error occured: ".mysqli_error($db));
-                                    if(mysqli_num_rows($latest_fees_query) == 1){
-                                        while($latest_fees_row = mysqli_fetch_assoc($latest_fees_query)){
-                                        $get_term = $latest_fees_row['term'];
-                                        $current_term = "Term ".$get_term.", $year "; 
-                                        }
-                                        // return var_dump($latest_fees_query);
-
-                                        /** Get the total amount paid in the term $current_term */
-                                        $term_fees_query = mysqli_query($db, "SELECT SUM(amount) 
-                                                                FROM fees WHERE student_id = '$student_id'
-                                                            AND term = '$get_term' " )or die("An error occured: ".mysqli_error($db));
-                                        while($term_fees_row  = mysqli_fetch_assoc($term_fees_query) ){
-                                            $total_amount_paid = $term_fees_row['SUM(amount)'];
-                                            /**Get due date for current term */
-                                            if($get_term == 1){ 
-                                                $date_due_raw =  $date_due_1;
-                                            }elseif($get_term == 2){ 
-                                                $date_due_raw =  $date_due_2;
-                                            }elseif($get_term == 3){ 
-                                                $date_due_raw =  $date_due_3;
-                                            }
-                                            $raw_date = strtotime($date_due_raw);
-                                            $date_due = date("d F, Y", $raw_date);
-                                        }
-                                        echo "Total amount paid for ".$current_term." is $currency ".number_format($total_amount_paid,2).",
-                                            out of the expected $currency ".number_format($total_term_fees);
-                                        /**Get the difference */
-                                        $balance_due = $total_term_fees - $total_amount_paid;
-                                        if($balance_due == 0 ){
-                                            echo "<p>Learner has no outstanding fees for this term <p>";
-                                        }elseif($balance_due > 0){
-                                            echo "<p class='text-danger'>Learner's outstanding balance for the term is $currency ".number_format($balance_due,2)." <p>";
-                                            echo "<p>Due date for payments is $date_due";
-                                        }elseif($balance_due < 0){
-                                            echo "<p class='text-success'>Learner, therefore, has an allocated amount of $currency ".abs(number_format($balance_due));
-                                        }
-                                    }else{ echo "Fees not found!"; }
-                                ?>
-                                
-                            </div>
-                        </div>
 
                         <div class="col-lg-6">
                             <div class=" text-right">

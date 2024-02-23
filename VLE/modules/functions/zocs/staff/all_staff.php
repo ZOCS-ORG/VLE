@@ -28,6 +28,7 @@ include_once('../layouts/topbar.php');
                                     <td>Username</td>
                                     <td>Phone number</td>
                                     <td>Email</td>
+                                    <td>Role</td>
                                     <td>Actions</td>
                                 </tr>
                             </thead>
@@ -39,12 +40,14 @@ include_once('../layouts/topbar.php');
                                 $images_dir = "../../../utils/images/lecturers/";
                                 while ($row = mysqli_fetch_array($res)) {
                                     $picname = $row['img'];
+                                    $_role = $row['user_role'];
                                 ?>
                                     <tr>
                                         <td><?php echo $row['name']; ?></td>
-                                        <td><?php echo $row['username']; ?></td>
+                                        <td><?php echo $row['username']; ?></td> 
                                         <td><?php echo $row['phone']; ?></td>
                                         <td><?php echo $row['email']; ?></td>
+                                        <td><?php echo ($_role == 'drc') ? "DEBS" : ucfirst($_role); ?></td>
 
                                         <th>
                                             <div class="btn-group"><a class="btn btn-success btn-sm text-light" href="view_staff.php?id=<?php echo $row["id"]; ?>">View</a>
