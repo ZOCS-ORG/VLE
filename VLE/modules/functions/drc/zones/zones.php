@@ -130,7 +130,9 @@ echo $dist_id;
                             <?php
                             // typeof
                             $sql = "SELECT z.*, d.district_name FROM zones z
-                                        LEFT JOIN districts d ON d.district_id = z.district_id";
+                                        LEFT JOIN districts d ON d.district_id = z.district_id
+                                        WHERE z.district_id = '$dist_id'";
+
                             $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
 
                             while ($row = mysqli_fetch_array($res)) {
