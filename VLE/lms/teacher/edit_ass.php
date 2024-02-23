@@ -200,7 +200,7 @@ require_once('header.php');
 							<td><?php echo $dueDate ?></td>
 							<td><?php echo $assDate ?></td>
 							<td>
-								<a class="btn btn-sm green waves-effect waves-light" href="edit_ass.php?ass_id=<?php echo $ass_id ?>"> Edit </a>
+								<!-- <a class="btn btn-sm green waves-effect waves-light" href="edit_ass.php?ass_id=<?php echo $ass_id ?>"> Edit </a> -->
 								<a class="btn small red waves-effect waves-light" href="delete_ass.php?ass_id=<?php echo $ass_id ?>"> Delete </a>
 							</td>
 						</tr>
