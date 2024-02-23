@@ -3,6 +3,15 @@
 $add_side_bar = true;
 require_once('../layouts/head_to_wrapper.php');
 ?>
+
+<style>
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+</style>
 <!-- Main Content -->
 <div id="content">
 
@@ -38,6 +47,7 @@ require_once('../layouts/head_to_wrapper.php');
                 $from = $row['from_age'];
                 $to = $row['to_age'];
                 $file = $row['file'];
+                $cover = $row['cover'];
                 $date = $row['date'];
                 $from_name = $row['teacher_name'];
                 $school_name = $row['school_name'];
@@ -46,31 +56,25 @@ require_once('../layouts/head_to_wrapper.php');
                 $file_path = "../../../../lms/files/ass_notice/" . $file;
                 $cover_path = "../../../../lms/files/ass_notice/" . $cover;
             ?>
-                <div class="col-md-4 mb-4" style="height: 300px">
-                    <div class="card border-success" style="background: ; padding:1rem;">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card-image">
-                                    <img src="<?php echo $cover_path ?>" alt="img" height="300" width="150" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card-content">
-                                    <h5 class="card-title"><?php echo $name ?></h5>
-                                    <p>Description: <?php echo $description ?></p>
-                                    <p>Date: <?php echo $date ?></p>
-                                    <p>From: <?php echo $from_name ?></p>
-                                    <p>School: <?php echo $school_name ?></p>
-                                    <p>Age Group: <?php echo $from ?> To <?php echo $to ?></p>
-                                </div>
-                                <div class="card-action">
-                                    <a href="<?php echo $file_path; ?>" class="btn btn-primary">Download</a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-md-4 mb-4">
+    <div class="card" style="background: #BFE5FF; padding: 1rem; height: 500px;">
+        <div class="card-image center mb-2" style="height: 60%;">
+            <img style="width: 100%; height: 100%; object-fit: cover;" src="<?php echo $cover_path; ?>" alt="Cover Photo">
+        </div>
+        <div class="card-content mb-2" style="height: 50%; overflow-y: auto;">
+            <h5 class="card-title"><?php echo $name ?></h5>
+            <p>Description: <?php echo $description ?></p>
+            <p>Date: <?php echo $date ?></p>
+            <p>From: <?php echo $from_name ?></p>
+            <p>School: <?php echo $school_name ?></p>
+            <p>Age Group: <?php echo $from ?> To <?php echo $to ?></p>
+        </div>
+        <div class="card-action">
+            <a href="<?php echo $file_path; ?>" class="btn btn-primary">Download</a>
+        </div>
+    </div>
+</div>
 
-                    </div>
-                </div>
 
             <?php } ?>
         </div>

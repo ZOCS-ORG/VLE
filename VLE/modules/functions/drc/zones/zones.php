@@ -50,6 +50,19 @@ include_once('../layouts/topbar.php');
     }
 </style>
 
+<?php
+$user_id = $_SESSION['id'];
+$dist = "SELECT district_id FROM users WHERE id = '$user_id'";
+$dist_result = mysqli_query($db, $dist);
+
+if (!$dist_result) {
+    die("Error: " . mysqli_error($db));
+}
+$dist_row = mysqli_fetch_array($dist_result);
+
+$dist_id = $dist_row["district_id"];
+// echo $dist_id;
+?>
 <div class="container">
     <div class="row justify-content-">
         <div class="col-lg-1">
@@ -71,24 +84,24 @@ include_once('../layouts/topbar.php');
                         <table class="table" id="dataTable" width="100%" cellspacing="9">
                             <tr>
                                 <td>Name:</td>
-                                <td class="text-right"><input type="text" name="name" required></td>
+                                <td class="text-right"><input class="form-control" type="text" name="name" required></td>
                             </tr>
                             <tr>
-                                <td>District:</td>
-                                <td class="text-right">
-                                    <select name="district" id="select">
-                                        <?php
-                                        $q = mysqli_query($db, "SELECT * FROM districts");
-                                        if (!$q) {
-                                            die('Could not enter data: ' . mysqli_error($db));
-                                        }
-                                        while ($row = mysqli_fetch_assoc($q)) {
-                                        ?>
-                                            <option value="<?php echo $row['district_id']; ?>"><?php echo $row['district_name']; ?></option>
-                                        <?php
-                                        }
-                                        ?>
-                                    </select>
+                                <td >District:</td>
+                                <td class="text-right form-control">
+                                    <?php
+                                    $q = mysqli_query($db, "SELECT * FROM districts WHERE district_id ='$dist_id'");
+                                    if (!$q) {
+                                        die('Could not enter data: ' . mysqli_error($db));
+                                    }
+                                    $row = mysqli_fetch_assoc($q);
+                                    $district_id = $row['district_id'];
+                                    $district_name = $row['district_name'];
+                                    ?>
+
+                                    <input class="form-control" type="text" name="district" value="<?php echo $district_name; ?>" readonly>
+                                    <input type="hidden" name="district_id" value="<?php echo $district_id; ?>">
+
                                 </td>
                             </tr>
                             <tr>
@@ -118,7 +131,9 @@ include_once('../layouts/topbar.php');
                             <?php
                             // typeof
                             $sql = "SELECT z.*, d.district_name FROM zones z
-                                        LEFT JOIN districts d ON d.district_id = z.district_id";
+                                        LEFT JOIN districts d ON d.district_id = z.district_id
+                                        WHERE z.district_id = '$dist_id'";
+
                             $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
 
                             while ($row = mysqli_fetch_array($res)) {
@@ -160,7 +175,7 @@ include_once('../layouts/topbar.php');
 
 if (isset($_POST['create'])) {
     $name = mysqli_real_escape_string($db, $_POST['name']);
-    $district = mysqli_real_escape_string($db, $_POST['district']);
+    $district = mysqli_real_escape_string($db, $_POST['district_id']);
 
     $sql = " INSERT INTO `zones` (`zone`, `district_id`) VALUES ('$name', '$district')";
 

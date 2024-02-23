@@ -67,6 +67,12 @@
             <span>Manage Teachers</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="../school/all_schools.php">
+            <i class="fa fas fa-fw fa-users"></i>
+            <span>Schools In District</span></a>
+    </li>
+
     <li class="nav-item text-color-dark">
         <a class="nav-link" href="../complaints/index.php">
             <i class="fa fas fa-fw fa-frown-o"></i>
@@ -79,7 +85,7 @@
             <span>Announcements</span></a>
     </li>
 
-    <li class="nav-item text-color-dark">
+    <!-- <li class="nav-item text-color-dark">
         <a class="nav-link" href="../../../../lms/drc/zone.php">
             <i class="fa fas fa-fw fa-users"></i>
             <span>Zone</span></a>
@@ -88,7 +94,7 @@
         <a class="nav-link" href="../zones/zones.php">
             <i class="fa fas fa-fw fa-list"></i>
             <span> Add Zones</span></a>
-    </li>
+    </li> -->
 
     <!-- <li class="nav-item text-color-dark">
         <a class="nav-link" href="../announcements/pta.php">
@@ -123,18 +129,18 @@
 
    
 
-    <!-- <li class="nav-item">
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#staff" aria-expanded="true" aria-controls="staff">
-            <i class="fa fas fa-fw fa-users"></i>
+            <i class="fa fas fa-fw fa-list"></i>
             <span>Zones</span>
         </a>
         <div id="staff" class="collapse" aria-labelledby="staff" data-parent="#accordionSidebar">
             <div class="bg- py-2 collapse-inner rounded">
-                <a class="collapse-item" href="../staff/add_staff.php">Manage Zones</a>
-                <a class="collapse-item" href="../staff/all_staff.php">Add Zone</a>
+                <a class="collapse-item" href="../../../../lms/drc/zone.php">Manage Zones</a>
+                <a class="collapse-item" href="../zones/zones.php">Add Zone</a>
             </div>
         </div>
-    </li> -->
+    </li>
 
 
 </ul>
