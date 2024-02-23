@@ -3,6 +3,15 @@
 $add_side_bar = true;
 require_once('../layouts/head_to_wrapper.php');
 ?>
+
+<style>
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+</style>
 <!-- Main Content -->
 <div id="content">
 
@@ -45,8 +54,8 @@ require_once('../layouts/head_to_wrapper.php');
             ?>
                 <div class="col-md-4 mb-4">
                     <div class="card" style="background: #BFE5FF; padding:1rem;">
-                        <div class="card-image">
-                            <img src="<?php echo $cover_path; ?>" alt="Cover Photo">
+                        <div class="card-image center">
+                            <img style="width:50%; height: 50%; margin-left:auto; margin-right: auto;" src="<?php echo $cover_path; ?>" alt="Cover Photo">
                         </div>
                         <div class="card-content">
                             <h5 class="card-title"><?php echo $name ?></h5>
