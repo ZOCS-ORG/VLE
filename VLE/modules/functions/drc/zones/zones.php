@@ -174,7 +174,7 @@ $dist_id = $dist_row["district_id"];
 
 if (isset($_POST['create'])) {
     $name = mysqli_real_escape_string($db, $_POST['name']);
-    $district = mysqli_real_escape_string($db, $_POST['district']);
+    $district = mysqli_real_escape_string($db, $_POST['district_id']);
 
     $sql = " INSERT INTO `zones` (`zone`, `district_id`) VALUES ('$name', '$district')";
 
