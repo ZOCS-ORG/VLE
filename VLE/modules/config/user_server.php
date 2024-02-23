@@ -41,6 +41,8 @@ mysqli_query($db, "UPDATE users SET status = 'Online' WHERE id = '$id' ") or die
 //*** NEW USER REDIRECT FOR ZOCS... COMMENTED OUT GENERIC ONE BELLOW */
 if (empty($role)) {
     header("Location: ../functions/base_user/login.php?login=false");
+} elseif ($role == 'student') {
+    header("Location: ../functions/base_user/login.php?login=false");
 } else {
     header("Location: ../functions/" . $role);
 }

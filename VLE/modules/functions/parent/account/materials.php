@@ -30,15 +30,19 @@ require_once('../layouts/head_to_wrapper.php');
 
         <div class="row">
             <?php
+
+            echo 4 % 1;
+
             $query = $db->query("SELECT um.*, u.name AS teacher_name, s.name AS school_name
-    FROM upload_materials um
-    JOIN users u ON um.teacher_id = u.id
-    JOIN school_teachers st ON st.teacher_id = um.teacher_id
-    JOIN schools s ON s.school_id = st.school_id
-    ");
+                    FROM upload_materials um
+                    JOIN users u ON um.teacher_id = u.id
+                    JOIN school_teachers st ON st.teacher_id = um.teacher_id
+                    JOIN schools s ON s.school_id = st.school_id
+                    ");
 
             while ($row = $query->fetch_assoc()) {
                 $name = $row['name'];
+                $cover = $row['cover'];
                 $description = $row['description'];
                 $from = $row['from_age'];
                 $to = $row['to_age'];
