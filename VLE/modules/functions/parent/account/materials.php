@@ -34,17 +34,19 @@ require_once('../layouts/head_to_wrapper.php');
                 $from = $row['from_age'];
                 $to = $row['to_age'];
                 $file = $row['file'];
+                $cover = $row['cover'];
                 $date = $row['date'];
                 $from_name = $row['teacher_name'];
                 $school_name = $row['school_name'];
 
 
                 $file_path = "../../../../lms/files/ass_notice/" . $file;
+                $cover_path = "../../../../lms/files/ass_notice/" . $cover;
             ?>
                 <div class="col-md-4 mb-4">
                     <div class="card" style="background: #BFE5FF; padding:1rem;">
                         <div class="card-image">
-                            <img src="cover_photo.jpg" alt="Cover Photo">
+                            <img src="<?php echo $cover_path; ?>" alt="Cover Photo">
                         </div>
                         <div class="card-content">
                             <h5 class="card-title"><?php echo $name ?></h5>

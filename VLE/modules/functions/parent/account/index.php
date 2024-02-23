@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 //set to false if you don't want the sidebar to show
 $add_side_bar = true;
 require_once('../layouts/head_to_wrapper.php');
