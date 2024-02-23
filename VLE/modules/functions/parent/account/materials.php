@@ -53,23 +53,24 @@ require_once('../layouts/head_to_wrapper.php');
                 $cover_path = "../../../../lms/files/ass_notice/" . $cover;
             ?>
                 <div class="col-md-4 mb-4">
-                    <div class="card" style="background: #BFE5FF; padding:1rem;">
-                        <div class="card-image center">
-                            <img style="width:50%; height: 50%; margin-left:auto; margin-right: auto;" src="<?php echo $cover_path; ?>" alt="Cover Photo">
-                        </div>
-                        <div class="card-content">
-                            <h5 class="card-title"><?php echo $name ?></h5>
-                            <p>Description: <?php echo $description ?></p>
-                            <p>Date: <?php echo $date ?></p>
-                            <p>From: <?php echo $from_name ?></p>
-                            <p>School: <?php echo $school_name ?></p>
-                            <p>Age Group: <?php echo $from ?> To <?php echo $to ?></p>
-                        </div>
-                        <div class="card-action">
-                            <a href="<?php echo $file_path; ?>" class="btn btn-primary">Download</a>
-                        </div>
-                    </div>
-                </div>
+    <div class="card" style="background: #BFE5FF; padding: 1rem; height: 500px;">
+        <div class="card-image center mb-2" style="height: 60%;">
+            <img style="width: 100%; height: 100%; object-fit: cover;" src="<?php echo $cover_path; ?>" alt="Cover Photo">
+        </div>
+        <div class="card-content mb-2" style="height: 50%; overflow-y: auto;">
+            <h5 class="card-title"><?php echo $name ?></h5>
+            <p>Description: <?php echo $description ?></p>
+            <p>Date: <?php echo $date ?></p>
+            <p>From: <?php echo $from_name ?></p>
+            <p>School: <?php echo $school_name ?></p>
+            <p>Age Group: <?php echo $from ?> To <?php echo $to ?></p>
+        </div>
+        <div class="card-action">
+            <a href="<?php echo $file_path; ?>" class="btn btn-primary">Download</a>
+        </div>
+    </div>
+</div>
+
 
             <?php } ?>
         </div>
