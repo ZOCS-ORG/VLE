@@ -29,7 +29,7 @@ include_once('../layouts/topbar.php');
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="4">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <!-- <th>ID</th> -->
                         <th>EMIS Number</th>
                         <th>School Name</th>
                         <th>School Location</th>
@@ -55,7 +55,7 @@ include_once('../layouts/topbar.php');
                         $picname = $row['img'];
                     ?>
                         <tr>
-                            <td><?php echo $row['school_id']; ?> </td>
+                            <!-- <td><?php echo $row['school_id']; ?> </td> -->
                             <td><?php echo $row['emis_number']; ?> </td>
                             <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['address']; ?></td>
@@ -75,10 +75,7 @@ include_once('../layouts/topbar.php');
                                 </div>
                             </th>
                         </tr>
-
                     <?php
-
-
                     }
                     ?>
                 </tbody>

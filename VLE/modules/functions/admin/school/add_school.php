@@ -161,7 +161,7 @@ include_once('../layouts/topbar.php');
                         <div class="form-group">
                             <label for="province">Select Province:</label>
                             <select id="province" name="province" class="form-control" onchange="loadDistricts()">
-                                <option value="">Select Province</option>
+                                <!-- <option value="">Select Province</option> -->
                                 <?php
                                 $query = mysqli_query($db, "SELECT * FROM provinces");
                                 if ($query) {
@@ -235,28 +235,6 @@ include_once('../layouts/topbar.php');
         placeHolder: "Select",
     });
 </script>
-<!-- End multi-select support  -->
-
-<!-- <script>
-
-var map = L.map('map').setView([-15.4089, 28.2871], 13); 
-
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
-
-
-map.on('click', function(e) {
-   
-    var clickedLat = e.latlng.lat;
-    var clickedLng = e.latlng.lng;
-
- 
-    alert("You clicked the map at: Latitude " + clickedLat + ", Longitude " + clickedLng);
-});
-
-</script> -->
 
 <script>
     var map = L.map('map').setView([-15.4089, 28.2871], 13);

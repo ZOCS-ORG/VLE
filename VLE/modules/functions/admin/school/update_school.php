@@ -4,7 +4,13 @@ require_once('../../../config/admin_server.php');
 $add_side_bar = true;
 include_once('../layouts/head_to_wrapper.php');
 include_once('../layouts/topbar.php');
+
+if (isset($_GET['success']) && $_GET['success'] == 'true') {
+    // Display a success alert using JavaScript
+    echo "<script>alert('Update Successful');</script>";
+}
 ?>
+
 
 <style>
     .table-width {
@@ -51,132 +57,230 @@ include_once('../layouts/topbar.php');
 
 
 
+
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-8" style="border: 1px solid #73AD21; ">
             <div class="card shadow-s border-0 rounded-lg mt-1">
                 <?php
+                error_reporting(E_ALL);
                 $school_id = $_GET['school_id'];
+                // echo $school_id;
+                // echo $school_id;
                 if (isset($_POST['update'])) {
-
+                    // Retrieve form data and sanitize
+                    $school_id = $_GET['school_id'];
                     $emis_number = mysqli_real_escape_string($db, $_POST['emis_number']);
                     $name = mysqli_real_escape_string($db, $_POST['name']);
                     $address = mysqli_real_escape_string($db, $_POST['address']);
                     $zone = mysqli_real_escape_string($db, $_POST['zone']);
-
+                    $province = mysqli_real_escape_string($db, $_POST['province']);
+                    $district = mysqli_real_escape_string($db, $_POST['district']);
                     $type = mysqli_real_escape_string($db, $_POST['type']);
                     $gps_lat = mysqli_real_escape_string($db, $_POST['gps_lat']);
                     $gps_long = mysqli_real_escape_string($db, $_POST['gps_long']);
-
-                    //? update schools with above data
-
+                
+                    // Construct the SQL query for updating the school
                     $sql = "UPDATE schools SET `name` = '$name', `address` = '$address', `zone` = '$zone', `sch_type` = '$type',
-                                    `gps_lat` = '$gps_lat', `gps_long` = '$gps_long', `emis_number` = '$emis_number'
-                                    WHERE `school_id` = '$school_id' ";
+                            `gps_lat` = '$gps_lat', `gps_long` = '$gps_long', `emis_number` = '$emis_number',
+                            `province` = '$province', `district` = '$district'
+                            WHERE `school_id` = '$school_id' ";
+                
+                    // Execute the update query
                     $success = mysqli_query($db, $sql);
-                    if (!$success) {
-                        die('Could not enter data: ' . mysqli_error($db));
+                    echo $success;
+                    // Check if the update was successful
+                    if ($success) {
+                        // Use JavaScript to redirect the user
+                        echo "<script>window.location.href = '{$_SERVER['PHP_SELF']}?school_id=$school_id';</script>";
+                        echo $school_id;
+                    } else {
+                       
+                        die('Could not update data: ' . mysqli_error($db));
                     }
-
-                    $success = mysqli_query($db, $sql);
-                    if (!$success) {
-                        die('Could not enter data: ' . mysqli_error($db));
-                    }
-                    echo '   <h3 style=" background-color: green">A new school has been added successfully</h3>';
                 }
 
                 // get school info from database
                 $query = mysqli_query($db, "SELECT * FROM schools WHERE `school_id` = '$school_id' ") or die('Could not fetch data: ' . mysqli_error($db));
-                $row = mysqli_fetch_array($query);
+                $school_data  = mysqli_fetch_array($query);
                 // assign values for the following values emis_number name address zone type gps_lat gps_long
-                $emis_number = $row['emis_number'];
-                $name = $row['name'];
-                $address = $row['address'];
-                $zone = $row['zone'];
-                $type = $row['sch_type'];
-                $gps_lat = $row['gps_lat'];
-                $gps_long = $row['gps_long'];
-
+                $emis_number = $school_data['emis_number'];
+                $name = $school_data['name'];
+                $address = $school_data['address'];
+                $zone = $school_data['zone'];
+                $type = $school_data['sch_type'];
+                $gps_lat = $school_data['gps_lat'];
+                $gps_long = $school_data['gps_long'];
 
                 ?>
                 <div class="card-header">
                     <h5 class="text-center my-2">Update School</h5>
                 </div>
                 <div class="card-body" style=" border-color: black ">
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form action="update_school_script.php?school_id=<?php echo $school_id ?>" method="post" enctype="multipart/form-data">
+                        <!-- Add a hidden input field to store the school ID -->
+                        <input type="hidden" name="school_id" value="<?php echo $school_data['school_id']; ?>">
 
-                        <table class="table" id="" width="100%" cellspacing="9">
-                            <tr>
-                                <td style=" color: black"><b>Enter EMIS Number:</b></td>
-                                <td class="text-right"><input type="text" name="emis_number" value="<?php echo $emis_number ?>" placeholder="Enter EMIS Number" required=""></td>
-                            </tr>
-                            <tr>
-                                <td style=" color: black"><b>Enter School Name:</b></td>
-                                <td class="text-right"><input type="text" name="name" value="<?php echo $name ?>" placeholder="Enter School Name" required=""></td>
-                            </tr>
+                        <div class="form-group">
+                            <label for="emis_number">Enter EMIS Number:</label>
+                            <input id="emis_number" class="form-control" type="text" name="emis_number" placeholder="Enter EMIS Number" value="<?php echo $school_data['emis_number']; ?>" required>
+                        </div>
+                        <!-- Populate other form fields with existing data -->
+                        <div class="form-group">
+                            <label for="name">Enter School Name:</label>
+                            <input id="name" class="form-control" type="text" name="name" placeholder="Enter School Name" value="<?php echo $school_data['name']; ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Enter School Address:</label>
+                            <input id="address" class="form-control" type="text" name="address" placeholder="Enter School Address" value="<?php echo $school_data['address']; ?>" required>
+                        </div>
+                        <!-- Populate the select fields with existing data -->
+                        <div class="form-group">
+                            <label for="province">Select Province:</label>
+                            <select id="province" name="province" class="form-control" onchange="loadDistricts()">
+                                <option value="">Select Province</option>
+                                <?php
+                                $query = mysqli_query($db, "SELECT * FROM provinces");
+                                if ($query) {
+                                    while ($row = mysqli_fetch_assoc($query)) {
+                                        $selected = ($row['province_id'] == $school_data['province']) ? 'selected' : '';
+                                        echo "<option value='{$row['province_id']}' $selected>{$row['province_name']}</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group" >
+                            <label for="district"><b>Select District:</b></label>
+                            <select id="district" name="district" class="form-control" onchange="loadZones()">
+                                <option value="">Select District</option>
+                            </select>
+                        </div>
 
-                            <tr>
-                                <td style=" color: black"><b>Enter School Address:</b></td>
-                                <td class="text-right"><input type="text" name="address" value="<?php echo $address ?>" placeholder="Enter School Address" required=""></td>
-                            </tr>
+                        <div class="form-group" >
+                            <label for="Zones"><b>Select Zone:</b></label>
+                            <select id="Zones" name="zone" class="form-control">
+                                <option value="">Select Zone</option>
+                            </select>
+                        </div>
 
-                            <tr>
-                                <td style=" color: black"><b>Select Zone:</b></td>
-                                <td class="text-right">
-                                    <select name="zone" value="<?php echo $zone ?>" id="zone">
-                                        <?php
-                                        $q = mysqli_query($db, "SELECT * FROM zones");
-                                        if (!$q) {
-                                            die('Could not enter data: ' . mysqli_error($db));
-                                        }
-                                        while ($row = mysqli_fetch_assoc($q)) {
-                                        ?>
-                                            <option value="<?php echo $row['zone_id']; ?>"><?php echo $row['zone']; ?></option>
-                                        <?php
-                                        }
-                                        ?>
-                                    </select>
-                                </td>
-                            </tr>
+                        <div class="form-group">
+                            <label for="type">Type of School:</label>
+                            <select id="type" name="type" class="form-control">
+                                <option value="University" <?php if ($school_data['sch_type'] == 'University') echo 'selected'; ?>>University</option>
+                                <option value="College" <?php if ($school_data['sch_type'] == 'College') echo 'selected'; ?>>College</option>
+                                <option value="Community School" <?php if ($school_data['sch_type'] == 'Community School') echo 'selected'; ?>>Community School</option>
+                                <option value="Primary School" <?php if ($school_data['sch_type'] == 'Primary School') echo 'selected'; ?>>Primary School</option>
+                            </select>
+                        </div>
+                        <!-- Similarly, populate other input fields with existing data -->
 
-                            <tr>
-                                <td style=" color: black"><b>Type of School:</b></td>
-                                <td class="text-right">
-                                    <select name="type" value="<?php echo $type ?>" id="">
-                                        <option value="University">University </option>
-                                        <option value="College">College </option>
-                                        <option value="Community School">Community School </option>
-                                        <option value="Primary School ">Primary School </option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style=" color: black"><b>Enter GPS Latitude Location</td>
-                                <td class="text-right"><input type="text" name="gps_lat" value="<?php echo $gps_lat ?>" placeholder="Enter Latitude  Location"></td>
-                            </tr>
-
-                            <tr>
-                                <td style=" color: black"><b>Enter GPS longitude Location:</b></td>
-                                <td class="text-right"><input type="text" name="gps_long" value="<?php echo $gps_long ?>" placeholder="Enter longitude  Location"></td>
-                            </tr>
-
-                            <tr>
-                                <td id="map"></td>
-                            </tr>
-
-
-                            <td></td>
-
-                            <td class="text-right"><input class="btn btn-sm btn-success " type="submit" name="update" value="Submit"></td>
-
-                        </table>
+                        <div class="form-group">
+                            <label for="gps_lat">Enter GPS Latitude Location:</label>
+                            <input id="gps_lat" class="form-control" type="text" name="gps_lat" placeholder="Enter Latitude Location" value="<?php echo $school_data['gps_lat']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="gps_long">Enter GPS Longitude Location:</label>
+                            <input id="gps_long" class="form-control" type="text" name="gps_long" placeholder="Enter Longitude Location" value="<?php echo $school_data['gps_long']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <div id="map"></div>
+                        </div>
+                        <div class="form-group text-right">
+                            <input class="btn btn-sm btn-success" type="submit" name="update" value="Update">
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<?php
+$currentDistrictId = $school_data['district'];
+$currentZoneId = $school_data['zone'];
+?>
+
+<script>
+    function loadDistricts() {
+        var provinceId = document.getElementById("province").value;
+        var districtSelect = document.getElementById("district");
+
+        districtSelect.innerHTML = "<option value=''>Select District</option>";
+
+        if (provinceId !== "") {
+            // Show the district select
+            districtSelect.parentNode.style.display = "block";
+            <?php
+            $query = mysqli_query($db, "SELECT * FROM districts");
+            if ($query) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                    echo "if ({$row['province_id']} == provinceId) {";
+                    echo "var option = document.createElement('option');";
+                    echo "option.value = '{$row['district_id']}';";
+                    echo "option.textContent = '{$row['district_name']}';";
+                    echo "districtSelect.appendChild(option);";
+                    echo "}";
+                }
+            }
+            ?>
+        } else {
+            // Hide the district select
+            districtSelect.parentNode.style.display = "none";
+        }
+
+        // Select current district if available
+        var currentDistrictId = "<?php echo $school_data['district']; ?>";
+        if (currentDistrictId !== "") {
+            document.querySelector('#district [value="' + currentDistrictId + '"]').selected = true;
+        }
+    }
+
+    function loadZones() {
+        var districtId = document.getElementById("district").value;
+        var zoneSelect = document.getElementById("Zones");
+
+        zoneSelect.innerHTML = "<option value=''>Select Zone</option>";
+
+        if (districtId !== "") {
+            // Show the zone select
+            zoneSelect.parentNode.style.display = "block";
+            <?php
+            $query = mysqli_query($db, "SELECT * FROM zones");
+            if ($query) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                    echo "if ({$row['district_id']} == districtId) {";
+                    echo "var option = document.createElement('option');";
+                    echo "option.value = '{$row['zone_id']}';";
+                    echo "option.textContent = '{$row['zone']}';";
+                    echo "zoneSelect.appendChild(option);";
+                    echo "}";
+                }
+            }
+            ?>
+        } else {
+            // Hide the zone select
+            zoneSelect.parentNode.style.display = "none";
+        }
+
+        // Select current zone if available
+        var currentZoneId = "<?php echo $school_data['zone']; ?>";
+        if (currentZoneId !== "") {
+            document.querySelector('#Zones [value="' + currentZoneId + '"]').selected = true;
+        }
+    }
+
+    // Call the functions to populate the districts and zones initially
+    window.onload = function() {
+        loadDistricts();
+        loadZones();
+    };
+</script>
+
+
 
 
 <!-- Multi-Select suport -->
@@ -192,28 +296,6 @@ include_once('../layouts/topbar.php');
         placeHolder: "Select",
     });
 </script>
-<!-- End multi-select support  -->
-
-<!-- <script>
-
-var map = L.map('map').setView([-15.4089, 28.2871], 13); 
-
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
-
-
-map.on('click', function(e) {
-   
-    var clickedLat = e.latlng.lat;
-    var clickedLng = e.latlng.lng;
-
- 
-    alert("You clicked the map at: Latitude " + clickedLat + ", Longitude " + clickedLng);
-});
-
-</script> -->
 
 <script>
     var map = L.map('map').setView([-15.4089, 28.2871], 13);
