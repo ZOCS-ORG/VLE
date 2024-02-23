@@ -67,6 +67,12 @@
             <span>Manage Teachers</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="../school/all_schools.php">
+            <i class="fa fas fa-fw fa-users"></i>
+            <span>Schools In District</span></a>
+    </li>
+
     <li class="nav-item text-color-dark">
         <a class="nav-link" href="../complaints/index.php">
             <i class="fa fas fa-fw fa-frown-o"></i>

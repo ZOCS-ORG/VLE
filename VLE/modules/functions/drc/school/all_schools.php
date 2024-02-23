@@ -5,6 +5,24 @@ $add_side_bar = true;
 include_once('../layouts/head_to_wrapper.php');
 
 include_once('../layouts/topbar.php');
+
+
+$user_id = $_SESSION['id'];
+$dist = "SELECT users.district_id, district_name FROM users 
+LEFT JOIN districts d ON d.district_id = users.district_id 
+WHERE id = '$user_id'";
+$dist_result = mysqli_query($db, $dist);
+
+if (!$dist_result) {
+    die("Error: " . mysqli_error($db));
+}
+$dist_row = mysqli_fetch_array($dist_result);
+
+$dist_id = $dist_row["district_id"];
+$dist_name = $dist_row["district_name"];
+
+// echo $dist_name;
+
 ?>
 <style>
     #map {
@@ -18,9 +36,9 @@ include_once('../layouts/topbar.php');
     <div class="card-header text-center">
         <h3>School list</h3>
         <div class="text-right text-light">
-            <a class="btn btn-sm btn-success" href="provinces.php"> Provinces <i class="fa fa-list "></i> </a>
-            <a class="btn btn-sm btn-success" href="districts.php"> Distrricts <i class="fa fa-list "></i> </a>
-            <a class="btn btn-sm btn-success" href="zones.php"> Zones <i class="fa fa-list "></i> </a>
+            <!-- <a class="btn btn-sm btn-success" href="provinces.php"> Provinces <i class="fa fa-list "></i> </a>
+            <a class="btn btn-sm btn-success" href="districts.php"> Distrricts <i class="fa fa-list "></i> </a> -->
+            <!-- <a class="btn btn-sm btn-success" href="zones.php"> Zones <i class="fa fa-list "></i> </a> -->
             <a class="btn btn-sm btn-success" href="add_school.php"> Add School <i class="fa fa-plus "></i> </a>
         </div>
     </div>
@@ -29,12 +47,12 @@ include_once('../layouts/topbar.php');
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="4">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <!-- <th>ID</th> -->
                         <th>EMIS Number</th>
                         <th>School Name</th>
                         <th>School Location</th>
-                        <th>Province</th>
-                        <th>District</th>
+                        <!-- <th>Province</th> -->
+                        <!-- <th>District</th> -->
                         <th>Zone</th>
                         <th>Type of School</th>
                         <th>Map</th>
@@ -43,7 +61,7 @@ include_once('../layouts/topbar.php');
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM schools;";
+                    $sql = "SELECT * FROM schools WHERE District LIKE '%$dist_name%';";
                     $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
                     $string = "";
                     $images_dir = "../../../utils/images/students/";
@@ -52,12 +70,12 @@ include_once('../layouts/topbar.php');
                         $picname = $row['img'];
                     ?>
                         <tr>
-                            <td><?php echo $row['school_id']; ?> </td>
+                            <!-- <td><?php echo $row['school_id']; ?> </td> -->
                             <td><?php echo $row['emis_number']; ?> </td>
                             <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['address']; ?></td>
-                            <td><?php echo $row['province']; ?></td>
-                            <td><?php echo $row['district']; ?></td>
+                            <!-- <td><?php echo $row['province']; ?></td> -->
+                            <!-- <td><?php echo $row['district']; ?></td> -->
                             <td><?php echo $row['zone']; ?></td>
                             <td><?php echo $row['sch_type']; ?></td>
                             <td>
