@@ -60,7 +60,7 @@ if (!$dist_result) {
 $dist_row = mysqli_fetch_array($dist_result);
 
 $dist_id = $dist_row["district_id"];
-echo $dist_id;
+// echo $dist_id;
 ?>
 <div class="container">
     <div class="row justify-content-">
