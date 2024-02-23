@@ -221,7 +221,7 @@ if (mysqli_num_rows($result) > 0) {
                                             <table class="table" id="dataTable" width="100%" cellspacing="9">
                                                 <input id="id" type="hidden" name="id" value="<?php echo $_SESSION['id'] ?>">
                                                 <tr>
-                                                    <td class="text-center" colspan="2"> <textarea name="response" id="" cols="30" rows="4" required></textarea> </td>
+                                                    <td class="text-center" colspan="2"> <textarea name="response" id="" cols="30" rows="4"></textarea> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>File Attachment: (optional)</td>
