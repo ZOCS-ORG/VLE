@@ -61,7 +61,9 @@ $dist_name = $dist_row["district_name"];
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM schools WHERE District LIKE '%$dist_name%';";
+                    $sql = "SELECT z.zone AS zone_name, s.* FROM schools s
+                    JOIN zones z ON z.zone_id = s.zone
+                    WHERE district = '$dist_id';";
                     $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
                     $string = "";
                     $images_dir = "../../../utils/images/students/";
@@ -76,7 +78,7 @@ $dist_name = $dist_row["district_name"];
                             <td><?php echo $row['address']; ?></td>
                             <!-- <td><?php echo $row['province']; ?></td> -->
                             <!-- <td><?php echo $row['district']; ?></td> -->
-                            <td><?php echo $row['zone']; ?></td>
+                            <td><?php echo $row['zone_name']; ?></td>
                             <td><?php echo $row['sch_type']; ?></td>
                             <td>
                                 <a href="maps.php?sid=<?php echo $row['school_id']; ?>" class="map-link">
@@ -85,7 +87,8 @@ $dist_name = $dist_row["district_name"];
                             </td>
                             <th>
                                 <div class="btn-group">
-                                    <a class="btn btn-danger btn-sm text-light" href="../../../config/admin_server.php?id=<?php echo $row["school_id"] ?>&delete_school=true" onclick="clicked(event)">Delete </a>
+                                <a class="btn btn-warning btn-sm text-light" href="./update_school.php?school_id=<?php echo $row["school_id"] ?>" >Edit </a>
+                                    <!-- <a class="btn btn-danger btn-sm text-light" href="../../../config/admin_server.php?id=<?php echo $row["school_id"] ?>&delete_school=true" onclick="clicked(event)">Delete </a> -->
                                 </div>
                             </th>
                         </tr>
