@@ -44,8 +44,72 @@ include_once('../layouts/topbar.php');
         width: 30%;
     }
 
-    #map { height: 280px;  }
+    #map {
+        height: 280px;
+    }
 </style>
+
+<script>
+    function loadDistricts() {
+        var provinceId = document.getElementById("province").value;
+        var districtSelect = document.getElementById("district");
+
+        // Clear previous options
+        districtSelect.innerHTML = "<option value=''>Select District</option>";
+
+        // Load districts based on selected province
+        if (provinceId !== "") {
+            // Show the district select
+            districtSelect.parentNode.style.display = "block";
+            <?php
+            $query = mysqli_query($db, "SELECT * FROM districts");
+            if ($query) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                    echo "if ({$row['province_id']} == provinceId) {";
+                    echo "var option = document.createElement('option');";
+                    echo "option.value = '{$row['district_id']}';";
+                    echo "option.textContent = '{$row['district_name']}';";
+                    echo "districtSelect.appendChild(option);";
+                    echo "}";
+                }
+            }
+            ?>
+        } else {
+            // Hide the district select
+            districtSelect.parentNode.style.display = "none";
+        }
+    }
+
+    function loadZones() {
+        var districtId = document.getElementById("district").value;
+        var zoneSelect = document.getElementById("Zones");
+
+        // Clear previous options
+        zoneSelect.innerHTML = "<option value=''>Select Zone</option>";
+
+        // Load zones based on selected district
+        if (districtId !== "") {
+            // Show the zone select
+            zoneSelect.parentNode.style.display = "block";
+            <?php
+            $query = mysqli_query($db, "SELECT * FROM zones");
+            if ($query) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                    echo "if ({$row['district_id']} == districtId) {";
+                    echo "var option = document.createElement('option');";
+                    echo "option.value = '{$row['zone_id']}';";
+                    echo "option.textContent = '{$row['zone']}';";
+                    echo "zoneSelect.appendChild(option);";
+                    echo "}";
+                }
+            }
+            ?>
+        } else {
+            // Hide the zone select
+            zoneSelect.parentNode.style.display = "none";
+        }
+    }
+</script>
 
 
 
@@ -81,59 +145,75 @@ include_once('../layouts/topbar.php');
                     <h5 class="text-center my-2">Add New School</h5>
                 </div>
                 <div class="card-body" style=" border-color: black ">
-                <form action="#" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="emis_number">Enter EMIS Number:</label>
-        <input id="emis_number" class="form-control" type="text" name="emis_number" placeholder="Enter EMIS Number" required>
-    </div>
-    <div class="form-group">
-        <label for="name">Enter School Name:</label>
-        <input id="name" class="form-control" type="text" name="name" placeholder="Enter School Name" required>
-    </div>
-    <div class="form-group">
-        <label for="address">Enter School Address:</label>
-        <input id="address" class="form-control" type="text" name="address" placeholder="Enter School Address" required>
-    </div>
-    <div class="form-group">
-        <label for="zone">Select Zone:</label>
-        <select id="type" name="zone" class="form-control">
-            <?php
-            $q = mysqli_query($db, "SELECT * FROM zones");
-            if (!$q) {
-                die('Could not enter data: '. mysqli_error($db));
-            }
-            while ($row = mysqli_fetch_assoc($q)) {
-            ?>
-            <option value="<?php echo $row['zone_id'];?>" class="form-control"><?php echo $row['zone'];?></option>
-            <?php
-            }
-            ?>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="type">Type of School:</label>
-        <select id="type" name="type" class="form-control">
-            <option value="University">University</option>
-            <option value="College">College</option>
-            <option value="Community School">Community School</option>
-            <option value="Primary School">Primary School</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="gps_lat">Enter GPS Latitude Location:</label>
-        <input id="gps_lat" class="form-control" type="text" name="gps_lat" placeholder="Enter Latitude Location">
-    </div>
-    <div class="form-group">
-        <label for="gps_long">Enter GPS Longitude Location:</label>
-        <input id="gps_long" class="form-control" type="text" name="gps_long" placeholder="Enter Longitude Location">
-    </div>
-    <div class="form-group">
-        <div id="map"></div>
-    </div>
-    <div class="form-group text-right">
-        <input class="btn btn-sm btn-success" type="submit" name="create_school_" value="Submit">
-    </div>
-</form>
+                    <form action="#" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="emis_number">Enter EMIS Number:</label>
+                            <input id="emis_number" class="form-control" type="text" name="emis_number" placeholder="Enter EMIS Number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Enter School Name:</label>
+                            <input id="name" class="form-control" type="text" name="name" placeholder="Enter School Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Enter School Address:</label>
+                            <input id="address" class="form-control" type="text" name="address" placeholder="Enter School Address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="province">Select Province:</label>
+                            <select id="province" name="province" class="form-control" onchange="loadDistricts()">
+                                <option value="">Select Province</option>
+                                <?php
+                                $query = mysqli_query($db, "SELECT * FROM provinces");
+                                if ($query) {
+                                    while ($row = mysqli_fetch_assoc($query)) {
+                                        echo "<option value='{$row['province_id']}'>{$row['province_name']}</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group" style="display: none;">
+                            <label for="district"><b>Select District:</b></label>
+                            <select id="district" name="district" class="form-control" onchange="loadZones()">
+                                <option value="">Select District</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" style="display: none;">
+                            <label for="Zones"><b>Select Zone:</b></label>
+                            <select id="Zones" name="zone" class="form-control">
+                                <option value="">Select Zone</option>
+                            </select>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="type">Type of School:</label>
+                            <select id="type" name="type" class="form-control">
+                                <option value="Primary School">Primary School</option>
+                                <option value="University">University</option>
+                                <option value="College">College</option>
+                                <option value="Community School">Community School</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="gps_lat">Enter GPS Latitude Location:</label>
+                            <input id="gps_lat" class="form-control" type="text" name="gps_lat" placeholder="Enter Latitude Location">
+                        </div>
+                        <div class="form-group">
+                            <label for="gps_long">Enter GPS Longitude Location:</label>
+                            <input id="gps_long" class="form-control" type="text" name="gps_long" placeholder="Enter Longitude Location">
+                        </div>
+                        <div class="form-group">
+                            <div id="map"></div>
+                        </div>
+                        <div class="form-group text-right">
+                            <input class="btn btn-sm btn-success" type="submit" name="create_school_" value="Submit">
+                        </div>
+                    </form>
 
                 </div>
             </div>
@@ -179,30 +259,28 @@ map.on('click', function(e) {
 </script> -->
 
 <script>
+    var map = L.map('map').setView([-15.4089, 28.2871], 13);
 
-var map = L.map('map').setView([-15.4089, 28.2871], 13); 
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+    var marker;
 
-var marker;
+    map.on('click', function(e) {
+        var clickedLat = e.latlng.lat;
+        var clickedLng = e.latlng.lng;
 
-map.on('click', function(e) {
-    var clickedLat = e.latlng.lat;
-    var clickedLng = e.latlng.lng;
+        if (marker) {
+            map.removeLayer(marker); // Remove existing marker
+        }
 
-    if (marker) {
-        map.removeLayer(marker); // Remove existing marker
-    }
+        marker = L.marker([clickedLat, clickedLng]).addTo(map);
 
-    marker = L.marker([clickedLat, clickedLng]).addTo(map);
-
-    document.getElementsByName("gps_lat")[0].value = clickedLat;
-    document.getElementsByName("gps_long")[0].value = clickedLng;
-});
-
+        document.getElementsByName("gps_lat")[0].value = clickedLat;
+        document.getElementsByName("gps_long")[0].value = clickedLng;
+    });
 </script>
 
 

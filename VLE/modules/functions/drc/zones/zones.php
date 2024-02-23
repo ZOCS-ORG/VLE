@@ -49,6 +49,7 @@ include_once('../layouts/topbar.php');
         width: 30%;
     }
 </style>
+
 <?php
 $user_id = $_SESSION['id'];
 $dist = "SELECT district_id FROM users WHERE id = '$user_id'";
