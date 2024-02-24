@@ -134,7 +134,8 @@ if(isset($_POST['create_announcement'])){
     $title = $_POST['title'];
     $name = mysqli_real_escape_string($db,$_POST['name']);
     $audience = $_POST['audience'];
-    $date = $_POST['date'];
+    $date = isset($_POST['date']) ? $_POST['date'] : date('Y-m-d');
+
     $created_by = $_POST['created_by'];
 
     $sql = " INSERT INTO `announcements`

@@ -3,7 +3,6 @@
     $add_side_bar = true;
     include_once('../layouts/head_to_wrapper.php');
     include_once('../layouts/topbar.php');
-
 ?>
 
 <style>
@@ -65,7 +64,7 @@
                                 <tr>
                                     <td>Date:</td>
                                     <td class="text-right">
-                                    <input type="text" name="date" id="date1" alt="date" class="IP_calendar" title="Y-m-d" 
+                                    <input type="text" name="date" id="date1" value="<?php echo date('Y-m-d') ?>" alt="date" class="IP_calendar" title="Y-m-d" 
                                                 readonly placeholder="<?php echo date('Y-m-d') ?>">
                                     </td>
                                 </tr>
