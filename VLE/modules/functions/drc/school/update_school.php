@@ -139,7 +139,7 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
                         <!-- Populate the select fields with existing data -->
                         <div class="form-group">
                             <label for="province">Select Province:</label>
-                            <select id="province" name="province" class="form-control" onchange="loadDistricts()">
+                            <select id="province" name="province" class="form-control" onchange="loadDistricts()" disabled>
                                 <option value="">Select Province</option>
                                 <?php
                                 $query = mysqli_query($db, "SELECT * FROM provinces");
@@ -152,9 +152,9 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
                                 ?>
                             </select>
                         </div>
-                        <div class="form-group" >
+                        <div class="form-group" style="display:none;">
                             <label for="district"><b>Select District:</b></label>
-                            <select id="district" name="district" class="form-control" onchange="loadZones()">
+                            <select id="district" name="district" class="form-control" onchange="loadZones()" disabled>
                                 <option value="">Select District</option>
                             </select>
                         </div>
