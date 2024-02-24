@@ -51,7 +51,7 @@ if ($login_code) {
 
                 <input type="submit" class="btn btn-sm btn-success" name="login_user" value="Log In">
             </form>
-            <a href='../../../../index.php' style="color:#008000"> Back</a>
+            <a href='../../../../index.php' style="color:#008000"> Back To Home</a>
 
             <div id="formFooter">
                 <a class="underlineHover" href="reset-password.php">Forgot Password?</a>

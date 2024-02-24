@@ -2,7 +2,7 @@
 
   session_start();
   if(!isset($_SESSION['id'])){
-    header("location: ../../../../srms/modules/functions/teacher");
+    header("location: ../../../../modules/functions/teacher");
   }else{
     require '../includes/connect.php';
 	  $t_username = $_SESSION['username'];
