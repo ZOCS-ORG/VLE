@@ -27,6 +27,8 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>Announcement</th>
+                                    <th>FROM</th>                                
+                                    <th>POSITION</th>                                
                                     <th>For</th>
                                     <th>Date</th>
                                     <th>Actions</th>
@@ -34,7 +36,9 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $sql = "SELECT * FROM announcements  WHERE created_by = '$id' ORDER BY id DESC ";
+                                    $sql = "SELECT  u.name AS zina, a.* FROM announcements a
+                                    LEFT JOIN users u ON u.id = a.created_by  
+                                    WHERE a.created_by = '$id' ORDER BY id DESC ";
                                     $res= mysqli_query($db,$sql)or die('An error occured: '.mysqli_error($db));
 
                                     while($row = mysqli_fetch_array($res)){
@@ -42,6 +46,8 @@
                                 <tr>
                                     <td> <?php echo $row['title']; ?> </td>
                                     <td> <?php echo $row['name']; ?></td>
+                                    <td> <?php echo $row['zina']; ?></td>
+                                    <td><?php echo is_null($row['position']) ? $row['user_role'] : $row['position']; ?></td>
                                     <td> <?php echo $row['audience']; ?> </td>
                                     <td> <?php echo $row['date']; ?> </td>
                                     <th class="btn-group"><a class="btn btn-primary btn-sm text-light" href="update_announcement.php?id=<?php echo $row['id']?>">Edit</a> 
