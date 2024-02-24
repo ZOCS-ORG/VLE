@@ -11,9 +11,10 @@ $school_query = mysqli_query($db,$school) or die(mysqli_error($db));
 $school_row = mysqli_fetch_array($school_query);
 
 $school_id = $school_row["school_id"];
-echo "".$school_id."";
-echo "".$user_id."";
+// echo "".$school_id."";
+// echo "".$user_id."";
 ?>
+
 
 <hr />
 <main>
