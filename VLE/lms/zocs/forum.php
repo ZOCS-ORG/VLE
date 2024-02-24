@@ -1,5 +1,5 @@
 <?php
-include '../teacher/header.php';
+include '../zocs/header.php';
 ?>
 
 <body>
