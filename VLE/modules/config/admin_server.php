@@ -844,8 +844,9 @@ if (isset($_GET['id']) && isset($_GET['delete_staff'])) {
         $id = $_GET['id'];
         $sql = "DELETE FROM other_staff WHERE id = '$id';";
         $success = mysqli_query($db, $sql);
-        $userid = "man_" . $id;
-        $sql = "DELETE FROM users WHERE userid = '$userid';";
+        $userid =  $id;
+        echo $user_id;
+        $sql = "DELETE FROM users WHERE id = '$userid';";
         $success = mysqli_query($db, $sql);
         if (!$success) {
             die('Could not Delete data: ' . mysqli_error($db));
