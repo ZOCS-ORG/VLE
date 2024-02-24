@@ -12,6 +12,7 @@ $school_row = mysqli_fetch_array($school_query);
 
 $school_id = $school_row["school_id"];
 echo "".$school_id."";
+echo "".$user_id."";
 ?>
 
 <hr />
@@ -37,19 +38,21 @@ echo "".$school_id."";
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT u.name, s.name AS school_name
+                            $sql = "SELECT u.name,u.par_mothername,u.par_fathername,u.id AS uid, s.name AS school_name
                             FROM users u
                             LEFT JOIN school_teachers st ON u.created_by = st.teacher_id
                             LEFT JOIN schools s ON st.school_id = s.school_id
                             WHERE u.user_role LIKE '%parent%'
-                            AND s.school_id = $school_id";
+                            AND s.school_id = $school_id
+                            GROUP BY uid";
+
                             $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
                             while ($row = mysqli_fetch_array($res)) {
                             ?>
                                 <tr>
                                     <td><?php echo $row['par_mothername']; ?></td>
                                     <td><?php echo $row['par_fathername']; ?></td>
-                                    <td><a href="view_parent.php?id=<?php echo $row["id"]; ?>" class="badge badge-lg badge-light" style="width:40px"> View </td>
+                                    <td><a href="view_parent.php?id=<?php echo $row["uid"]; ?>" class="badge badge-lg badge-light" style="width:40px"> View </td>
                                 </tr>
                             <?php
 
