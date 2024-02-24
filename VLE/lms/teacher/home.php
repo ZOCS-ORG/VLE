@@ -288,9 +288,9 @@ require_once('header.php');
                     // Check if the material is uploaded by the current teacher
                     if ($uploaded_by == $t_id) {
                 ?>
-                        <div class="col s12 m6">
-                            <div class="card" style="background: #BFE5FF;">
-                                <div class="card-image">
+                        <div class="col s6 m3">
+                            <div class="card" style=" border: 1px solid #008000; height:500px">
+                                <div class="card-image" >
                                     <img src="<?php echo $cover_path ?>" alt="img" height="200" width="90" />
                                 </div>
                                 <div class="card-content">
@@ -300,17 +300,17 @@ require_once('header.php');
                                     <p>Date: <?php echo $date ?></p>
                                 </div>
                                 <div class="card-action">
-                                    <a class="btn btn-primary" href="<?php echo $file_path; ?>">Download File</a><br><br>
-                                    <a class="btn btn-sm green waves-effect waves-light" href="edit_upload.php?ass_id=<?php echo $up_id ?>">Edit</a>
-                                    <a class="btn small red waves-effect waves-light" href="upload.php?delete_ass=true&ass_id=<?php echo $up_id ?>">Delete</a>
+                                    <a class="waves-effect green waves-light btn btn-small" width="20px!important" href="<?php echo $file_path; ?>"><i class="material-icons center">download</i></a>
+                                    <a class="btn btn-small orange waves-effect waves-light" href="edit_upload.php?ass_id=<?php echo $up_id ?>"><i class="material-icons center">edit</i></a>
+                                    <a class="btn small red waves-effect waves-light" href="upload.php?delete_ass=true&ass_id=<?php echo $up_id ?>"><i class="material-icons center">delete</i></a>
                                 </div>
                             </div>
                         </div>
                     <?php
                     } else {
                     ?>
-                        <div class="col s12 m6">
-                            <div class="card" style="background: #BFE5FF;">
+                        <div class="col s6 m3">
+                        <div class="card" style=" border: 1px solid #008000; height:500px">
                                 <div class="card-image">
                                     <img src="<?php echo $cover_path ?>" alt="img" height="200" width="90" />
                                 </div>
