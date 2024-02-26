@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require_once('header.php');
 ?>
 <style>
@@ -20,25 +21,32 @@ require_once('header.php');
 
 		$teacher_id = $_SESSION['id'];
 
-		// SQL query to fetch the zone_id based on the teacher_id
+		$zone_id = null;
+		$zone_name = null;
+
 		$sql = "SELECT z.zone_id, z.zone FROM zones 
-INNER JOIN school_teachers st ON st.teacher_id = $teacher_id
+INNER JOIN school_teachers st ON st.teacher_id = '$teacher_id'
 INNER JOIN schools s ON s.school_id = st.school_id
 INNER JOIN zones z ON z.zone_id = s.zone
 Group BY z.zone_id;";
 
+
+
 		$result = mysqli_query($db, $sql);
+
+
 
 		if (mysqli_num_rows($result) > 0) {
 
 			$row = mysqli_fetch_assoc($result);
 
-			// Get the zone_id
 			$zone_id = $row['zone_id'];
 			// Get the zone name if needed
 			$zone_name = $row['zone'];
 		}
 
+		// var_dump($zone_id);
+		// var_dump($zone_name);
 		?>
 		<!-- Notice starts here-->
 		<div class="col s12 m4">
@@ -149,19 +157,19 @@ Group BY z.zone_id;";
 							<td><?php echo $user ?></td>
 							<!-- <td><?php echo $audience ?></td> -->
 							<td>
-            <?php if (!empty($file_path)) : ?>
-                <a href="<?php echo $file_path ?>">File</a>
-            <?php else : ?>
-                N/A
-            <?php endif; ?>
-        </td>
-        <td>
-            <?php if (!empty($video_path)) : ?>
-                <a href="<?php echo $video_path ?>">Video</a>
-            <?php else : ?>
-                N/A
-            <?php endif; ?>
-        </td>
+								<?php if (!empty($file_path)) : ?>
+									<a href="<?php echo $file_path ?>">File</a>
+								<?php else : ?>
+									N/A
+								<?php endif; ?>
+							</td>
+							<td>
+								<?php if (!empty($video_path)) : ?>
+									<a href="<?php echo $video_path ?>">Video</a>
+								<?php else : ?>
+									N/A
+								<?php endif; ?>
+							</td>
 
 							<td><?php echo $timestamp ?></td>
 							<td>
