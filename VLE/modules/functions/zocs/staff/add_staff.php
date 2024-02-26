@@ -20,6 +20,7 @@ if (isset($_POST['add_user'])) {
     $province = intval($raw_province);
     $district = intval($raw_district);
     $teaEmail = $_POST['email'];
+    $position = $_POST['position'];
     $teaGender = $_POST['gender'];
     $teaDOB = $_POST['dob'];
     $teaHireDate = $_POST['hiredate'];
@@ -42,8 +43,8 @@ if (isset($_POST['add_user'])) {
     $teaPassword = $username . "@" . date('His');
     $encPass = md5($teaPassword);
 
-    $sql_user = "INSERT INTO users (`name`, `username`, `password`, `user_role`, `phone`, `email`, `sex`, `address`,`province_id`,`district_id`) 
-                VALUES('$teaName','$username', '$encPass','$user_type','$teaPhone', '$teaEmail', '$teaGender', '$teaAddress', '$province', '$district' )";
+    $sql_user = "INSERT INTO users (`name`, `username`, `password`, `user_role`, `phone`, `email`, `sex`, `address`,`province_id`,`district_id`,`img`,`position`) 
+                VALUES('$teaName','$username', '$encPass','$user_type','$teaPhone', '$teaEmail', '$teaGender', '$teaAddress', '$province', '$district','$img','$position' )";
 
     $success = mysqli_query($db, $sql_user) or die('Could not enter data: ' . mysqli_error($db));
 
@@ -140,6 +141,11 @@ if (isset($_POST['add_user'])) {
                             </tr>
                             <tr>
 
+                                <td style=" color: black"><b> Position:</b></td>
+                                <td class="text-right"><input class="form-control" type="text" name="position" placeholder="Position" ></td>
+                            </tr>
+                            <tr>
+
                                 <td style=" color: black"><b>Email:</b></td>
                                 <td class="text-right"><input class="form-control" id="email" type="email" name="email" placeholder="Email" required></td>
                             </tr>
@@ -155,6 +161,7 @@ if (isset($_POST['add_user'])) {
                                 <td style=" color: black"><b>Gender:</b></td>
                                 <td class="text-right"><input type="radio" name="gender" id="m" value="Male" onclick="teaGender = this.value;"> <label for="m">Male</label> <input type="radio" name="gender" id="f" value="Female" onclick="this.value"> <label for="f"> Female</label></td>
                             </tr>
+
                             <tr hidden="">
                                 <td>Date Hired:</td>
                                 <td style=" color: black"><b>Name:</b></td>
@@ -168,6 +175,11 @@ if (isset($_POST['add_user'])) {
                                 <td class="text-right">
                                     <textarea class="form-control" name="address" id="" cols="30" rows="4"></textarea>
                                 </td>
+                            </tr>
+
+                            <tr>
+                                <td style="color: black"><b>Picture:</b></td>
+                                <td class="text-right"><input class="form-control" id="file" type='file' name='file'></td>
                             </tr>
 
                             <tr>

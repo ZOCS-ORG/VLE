@@ -27,8 +27,8 @@ if (mysqli_num_rows($result) > 0) {
 
                             <table class="table" id="dataTable" width="100%" cellspacing="9">
                                 <tr>
-                                    <td class="text-left">Id:</td>
-                                    <td class="text-right"><input class="form-control" id="id" type="text" name="id" value="<?php echo $row['id'] ?>" placeholder="<?php echo $row['id'] ?>" readonly></td>
+                                    <!-- <td class="text-left">Id:</td> -->
+                                    <td class="text-right"><input class="form-control" id="id" type="hidden" name="id" value="<?php echo $row['id'] ?>" placeholder="<?php echo $row['id'] ?>" readonly></td>
                                 </tr>
                                 <tr>
                                     <td>Name:</td>
@@ -37,6 +37,10 @@ if (mysqli_num_rows($result) > 0) {
                                 <tr>
                                     <td>Username:</td>
                                     <td class="text-right"><input class="form-control" type="text" name="username" placeholder="<?php echo $row['username'] ?>"></td>
+                                </tr>
+                                <tr>
+                                    <td>Position:</td>
+                                    <td class="text-right"><input class="form-control" type="text" name="position" placeholder="<?php echo $row['position'] ?>"></td>
                                 </tr>
                                 <tr>
                                     <td>Password:</td>
@@ -102,8 +106,14 @@ if (mysqli_num_rows($result) > 0) {
                                 </tr>
                                 <tr>
                                     <td>Picture:</td>
-                                    <td class="text-right"><input class="form-control" id="file" type='file' name='file'></td>
+                                    <td class="text-right">
+                                        <input class="form-control" id="file" type='file' name='file'>
+                                        <?php if (!empty($row['img'])) { ?>
+                                            <img src="../../../utils/images/users/<?php echo $row['img']; ?>" alt="Current Picture" width="150">
+                                        <?php } ?>
+                                    </td>
                                 </tr>
+
 
                                 <tr>
                                     <td></td>
