@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
 				<select name="category_ids[]" id="category_ids" class="custom-select select2">
 					<option value="">All</option>
 					<?php
-					$tag = $conn->query("SELECT user_role FROM users GROUP BY user_role asc");
+					$tag = $conn->query("SELECT user_role FROM users GROUP BY user_role ASC");
 					while ($row = $tag->fetch_assoc()) :
 					?>
 						<option value="<?php echo $row['user_role']; ?>"><?php echo ($row['user_role'] == 'drc') ? 'DEBS' : ucfirst($row['user_role']); ?></option>

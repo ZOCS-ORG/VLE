@@ -1,5 +1,41 @@
 <?php include('db_connect.php'); ?>
 
+
+<?php
+
+$teacher_id = $_SESSION['id'];
+
+$zone_id = null;
+$zone_name = null;
+
+$sql = "SELECT z.zone_id, z.zone FROM zones 
+INNER JOIN school_teachers st ON st.teacher_id = '$teacher_id'
+INNER JOIN schools s ON s.school_id = st.school_id
+INNER JOIN zones z ON z.zone_id = s.zone
+Group BY z.zone_id;";
+
+
+
+$result = mysqli_query($db, $sql);
+
+
+
+if (mysqli_num_rows($result) > 0) {
+
+	$row = mysqli_fetch_assoc($result);
+
+	$zone_id = $row['zone_id'];
+	// Get the zone name if needed
+	$zone_name = $row['zone'];
+
+	// return var_dump($zone_id);
+}
+
+
+// echo $zone_id;
+// echo $teacher_id;
+?>
+
 <div class="container-fluid">
 	<style>
 		input[type=checkbox] {
@@ -33,11 +69,11 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<b>Discussions</b>
+						<b>Zone Discussions</b>
 						<span class="">
 
 							<button class="btn btn-primary btn-block btn-sm col-sm-2 float-right" type="button" id="new_topic">
-								<i class="fa fa-plus"></i> Start Discussion</button>
+								<i class="fa fa-plus"></i> Start Zone Discussion</button>
 						</span>
 					</div>
 					<div class="card-body">
@@ -46,10 +82,11 @@
 							$role = $_SESSION['role'];
 							$logged_in = $_SESSION['id'];
 
-							
-							$topic = $db->query("SELECT t.*,u.name FROM topics t Left join users u on u.id = t.user_id
-								WHERE audience = '$role' OR audience = '' OR user_id = '$logged_in'
-								order by unix_timestamp(date_created) desc")or die("Cant fetch ".mysqli_error($db));
+
+							$topic = $db->query("SELECT t.*,u.name, z.zone AS zone_name FROM topics t Left join users u on u.id = t.user_id
+							 Left join zones z on z.zone_id = t.audience 
+								WHERE audience = '$zone_id' OR audience ='none' OR user_id = '$logged_in'
+								order by unix_timestamp(date_created) desc") or die("Cant fetch " . mysqli_error($db));
 							while ($row = $topic->fetch_assoc()) :
 
 								$trans = get_html_translation_table(HTML_ENTITIES, ENT_QUOTES);
@@ -59,7 +96,7 @@
 								$view = $db->query("SELECT * FROM forum_views where topic_id=" . $row['id'])->num_rows;
 								$comments = $db->query("SELECT * FROM comments where topic_id=" . $row['id'])->num_rows;
 								$replies = $db->query("SELECT * FROM replies where comment_id in (SELECT id FROM comments where topic_id=" . $row['id'] . ")")->num_rows;
-								
+
 
 							?>
 								<li class="list-group-item mb-4 bg-grey border-success" style="background-color: #F8F9FC">
@@ -88,7 +125,7 @@
 									<span class="float-left label label-lg label-primary text-black ml-2"><i class="fa fa-comments"></i> <?php echo number_format($comments) ?> comments <?php echo $replies > 0 ? " and " . number_format($replies) . ' replies' : '' ?> </span>
 									<span class="float-right">
 
-										<span class="info text-info ml-2" style="color: #353535!important">audience: <?php echo ($row['audience'] == 'drc') ? "DEBS" : ucfirst($row['audience']); echo empty($row['audience']) ? 'Everyone' : ''; ?> | </span>
+									<span class="info text-info ml-2" style="color: #353535!important">zone name: <?php echo ($row['zone_name'] = 'none') ? 'All Zones' : $row['zone_name']; ?> | </span>
 
 										<a href="index.php?page=view_forum&id=<?php echo $row['id'] ?>" class=" btn btn-primary btn-sm filter-text">Read more</a>
 
