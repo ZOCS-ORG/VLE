@@ -25,7 +25,7 @@
                  <div class="carousel-item active">
                      <img src="./Images/0.93911200_1662368738_africa.jpg" class="d-block w-100" alt="...">
                      <div class="carousel-overlay"></div>
-                     <div class="carousel-caption dnone d-md-block" style="position:auto; top:200px; font-size: 220%; font-weight:bolder; font-family:Arial;" >
+                     <div class="carousel-caption dnone d-md-block" style="position:auto; top:200px; font-size: 220%; font-weight:bolder; font-family:Arial;">
                          <p> Championing education for all children in Zambia through advocacy, service delivery and capacity building.</p>
                      </div>
                  </div>
@@ -33,14 +33,14 @@
                  <div class="carousel-item">
                      <img src="./Images/img_7589.jpg" class="d-block w-100" alt="...">
                      <div class="carousel-overlay"></div>
-                     <div class="carousel-caption d-none d-md-block"  style="position:auto; top:200px; font-size: 220%; font-weight:bolder; font-family:Arial;">
+                     <div class="carousel-caption d-none d-md-block" style="position:auto; top:200px; font-size: 220%; font-weight:bolder; font-family:Arial;">
                          <p>Transforming Education for the 21st Century with ZOCS VLE</p>
                      </div>
                  </div>
                  <div class="carousel-item">
                      <img src="./Images/pov5.jpg" class="d-block w-100" alt="...">
                      <div class="carousel-overlay"></div>
-                     <div class="carousel-caption d-none d-md-block"  style="position:auto; top:200px; font-size: 220%; font-weight:bolder; font-family:Arial;">
+                     <div class="carousel-caption d-none d-md-block" style="position:auto; top:200px; font-size: 220%; font-weight:bolder; font-family:Arial;">
                          <p>Experience the Future of Education with ZOCS</p>
                      </div>
                  </div>

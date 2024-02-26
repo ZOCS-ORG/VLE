@@ -27,8 +27,8 @@ if (mysqli_num_rows($result) > 0) {
 
                             <table class="table" id="dataTable" width="100%" cellspacing="9">
                                 <tr>
-                                    <td class="text-left">Id:</td>
-                                    <td class="text-right"><input class="form-control" id="id" type="text" name="id" value="<?php echo $row['id'] ?>" placeholder="<?php echo $row['id'] ?>" readonly></td>
+                                    <!-- <td class="text-left">Id:</td> -->
+                                    <td class="text-right"><input class="form-control" id="id" type="hidden" name="id" value="<?php echo $row['id'] ?>" placeholder="<?php echo $row['id'] ?>" readonly></td>
                                 </tr>
                                 <tr>
                                     <td>Name:</td>
@@ -39,9 +39,29 @@ if (mysqli_num_rows($result) > 0) {
                                     <td class="text-right"><input class="form-control" type="text" name="username" placeholder="<?php echo $row['username'] ?>"></td>
                                 </tr>
                                 <tr>
+                                    <td>Position:</td>
+                                    <td class="text-right"><input class="form-control" type="text" name="position" placeholder="<?php echo $row['position'] ?>"></td>
+                                </tr>
+                                <tr>
                                     <td>Password:</td>
                                     <td class="text-right"><input class="form-control" id="password" type="password" name="password" placeholder="New password"></td>
                                 </tr>
+                                <tr>
+                                    <td style="color: black">User type:</td>
+                                    <td class="text-right">
+                                        <div class="form-group">
+                                            <select name="user_role" class="form-control" id="user_role" required onchange="showFields()">
+                                                <option value="">-- SELECT --</option>
+                                                <option value="admin" <?php if ($row['user_role'] == 'admin') echo 'selected'; ?>>SUPER ADMIN</option>
+                                                <option value="zocs" <?php if ($row['user_role'] == 'zocs') echo 'selected'; ?>>ZOCS USER</option>
+                                                <option value="moe" <?php if ($row['user_role'] == 'moe') echo 'selected'; ?>>MOE</option>
+                                                <option value="drc" <?php if ($row['user_role'] == 'drc') echo 'selected'; ?>>DEBS</option>
+                                                <option value="university" <?php if ($row['user_role'] == 'university') echo 'selected'; ?>>UNIVERSITY</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+
                                 <tr>
                                     <td>Phone:</td>
                                     <td class="text-right"><input class="form-control" id="phone" type="text" name="phone" placeholder="<?php echo $row['phone'] ?>"></td>
@@ -102,8 +122,14 @@ if (mysqli_num_rows($result) > 0) {
                                 </tr>
                                 <tr>
                                     <td>Picture:</td>
-                                    <td class="text-right"><input class="form-control" id="file" type='file' name='file'></td>
+                                    <td class="text-right">
+                                        <input class="form-control" id="file" type='file' name='file'>
+                                        <?php if (!empty($row['img'])) { ?>
+                                            <img src="../../../utils/images/users/<?php echo $row['img']; ?>" alt="Current Picture" width="150">
+                                        <?php } ?>
+                                    </td>
                                 </tr>
+
 
                                 <tr>
                                     <td></td>

@@ -129,6 +129,7 @@ $emails = new email();
 <?php
 require_once('../layouts/footer_to_end.php');
 
+// echo $_POST ;
 
 if (isset($_POST['submit_parent'])) {
 

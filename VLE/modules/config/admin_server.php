@@ -774,6 +774,8 @@ if (!empty($_POST['update_staff'])) {
     $email = $_POST['email'];
     $username = $_POST['username'];
     $school = $_POST['school'];
+    $position = $_POST['position'];
+    $user_role = $_POST['user_role'];
     $raw_province = $_POST['province'];
     $raw_district = $_POST['district'];
     $province = intval($raw_province);
@@ -810,8 +812,14 @@ if (!empty($_POST['update_staff'])) {
     if (!empty($province)) {
         $sql .= " province_id = '$province',";
     }
+    if (!empty($position)) {
+        $sql .= " position = '$position',";
+    }
     if (!empty($district)) {
         $sql .= " district_id = '$district',";
+    }
+    if (!empty($user_role)) {
+        $sql .= " user_role = '$user_role',";
     }
     if (!empty($pta)) {
         $sql .= " par_pta = '$pta',";
@@ -844,8 +852,9 @@ if (isset($_GET['id']) && isset($_GET['delete_staff'])) {
         $id = $_GET['id'];
         $sql = "DELETE FROM other_staff WHERE id = '$id';";
         $success = mysqli_query($db, $sql);
-        $userid = "man_" . $id;
-        $sql = "DELETE FROM users WHERE userid = '$userid';";
+        $userid =  $id;
+        echo $user_id;
+        $sql = "DELETE FROM users WHERE id = '$userid';";
         $success = mysqli_query($db, $sql);
         if (!$success) {
             die('Could not Delete data: ' . mysqli_error($db));

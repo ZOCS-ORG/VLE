@@ -3,6 +3,7 @@
     $add_side_bar = true;
     include_once('../layouts/head_to_wrapper.php');
     include_once('../layouts/topbar.php');
+
 ?>
 
 <style>
@@ -52,9 +53,10 @@
                                 <tr>
                                     <td>Audience</td>
                                     <td  class="text-right">
-                                        <select name="audience" id="testSelect1" class="select_style">                                            
+                                        <select name="audience" id="testSelect1" class="select_style">
+                                            <option value="All">All</option>
                                             <?php
-                                            $res = mysqli_query($db, "SELECT user_role FROM users where user_role='teacher' GROUP BY user_role ");
+                                            $res = mysqli_query($db, "SELECT user_role FROM users GROUP BY user_role ");
                                             while($row = mysqli_fetch_array($res)) { ?>
                                             <option value="<?php echo $row['user_role'];?>"> <?php echo $row['user_role']; ?> </option>
                                             <?php   }     ?>
@@ -64,7 +66,7 @@
                                 <tr>
                                     <td>Date:</td>
                                     <td class="text-right">
-                                    <input type="text" name="date" id="date1" value="<?php echo date('Y-m-d') ?>" alt="date" class="IP_calendar" title="Y-m-d" 
+                                    <input type="text" name="date" id="date1" alt="date" class="IP_calendar" title="Y-m-d" 
                                                 readonly placeholder="<?php echo date('Y-m-d') ?>">
                                     </td>
                                 </tr>

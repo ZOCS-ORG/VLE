@@ -107,6 +107,12 @@
                 <a class="collapse-item" href="../announcements/view_pta.php">View Notices</a>
             </div>
         </div>
+    </div>
+</li>
+<li class="nav-item text-color-dark">
+        <a class="nav-link" href="../announcements/index.php">
+            <i class="fa fas fa-fw fa-commenting"></i>
+            <span>Announcements</span></a>
     </li>
 
 
