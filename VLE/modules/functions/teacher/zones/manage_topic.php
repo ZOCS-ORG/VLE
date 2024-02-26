@@ -8,6 +8,42 @@ if (isset($_GET['id'])) {
 }
 
 ?>
+
+
+<?php
+session_start();
+$teacher_id = $_SESSION['id'];
+
+$zone_id = null;
+$zone_name = null;
+
+$sql = "SELECT z.zone_id, z.zone FROM zones 
+INNER JOIN school_teachers st ON st.teacher_id = '$teacher_id'
+INNER JOIN schools s ON s.school_id = st.school_id
+INNER JOIN zones z ON z.zone_id = s.zone
+Group BY z.zone_id;";
+
+
+
+$result = mysqli_query($db, $sql);
+
+
+
+if (mysqli_num_rows($result) > 0) {
+
+	$row = mysqli_fetch_assoc($result);
+
+	$zone_id = $row['zone_id'];
+	// Get the zone name if needed
+	$zone_name = $row['zone'];
+
+	// return var_dump($zone_id);
+}
+
+
+// echo $zone_id;
+// echo $teacher_id;
+?>
 <div class="container-fluid">
 	<form action="" id="manage-topic">
 		<input type="hidden" name="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '' ?>" class="form-control">
@@ -17,20 +53,23 @@ if (isset($_GET['id'])) {
 				<input type="text" name="title" class="form-control" value="<?php echo isset($title) ? $title : '' ?>">
 			</div>
 		</div>
-		<div class="row form-group">
+		<!-- <div class="row form-group">
 			<div class="col-md-8">
 				<label class="control-label">Audience</label>
 				<select name="category_ids[]" id="category_ids" class="custom-select select2">
 					<option value="">All</option>
 					<?php
-					$tag = $conn->query("SELECT user_role FROM users GROUP BY user_role ASC");
+					$tag = $conn->query("SELECT user_role FROM users GROUP BY user_role");
 					while ($row = $tag->fetch_assoc()) :
 					?>
 						<option value="<?php echo $row['user_role']; ?>"><?php echo ($row['user_role'] == 'drc') ? 'DEBS' : ucfirst($row['user_role']); ?></option>
 					<?php endwhile; ?>
 				</select>
 			</div>
-		</div>
+		</div> -->
+
+		<input type="hidden" name="category_ids[]" id="category_ids" class="form-control" value="<?php echo $zone_id ?>">
+			</div>
 		<div class="row form-group">
 			<div class="col-md-12">
 				<label class="control-label">Content</label>
@@ -50,7 +89,7 @@ if (isset($_GET['id'])) {
 		e.preventDefault()
 		start_load()
 		$.ajax({
-			url: 'ajax.php?action=save_topic',
+			url: 'ajax.php?action=save_zone_topic',
 			method: 'POST',
 			data: $(this).serialize(),
 			success: function(resp) {
