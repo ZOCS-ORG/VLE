@@ -65,7 +65,7 @@ $user_id = $_SESSION['id'];
                                     <td>
                                         <a href="view_complaint.php?id=<?php echo $row["id"]; ?>" class="btn btn-sm btn-primary" style="width:"> View </a>
                                         <?php if ($_SESSION['id'] == $row['created_by'] || $_SESSION['role'] == 'admin') { ?>
-                                            <a href="?del_id=<?php echo $row["id"]; ?>" class="btn btn-sm btn-danger" style="width:"> Update </a>
+                                            <!-- <a href="?del_id=<?php echo $row["id"]; ?>" class="btn btn-sm btn-danger" style="width:"> Update </a> -->
                                             <a href="?del_id=<?php echo $row["id"]; ?>" class="btn btn-sm btn-danger" style="width:"> Delete </a>
                                         <?php } ?>
 
