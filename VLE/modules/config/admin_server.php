@@ -775,6 +775,7 @@ if (!empty($_POST['update_staff'])) {
     $username = $_POST['username'];
     $school = $_POST['school'];
     $position = $_POST['position'];
+    $user_role = $_POST['user_role'];
     $raw_province = $_POST['province'];
     $raw_district = $_POST['district'];
     $province = intval($raw_province);
@@ -816,6 +817,9 @@ if (!empty($_POST['update_staff'])) {
     }
     if (!empty($district)) {
         $sql .= " district_id = '$district',";
+    }
+    if (!empty($user_role)) {
+        $sql .= " user_role = '$user_role',";
     }
     if (!empty($pta)) {
         $sql .= " par_pta = '$pta',";

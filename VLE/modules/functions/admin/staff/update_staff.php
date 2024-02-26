@@ -47,6 +47,22 @@ if (mysqli_num_rows($result) > 0) {
                                     <td class="text-right"><input class="form-control" id="password" type="password" name="password" placeholder="New password"></td>
                                 </tr>
                                 <tr>
+                                    <td style="color: black">User type:</td>
+                                    <td class="text-right">
+                                        <div class="form-group">
+                                            <select name="user_role" class="form-control" id="user_role" required onchange="showFields()">
+                                                <option value="">-- SELECT --</option>
+                                                <option value="admin" <?php if ($row['user_role'] == 'admin') echo 'selected'; ?>>SUPER ADMIN</option>
+                                                <option value="zocs" <?php if ($row['user_role'] == 'zocs') echo 'selected'; ?>>ZOCS USER</option>
+                                                <option value="moe" <?php if ($row['user_role'] == 'moe') echo 'selected'; ?>>MOE</option>
+                                                <option value="drc" <?php if ($row['user_role'] == 'drc') echo 'selected'; ?>>DEBS</option>
+                                                <option value="university" <?php if ($row['user_role'] == 'university') echo 'selected'; ?>>UNIVERSITY</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
                                     <td>Phone:</td>
                                     <td class="text-right"><input class="form-control" id="phone" type="text" name="phone" placeholder="<?php echo $row['phone'] ?>"></td>
                                 </tr>
