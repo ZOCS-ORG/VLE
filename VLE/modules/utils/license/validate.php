@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 require_once('_auth.php');
 /** Main db */
 $db_server = "localhost";

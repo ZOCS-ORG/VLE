@@ -14,13 +14,15 @@ require_once('header.php');
     <div class="row">
         <!-- search column starts here -->
         <div class="col s12 m2">
-            <div class="card-panel ">
-            </div><br>
+            <!-- <div class="card-panel ">
+            </div><br> -->
             <div class="card horizontal">
                 <div class="card-stacked">
-                    <a class="card-conten btn small text -text" href="forum.php">
+                    <!-- <a class="card-conten btn small text -text" href="forum.php">
                         <span class="cardtitle">Forum</span>
-                    </a>
+                    </a> -->
+                    <br>
+                    <br>
                     <br>
                     <a class="card-conten btn small text -text" href="../../modules/functions/<?php echo $_SESSION['role'] ?>/">
                         <span class="cardtitle">Back to Dashboard</span>

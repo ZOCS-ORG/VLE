@@ -12,7 +12,7 @@ if (empty($t_id)) {
         <li><a href="../student/stud_profile.php">Home</a></li>
         <li><a href="../student/submit.php">Submit Assignments</a></li>
         <li><a href="../student/show_notices.php">Notifications</a></li>
-        <li><a href="../student/forum.php">Forum</a></li>
+        <!-- <li><a href="../student/forum.php">Forum</a></li> -->
         <li class="divider"></a></li>
         <li><a href="../../modules/functions/<?php echo $_SESSION['role'] ?>/">Back to Dashboard </a></li>
     </ul>
