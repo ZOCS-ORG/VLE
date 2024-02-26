@@ -147,12 +147,15 @@ require_once('../layouts/head_to_wrapper.php');
 
             <div class="col-lg-6 mb-4">
                 <?php
-                $query = "SELECT classes.name AS class_name,notices.title,notices.date,notices.id AS id, students.id AS student_id FROM notices 
-                  INNER JOIN classes ON classes.id = notices.class
-                  INNER JOIN students ON students.class_id = classes.id
-                  WHERE students.parentid = '$id'
-                  GROUP BY title
-                  ORDER BY id DESC LIMIT 5";
+                $query = "SELECT classes.name AS class_name, notices.title, notices.date, notices.id AS id, students.id AS student_id 
+                FROM notices 
+                INNER JOIN classes ON classes.id = notices.class 
+                INNER JOIN students ON students.class_id = classes.id 
+                WHERE students.parentid = '$id' 
+                GROUP BY class_name, notices.title, notices.date, id, student_id 
+                ORDER BY id DESC 
+                LIMIT 5";
+      ;
 
                 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 
