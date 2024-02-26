@@ -85,7 +85,7 @@ $pta_visible = mysqli_num_rows($result) > 0;
     <div id="staff" class="collapse" aria-labelledby="staff" data-parent="#accordionSidebar">
         <div class="bg- py-2 collapse-inner rounded">
             <a class="collapse-item" href="../announcements/pta.php">My Notices</a>
-            <a class="collapse-item" href="../announcements/view_pta.php">View Notices</a>
+            <!-- <a class="collapse-item" href="../announcements/view_pta.php">View Notices</a> -->
         </div>
     </div>
 </li>

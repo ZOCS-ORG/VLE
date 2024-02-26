@@ -24,8 +24,8 @@
             $sql = "SELECT pn.*, s.name AS school_name, u.name AS User  
                 FROM pta_notices pn
                 JOIN users u ON pn.created_by = u.id
-                JOIN school_teachers st ON st.teacher_id = pn.created_by
-                JOIN schools s ON s.school_id = st.school_id";
+                LEFT JOIN school_teachers st ON st.teacher_id = pn.created_by
+                LEFT JOIN schools s ON s.school_id = st.school_id";
             $res = mysqli_query($db, $sql) or die('An error occurred: ' . mysqli_error($db));
 
             while ($row = mysqli_fetch_array($res)) {
