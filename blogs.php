@@ -139,7 +139,7 @@
 
         </div>
     </section>
-
+    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
     <footer>
         <p>&copy; 2024 ZOCS. All rights reserved.</p>
         <p>Address: P.O Box 50429 | Lusaka</p>
