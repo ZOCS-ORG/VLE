@@ -45,8 +45,7 @@ Group BY z.zone_id;";
 			$zone_name = $row['zone'];
 		}
 
-		// var_dump($zone_id);
-		// var_dump($zone_name);
+	
 		?>
 		<!-- Notice starts here-->
 		<div class="col s12 m4">
