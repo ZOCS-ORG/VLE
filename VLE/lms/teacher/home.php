@@ -29,8 +29,16 @@ require_once('header.php');
             </div><br>
             <div class="card horizontal">
                 <div class="card-stacked">
-                    <a class="card-conten btn small text -text" href="forums.php">
-                        <span class="cardtitle">Discussions</span>
+                    <a class="card-conten btn small text -text" href="../<?php echo $_SESSION['role'] ?>/home.php">
+                        <span class="cardtitle">Home</span>
+                    </a>
+                    <br>
+                    <a class="card-conten btn small text -text" href="../<?php echo $_SESSION['role'] ?>/notice_sub.php">
+                        <span class="cardtitle">My Notices</span>
+                    </a>
+                    <br>
+                    <a class="card-conten btn small text -text" href="../<?php echo $_SESSION['role'] ?>/notice_ass.php">
+                        <span class="cardtitle">Assignment Notice</span>
                     </a>
                     <br>
                     <a class="card-conten btn small text -text" href="../../modules/functions/teacher/">
@@ -290,7 +298,7 @@ require_once('header.php');
                 ?>
                         <div class="col s6 m3">
                             <div class="card" style=" border: 1px solid #008000; height:500px">
-                                <div class="card-image" >
+                                <div class="card-image">
                                     <img src="<?php echo $cover_path ?>" alt="img" height="200" width="90" />
                                 </div>
                                 <div class="card-content">
@@ -310,7 +318,7 @@ require_once('header.php');
                     } else {
                     ?>
                         <div class="col s6 m3">
-                        <div class="card" style=" border: 1px solid #008000; height:500px">
+                            <div class="card" style=" border: 1px solid #008000; height:500px">
                                 <div class="card-image">
                                     <img src="<?php echo $cover_path ?>" alt="img" height="200" width="90" />
                                 </div>

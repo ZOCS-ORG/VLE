@@ -18,10 +18,10 @@ require_once('header.php');
             </div><br>
             <div class="card horizontal">
                 <div class="card-stacked">
-                    <a class="card-conten btn small text -text" href="forum.php">
+                    <!-- <a class="card-conten btn small text -text" href="forum.php">
                         <span class="cardtitle">Forum</span>
-                    </a>
-                    <br>
+                    </a> -->
+                    <!-- <br> -->
                     <a class="card-conten btn small text -text" href="../../modules/functions/<?php echo $_SESSION['role'] ?>/">
                         <span class="cardtitle">Back to Dashboard</span>
                     </a>

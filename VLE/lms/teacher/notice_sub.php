@@ -10,9 +10,34 @@ require_once('header.php');
 		<div class="row">
 
 			<!-- Notice starts here-->
+			<div class="col s12 m2">
 
-			<div class="col s12 m6">
+				<div class="card horizontal">
+					<div class="card-stacked">
+						<a class="card-conten btn small text -text" href="../<?php echo $_SESSION['role'] ?>/home.php">
+							<span class="cardtitle">Home</span>
+						</a>
+						<br>
+						<a class="card-conten btn small text -text" href="../<?php echo $_SESSION['role'] ?>/notice_sub.php">
+							<span class="cardtitle">My Notices</span>
+						</a>
+						<br>
+						<a class="card-conten btn small text -text" href="../<?php echo $_SESSION['role'] ?>/notice_ass.php">
+							<span class="cardtitle">Assignment Notice</span>
+						</a>
+						<br>
+						<a class="card-conten btn small text -text" href="../../modules/functions/teacher/">
+							<span class="cardtitle">Back to Dashboard</span>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col s12 m5">
 				<div class="card">
+
+
+
 
 					<div class="card-content">
 						<span class="card-title">Send Notices</span>
@@ -108,7 +133,7 @@ require_once('header.php');
 			</div>
 
 
-			<div class="col s12 m6">
+			<div class="col s12 m5">
 				<div class="card-panel">
 					<span class="bold">Past Notices </span>
 				</div>

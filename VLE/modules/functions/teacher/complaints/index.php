@@ -9,11 +9,12 @@ $user_id = $_SESSION['id'];
 ?>
 
 <hr />
-<style> 
-table td,th{
-    color:black;
+<style>
+    table td,
+    th {
+        color: black;
     }
-    </style>
+</style>
 <main>
     <div class="container-fluid col-md-12">
         <div class="card mb-4">
@@ -61,7 +62,14 @@ table td,th{
                                     </td>
                                     <td style="background-color: <?php echo ($row['status'] == 'Open') ? '#E3242B' : '#0A6522'; ?>; font-weight: bold; color:white;"><?php echo $row['status']; ?></td>
 
-                                    <td><a href="view_complaint.php?id=<?php echo $row["id"]; ?>" class="btn btn-md btn-primary" style="width:"> View </td>
+                                    <td>
+                                        <a href="view_complaint.php?id=<?php echo $row["id"]; ?>" class="btn btn-sm btn-primary" style="width:"> View </a>
+                                        <?php if ($_SESSION['id'] == $row['created_by'] || $_SESSION['role'] == 'admin') { ?>
+                                            <a href="?del_id=<?php echo $row["id"]; ?>" class="btn btn-sm btn-danger" style="width:"> Update </a>
+                                            <a href="?del_id=<?php echo $row["id"]; ?>" class="btn btn-sm btn-danger" style="width:"> Delete </a>
+                                        <?php } ?>
+
+                                    </td>
                                 </tr>
                             <?php
 
@@ -77,4 +85,19 @@ table td,th{
 </main>
 
 
-<?php require_once('../layouts/footer_to_end.php'); ?>
+<?php
+
+if (isset($_GET['del_id'])) {
+    $delete_id = $_GET['del_id'];
+    // delete from db
+    $sql = "DELETE FROM complaints WHERE id = $delete_id";
+    $res = mysqli_query($db, $sql) or die('An error occured: '. mysqli_error($db));
+    if ($res) {
+        echo "<script>window.location.href='?deleted=';</script>";
+    }
+
+}
+
+require_once('../layouts/footer_to_end.php');
+
+?>

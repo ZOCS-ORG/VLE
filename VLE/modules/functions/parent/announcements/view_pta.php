@@ -18,7 +18,7 @@ if (mysqli_num_rows($users_result) > 0) {
     $school_pta = $user_row['school'];
 
     // Output the school
-    // echo $school_pta;
+    // ech o $school_pta;
 } else {
     // Handle the case when no rows are returned
     // echo "No school found for the user with ID: $user_id";
@@ -65,12 +65,12 @@ if (mysqli_num_rows($users_result) > 0) {
                 <div class="message-container">
                     <?php
                     $sql = "SELECT p.*, u.name AS creater_name 
-        FROM pta_notices p 
-        INNER JOIN users u ON u.id = p.created_by 
-        INNER JOIN school_teachers st ON st.teacher_id = p.created_by 
-        INNER JOIN schools s ON s.school_id = st.school_id 
-        WHERE st.teacher_id = $school_pta 
-        ORDER BY p.id DESC;
+                        FROM pta_notices p 
+                        left JOIN users u ON u.id = p.created_by 
+                        left JOIN school_teachers st ON st.teacher_id = p.created_by 
+                        left JOIN schools s ON s.school_id = st.school_id 
+                        WHERE st.teacher_id = '$school_pta' 
+                        ORDER BY p.id DESC;
         ";
                     $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
 
