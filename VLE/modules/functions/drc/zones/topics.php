@@ -110,7 +110,7 @@ if (mysqli_num_rows($result) > 0) {
 											</div>
 										<?php endif; ?>
 										<span class="float-right mr-4"><small><i>Created: <?php echo date('M d, Y h:i A', strtotime($row['date_created'])) ?></i></small></span>
-										<a href="index.php?page=view_forum&id=<?php echo $row['id'] ?>" class=" filter-text"><?php echo $row['title'] ?></a>
+										<a href="index_zone.php?page=view_forum&id=<?php echo $row['id'] ?>" class=" filter-text"><?php echo $row['title'] ?></a>
 
 									</div>
 									<hr>
@@ -124,7 +124,7 @@ if (mysqli_num_rows($result) > 0) {
 
 										<span class="info text-info ml-2" style="color: #353535!important">zone name: <?php echo ($row['audience'] == 'drc') ? "DEBS" : ucfirst($row['audience']); echo empty($row['audience']) ? 'Everyone' : ''; ?> | </span>
 
-										<a href="index.php?page=view_forum&id=<?php echo $row['id'] ?>" class=" btn btn-primary btn-sm filter-text">Read more</a>
+										<a href="index_zone.php?page=view_forum&id=<?php echo $row['id'] ?>" class=" btn btn-primary btn-sm filter-text">Read more</a>
 
 									</span>
 								</li>
