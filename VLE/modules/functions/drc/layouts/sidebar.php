@@ -144,7 +144,7 @@
         </a>
         <div id="staff" class="collapse" aria-labelledby="staff" data-parent="#accordionSidebar">
             <div class="bg- py-2 collapse-inner rounded">
-                <a class="collapse-item" href="../../../../lms/drc/zone.php">Manage Zones</a>
+                <a class="collapse-item" href="../Zones/index_zone.php">Manage Zones</a>
                 <a class="collapse-item" href="../zones/zones.php">Add Zone</a>
             </div>
         </div>

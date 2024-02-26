@@ -61,8 +61,8 @@ if (!$dist_result) {
 $dist_row = mysqli_fetch_array($dist_result);
 
 $dist_id = $dist_row["district_id"];
-// echo $dist_id;
 ?>
+
 <div class="container">
     <div class="row justify-content-">
         <div class="col-lg-1">
@@ -87,7 +87,7 @@ $dist_id = $dist_row["district_id"];
                                 <td class="text-right"><input class="form-control" type="text" name="name" required></td>
                             </tr>
                             <tr>
-                                <td >District:</td>
+                                <td>District:</td>
                                 <td class="text-right form-control">
                                     <?php
                                     $q = mysqli_query($db, "SELECT * FROM districts WHERE district_id ='$dist_id'");

@@ -47,9 +47,9 @@
 							$logged_in = $_SESSION['id'];
 
 							
-							$topic = $db->query("SELECT t.*,u.name FROM topics t inner join users u on u.id = t.user_id
+							$topic = $db->query("SELECT t.*,u.name FROM topics t Left join users u on u.id = t.user_id
 								WHERE audience = '$role' OR audience = '' OR user_id = '$logged_in'
-								order by unix_timestamp(date_created) desc");
+								order by unix_timestamp(date_created) desc")or die("Cant fetch ".mysqli_error($db));
 							while ($row = $topic->fetch_assoc()) :
 
 								$trans = get_html_translation_table(HTML_ENTITIES, ENT_QUOTES);
