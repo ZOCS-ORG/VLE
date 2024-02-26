@@ -85,6 +85,14 @@
             <span>Announcements</span></a>
     </li>
 
+
+    <li class="nav-item text-color-dark">
+        <a class="nav-link" href="../forums/index.php">
+            <i class="fa fas fa-fw fa-comment-o"></i>
+            <span> Discussions</span></a>
+    </li>
+
+
     <!-- <li class="nav-item text-color-dark">
         <a class="nav-link" href="../../../../lms/drc/zone.php">
             <i class="fa fas fa-fw fa-users"></i>
@@ -127,7 +135,7 @@
             <span>Blogs</span></a>
     </li>
 
-   
+
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#staff" aria-expanded="true" aria-controls="staff">

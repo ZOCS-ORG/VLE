@@ -106,6 +106,13 @@
             <span>Blogs</span></a>
     </li>
 
+    
+    <li class="nav-item text-color-dark">
+        <a class="nav-link" href="../forums/index.php">
+            <i class="fa fas fa-fw fa-comment-o"></i>
+            <span> Discussions</span></a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

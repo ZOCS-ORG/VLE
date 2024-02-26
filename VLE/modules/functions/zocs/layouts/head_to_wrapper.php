@@ -67,6 +67,11 @@ if (empty($username)) {
     <link rel="stylesheet" href="../../../assets/tinymce/skins/default/default.min.css" />
     <link rel="stylesheet" href="../../../assets/tinymce/skins/content/default/content.min.css" />
 
+    <!-- JQ-TE -->
+    <link type="text/css" rel="stylesheet" href="../../../assets/css/jquery-te-1.4.0.css">
+    <script type="text/javascript" src="../../../assets/js/jquery-te-1.4.0.min.js" charset="utf-8"></script>
+
+
 
 </head>
 

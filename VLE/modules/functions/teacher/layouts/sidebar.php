@@ -109,22 +109,22 @@ $pta_visible = mysqli_num_rows($result) > 0;
       <span>Learners</span></a>
   </li>
 
-<?php if ($pta_visible): ?>
+  <?php if ($pta_visible) : ?>
 
 
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#staff" aria-expanded="true" aria-controls="staff">
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#staff" aria-expanded="true" aria-controls="staff">
         <i class="fa fas fa-fw fa-users"></i>
         <span>PTA</span>
-    </a>
-    <div id="staff" class="collapse" aria-labelledby="staff" data-parent="#accordionSidebar">
+      </a>
+      <div id="staff" class="collapse" aria-labelledby="staff" data-parent="#accordionSidebar">
         <div class="bg- py-2 collapse-inner rounded">
-            <a class="collapse-item" href="../announcements/pta.php">My Notices</a>
-            <a class="collapse-item" href="../announcements/view_pta.php">View Notices</a>
+          <a class="collapse-item" href="../announcements/pta.php">My Notices</a>
+          <a class="collapse-item" href="../announcements/view_pta.php">View Notices</a>
         </div>
-    </div>
-</li>
-<?php endif; ?>
+      </div>
+    </li>
+  <?php endif; ?>
 
   <li class="nav-item text-color-dark">
     <a class="nav-link" href="../complaints/index.php">
@@ -161,6 +161,14 @@ $pta_visible = mysqli_num_rows($result) > 0;
       <i class="fa fas fa-fw fa-etsy"></i>
       <span>E-Learning </span></a>
   </li>
+
+
+  <li class="nav-item text-color-dark">
+    <a class="nav-link" href="../forums/index.php">
+      <i class="fa fas fa-fw fa-comment-o"></i>
+      <span> Discussions</span></a>
+  </li>
+
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
