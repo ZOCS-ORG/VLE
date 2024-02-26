@@ -135,7 +135,7 @@ require_once('../layouts/head_to_wrapper.php');
                             </div>
                             <div class="card-body">
                                 <p> <?php echo $row['name']; ?> </p>
-                                <a href="view_announcements.php?id=<?php echo $row['id'] ?>">View</a>
+                                <a href="view_announcements.php?id=<?php echo $row['id'] ?>">Read More</a>
                             </div>
                         </div>
 
