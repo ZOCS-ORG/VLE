@@ -121,7 +121,7 @@
     <li class="nav-item text-color-dark">
         <a class="nav-link" href="../../../../lms/<?php echo $_SESSION['role'] ?>">
             <i class="fa fas fa-fw fa-hospital"></i>
-            <span>E-Files & Forum </span></a>
+            <span>E-Files </span></a>
     </li>
 
     <li class="nav-item text-color-dark">

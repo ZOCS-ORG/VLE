@@ -27,7 +27,7 @@ if (empty($t_id)) {
 
         <ul id="nav_drop" class="dropdown-content">
             <li><a href="../<?php echo $_SESSION['role'] ?>/home.php">Home</a></li>
-            <li><a href="../<?php echo $_SESSION['role'] ?>/forum.php">Forum</a></li>
+            <!-- <li><a href="../<?php echo $_SESSION['role'] ?>/forum.php">Forum</a></li> -->
             <li class="divider"></a></li>
             <li><a href="../../modules/functions/<?php echo $_SESSION['role'] ?>/">Back to Dashboard </a></li>
         </ul>
@@ -36,9 +36,6 @@ if (empty($t_id)) {
 
         <ul id="nav_drop" class="dropdown-content">
             <li><a href="../<?php echo $_SESSION['role'] ?>/home.php">Home</a></li>
-            <li><a href="../<?php echo $_SESSION['role'] ?>/notice_sub.php">My Notices</a></li>
-            <li><a href="../<?php echo $_SESSION['role'] ?>/notice_ass.php">Assignment Notice</a></li>
-            <li><a href="../<?php echo $_SESSION['role'] ?>/forum.php">Forum</a></li>
             <li class="divider"></a></li>
             <li><a href="../../modules/functions/<?php echo $_SESSION['role'] ?>/">Back to Dashboard </a></li>
         </ul>
