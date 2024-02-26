@@ -31,8 +31,10 @@
        </thead>
        <tbody>
          <?php
-          $query = $db->query("SELECT users.user_role, moe_uploads.* FROM moe_uploads INNER JOIN users ON users.id = moe_uploads.uploaded_by  WHERE visibility = 'Public' ");
+         error_reporting(0);
+          $query = $db->query("SELECT users.user_role, moe_uploads.* FROM moe_uploads LEFT JOIN users ON users.id = moe_uploads.uploaded_by  WHERE visibility = 'Public' ");
           $no = 0;
+          // echo mysqli_num_rows($query);
           while ($row = $query->fetch_assoc()) {
             $no = $no + 1;
             $name = $row['title'];
@@ -41,7 +43,7 @@
 
             $file = $row['file'];
             $dueDate = $row['date_added'];
-            $assDate = $row['date'];
+            // $assDate = $row['date'];
             $ass_id = $row['upload_id'];
             $role = $row['user_role'];
 
