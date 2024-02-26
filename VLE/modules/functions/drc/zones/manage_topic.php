@@ -7,6 +7,40 @@ if (isset($_GET['id'])) {
 	}
 }
 
+session_start();
+?>
+
+<?php
+
+$drc_id = $_SESSION['id'];
+
+$sql_zone = "SELECT district_id FROM users WHERE id = $drc_id";
+
+$result_zone = mysqli_query($db, $sql_zone);
+
+if (mysqli_num_rows($result_zone) > 0) {
+
+	$row_zone = mysqli_fetch_assoc($result_zone);
+
+	$district_zone = $row_zone['district_id'];
+}
+
+
+$sql = "SELECT * FROM zones 
+INNER JOIN users ON users.district_id = zones.district_id";
+
+$result = mysqli_query($db, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+
+	$row = mysqli_fetch_assoc($result);
+
+	// Get the zone_id
+	$zone_id = $row['zone_id'];
+	// Get the zone name if needed
+	$zone_name = $row['zone'];
+}
+// echo $zone_id;
 ?>
 <div class="container-fluid">
 	<form action="" id="manage-topic">
@@ -19,15 +53,17 @@ if (isset($_GET['id'])) {
 		</div>
 		<div class="row form-group">
 			<div class="col-md-8">
-				<label class="control-label">Audience</label>
-				<select name="category_ids[]" id="category_ids" class="custom-select select2">
-					<option value="">All</option>
+				<label class="control-label">Zone</label>
+				<select name="category_ids[]" id="category_ids" class="form-control select2" tabindex="1">
+					<option value="none">All zones</option> <br>
 					<?php
-					$tag = $conn->query("SELECT user_role FROM users GROUP BY user_role asc");
-					while ($row = $tag->fetch_assoc()) :
+					$query2 = mysqli_query($db, "SELECT * FROM zones WHERE district_id = $district_zone") or die(mysqli_error($db));
+					while ($row = mysqli_fetch_array($query2)) {
 					?>
-						<option value="<?php echo $row['user_role']; ?>"><?php echo ($row['user_role'] == 'drc') ? 'DEBS' : ucfirst($row['user_role']); ?></option>
-					<?php endwhile; ?>
+						<option value="<?php echo $row['zone_id']; ?>">
+							<?php echo $row['zone']; ?>
+						</option>
+					<?php } ?>
 				</select>
 			</div>
 		</div>
@@ -50,7 +86,7 @@ if (isset($_GET['id'])) {
 		e.preventDefault()
 		start_load()
 		$.ajax({
-			url: 'ajax.php?action=save_topic',
+			url: 'ajax.php?action=save_zone_topic',
 			method: 'POST',
 			data: $(this).serialize(),
 			success: function(resp) {

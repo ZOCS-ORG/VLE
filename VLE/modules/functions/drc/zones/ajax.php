@@ -65,6 +65,11 @@ if($action == "save_topic"){
 	if($save)
 		echo $save;
 }
+if($action == "save_zone_topic"){
+	$save = $crud->save_topic();
+	if($save)
+		echo $save;
+}
 if($action == "delete_topic"){
 	$save = $crud->delete_topic();
 	if($save)

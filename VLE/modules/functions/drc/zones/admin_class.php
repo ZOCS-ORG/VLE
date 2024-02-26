@@ -185,6 +185,23 @@ Class Action {
 		if($save)
 			return 1;
 	}
+
+	function save_zone_topic(){
+
+		extract($_POST);
+		$data = " title = '$title' ";
+		$data .= ", zone_id = '".(implode(",",$category_ids))."' ";
+		$data .= ", content = '".htmlentities(str_replace("'","&#x2019;",$content))."' ";
+
+		if(empty($id)){
+		$data .= ", user_id = '{$_SESSION['id']}' ";
+			$save = $this->db->query("INSERT INTO topics set ".$data);
+		}else{
+			$save = $this->db->query("UPDATE topics set ".$data." where id=".$id);
+		}
+		if($save)
+			return 1;
+	}
 	function delete_topic(){
 		extract($_POST);
 		$delete = $this->db->query("DELETE FROM topics where id = ".$id);

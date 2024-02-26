@@ -1,5 +1,39 @@
 <?php include('db_connect.php'); ?>
 
+<?php 
+	
+	$drc_id = $_SESSION['id'];
+
+$sql_zone = "SELECT district_id FROM users WHERE id = $drc_id";
+
+$result_zone = mysqli_query($db, $sql_zone);
+
+if (mysqli_num_rows($result_zone) > 0) {
+  
+    $row_zone = mysqli_fetch_assoc($result_zone);
+
+    $district_zone = $row_zone['district_id'];
+	
+}
+
+
+$sql = "SELECT * FROM zones 
+INNER JOIN users ON users.district_id = zones.district_id";
+
+$result = mysqli_query($db, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+  
+    $row = mysqli_fetch_assoc($result);
+    
+    // Get the zone_id
+    $zone_id = $row['zone_id'];
+    // Get the zone name if needed
+    $zone_name = $row['zone'];
+	
+}
+// echo $zone_id;
+	?>
 <div class="container-fluid">
 	<style>
 		input[type=checkbox] {
@@ -33,11 +67,11 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<b>Discussions</b>
+						<b>Zone Discussions</b>
 						<span class="">
 
 							<button class="btn btn-primary btn-block btn-sm col-sm-2 float-right" type="button" id="new_topic">
-								<i class="fa fa-plus"></i> Start Discussion</button>
+								<i class="fa fa-plus"></i> Start Zone Discussion</button>
 						</span>
 					</div>
 					<div class="card-body">
@@ -48,7 +82,7 @@
 
 							
 							$topic = $db->query("SELECT t.*,u.name FROM topics t Left join users u on u.id = t.user_id
-								WHERE audience = '$role' OR audience = '' OR user_id = '$logged_in'
+								WHERE audience = '$zone_id' OR audience = 0 OR user_id = '$logged_in'
 								order by unix_timestamp(date_created) desc")or die("Cant fetch ".mysqli_error($db));
 							while ($row = $topic->fetch_assoc()) :
 
@@ -88,7 +122,7 @@
 									<span class="float-left label label-lg label-primary text-black ml-2"><i class="fa fa-comments"></i> <?php echo number_format($comments) ?> comments <?php echo $replies > 0 ? " and " . number_format($replies) . ' replies' : '' ?> </span>
 									<span class="float-right">
 
-										<span class="info text-info ml-2" style="color: #353535!important">audience: <?php echo ($row['audience'] == 'drc') ? "DEBS" : ucfirst($row['audience']); echo empty($row['audience']) ? 'Everyone' : ''; ?> | </span>
+										<span class="info text-info ml-2" style="color: #353535!important">zone name: <?php echo ($row['audience'] == 'drc') ? "DEBS" : ucfirst($row['audience']); echo empty($row['audience']) ? 'Everyone' : ''; ?> | </span>
 
 										<a href="index.php?page=view_forum&id=<?php echo $row['id'] ?>" class=" btn btn-primary btn-sm filter-text">Read more</a>
 
