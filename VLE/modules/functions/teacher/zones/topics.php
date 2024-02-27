@@ -33,7 +33,7 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 
-echo $district_id;
+// echo $district_id;
 // echo $teacher_id;
 ?>
 
@@ -85,8 +85,8 @@ echo $district_id;
 
 
 							$topic = $db->query("SELECT t.*,u.name, z.zone AS zone_name FROM topics t Left join users u on u.id = t.user_id
-							 Left join zones z on z.zone_id = t.audience 
-								WHERE audience = '$zone_id' OR audience ='none' OR user_id = '$logged_in' AND z.district_id=$district_id        
+							    Left join zones z on z.zone_id = t.audience 
+								WHERE audience = '$zone_id' OR audience ='none' OR user_id = '$logged_in' AND z.district_id='$district_id'        
 								order by unix_timestamp(date_created) desc") or die("Cant fetch " . mysqli_error($db));
 							while ($row = $topic->fetch_assoc()) :
 
