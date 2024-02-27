@@ -79,7 +79,7 @@ $user_id = $_SESSION['id'];
             }
             ?>
         } else {
-            // Hide the district select
+            
             districtSelect.parentNode.style.display = "none";
         }
     }
