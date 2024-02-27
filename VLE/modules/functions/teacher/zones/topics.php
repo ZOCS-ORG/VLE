@@ -8,7 +8,7 @@ $teacher_id = $_SESSION['id'];
 $zone_id = null;
 $zone_name = null;
 
-$sql = "SELECT z.zone_id, z.zone FROM zones 
+$sql = "SELECT z.zone_id, z.zone, z.district_id FROM zones 
 INNER JOIN school_teachers st ON st.teacher_id = '$teacher_id'
 INNER JOIN schools s ON s.school_id = st.school_id
 INNER JOIN zones z ON z.zone_id = s.zone
@@ -24,6 +24,7 @@ if (mysqli_num_rows($result) > 0) {
 
 	$row = mysqli_fetch_assoc($result);
 
+	$district_id = $row['district_id'];
 	$zone_id = $row['zone_id'];
 	// Get the zone name if needed
 	$zone_name = $row['zone'];
@@ -32,7 +33,7 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 
-// echo $zone_id;
+echo $district_id;
 // echo $teacher_id;
 ?>
 
@@ -85,7 +86,7 @@ if (mysqli_num_rows($result) > 0) {
 
 							$topic = $db->query("SELECT t.*,u.name, z.zone AS zone_name FROM topics t Left join users u on u.id = t.user_id
 							 Left join zones z on z.zone_id = t.audience 
-								WHERE audience = '$zone_id' OR audience ='none' OR user_id = '$logged_in'
+								WHERE audience = '$zone_id' OR audience ='none' OR user_id = '$logged_in' AND z.district_id=$district_id        
 								order by unix_timestamp(date_created) desc") or die("Cant fetch " . mysqli_error($db));
 							while ($row = $topic->fetch_assoc()) :
 
