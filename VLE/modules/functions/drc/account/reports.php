@@ -58,7 +58,7 @@ $schools_result = mysqli_query($db, $schools_sql) or die('An error occurred whil
                 <script>
                     // Function to generate report based on selected school
                     function generateReport(schoolId) {
-                        console.log("Posted school ID: " + schoolId);
+                        // console.log("Posted school ID: " + schoolId);
                         $.ajax({
                             url: 'generate_report.php', // Change this to the PHP file that generates the report
                             method: 'POST',
@@ -67,7 +67,7 @@ $schools_result = mysqli_query($db, $schools_sql) or die('An error occurred whil
                             },
                             success: function(response) {
                                 $('#reportBody').html(response);
-                               console.log(schoolId);
+                            //    console.log(schoolId);
                                 // Update total count
                                 var count = $('#reportBody tr').length;
                                 $('#totalCount').html("<strong>Total Learners: </strong>" + count);
