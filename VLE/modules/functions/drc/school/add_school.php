@@ -4,6 +4,10 @@ require_once('../../../config/admin_server.php');
 $add_side_bar = true;
 include_once('../layouts/head_to_wrapper.php');
 include_once('../layouts/topbar.php');
+session_start();
+
+$user_id = $_SESSION['id'];
+// echo $user_id;
 ?>
 
 <style>
@@ -161,10 +165,8 @@ include_once('../layouts/topbar.php');
                         <div class="form-group">
                             <label for="province">Province:</label>
                             <?php
-                            $query = mysqli_query($db, "SELECT p.* FROM provinces p JOIN users u ON u.province_id = p.province_id");
+                            $query = mysqli_query($db, "SELECT p.* FROM provinces p JOIN users u ON u.province_id = p.province_id WHERE u.id = '$user_id'");
                             $row = mysqli_fetch_assoc($query)
-
-
                             ?>
                             <input id="province_id" type="hidden" name="province" value="<?php echo $row['province_id'] ?>">
                             <input id="province_name" class="form-control" value="<?php echo $row['province_name'] ?>" type="text" placeholder="" required readonly>
@@ -175,10 +177,9 @@ include_once('../layouts/topbar.php');
                         <div class="form-group">
                             <label for="district"><b>District:</b></label>
                             <?php
-                            $query = mysqli_query($db, "SELECT d.* FROM districts d JOIN users u ON u.district_id = d.district_id");
+                            $query = mysqli_query($db, "SELECT d.* FROM districts d JOIN users u ON u.district_id = d.district_id WHERE u.id = '$user_id'");
                             $row = mysqli_fetch_assoc($query);
                             $district_id_zone = $row['district_id'];
-
                             ?>
                             <input id="district_id" type="hidden" name="district" value="<?php echo $row['district_id'] ?>">
                             <input id="district_name" class="form-control" value="<?php echo $row['district_name'] ?>" type="text" placeholder="" required readonly>
