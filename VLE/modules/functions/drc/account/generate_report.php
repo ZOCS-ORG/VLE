@@ -3,7 +3,7 @@ require_once('../../../config/admin_server.php'); //contains db connection so we
 
 // Retrieve the selected school ID from the AJAX request
 $schoolId = $_POST['schoolId'];
-
+echo  $schoolId;
 // Prepare SQL query to fetch data for the selected school
 $sql = "SELECT u.name, u.dob, u.sex,u.address, s.name AS school 
         FROM users u 

@@ -1,3 +1,4 @@
+
 <?php
 require_once('../../../config/admin_server.php');   //contains db connection so we good 🤦🏾‍♂️
 $add_side_bar = true;
@@ -10,6 +11,9 @@ $schools_sql = "SELECT * FROM schools";
 $schools_result = mysqli_query($db, $schools_sql) or die('An error occurred while fetching schools: ' . mysqli_error($db));
 
 ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 <hr />
 
@@ -54,6 +58,7 @@ $schools_result = mysqli_query($db, $schools_sql) or die('An error occurred whil
                 <script>
                     // Function to generate report based on selected school
                     function generateReport(schoolId) {
+                        console.log("Posted school ID: " + schoolId);
                         $.ajax({
                             url: 'generate_report.php', // Change this to the PHP file that generates the report
                             method: 'POST',
@@ -62,7 +67,7 @@ $schools_result = mysqli_query($db, $schools_sql) or die('An error occurred whil
                             },
                             success: function(response) {
                                 $('#reportBody').html(response);
-
+                               console.log(schoolId);
                                 // Update total count
                                 var count = $('#reportBody tr').length;
                                 $('#totalCount').html("<strong>Total Learners: </strong>" + count);
