@@ -5,11 +5,12 @@ require_once('../../../config/admin_server.php'); //contains db connection so we
 $schoolId = $_POST['schoolId'];
 // echo  $schoolId;
 // Prepare SQL query to fetch data for the selected school
-$sql = "SELECT u.name, u.dob, u.sex,u.address, s.name AS school 
+$sql = "SELECT u.name, u.id, u.dob, u.sex,u.address, u.img, s.name AS school 
         FROM users u 
         INNER JOIN school_teachers st ON st.teacher_id = u.created_by 
         INNER JOIN schools s ON s.school_id = st.school_id 
-        WHERE user_role ='student' AND s.school_id = $schoolId";
+        WHERE user_role ='student' AND s.school_id = $schoolId
+        GROUP BY u.id";
 
 $res = mysqli_query($db, $sql) or die('An error occurred while fetching report data: ' . mysqli_error($db));
 $images_dir = "../../../utils/images/users/";
