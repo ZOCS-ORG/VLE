@@ -1,5 +1,28 @@
 <!-- @Overide some fa styling -->
 <style>
+
+      /* Add custom styles for sidebar */
+      .navbar-nav.sidebar_new_bg .nav-item {
+        white-space: normal; 
+        /* overflow: clip;  */
+       
+    }
+
+    /* Adjust padding/margin as needed */
+    .navbar-nav.sidebar_new_bg .nav-item .nav-link {
+        padding: 10px; /* Adjust as needed */
+        margin: 0; /* Reset margin */
+    }
+
+    .navbar-nav.sidebar_new_bg .nav-item .nav-link span{
+       font-size: 80% !important;
+    }
+
+    /* Ensure icon and text are vertically centered */
+    .navbar-nav.sidebar_new_bg .nav-item .nav-link i {
+        vertical-align: middle;
+    }
+    
     .navbar-nav i.fas {
         color: green !important;
         font-size: 190% !important;
