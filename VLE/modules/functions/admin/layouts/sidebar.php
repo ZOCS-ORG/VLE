@@ -57,6 +57,19 @@
         display: none;
 
     }
+
+
+    
+    /* Fix overlapping dropdown menu items */
+    .bg-py-2.collapse-inner.rounded {
+        position: relative;
+        z-index: 9999; /* Ensure dropdown is on top */
+    }
+
+    /* Change background color of dropdown menu */
+    .navbar-nav.sidebar_new_bg .nav-item .collapse.show {
+        background-color: lightgray;
+    }
 </style>
 
 <ul class="navbar-nav sidebar_new_bg sidebar sidebar-light accordion" id="accordionSidebar">
