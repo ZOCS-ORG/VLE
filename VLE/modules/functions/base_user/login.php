@@ -29,11 +29,48 @@ if ($login_code) {
     <title>Welcome to ZOCS E-Learning Platform</title>
     <link rel="stylesheet" href="style.css">
 
+    <style>
+ /* Add this CSS to your existing style.css file or include it within a <style> tag in your HTML */
+@media only screen and (max-width: 600px) {
+    /* Adjust form width */
+    .wrapper {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /* Adjust form content */
+    #formContent {
+        padding: 20px;
+        width:90%;
+        height: 40rem !important;
+    }
+
+    /* Adjust image size */
+    #formContent img {
+        width: 100px; /* Adjust this value as needed */
+        height: auto;
+    }
+
+    /* Adjust form input width */
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Adjust button width */
+    input[type="submit"] {
+        width: 100%;
+    }
+}
+
+    </style>
+
 </head>
 
 <body>
     <!-- partial:index.partial.html -->
-    <div class="wrapper fadeInDown">
+    <div class="wrapper fadeInDown" >
 
 
         <div id="formContent">

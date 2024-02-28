@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="./style.css">
     <title>ZOCS Landing Page</title>
 
-    <!-- <style>
-        footer {
+    <style>
+
+@media only screen and (max-width: 600px) {
+        /* footer {
             position: absolute;
             bottom: 0;
             width: 100%;
@@ -21,16 +23,22 @@
         body {
             position: relative;
             margin-bottom: 80px; 
+        } */
+
+        .about {
+            height: 200vh;
         }
 
-    </style> -->
+    }
+
+    </style>
 
 </head>
 
 <body>
     <?php include('./nav.php') ?>
 
-    <div class="About mt-4 mb-2 text-center" style="height:70vh">
+    <div class="About mt-4 mb-2 text-center">
         <h2>About VLE (Virtual Learning Environment)</h2>
         <p class="">Action on Early Childhood Development and Education in Eastern and Southern Africa has been driven by civil society and governments based on international treaties and declarations on Early Childhood Development and Education (ECDE) (UNESCO, 2007). The more recent Sustainable Development Goals (SDG) target 4.2, underlines the need for “all boys and girls to have access to early childhood development, care and pre-primary education so that they are ready for primary education.”
             <br>
@@ -50,7 +58,7 @@
    
     
 </body>
-<footer style="margin-top:2rem;">
+<footer>
         <p>&copy; 2024 ZOCS. All rights reserved.</p>
         <p>Address: P.O Box 50429 | Lusaka</p>
         <p>Contact: Phone: (+260) 211-253641 / 211-253656</p>
