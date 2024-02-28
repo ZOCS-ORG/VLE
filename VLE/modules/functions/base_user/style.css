@@ -63,7 +63,7 @@ h2 {
   background: #fff;
   padding: 30px;
   width: 90%;
-  /* max-width: 450px; */
+  max-width: 450px;
   position: relative;
   padding: 0px;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
@@ -79,9 +79,6 @@ h2 {
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
 }
-
-
-
 /* TABS */
 
 h2.inactive {
@@ -339,4 +336,17 @@ select[type=text]:placeholder {
 
 * {
   box-sizing: border-box;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+
+  /* Adjust image size */
+  #formContent img {
+      width: 180px; /* Adjust this value as needed */
+      height: auto;
+  }
+
+  
 }
