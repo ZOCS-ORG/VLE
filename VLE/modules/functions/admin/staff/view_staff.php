@@ -21,68 +21,64 @@ if (mysqli_num_rows($result) > 0) {
 ?>
         <main>
             <div class="card mb-4">
-                <div class=" card-header text-center">
+                <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="text-">Staff Info</h3>
-                    <div class="text-">
-                        <?php // echo "<img src='" . $images_dir . $picname . "' alt='" . $picname . "' width='140' height='140'> " ?>
-
-                        <div class="text-center text-white">
-                            <a href="update_staff.php?id=<?php echo $staff_id ?>" class="btn btn-info btn-sm">Edit</a>
-                            <a href="../../../config/admin_server.php?id=<?php echo $staff_id; ?>&delete_staff=true" class="btn btn-danger btn-sm">Delete</a>
-                        </div>
-
+                    <div class="text-right">
+                        <a href="update_staff.php?id=<?php echo $staff_id ?>" class="btn btn-info btn-sm">Edit</a>
+                        <a href="../../../config/admin_server.php?id=<?php echo $staff_id; ?>&delete_staff=true" class="btn btn-danger btn-sm">Delete</a>
                     </div>
                 </div>
 
-                <div class="card-body">
-
+                <div class="card-body" style="overflow-x: auto;">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class=" mb-4">
+                            <div class="mb-4">
                                 <div class="card-body text-right">
-                                    <h5 style="color:lightblue"> Personal Info </h5>
+                                    <h5 style="color:lightblue; text-align:left;"> Personal Info </h5>
                                     <hr>
-                                    <p>Staff ID</p>
-                                    <p>Name</p>
-                                    <p>Username</p>
-                                    <p>Gender</p>
-                                    <h5 style="color:lightblue"> Contact Info </h5>
+                                    <table>
+                                        <tr>
+                                            <td>Staff ID</td>
+                                            <td><?php echo $row['id']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td><?php echo $row['name']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Username</td>
+                                            <td><?php echo $row['username']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gender</td>
+                                            <td><?php echo $row['sex']; ?></td>
+                                        </tr>
+                                    </table>
+                                    <h5 style="color:lightblue; text-align:left;"> Contact Info </h5>
                                     <hr>
-                                    <p>Email</p>
-                                    <p>Phone Number</p>
-                                    <p>Address</p>
-
+                                    <table>
+                                        <tr>
+                                            <td>Email</td>
+                                            <td><?php echo $row['email']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone Number</td>
+                                            <td><?php echo $row['phone']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address</td>
+                                            <td><?php echo $row['address']; ?></td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <hr style="height:100%; width:1px; background-color:grey; ">
-                        </div>
-
-                        <div class="col-lg-5">
-                            <div class=" mb-4">
-                                <div class="card-body">
-                                    <h5 style="color: transparent"> Personal Info</h5>
-                                    <hr>
-                                    <p> <?php echo $row['id']; ?> </p>
-                                    <p> <?php echo $row['name']; ?> </p>
-                                    <p> <?php echo $row['username']; ?> </p>
-                                    <p> <?php echo $row['sex']; ?>. </p>
-                                    <h5 style="color: transparent"> Contact Info</h5>
-                                    <hr>
-                                    <p> <?php echo $row['email']; ?> </p>
-                                    <p> <?php echo $row['phone']; ?> </p>
-                                    <p> <?php echo $row['address']; ?> </p>
-                                    <h5 style="color: transparent"> Other</h5>
-
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
         </main>
+
+
 <?php
     }
 } else {
