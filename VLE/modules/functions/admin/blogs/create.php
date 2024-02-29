@@ -3,50 +3,44 @@ require_once('../../../config/config.php');
 $add_side_bar = true;
 include_once('../layouts/head_to_wrapper.php');
 include_once('../layouts/topbar.php');
-
 ?>
 
 <style>
     .table-width {
-        padding-right: 75px;
-        padding-left: 75px;
+        padding-right: 15px;
+        padding-left: 15px;
         margin-right: auto;
         margin-left: auto;
     }
 
     @media (min-width: 768px) {
         .table-width {
-            width: 750px;
+            width: 90%;
         }
     }
 
     @media (min-width: 992px) {
         .table-width {
-            width: 970px;
+            width: 80%;
         }
     }
 
     @media (min-width: 1200px) {
         .table-width {
-            width: 1170px;
+            width: 70%;
         }
     }
 
-
-    input {
-        width: 90%;
-    }
-
-    select {
-        width: 90%;
-    }
-
+    input,
+    select,
     textarea {
-        width: 90%;
+        width: 100%;
+        margin-bottom: 10px;
     }
 
     [type=radio] {
-        width: 30%;
+        width: auto;
+        margin-right: 10px;
     }
 </style>
 
@@ -56,50 +50,50 @@ include_once('../layouts/topbar.php');
             <div class="card shadow-s border-0 rounded-lg mt-1">
 
                 <div class="card-header">
-                    <h5 class="text-center my-2">Create Blog Post </h5>
+                    <h5 class="text-center my-2">Create Blog Post</h5>
                 </div>
                 <div class="card-body">
                     <form action="#" method="post" enctype="multipart/form-data">
-
-                        <table class="table" id="dataTable" width="100%" cellspacing="9">
-                            <tr>
-                                <td>Title:</td>
-                                <td class="text-right"><input type="text" name="title" required></td>
-                            </tr>
-                            <tr>
-                                <td>Category:</td>
-                                <td class="text-right">
-                                    <select name="cat_id" id="select">
-                                        <?php
-                                        $q = mysqli_query($db, "SELECT * FROM blog_categories");
-                                        if (!$q) {
-                                            die('Could not enter data: ' . mysqli_error($db));
-                                        }
-                                        while ($row = mysqli_fetch_assoc($q)) {
-                                        ?>
-                                            <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
-                                        <?php
-                                        }
-                                        ?>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Blog:</td>
-                                <td class="text-right"><textarea rows="4" name="blog"></textarea></td>
-                            </tr>
-
-                            <tr>
-                                <td>File Attachment:</td>
-                                <td class="text-right">
-                                    <input type="file" name="file" id="">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td> <input type="hidden" name="created_by" value="<?php echo $id ?>"> </td>
-                                <td class="text-left"><input class="btn btn-sm btn-primary" type="submit" name="create" value="Submit."></td>
-                            </tr>
-                        </table>
+                        <div class="table-width">
+                            <table class="table" id="dataTable">
+                                <tr>
+                                    <td>Title:</td>
+                                    <td class="text-right"><input type="text" name="title" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Category:</td>
+                                    <td class="text-right">
+                                        <select name="cat_id" id="select">
+                                            <?php
+                                            $q = mysqli_query($db, "SELECT * FROM blog_categories");
+                                            if (!$q) {
+                                                die('Could not enter data: ' . mysqli_error($db));
+                                            }
+                                            while ($row = mysqli_fetch_assoc($q)) {
+                                                ?>
+                                                <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Blog:</td>
+                                    <td class="text-right"><textarea rows="4" name="blog"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td>File Attachment:</td>
+                                    <td class="text-right">
+                                        <input type="file" name="file" id="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> <input type="hidden" name="created_by" value="<?php echo $id ?>"> </td>
+                                    <td class="text-left"><input class="btn btn-sm btn-primary" type="submit" name="create" value="Submit."></td>
+                                </tr>
+                            </table>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -18,7 +18,7 @@
 
         <!-- Add Grade Modal -->
             <form method="POST" action="#">
-            <div id="myModal" class="modal">
+            <div id="myModal" class="modal" style="width: 100%;">
                 <div class="modal-content">
                     <!-- <span class="close">&times;</span> -->
 
@@ -168,7 +168,14 @@
     margin: auto;
     padding: 20px;
     border: 3px solid lightblue;
-    width: 45%;
+    width: 50%;
+    }
+
+    @media screen AND (max-width:600px) {
+        .modal-content {
+    width: 90%;
+    }
+        
     }
 
     /* The Close Button */
