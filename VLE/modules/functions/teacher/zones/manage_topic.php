@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
 session_start();
 $teacher_id = $_SESSION['id'];
 
-$zone_id = null;
+$zone_id = 12;
 $zone_name = null;
 
 $sql = "SELECT z.zone_id, z.zone FROM zones 
@@ -36,10 +36,9 @@ if (mysqli_num_rows($result) > 0) {
 	$zone_id = $row['zone_id'];
 	// Get the zone name if needed
 	$zone_name = $row['zone'];
-
-	// return var_dump($zone_id);
 }
 
+// return var_dump($zone_id);
 
 // echo $zone_id;
 // echo $teacher_id;
@@ -53,23 +52,8 @@ if (mysqli_num_rows($result) > 0) {
 				<input type="text" name="title" class="form-control" value="<?php echo isset($title) ? $title : '' ?>">
 			</div>
 		</div>
-		<!-- <div class="row form-group">
-			<div class="col-md-8">
-				<label class="control-label">Audience</label>
-				<select name="category_ids[]" id="category_ids" class="custom-select select2">
-					<option value="">All</option>
-					<?php
-					$tag = $conn->query("SELECT user_role FROM users GROUP BY user_role");
-					while ($row = $tag->fetch_assoc()) :
-					?>
-						<option value="<?php echo $row['user_role']; ?>"><?php echo ($row['user_role'] == 'drc') ? 'DEBS' : ucfirst($row['user_role']); ?></option>
-					<?php endwhile; ?>
-				</select>
-			</div>
-		</div> -->
 
-		<input type="hidden" name="category_ids[]" id="category_ids" class="form-control" value="<?php echo $zone_id ?>">
-			</div>
+		<input type="" name="category_ids" id="category_ids" class="form-control" value="<?php echo $zone_id ?>">
 		<div class="row form-group">
 			<div class="col-md-12">
 				<label class="control-label">Content</label>
@@ -88,6 +72,7 @@ if (mysqli_num_rows($result) > 0) {
 	$('#manage-topic').submit(function(e) {
 		e.preventDefault()
 		start_load()
+		console.log($(this).serialize())
 		$.ajax({
 			url: 'ajax.php?action=save_zone_topic',
 			method: 'POST',
