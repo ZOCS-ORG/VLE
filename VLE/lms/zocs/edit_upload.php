@@ -79,7 +79,7 @@ require_once('header.php');
 
 
                 ?>
-                        <form method="POST" action="" enctype="multipart/form-data" style="width:60rem; margin-left:auto; margin-right:auto;">
+                        <form method="POST" action="" enctype="multipart/form-data" style="max-width:60rem; margin-left:auto; margin-right:auto;">
                             <input type="hidden" name="ass_id" value="<?php echo $ass_id ?>">
                             <div class="input-field">
                                 <input id="name" type="text" name="name" value="<?php echo $name ?>" required>

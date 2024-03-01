@@ -21,7 +21,7 @@ $schools_result = mysqli_query($db, $schools_sql) or die('An error occurred whil
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> -->
 
     <div class="container-fluid col-md-12">
-        <div class="form-group" style="width:25%;">
+        <div class="form-group" style="max-width:350px;">
             <label for="schoolSelect">Select School:</label>
             <select class="form-control" id="schoolSelect">
                 <?php while ($school_row = mysqli_fetch_assoc($schools_result)) { ?>

@@ -84,6 +84,9 @@ $tag = $category_ids;
                 <?php endif; ?>
                 <span class="float-right mr-4"><small><i><?php echo date('M d, Y h:i A',strtotime($date_created)) ?></i></small></span>
                  <span class="float-right mr-4 text-primary"><small><i>Posted By: <?php echo ucwords($name) ?></i></small></span>
+				 <br>
+				 <br>
+				 <br>
                  <div class="col-md-8">
 					<h4><b><?php echo $title ?></b></h4>
 				</div>
