@@ -7,23 +7,34 @@ include_once('../layouts/head_to_wrapper.php');
 include_once('../layouts/topbar.php');
 
 ?>
-
 <hr />
+
+<style>
+
+@media screen {
+    .subbtn a{
+
+        width: 40%;
+
+    }
+}
+
+</style>
+
 <main>
     <div class="container-fluid col-md-11">
-
-
         <div class="card mb-4">
             <div class="card-header text-center">
                 <h3>Subjects offered</h3>
                 <div class="text-right text-light">
-                    <div class="btn-group">
-                        <a class="btn btn-sm btn-dark" href="../grades/index.php">Manage grades <i class="fas fa-percent "></i> </a>
-                        <a class="btn btn-sm btn-secondary" href="create_subject.php">Add subject <i class="fas fa-plus "></i> </a>
-                        <a class="btn btn-sm btn-primary" href="assign_subject.php">Assign subject to teacher <i class="fas fa-check "></i> </a>
+                    <div class="d-flex flex-wrap justify-content-evenly subbtn">
+                        <a class="btn btn-sm btn-dark flex-grow-1 mb-2 mb-md-0" href="../grades/index.php">Manage grades <i class="fas fa-percent "></i> </a>
+                        <a class="btn btn-sm btn-secondary flex-grow-1 mb-2 mb-md-0" href="create_subject.php">Add subject <i class="fas fa-plus "></i> </a>
+                        <a class="btn btn-sm btn-primary flex-grow-1" href="assign_subject.php">Assign subject to teacher <i class="fas fa-check "></i> </a>
                     </div>
                 </div>
             </div>
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="4">
@@ -37,7 +48,7 @@ include_once('../layouts/topbar.php');
                         <tbody>
                             <?php
                             $sql = "SELECT * FROM subjects;";
-                            $res = mysqli_query($db, $sql) or die('An error occured: ' . mysqli_error($db));
+                            $res = mysqli_query($db, $sql) or die('An error occurred: ' . mysqli_error($db));
 
                             while ($row = mysqli_fetch_array($res)) {
                             ?>
@@ -52,12 +63,7 @@ include_once('../layouts/topbar.php');
                                     </th>
                                 </tr>
                             <?php
-
-
                             }
-
-                            echo $_POST;
-
                             ?>
                         </tbody>
                     </table>
@@ -85,6 +91,8 @@ include_once('../layouts/topbar.php');
 
     </div>
 </main>
+
+
 
 
 <?php require_once('../layouts/footer_to_end.php'); ?>

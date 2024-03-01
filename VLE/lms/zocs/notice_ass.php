@@ -4,6 +4,16 @@ require_once('header.php');
 
 <body>
 
+
+<style> 
+#table2 tr th{
+    width: 60% ;
+    font-size:12px;
+    text-align: left;
+    padding: 0.96em;
+}
+
+</style>
     <?php require '../includes/profile_navbar.php'; ?>
 
     <div class="row">
@@ -72,7 +82,7 @@ require_once('header.php');
                 <span class="">My Uploads</span>
             </div>
 
-            <table class="striped highlight responsive-table">
+            <table id="table2" class="striped highlight responsive-table">
                 <thead>
                     <tr>
                         <th data-field="ass_no">Name of Upload</th>
