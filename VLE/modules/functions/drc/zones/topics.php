@@ -123,7 +123,7 @@ if (mysqli_num_rows($result) > 0) {
 									<span class="float-left label label-lg label-primary text-black ml-2"><i class="fa fa-comments"></i> <?php echo number_format($comments) ?> comments <?php echo $replies > 0 ? " and " . number_format($replies) . ' replies' : '' ?> </span>
 									<span class="float-right">
 
-									<span class="info text-info ml-2" style="color: #353535!important">zone name: <?php echo ($row['zone_name'] = 'none') ? 'All Zones' : $row['zone_name']; ?> | </span>
+									<span class="info text-info ml-2" style="color: #353535!important">zone name: <?php echo ($row['zone_name'] == '') ? 'All Zones' : $row['zone_name']; ?> | </span>
 
 
 										<a href="index_zone.php?page=view_forum&id=<?php echo $row['id'] ?>" class=" btn btn-primary btn-sm filter-text">Read more</a>
