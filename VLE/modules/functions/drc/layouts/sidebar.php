@@ -1,5 +1,24 @@
 <!-- @Overide some fa styling -->
 <style>
+
+      .navbar-nav.sidebar_new_bg .nav-item {
+        white-space: normal; 
+       
+    }
+    .navbar-nav.sidebar_new_bg .nav-item .nav-link {
+        padding: 10px; 
+        margin: 0; 
+    }
+
+    .navbar-nav.sidebar_new_bg .nav-item .nav-link span{
+       font-size: 80% !important;
+    }
+
+    /* Ensure icon and text are vertically centered */
+    .navbar-nav.sidebar_new_bg .nav-item .nav-link i {
+        vertical-align: middle;
+    }
+    
     .navbar-nav i.fas {
         color: green !important;
         font-size: 190% !important;
@@ -22,6 +41,8 @@
 
     .sidebar-light .sidebar-brand {
         color: green;
+        padding-bottom: 10px;
+
     }
 
     .sidebar_new_bg {
@@ -31,6 +52,19 @@
     .sidebar-light .nav-item .nav-link[data-toggle="collapse"]::after {
         display: none;
 
+    }
+
+
+    
+    /* Fix overlapping dropdown menu items */
+    .bg-py-2.collapse-inner.rounded {
+        position: relative;
+        z-index: 9999; /* Ensure dropdown is on top */
+    }
+
+    /* Change background color of dropdown menu */
+    .navbar-nav.sidebar_new_bg .nav-item .collapse.show {
+        background-color: lightgray;
     }
 </style>
 

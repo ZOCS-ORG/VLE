@@ -5,7 +5,7 @@
     include_once('../layouts/topbar.php');
 ?>
 
-<style>
+<!-- <style>
     .table-width {
         padding-right: 75px;
         padding-left: 75px;
@@ -28,7 +28,7 @@
         }
     }
 
-</style>
+</style> -->
 
     <div class="container">
         <div class="row justify-content-center">
@@ -39,7 +39,7 @@
                     <div class="card-body">
                         <form action="#" method="post" enctype="multipart/form-data">
 
-                            <table class="table" id="dataTable" width="100%" cellspacing="9">
+                            
                                 <input id="id" type="hidden" name="id">
                                 <tr>
                                     <td>Title:</td>
@@ -72,7 +72,7 @@
                                     <td> <input type="hidden" name="created_by" value="<?php echo $id ?>" >  </td>
                                     <td class="text-left"><input class="btn btn-sm btn-primary " type="submit" name="create_announcement" value="Submit"></td>
                                 </tr>
-                            </table>
+                            
                         </form>
                     </div>
                 </div>

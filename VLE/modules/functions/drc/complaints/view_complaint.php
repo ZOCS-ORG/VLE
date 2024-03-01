@@ -239,13 +239,11 @@ if (mysqli_num_rows($result) > 0) {
                                 // complaint is closed
                             } else {
                             ?>
-                                <tr>
-                                    <td colspan="2" style="border: 1px solid black; border-radius:20px">
+                                <div style="border: 1px solid black;">
                                         <div class="card-header" style="background-color:#0A6522; color:white;">
-                                            <h5 class="text-center my-2">Query Closed </h5>
+                                            <h5 class="text-center">Query Closed </h5>
                                         </div>
-                                    </td>
-                                </tr>
+                                    </div>
                             <?php } ?>
                         </tbody>
                     </table>

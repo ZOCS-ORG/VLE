@@ -1,17 +1,13 @@
 <!-- @Overide some fa styling -->
 <style>
 
-      /* Add custom styles for sidebar */
       .navbar-nav.sidebar_new_bg .nav-item {
         white-space: normal; 
-        /* overflow: clip;  */
        
     }
-
-    /* Adjust padding/margin as needed */
     .navbar-nav.sidebar_new_bg .nav-item .nav-link {
-        padding: 10px; /* Adjust as needed */
-        margin: 0; /* Reset margin */
+        padding: 10px; 
+        margin: 0; 
     }
 
     .navbar-nav.sidebar_new_bg .nav-item .nav-link span{

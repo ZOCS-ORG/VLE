@@ -59,15 +59,13 @@ include_once('../layouts/topbar.php');
                     <h5 class="text-center my-2">Create Blog Post </h5>
                 </div>
                 <div class="card-body">
-                    <form action="#" method="post" enctype="multipart/form-data">
-
-                        <table class="table" id="dataTable" width="100%" cellspacing="9">
+                    <form action="#" method="post" enctype="multipart/form-data">                       
                             <tr>
                                 <td>Title:</td>
                                 <td class="text-right"><input type="text" name="title" required></td>
                             </tr>
                             <tr>
-                                <td>Category:</td>
+                                <td>Category:</td> <br>
                                 <td class="text-right">
                                     <select name="cat_id" id="select">
                                         <?php
@@ -84,6 +82,7 @@ include_once('../layouts/topbar.php');
                                     </select>
                                 </td>
                             </tr>
+                            <br>
                             <tr>
                                 <td>Blog:</td>
                                 <td class="text-right"><textarea rows="4" name="blog"></textarea></td>
@@ -99,7 +98,6 @@ include_once('../layouts/topbar.php');
                                 <td> <input type="hidden" name="created_by" value="<?php echo $id ?>"> </td>
                                 <td class="text-left"><input class="btn btn-sm btn-primary" type="submit" name="create" value="Submit."></td>
                             </tr>
-                        </table>
                     </form>
                 </div>
             </div>
