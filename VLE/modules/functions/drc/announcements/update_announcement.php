@@ -48,11 +48,11 @@
                     <div class="card-body">
                         <form action="#" method="post" enctype="multipart/form-data">
 
-                            <table class="table" id="dataTable" width="100%" cellspacing="9">
+                            <!-- <table class="table" id="dataTable" width="100%" cellspacing="9"> -->
                                 <tr>
                                     <td>Type:</td>
                                     <td class="text-right"><input type="text" name="title" placeholder="<?php echo $row['title']; ?>" /></td>
-                                </tr>
+                                </tr> <br>
                                 <tr>
                                     <td>Announcement:</td>
                                     <td class="text-right"><textarea type="text" name="name" placeholder="<?php echo $row['name']; ?>" ></textarea></td>
@@ -82,7 +82,7 @@
                                     <td> <input type="hidden" name="id" value="<?php echo $row['id'] ?>"> </td>
                                     <td class="text-left"><input class="btn btn-sm btn-primary " type="submit" name="update_announcement" value="Submit"></td>
                                 </tr>
-                            </table>
+                            <!-- </table> -->
                             <input type="hidden" value="<?php echo $anno_id; ?>" name="id" />
                         </form>
                     </div>

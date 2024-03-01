@@ -53,11 +53,11 @@ if (mysqli_num_rows($result) > 0) {
                         <div class="card-body">
                             <form action="#" method="post" enctype="multipart/form-data">
 
-                                <table class="table" id="dataTable" width="100%" cellspacing="9">
+                                <!-- <table class="table" id="dataTable" width="100%" cellspacing="9"> -->
                                     <tr>
                                         <td>Title:</td>
                                         <td class="text-right"><input type="text" name="title" value="<?php echo $row['title']; ?>" required></td>
-                                    </tr>
+                                    </tr> <br>
                                     <tr>
                                         <td>Blog:</td>
                                         <td class="text-right"><textarea id="tinymce" rows="4" name="blog" required><?php echo $row['blog']; ?></textarea></td>
@@ -73,7 +73,7 @@ if (mysqli_num_rows($result) > 0) {
                                         <td> <input type="hidden" name="created_by" value="<?php echo $id ?>"> </td>
                                         <td class="text-left"><input class="btn btn-sm btn-primary " type="submit" name="update" value="Submit"></td>
                                     </tr>
-                                </table>
+                                <!-- </table> -->
                             </form>
                         </div>
                     </div>
