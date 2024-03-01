@@ -19,11 +19,20 @@ $query = "SELECT * FROM users WHERE username='$username' AND password='$pass' ";
 $results = mysqli_query($db, $query) or die("An error occured: " . mysqli_error($db));
 $count = mysqli_num_rows($results);
 
+
 if ($count < 1) {
     header("Location: ../functions/base_user/login.php?login=false");
 }
 
 $row = mysqli_fetch_array($results);
+
+// ? suspended
+
+if($row['status'] == 'Disabled'){
+    header("Location:../functions/base_user/suspended.php?csrf");
+    return var_dump($row['status']);
+}
+
 $userid = $row['userid'];
 $username = $row['username'];
 $_SESSION['userid'] = $userid;
