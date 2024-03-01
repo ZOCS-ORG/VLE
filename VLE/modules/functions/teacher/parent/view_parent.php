@@ -10,7 +10,23 @@ $parent_id = $_GET['id'];
 ?>
 
 <hr />
-
+<style>
+    @media (max-width: 768px) {
+        .card-body.text-right,
+        .text-right.text-white {
+            text-align: left !important;
+        }
+    }
+    .card-body {
+        padding: 1rem; /* Added padding */
+    }
+    .card-body table {
+        width: 100%; /* Table takes full width */
+    }
+    .card-body table td:first-child {
+        width: 50%; /* First column takes 50% width */
+    }
+</style>
 
 <?php
 $query = "SELECT  * from users where id = '$parent_id' ";
@@ -21,60 +37,74 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
 ?>
 
-        <main>
-            <div class="container-fluid col-md-9">
-                <div class="card mb-4">
-                    <div class="card-header text-center">
-                        <h3>Parents Info</h3>
+<main>
+    <div class="container-fluid">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="text-">Parents Info</h3>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                            <div class="card-body text-right">
+                                <h5 style="color: lightblue; text-align: left;"> Personal Info </h5>
+                                <hr>
+                                <table>
+                                    <tr>
+                                        <td>Parents ID</td>
+                                        <td><?php echo $row['id']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Username</td>
+                                        <td><?php echo $row['username']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td><?php echo $row['email']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mother's Name</td>
+                                        <td><?php echo $row['par_mothername']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Father's Name</td>
+                                        <td><?php echo $row['par_fathername']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mother's Phone Number</td>
+                                        <td><?php echo $row['par_motherphone']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Father's Phone Number</td>
+                                        <td><?php echo $row['par_fatherphone']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address</td>
+                                        <td><?php echo $row['address']; ?></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                     </div>
 
-
-
-                    <div class="card-body">
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class=" mb-4">
-                                    <div class="card-body text-right">
-                                        <hr>
-                                        <p>Parents ID</p>
-                                        <p>Username</p>
-                                        <p>Email</p>
-                                        <p>Mother's Name</p>
-                                        <p>Father's Name</p>
-                                        <p>Mother's Phone Number</p>
-                                        <p>Father's Phone Number</p>
-                                        <p>Address</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div> </div>
-
-                            <div class="col-lg-5">
-                                <div class=" mb-4">
-                                    <div class="card-body">
-                                        <hr>
-                                        <p> <?php echo $row['id']; ?> </p>
-                                        <p> <?php echo $row['username']; ?> </p>
-                                        <p> <?php echo $row['email']; ?> </p>
-                                        <p> <?php echo $row['par_mothername']; ?> </p>
-                                        <p> <?php echo $row['par_fathername']; ?> </p>
-                                        <p> <?php echo $row['par_motherphone']; ?> </p>
-                                        <p> <?php echo $row['par_fatherphone']; ?> </p>
-                                        <p> <?php echo $row['address']; ?> </p>
-                                    </div>
-
-                                </div>
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                            <div class="card-body">
                                 <div class="text-right text-white">
                                     <a href="update_parent.php?id=<?php echo $parent_id ?>" class="btn btn-info btn-sm">Edit</a>
                                     <a href="?id=<?php echo $parent_id; ?>&delete_parent=true" class="btn btn-danger btn-sm">Delete</a>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-        </main>
+            </div>
+        </div>
+    </div>
+</main>
+
 <?php
     }
 } else {
