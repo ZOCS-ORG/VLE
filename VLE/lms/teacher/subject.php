@@ -47,7 +47,7 @@
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th class="txt_limit">Question</th>
+                    <th >Question</th>
                     <th>Date Created</th>
                     <th>Date Due</th>
                     <th>Actions</th>

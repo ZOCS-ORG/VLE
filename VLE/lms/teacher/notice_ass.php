@@ -122,13 +122,13 @@
 		        <table class="striped highlight responsive-table">
 			        <thead>
 			          <tr>
-			              <th data-field="ass_no">Name</th>
-                          <th class="txt_limit" data-field="q">Queston</th>
-			              <th data-field="subject">Subject</th>
-			              <th data-field="class">Class</th>
-			              <th data-field="file">File</th>
-			              <th data-field="final_daet">Date Due </th>
-			              <th data-field="date">Date Created</th>
+			              <th>Name</th>
+                          <th>Queston</th>
+			              <th>Subject</th>
+			              <th>Class</th>
+			              <th>File</th>
+			              <th>Date Due </th>
+			              <th>Date Created</th>
 						  <th>Actions</th>
 			          </tr>
 			        </thead>

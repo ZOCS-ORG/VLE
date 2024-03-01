@@ -149,13 +149,13 @@ require_once('header.php');
                 <table id="table2" class="responsive-table striped">
                     <thead>
                         <tr>
-                            <th data-field="ass_no">Name</th>
-                            <th class="txt_limit" data-field="q">Queston</th>
-                            <th data-field="subject">Subject</th>
-                            <th data-field="class">Class</th>
-                            <th data-field="file">File</th>
-                            <th data-field="final_daet">Date Due </th>
-                            <th data-field="date">Date Created</th>
+                            <th>Name</th>
+                            <th>Queston</th>
+                            <th>Subject</th>
+                            <th>Class</th>
+                            <th>File</th>
+                            <th>Date Due </th>
+                            <th>Date Created</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -293,43 +293,38 @@ require_once('header.php');
                     $file_path = "../files/ass_notice/" . $file;
                     $cover_path = "../files/ass_notice/" . $cover;
 
-                    // Check if the material is uploaded by the current teacher
                     if ($uploaded_by == $t_id) {
                 ?>
-                        <div class="col s6 m3">
-                            <div class="card" style=" border: 1px solid #008000; height:500px">
-                                <div class="card-image">
-                                    <img src="<?php echo $cover_path ?>" alt="img" height="200" width="90" />
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="card" style="border: 1px solid #008000;">
+                                <img src="<?php echo $cover_path ?>" class="card-img-top" alt="img" height="200" width="90">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $name ?></h5>
+                                    <p class="card-text"><?php echo $description ?></p>
+                                    <p class="card-text">From: <?php echo $from ?> - To: <?php echo $to ?></p>
+                                    <p class="card-text">Date: <?php echo $date ?></p>
                                 </div>
-                                <div class="card-content">
-                                    <p class="card-title"><?php echo $name ?></p>
-                                    <p><?php echo $description ?></p>
-                                    <p>From: <?php echo $from ?> - To: <?php echo $to ?></p>
-                                    <p>Date: <?php echo $date ?></p>
-                                </div>
-                                <div class="card-action">
-                                    <a class="waves-effect green waves-light btn btn-small" width="20px!important" href="<?php echo $file_path; ?>"><i class="material-icons center">download</i></a>
-                                    <a class="btn btn-small orange waves-effect waves-light" href="edit_upload.php?ass_id=<?php echo $up_id ?>"><i class="material-icons center">edit</i></a>
-                                    <a class="btn small red waves-effect waves-light" href="upload.php?delete_ass=true&ass_id=<?php echo $up_id ?>"><i class="material-icons center">delete</i></a>
+                                <div class="card-footer">
+                                    <a class="btn btn-success btn-sm" href="<?php echo $file_path; ?>"><i class="material-icons center">download</i> Download</a>
+                                    <a class="btn btn-warning btn-sm" href="edit_upload.php?ass_id=<?php echo $up_id ?>"><i class="material-icons center">edit</i> Edit</a>
+                                    <a class="btn btn-danger btn-sm" href="upload.php?delete_ass=true&ass_id=<?php echo $up_id ?>"><i class="material-icons center">delete</i> Delete</a>
                                 </div>
                             </div>
                         </div>
                     <?php
                     } else {
                     ?>
-                        <div class="col s6 m3">
-                            <div class="card" style=" border: 1px solid #008000; height:500px">
-                                <div class="card-image">
-                                    <img src="<?php echo $cover_path ?>" alt="img" height="200" width="90" />
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="card" style="border: 1px solid #008000;">
+                                <img src="<?php echo $cover_path ?>" class="card-img-top" alt="img" height="200" width="90">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $name ?></h5>
+                                    <p class="card-text"><?php echo $description ?></p>
+                                    <p class="card-text">From: <?php echo $from ?> - To: <?php echo $to ?></p>
+                                    <p class="card-text">Date: <?php echo $date ?></p>
                                 </div>
-                                <div class="card-content">
-                                    <p class="card-title"><?php echo $name ?></p>
-                                    <p><?php echo $description ?></p>
-                                    <p>From: <?php echo $from ?> - To: <?php echo $to ?></p>
-                                    <p>Date: <?php echo $date ?></p>
-                                </div>
-                                <div class="card-action">
-                                    <a class="btn btn-primary" href="<?php echo $file_path; ?>">Download File</a>
+                                <div class="card-footer">
+                                    <a class="btn btn-primary btn-sm" href="<?php echo $file_path; ?>">Download File</a>
                                 </div>
                             </div>
                         </div>
@@ -338,6 +333,7 @@ require_once('header.php');
                 }
                 ?>
             </div>
+
         </div>
 
 
