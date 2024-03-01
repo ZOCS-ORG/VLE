@@ -95,7 +95,7 @@ require_once('../layouts/head_to_wrapper.php');
     <div class="col-md-12 container-fluid">
         <br>
         <!-- Page Heading -->
-        <div class="col-md-12 d-sm-flex align-items-center justify-content-between mb-4">
+        <div class="col-md-16=8 d-sm-flex align-items-center justify-content-between mb-4">
             <div class="">
                 <form method="post" action="#">
                     <div class="wrap">
@@ -151,13 +151,13 @@ require_once('../layouts/head_to_wrapper.php');
                 $cover = $row['cover'];
                 $date = $row['date'];
                 $from_name = $row['teacher_name'];
-                $school_name = $row['school_name'];
+            $school_name = $row['school_name'];
 
 
                 $file_path = "../../../../lms/files/ass_notice/" . $file;
                 $cover_path = "../../../../lms/files/ass_notice/" . $cover;
             ?>
-                <div class="col-md-2 mb-4">
+                <div class="col-md-4 mb-4">
                     <div class="card border-success" style="padding: 1rem; height: 400px; width: 100%">
                         <div class="card-image center mb-2" style="height: 60%;">
                             <img style="width: 100%; height: 100%; object-fit: cover;" src="<?php echo $cover_path; ?>" alt="Cover Photo">

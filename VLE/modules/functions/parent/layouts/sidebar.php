@@ -1,40 +1,72 @@
   <!-- @Overide some fa styling -->
   <style>
-    .navbar-nav i.fas {
-      color: green !important;
-      font-size: 190% !important;
-    }
 
-    .collapse-inner a {
-      color: green ! important;
-    }
+.navbar-nav.sidebar_new_bg .nav-item {
+  white-space: normal; 
+ 
+}
+.navbar-nav.sidebar_new_bg .nav-item .nav-link {
+  padding: 10px; 
+  margin: 0; 
+}
 
-    .collapse-inner a:hover {
-      background-color: lightgreen !important;
-      color: black !important;
-    }
+.navbar-nav.sidebar_new_bg .nav-item .nav-link span{
+ font-size: 80% !important;
+}
 
-    li span {
-      color: green;
-      font-style: bold !important;
-      font-size: 110% !important;
-    }
+/* Ensure icon and text are vertically centered */
+.navbar-nav.sidebar_new_bg .nav-item .nav-link i {
+  vertical-align: middle;
+}
 
-    .sidebar-light .sidebar-brand {
-      color: green;
-      padding-bottom: 10px;
-    }
+.navbar-nav i.fas {
+  color: green !important;
+  font-size: 190% !important;
+}
 
-    .sidebar_new_bg {
-      background: white;
-    }
+.collapse-inner a {
+  color: green ! important;
+}
 
-    .sidebar-light .nav-item .nav-link[data-toggle="collapse"]::after {
-      display: none;
+.collapse-inner a:hover {
+  background-color: lightgreen !important;
+  color: black !important;
+}
 
-    }
-  </style>
+li span {
+  color: green;
+  font-style: bold !important;
+  font-size: 110% !important;
+}
 
+.sidebar-light .sidebar-brand {
+  color: green;
+  padding-bottom: 10px;
+
+}
+
+.sidebar_new_bg {
+  background: white;
+}
+
+.sidebar-light .nav-item .nav-link[data-toggle="collapse"]::after {
+  display: none;
+
+}
+
+
+
+/* Fix overlapping dropdown menu items */
+.bg-py-2.collapse-inner.rounded {
+  position: relative;
+  z-index: 9999; /* Ensure dropdown is on top */
+}
+
+/* Change background color of dropdown menu */
+.navbar-nav.sidebar_new_bg .nav-item .collapse.show {
+  background-color: lightgray;
+}
+</style>
   <ul class="navbar-nav sidebar_new_bg sidebar sidebar-light accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
