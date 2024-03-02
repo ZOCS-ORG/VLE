@@ -133,13 +133,12 @@ $pta_visible = mysqli_num_rows($result) > 0;
       <a class="nav-link" href="../chat">
         <i class="fa fas fa-fw fa-comments"></i>
         <?php
-        //? count messeges
         $myID = $_SESSION['id'];
         $q = mysqli_query($db, "SELECT COUNT(msg) FROM messages WHERE incoming_msg_id = '$myID' AND status = 'Unread' ") or die('Fetch Failed: ' . mysqli_error($db));
         $fetch = mysqli_fetch_array($q);
 
         if ($fetch[0] > 0) {
-          echo '<span class="badge badge-danger badge-counter badge-pill">' . $fetch[0] . '</span>';
+          echo '<span class="badge badge-danger badge-counter badge-pill" style="margin-right:1rem;">' . $fetch[0] . '</span>';
         }
         ?>
         <span>Message Teacher </span></a>
