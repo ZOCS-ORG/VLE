@@ -2,8 +2,17 @@
 require_once('header.php');
 ?>
 
-<body>
+<style> 
+#table2 tr th{
+    width: 60% ;
+    font-size:12px;
+    text-align: left;
+    padding: 0.58em;
+}
 
+</style>
+
+<body>
     <?php
     error_reporting(0);
     $class_id = $_GET['class_id'];
@@ -14,16 +23,10 @@ require_once('header.php');
     <div class="row">
         <!-- search column starts here -->
         <div class="col s12 m2">
-            <!-- <div class="card-panel ">
-            </div><br> -->
+            <div class="card-panel ">
+            </div><br>
             <div class="card horizontal">
                 <div class="card-stacked">
-                    <!-- <a class="card-conten btn small text -text" href="forum.php">
-                        <span class="cardtitle">Forum</span>
-                    </a> -->
-                    <br>
-                    <br>
-                    <br>
                     <a class="card-conten btn small text -text" href="../../modules/functions/<?php echo $_SESSION['role'] ?>/">
                         <span class="cardtitle">Back to Dashboard</span>
                     </a>
@@ -47,7 +50,7 @@ require_once('header.php');
             </div>
             <br>
             <div class="row">
-            <table id="table2" class="responsive-table striped">
+                <table id="table2" class="responsive-table striped">
                     <thead>
                         <tr>
                             <th data-field="ass_no">Name of Upload</th>
@@ -94,32 +97,23 @@ require_once('header.php');
             </div>
         </div>
 
-
-        <!-- reg srch column starts here -->
-
-        <div class="col s12 m2">
-
-        </div>
-
-        <!-- reg srch column starts here   -->
-
     </div>
 
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             var table = $('#table1').DataTable({
                 "order": [],
                 "dom": 'Bfrtip',
             });
         });
-        $(document).ready(function () {
+        $(document).ready(function() {
             var table = $('#table2').DataTable({
                 "order": [],
                 "dom": 'Bfrtip',
             });
         });
-        $(document).ready(function () {
+        $(document).ready(function() {
             var table = $('#table3').DataTable({
                 "order": [],
                 "dom": 'Bfrtip',
@@ -143,6 +137,3 @@ require_once('header.php');
 </body>
 
 </html>
-
-
-<?php ?>
