@@ -6,9 +6,15 @@ include_once('../layouts/head_to_wrapper.php');
 include_once('../layouts/topbar.php');
 
 
+$district_sql = "SELECT district_id FROM users WHERE id = '{$_SESSION['id']}'";
+$districts_result = mysqli_query($db, $district_sql) or die('An error occurred while fetching schools: ' . mysqli_error($db));
+$district_row = mysqli_fetch_assoc($districts_result);
+$dist_id = $district_row['district_id'];
+
 // Fetch all schools
-$schools_sql = "SELECT * FROM schools";
+$schools_sql = "SELECT * FROM schools WHERE district = '$dist_id'";
 $schools_result = mysqli_query($db, $schools_sql) or die('An error occurred while fetching schools: ' . mysqli_error($db));
+
 
 ?>
 
