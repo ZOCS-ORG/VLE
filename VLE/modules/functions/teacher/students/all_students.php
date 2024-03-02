@@ -26,7 +26,6 @@ $user_id = $_SESSION['id'];
                         <th>ID</th>
                         <th>Name</th>
                         <th>Class</th>
-                        <th>Picture</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -53,7 +52,7 @@ $user_id = $_SESSION['id'];
                                 echo $r_class['name'];
                                 ?>
                             </td>
-                            <td><?php echo "<img src='" . $images_dir . $picname . "' alt='" . $picname . "' width='50' height='50'> " ?></td>
+                            <!-- <td><?php ///echo "<img src='" . $images_dir . $picname . "' alt='" . $picname . "' width='50' height='50'> " ?></td> -->
                             <th>
                                 <div class="btn-group"><a class="btn btn-success btn-sm text-light" href="../students/view_student.php?id=<?php echo $row["id"]; ?>">View</a>
                                     <a class="btn btn-primary btn-sm text-light " href="../students/update_student.php?id=<?php echo $row["id"]; ?>">Edit</a>

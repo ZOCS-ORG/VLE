@@ -22,6 +22,9 @@ if (isset($_POST['submit_ass_q'])) {
     }
 
     $date_due = $_POST['date_due'];
+    $from_age = $_POST['from_age'];
+    $to_age = $_POST['to_age'];
+
     $file = $_FILES['nFile']['name'];
     //Get current date
     $date_sub = date("d-m-Y");
@@ -32,8 +35,8 @@ if (isset($_POST['submit_ass_q'])) {
     // }
     move_uploaded_file($_FILES['nFile']['tmp_name'], "../files/ass_notice/" . $file);
 
-    $query = $db->query("INSERT INTO `ass_notice` (`question`, `name`, `class_id`, `subject_id`, `teacher_id`, `assFile`, `date`, `date_due`, marks)
-							VALUES ('$question', '$name', '$class_id', '$subject_id', '$teacher_id', '$file', '$date_sub', '$date_due', '$marks') ")
+    $query = $db->query("INSERT INTO `ass_notice` (`question`, `name`, `class_id`, `subject_id`, `teacher_id`, `assFile`, `date`, `date_due`, `marks`, `from_age`, `to_age`)
+							VALUES ('$question', '$name', '$class_id', '$subject_id', '$teacher_id', '$file', '$date_sub', '$date_due', '$marks', '$from_age', '$to_age') ")
             or die("An error occured: " . mysqli_error($db));
 
     if ($query) {
@@ -117,6 +120,10 @@ if (isset($_POST['update_ass_q'])) {
     // while($row=$sub_query->fetch_assoc()){
     // 	$sub_name = $row['subName'];
     // }
+
+    $from_age = $_POST['from_age'];
+    $to_age = $_POST['to_age'];
+
     move_uploaded_file($_FILES['nFile']['tmp_name'], "../files/ass_notice/" . $file);
 
     $sql = "UPDATE ass_notice SET";
@@ -126,6 +133,12 @@ if (isset($_POST['update_ass_q'])) {
     }
     if (!empty($name)) {
         $sql .= " name = '$name',";
+    }
+    if (!empty($from_age)) {
+        $sql .= " from_age = '$from_age',";
+    }
+    if (!empty($to_age)) {
+        $sql .= " to_age = '$to_age',";
     }
     if (!empty($class_id)) {
         $sql .= " class_id = '$class_id',";

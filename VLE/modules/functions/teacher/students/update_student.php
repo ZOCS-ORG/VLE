@@ -149,8 +149,8 @@
                         </tr> 
 
                         <tr>
-                            <td>Learner Picture:</td>
-                            <td class="text-right"><input id="file"type="file" name="file"></td>
+                            <!-- <td>Learner Picture:</td>
+                            <td class="text-right"><input id="file"type="file" name="file"></td> -->
                         </tr>
                         <tr>
                             <td></td>

@@ -175,8 +175,8 @@ $user_id = $_SESSION['id'];
 
 
                             <tr>
-                                <td>Learner Picture:</td>
-                                <td class="text-right"><input id="file" type="file" name="file" ></td>
+                                <!-- <td>Learner Picture:</td>
+                                <td class="text-right"><input id="file" type="file" name="file" ></td> -->
                             </tr>
                             <td></td>
                             <td class="text-right"><input class="btn btn-sm btn-primary " type="submit" name="create_student" required value="Submit"></td>

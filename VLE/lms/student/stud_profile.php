@@ -51,7 +51,13 @@
 
                   <tbody>
                       <?php
-                          $query = $db->query("SELECT * FROM ass_notice WHERE class_id = '$class_id' ORDER BY date_due DESC ")
+                      $logged_id = $_SESSION['id'];
+                          $query = $db->query("SELECT an.* FROM ass_notice an
+                              LEFT JOIN users u ON an.teacher_id = u.id
+                              -- LEFT JOIN school_teachers st ON st.teacher_id = um.teacher_id
+
+                              WHERE an.teacher_id = (SELECT created_by from users where id = '$logged_id')
+                                   ORDER BY date_due DESC ")
                                     or die("Error: ".mysqli_error($db));
 
                           while($row=$query->fetch_assoc()){ 

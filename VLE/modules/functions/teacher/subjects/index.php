@@ -78,7 +78,7 @@ include_once('../layouts/topbar.php');
                                             if (mysqli_num_rows($res) > 0) {
                                                 while ($r = mysqli_fetch_assoc($res)) {
                                                     $teacher_name = $r['name'];
-                                                    echo "<td>" . $teacher_name . "</td>";
+                                                    echo "<td>" . $teacher_name . ".</td>";
                                                 }
                                             }
                                             ?>
@@ -94,14 +94,14 @@ include_once('../layouts/topbar.php');
                                             if (mysqli_num_rows($res) > 0) {
                                                 while ($r = mysqli_fetch_assoc($res)) {
                                                     $teacher_name = $r['name'];
-                                                    echo "<td>" . $teacher_name . "</td>";
+                                                    echo "<td>" . $teacher_name . ".</td>";
                                                 }
                                             }
                                             ?>
 
                                             <th>
                                                 <div>
-                                                    <a class="btn btn-info btn-sm text-white " href="results.php?subject=<?php echo $subject_id ?>&class=<?php echo $class_id ?>">Manage Results </a>
+                                                    <!-- <a class="btn btn-info btn-sm text-white " href="results.php?subject=<?php echo $subject_id ?>&class=<?php echo $class_id ?>">Manage Results </a> -->
                                                 </div>
                                             </th>
                                 </tr>

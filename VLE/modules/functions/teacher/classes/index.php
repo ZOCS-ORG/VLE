@@ -66,10 +66,11 @@ include_once('../layouts/topbar.php');
                                         ?>
                                     </td>
                                     <th>
-                                        <div class="btn-group"><a class="btn btn-success btn-sm text-white" href="view_class.php?id=<?php echo $row['id'] ?>">View</a>
+                                        <div class="btn-group">
+                                            <a class="btn btn-success btn-sm text-white" href="view_class.php?id=<?php echo $row['id'] ?>">View</a>
                                             <a class="btn btn-primary btn-sm text-light " href="update_class.php?id=<?php echo $row['id'] ?>">Edit</a>
-                                            <a class="btn btn-warning btn-sm text-dark " href="../attendance/register.php?class=<?php echo $row['id'] ?>">Class Register </a>
-                                            <a class="btn btn-info btn-sm text-white " href="class_results.php?class=<?php echo $row['id'] ?>">View Results </a>
+                                            <!-- <a class="btn btn-warning btn-sm text-dark " href="../attendance/register.php?class=<?php echo $row['id'] ?>">Class Register </a>
+                                            <a class="btn btn-info btn-sm text-white " href="class_results.php?class=<?php echo $row['id'] ?>">View Results </a> -->
                                         </div>
                                     </th>
                                 </tr>

@@ -4,9 +4,9 @@ require_once('header.php');
 
 <body>
 
-	<?php 
-		require '../includes/profile_navbar.php';
-		$ass_id = $_GET['ass_id'];
+	<?php
+	require '../includes/profile_navbar.php';
+	$ass_id = $_GET['ass_id'];
 	?>
 
 	<div class="row">
@@ -31,6 +31,8 @@ require_once('header.php');
 							$dueDate1 = $row['date_due'];
 							$assDate1 = $row['date'];
 							$ass_id1 = $row['id'];
+							$from_age1 = $row['from_age'];
+							$to_age1 = $row['to_age'];
 
 							$file_path = "../files/ass_notice/" . $file1;
 							/**File location */
@@ -74,26 +76,6 @@ require_once('header.php');
 								</div>
 								<!-- file input ends here -->
 
-								<div class="input-field col s12">
-									<select name="class">
-										<option value="" disabled selected>Class </option>
-										<?php
-										$get_class = $db->query("SELECT * FROM teacher_subject_class WHERE teacher_id = '$t_id' ");
-										while ($row1 = $get_class->fetch_assoc()) {
-											$class_id = $row1['class_id'];
-
-											$class_query = $db->query("SELECT * FROM classes WHERE id = '$class_id' ");
-											while ($row_sub = $class_query->fetch_assoc()) {
-												$class_id = $row_sub['id'];
-												$class_name = $row_sub['name'];
-										?>
-												<option value="<?php echo $class_id ?>"><?php echo $class_name ?></option>
-										<?php
-											}
-										}
-										?>
-									</select>
-								</div>
 
 								<div class="input-field col s12">
 									<select name="subject">
@@ -117,6 +99,20 @@ require_once('header.php');
 									</select>
 								</div>
 
+								<div class="input-field col s12">
+									<label for="from">FROM AGE</label><br>
+									<input id="from" type="number" name="from_age" value="<?php echo $from_age1 ?>">
+								</div>
+
+								<div class="input-field col s12">
+									<label for="to">TO AGE</label><br>
+									<input id="to" type="number" name="to_age" value="<?php echo $to_age1 ?>">
+								</div>
+								<div class="input-field col s12">
+									<label for="class">Grade</label><br>
+									<input id="clsdd" type="number" name="class" value="<?php echo $class1 ?>">
+								</div>
+
 								<div class="file-field input-field col s12">
 									<div type="date" class="btn datepicker ">
 										<span>Due Date</span>
@@ -127,7 +123,7 @@ require_once('header.php');
 									</div>
 								</div>
 
-								<input type="hidden" name="id" value="<?php echo $row['id']?>">
+								<input type="hidden" name="id" value="<?php echo $row['id'] ?>">
 
 							</div>
 
@@ -151,13 +147,16 @@ require_once('header.php');
 				<span class="">Past assignments </span>
 			</div>
 
+
 			<table class="striped highlight responsive-table">
 				<thead>
 					<tr>
 						<th data-field="ass_no">Name</th>
 						<th class="txt_limit" data-field="q">Queston</th>
 						<th data-field="subject">Subject</th>
-						<th data-field="class">Class</th>
+						<th data-field="class">Grade</th>
+						<th data-field="class">From Age</th>
+						<th data-field="class">To Age</th>
 						<th data-field="file">File</th>
 						<th data-field="final_daet">Date Due </th>
 						<th data-field="date">Date Created</th>
@@ -178,6 +177,8 @@ require_once('header.php');
 						$dueDate = $row['date_due'];
 						$assDate = $row['date'];
 						$ass_id = $row['id'];
+						$from_age = $row['from_age'];
+						$to_age = $row['to_age'];
 
 						$file_path = "../files/ass_notice/" . $file;
 						/**File location */
@@ -195,13 +196,15 @@ require_once('header.php');
 							<td><?php echo $name ?></td>
 							<td><?php echo $question ?></td>
 							<td><?php echo $sub_name ?></td>
-							<td><?php echo $class_name ?></td>
+							<td><?php echo $class ?></td>
+							<td><?php echo $from_age ?? 'Not set' ?></td>
+							<td><?php echo $to_age ?? 'Not set' ?></td>
 							<td> <a href="<?php echo $file_path ?>"> File </a> </td>
 							<td><?php echo $dueDate ?></td>
 							<td><?php echo $assDate ?></td>
 							<td>
-								<!-- <a class="btn btn-sm green waves-effect waves-light" href="edit_ass.php?ass_id=<?php echo $ass_id ?>"> Edit </a> -->
-								<a class="btn small red waves-effect waves-light" href="delete_ass.php?ass_id=<?php echo $ass_id ?>"> Delete </a>
+								<a class="btn btn-sm green waves-effect waves-light" href="edit_ass.php?ass_id=<?php echo $ass_id ?>"> Edit </a>
+								<a class="btn small red waves-effect waves-light" href="notice_ass.php?delete_ass=true&ass_id=<?php echo $ass_id ?>"> Delete </a>
 							</td>
 						</tr>
 
@@ -211,6 +214,7 @@ require_once('header.php');
 
 			</table>
 
+
 		</div>
 
 		<!-- Notice ends here -->
@@ -219,11 +223,6 @@ require_once('header.php');
 
 
 
-
-
-
-
-	<?php ; ?>
 
 
 
