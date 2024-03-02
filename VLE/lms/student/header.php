@@ -1,5 +1,9 @@
 <?php
+<<<<<<< Updated upstream
 error_reporting(0);
+=======
+  error_reporting(0);
+>>>>>>> Stashed changes
   session_start();
 
   if(!isset($_SESSION['id'])){
