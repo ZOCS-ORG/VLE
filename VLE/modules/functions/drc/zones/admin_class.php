@@ -187,11 +187,14 @@ Class Action {
 	}
 
 	function save_zone_topic(){
-
+		$district_zone = $_POST['district_id'];
 		extract($_POST);
 		$data = " title = '$title' ";
-		$data .= ", zone_id = '".(implode(",",$category_ids))."' ";
+		$data .= ", district_id = '$district_zone'";
+		$data .= ", audience = '".(implode(",",$category_ids))."' ";
 		$data .= ", content = '".htmlentities(str_replace("'","&#x2019;",$content))."' ";
+
+		// echo $data;
 
 		if(empty($id)){
 		$data .= ", user_id = '{$_SESSION['id']}' ";
@@ -202,6 +205,7 @@ Class Action {
 		if($save)
 			return 1;
 	}
+
 	function delete_topic(){
 		extract($_POST);
 		$delete = $this->db->query("DELETE FROM topics where id = ".$id);

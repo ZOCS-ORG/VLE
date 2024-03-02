@@ -51,6 +51,7 @@ if (mysqli_num_rows($result) > 0) {
 				<input type="text" name="title" class="form-control" value="<?php echo isset($title) ? $title : '' ?>">
 			</div>
 		</div>
+		<input type="hidden" name="district_id" class="form-control" value="<?php echo isset($district_zone) ? $district_zone : '' ?>" readonly>
 		<div class="row form-group">
 			<div class="col-md-8">
 				<label class="control-label">Zone</label>

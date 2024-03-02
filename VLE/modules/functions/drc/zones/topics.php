@@ -1,19 +1,19 @@
 <?php include('db_connect.php'); ?>
 
-<?php 
-	
-	$drc_id = $_SESSION['id'];
+<?php
+
+$drc_id = $_SESSION['id'];
 
 $sql_zone = "SELECT district_id FROM users WHERE id = $drc_id";
 
 $result_zone = mysqli_query($db, $sql_zone);
 
 if (mysqli_num_rows($result_zone) > 0) {
-  
-    $row_zone = mysqli_fetch_assoc($result_zone);
 
-    $district_zone = $row_zone['district_id'];
-	
+	$row_zone = mysqli_fetch_assoc($result_zone);
+
+	$district_zone = $row_zone['district_id'];
+	// echo $district_zone;
 }
 
 
@@ -23,17 +23,16 @@ INNER JOIN users ON users.district_id = zones.district_id";
 $result = mysqli_query($db, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-  
-    $row = mysqli_fetch_assoc($result);
-    
-    // Get the zone_id
-    $zone_id = $row['zone_id'];
-    // Get the zone name if needed
-    $zone_name = $row['zone'];
-	
+
+	$row = mysqli_fetch_assoc($result);
+
+	// Get the zone_id
+	$zone_id = $row['zone_id'];
+	// Get the zone name if needed
+	$zone_name = $row['zone'];
 }
 // echo $zone_id;
-	?>
+?>
 <div class="container-fluid">
 	<style>
 		input[type=checkbox] {
@@ -80,11 +79,11 @@ if (mysqli_num_rows($result) > 0) {
 							$role = $_SESSION['role'];
 							$logged_in = $_SESSION['id'];
 
-							
+
 							$topic = $db->query("SELECT t.*,u.name, z.zone AS zone_name FROM topics t Left join users u on u.id = t.user_id
 							    Left join zones z on z.zone_id = t.audience 
-								WHERE audience = '$zone_id' OR audience ='none' OR user_id = '$logged_in'
-								order by unix_timestamp(date_created) desc")or die("Cant fetch ".mysqli_error($db));
+								WHERE (audience = '$zone_id' OR audience ='none' OR user_id = '$logged_in') AND (t.district_id = '$district_zone' AND audience !='')
+								order by unix_timestamp(date_created) desc") or die("Cant fetch " . mysqli_error($db));
 							while ($row = $topic->fetch_assoc()) :
 
 								$trans = get_html_translation_table(HTML_ENTITIES, ENT_QUOTES);
@@ -94,7 +93,7 @@ if (mysqli_num_rows($result) > 0) {
 								$view = $db->query("SELECT * FROM forum_views where topic_id=" . $row['id'])->num_rows;
 								$comments = $db->query("SELECT * FROM comments where topic_id=" . $row['id'])->num_rows;
 								$replies = $db->query("SELECT * FROM replies where comment_id in (SELECT id FROM comments where topic_id=" . $row['id'] . ")")->num_rows;
-								
+
 
 							?>
 								<li class="list-group-item mb-4 bg-grey border-success" style="background-color: #F8F9FC">
@@ -123,7 +122,7 @@ if (mysqli_num_rows($result) > 0) {
 									<span class="float-left label label-lg label-primary text-black ml-2"><i class="fa fa-comments"></i> <?php echo number_format($comments) ?> comments <?php echo $replies > 0 ? " and " . number_format($replies) . ' replies' : '' ?> </span>
 									<span class="float-right">
 
-									<span class="info text-info ml-2" style="color: #353535!important">zone name: <?php echo ($row['zone_name'] == '') ? 'All Zones' : $row['zone_name']; ?> | </span>
+										<span class="info text-info ml-2" style="color: #353535!important">zone name: <?php echo ($row['zone_name'] == '') ? 'All Zones' : $row['zone_name']; ?> | </span>
 
 
 										<a href="index_zone.php?page=view_forum&id=<?php echo $row['id'] ?>" class=" btn btn-primary btn-sm filter-text">Read more</a>
