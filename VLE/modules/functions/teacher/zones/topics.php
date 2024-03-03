@@ -35,6 +35,7 @@ if (mysqli_num_rows($result) > 0) {
 
 // echo $district_id;
 // echo $teacher_id;
+// echo $zone_id;
 ?>
 
 <div class="container-fluid">
@@ -85,8 +86,12 @@ if (mysqli_num_rows($result) > 0) {
 
 
 							$topic = $db->query("SELECT t.*,u.name, z.zone AS zone_name FROM topics t Left join users u on u.id = t.user_id
-							    Left join zones z on z.zone_id = t.audience 
-								WHERE audience = '$zone_id' OR audience ='none' OR user_id = '$logged_in' AND z.district_id='$district_id'        
+							    Left join zones z on z.zone_id = t.audience 								
+								WHERE (t.audience = '$zone_id' OR t.audience = 'none' OR t.audience IS NOT NULL) 
+                                AND t.audience != ''    
+                                AND t.audience = '$zone_id'    
+                                OR t.audience = 'none'    
+								AND (t.user_id = '$logged_in' OR t.district_id = '$district_id')   
 								order by unix_timestamp(date_created) desc") or die("Cant fetch " . mysqli_error($db));
 							while ($row = $topic->fetch_assoc()) :
 
@@ -126,7 +131,7 @@ if (mysqli_num_rows($result) > 0) {
 									<span class="float-left label label-lg label-primary text-black ml-2"><i class="fa fa-comments"></i> <?php echo number_format($comments) ?> comments <?php echo $replies > 0 ? " and " . number_format($replies) . ' replies' : '' ?> </span>
 									<span class="float-right">
 
-									<span class="info text-info ml-2" style="color: #353535!important">zone name: <?php echo ($row['zone_name'] = 'none') ? 'All Zones' : $row['zone_name']; ?> | </span>
+										<span class="info text-info ml-2" style="color: #353535!important">zone name: <?php echo ($row['zone_name'] = 'none') ? 'All Zones' : $row['zone_name']; ?> | </span>
 
 										<a href="index.php?page=view_forum&id=<?php echo $row['id'] ?>" class=" btn btn-primary btn-sm filter-text">Read more</a>
 
