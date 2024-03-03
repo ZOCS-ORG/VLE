@@ -69,9 +69,9 @@ if (mysqli_num_rows($result) > 0) {
 
 			<!-- Table Panel -->
 			<div class="col-md-12">
-			<div class="col-md-12 mb-3">
-						<input type="text" id="topic-search" class="form-control" placeholder="Search topics">
-					</div>
+				<div class="col-md-12 mb-3">
+					<input type="text" id="topic-search" class="form-control" placeholder="Search topics">
+				</div>
 				<div class="card">
 					<div class="card-header">
 						<b>Zone Discussions</b>
@@ -166,60 +166,60 @@ if (mysqli_num_rows($result) > 0) {
 	}
 </style>
 <script>
-    $(document).ready(function() {
-        // Initialize DataTable
-        $('table').dataTable();
+	$(document).ready(function() {
+		// Initialize DataTable
+		$('table').dataTable();
 
-        // Initialize JPaging
-        $('#topic-list').JPaging({
-            pageSize: 15,
-            visiblePageSize: 10
-        });
+		// Initialize JPaging
+		$('#topic-list').JPaging({
+			pageSize: 15,
+			visiblePageSize: 10
+		});
 
-        // Handle click event for 'New Topic' button
-        $('#new_topic').click(function() {
-            uni_modal("Start Discussion", "manage_topic.php", 'mid-large');
-        });
+		// Handle click event for 'New Topic' button
+		$('#new_topic').click(function() {
+			uni_modal("Start Discussion", "manage_topic.php", 'mid-large');
+		});
 
-        // Handle click event for 'Edit Topic' button
-        $('.edit_topic').click(function() {
-            uni_modal("Edit Topic", "manage_topic.php?id=" + $(this).attr('data-id'), 'mid-large');
-        });
+		// Handle click event for 'Edit Topic' button
+		$('.edit_topic').click(function() {
+			uni_modal("Edit Topic", "manage_topic.php?id=" + $(this).attr('data-id'), 'mid-large');
+		});
 
-        // Handle click event for 'Delete Topic' button
-        $('.delete_topic').click(function() {
-            _conf("Are you sure to delete this topic?", "delete_topic", [$(this).attr('data-id')], 'mid-large');
-        });
+		// Handle click event for 'Delete Topic' button
+		$('.delete_topic').click(function() {
+			_conf("Are you sure to delete this topic?", "delete_topic", [$(this).attr('data-id')], 'mid-large');
+		});
 
-        // Handle input event in search field
-        $('#topic-search').on('input', function() {
-            var searchText = $(this).val().toLowerCase();
-            $('#topic-list li').each(function() {
-                var title = $(this).find('.filter-text').text().toLowerCase();
-                if (title.indexOf(searchText) === -1) {
-                    $(this).hide();
-                } else {
-                    $(this).show();
-                }
-            });
-        });
-    });
+		// Handle input event in search field
+		$('#topic-search').on('input', function() {
+			var searchText = $(this).val().toLowerCase();
+			$('#topic-list li').each(function() {
+				var title = $(this).find('.filter-text').text().toLowerCase();
+				if (title.indexOf(searchText) === -1) {
+					$(this).hide();
+				} else {
+					$(this).show();
+				}
+			});
+		});
+	});
 
-    function delete_topic($id) {
-        $.ajax({
-            url: 'ajax.php?action=delete_topic',
-            method: 'POST',
-            data: {
-                id: $id
-            },
-            success: function(resp) {
-                if (resp == 1) {
-                    alert_toast("Data successfully deleted", 'success');
-                    setTimeout(function() {
-                        location.reload();
-                    }, 1500);
-                }
-            }
-        });
-    }
+	function delete_topic($id) {
+		$.ajax({
+			url: 'ajax.php?action=delete_topic',
+			method: 'POST',
+			data: {
+				id: $id
+			},
+			success: function(resp) {
+				if (resp == 1) {
+					alert_toast("Data successfully deleted", 'success');
+					setTimeout(function() {
+						location.reload();
+					}, 1500);
+				}
+			}
+		});
+	}
 </script>

@@ -64,6 +64,9 @@ if (mysqli_num_rows($result) > 0) {
 
 			<!-- Table Panel -->
 			<div class="col-md-12">
+			<div class="col-md-12 mb-3">
+					<input type="text" id="topic-search" class="form-control" placeholder="Search topics">
+				</div>
 				<div class="card">
 					<div class="card-header">
 						<b>Zone Discussions</b>
@@ -82,7 +85,9 @@ if (mysqli_num_rows($result) > 0) {
 
 							$topic = $db->query("SELECT t.*,u.name, z.zone AS zone_name FROM topics t Left join users u on u.id = t.user_id
 							    Left join zones z on z.zone_id = t.audience 
-								WHERE (audience = '$zone_id' OR audience ='none' OR user_id = '$logged_in') AND (t.district_id = '$district_zone' AND audience !='')
+								WHERE 
+								-- (audience = '$zone_id' OR audience ='none' OR t.user_id = '$logged_in') AND
+								(t.district_id = '$district_zone' AND audience !='')
 								order by unix_timestamp(date_created) desc") or die("Cant fetch " . mysqli_error($db));
 							while ($row = $topic->fetch_assoc()) :
 
@@ -156,6 +161,18 @@ if (mysqli_num_rows($result) > 0) {
 <script>
 	$(document).ready(function() {
 		$('table').dataTable()
+
+		$('#topic-search').on('input', function() {
+            var searchText = $(this).val().toLowerCase();
+            $('#topic-list li').each(function() {
+                var title = $(this).find('.filter-text').text().toLowerCase();
+                if (title.indexOf(searchText) === -1) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        });
 	})
 	$('#topic-list').JPaging({
 		pageSize: 15,
