@@ -17,7 +17,7 @@ $teacher_id = $_SESSION['id'];
 $zone_id = 12;
 $zone_name = null;
 
-$sql = "SELECT z.zone_id, z.zone FROM zones 
+$sql = "SELECT z.zone_id, z.district_id, z.zone FROM zones 
 INNER JOIN school_teachers st ON st.teacher_id = '$teacher_id'
 INNER JOIN schools s ON s.school_id = st.school_id
 INNER JOIN zones z ON z.zone_id = s.zone
@@ -32,7 +32,7 @@ $result = mysqli_query($db, $sql);
 if (mysqli_num_rows($result) > 0) {
 
 	$row = mysqli_fetch_assoc($result);
-
+	$district_id = $row['district_id'];
 	$zone_id = $row['zone_id'];
 	// Get the zone name if needed
 	$zone_name = $row['zone'];
@@ -53,7 +53,8 @@ if (mysqli_num_rows($result) > 0) {
 			</div>
 		</div>
 
-		<input type="" name="category_ids" id="category_ids" class="form-control" value="<?php echo $zone_id ?>">
+		<input type="hidden" name="category_ids" id="" class="form-control" value="<?php echo $zone_id ?>" readonly>
+		<input type="hidden" name="district_id" id="" class="form-control" value="<?php echo $district_id ?>" readonly>
 		<div class="row form-group">
 			<div class="col-md-12">
 				<label class="control-label">Content</label>

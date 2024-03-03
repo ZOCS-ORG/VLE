@@ -67,7 +67,7 @@ if($action == "save_topic"){
 }
 
 if($action == "save_zone_topic"){
-	$save = $crud->save_topic();
+	$save = $crud->save_zone_topic();
 	if($save)
 		echo $save;
 }

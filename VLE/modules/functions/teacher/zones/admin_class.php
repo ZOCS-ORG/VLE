@@ -187,10 +187,15 @@ Class Action {
 	}
 
 	function save_zone_topic(){
+		$district_zone = $_POST['district_id'];
+		$audience = $_POST['category_ids'];
 		extract($_POST);
 		$data = " title = '$title' ";
-		$data .= ", audience = '".(implode(",",$category_ids))."' ";
+		$data .= ", district_id = '$district_zone'";
+		$data .= ", audience = '$audience'";
+		// $data .= ", audience = '".(implode(",",$category_ids))."' ";
 		$data .= ", content = '".htmlentities(str_replace("'","&#x2019;",$content))."' ";
+
 
 		if(empty($id)){
 		$data .= ", user_id = '{$_SESSION['id']}' ";
