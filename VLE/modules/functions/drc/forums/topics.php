@@ -31,6 +31,9 @@
 
 			<!-- Table Panel -->
 			<div class="col-md-12">
+				<div class="col-md-12 mb-3">
+					<input type="text" id="topic-search" class="form-control" placeholder="Search topics">
+				</div>
 				<div class="card">
 					<div class="card-header">
 						<b>Discussions</b>
@@ -46,10 +49,10 @@
 							$role = $_SESSION['role'];
 							$logged_in = $_SESSION['id'];
 
-							
-							$topic = $db->query("SELECT t.*,u.name FROM topics t Left join users u on u.id = t.user_id
+
+							$topic = $db->query("SELECT t.*,u.name FROM topics t inner join users u on u.id = t.user_id
 								WHERE audience = '$role' OR audience = '' OR user_id = '$logged_in'
-								order by unix_timestamp(date_created) desc")or die("Cant fetch ".mysqli_error($db));
+								order by unix_timestamp(date_created) desc");
 							while ($row = $topic->fetch_assoc()) :
 
 								$trans = get_html_translation_table(HTML_ENTITIES, ENT_QUOTES);
@@ -59,7 +62,7 @@
 								$view = $db->query("SELECT * FROM forum_views where topic_id=" . $row['id'])->num_rows;
 								$comments = $db->query("SELECT * FROM comments where topic_id=" . $row['id'])->num_rows;
 								$replies = $db->query("SELECT * FROM replies where comment_id in (SELECT id FROM comments where topic_id=" . $row['id'] . ")")->num_rows;
-								
+
 
 							?>
 								<li class="list-group-item mb-4 bg-grey border-success" style="background-color: #F8F9FC">
@@ -88,7 +91,8 @@
 									<span class="float-left label label-lg label-primary text-black ml-2"><i class="fa fa-comments"></i> <?php echo number_format($comments) ?> comments <?php echo $replies > 0 ? " and " . number_format($replies) . ' replies' : '' ?> </span>
 									<span class="float-right">
 
-										<span class="info text-info ml-2" style="color: #353535!important">audience: <?php echo ($row['audience'] == 'drc') ? "DEBS" : ucfirst($row['audience']); echo empty($row['audience']) ? 'Everyone' : ''; ?> | </span>
+										<span class="info text-info ml-2" style="color: #353535!important">audience: <?php echo ($row['audience'] == 'drc') ? "DEBS" : ucfirst($row['audience']);
+																														echo empty($row['audience']) ? 'Everyone' : ''; ?> | </span>
 
 										<a href="index.php?page=view_forum&id=<?php echo $row['id'] ?>" class=" btn btn-primary btn-sm filter-text">Read more</a>
 
@@ -121,6 +125,19 @@
 <script>
 	$(document).ready(function() {
 		$('table').dataTable()
+
+		// Handle input event in search field
+		$('#topic-search').on('input', function() {
+			var searchText = $(this).val().toLowerCase();
+			$('#topic-list li').each(function() {
+				var title = $(this).find('.filter-text').text().toLowerCase();
+				if (title.indexOf(searchText) === -1) {
+					$(this).hide();
+				} else {
+					$(this).show();
+				}
+			});
+		});
 	})
 	$('#topic-list').JPaging({
 		pageSize: 15,

@@ -88,14 +88,19 @@ if (mysqli_num_rows($result) > 0) {
 							$logged_in = $_SESSION['id'];
 
 
-							$topic = $db->query("SELECT t.*,u.name, z.zone AS zone_name FROM topics t Left join users u on u.id = t.user_id
+							$topic = $db->query("SELECT t.*,u.name, z.zone AS zone_name FROM topics t 
+								Left join users u on u.id = t.user_id
 							    Left join zones z on z.zone_id = t.audience 								
 								WHERE (t.audience = '$zone_id' OR t.audience = 'none' OR t.audience IS NOT NULL) 
-                                AND t.audience != ''    
+                                AND t.audience = ''    
                                 AND t.audience = '$zone_id'    
                                 OR t.audience = 'none'    
 								AND (t.user_id = '$logged_in' OR t.district_id = '$district_id')   
 								order by unix_timestamp(date_created) desc") or die("Cant fetch " . mysqli_error($db));
+
+							// return var_dump(mysqli_num_rows($topic), $zone_id);
+
+
 							while ($row = $topic->fetch_assoc()) :
 
 								$trans = get_html_translation_table(HTML_ENTITIES, ENT_QUOTES);
